@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream text-text-dark font-sans;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-forest text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-forest-light transition-all duration-300 inline-flex items-center gap-2;
+  }
+  .btn-outline {
+    @apply border border-forest text-forest px-6 py-3 rounded-full text-sm font-medium hover:bg-forest hover:text-white transition-all duration-300 inline-flex items-center gap-2;
+  }
+  .btn-gold {
+    @apply bg-gold text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gold-light transition-all duration-300 inline-flex items-center gap-2;
+  }
+  .section-label {
+    @apply text-sage text-xs font-semibold tracking-widest uppercase;
+  }
+  .section-title {
+    @apply font-serif text-3xl md:text-4xl lg:text-5xl text-text-dark leading-tight;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F0E8;
+}
+::-webkit-scrollbar-thumb {
+  background: #7A9E5B;
+  border-radius: 3px;
+}
+
+/* Navbar scroll effect */
+.navbar-scrolled {
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+}
+.dropdown-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.dropdown-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 200ms ease;
+}
