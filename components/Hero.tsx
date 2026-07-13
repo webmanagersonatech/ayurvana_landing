@@ -48,7 +48,7 @@ export default function Hero() {
       {/* Hero Image Section */}
       <div className="relative h-[480px] sm:h-[560px] md:h-[650px] lg:h-[750px] overflow-hidden">
         <motion.img
-          src="/images/bg-main-3.png"
+          src="/images/bg-main-3.webp"
           alt="Ayurvedic oil massage treatment"
           className="w-full h-full object-cover"
           initial={{ scale: 1.08 }}

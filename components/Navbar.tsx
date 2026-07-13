@@ -41,7 +41,7 @@ export default function Navbar() {
     { label: "Products", href: "/products" },
     {
       label: "Facilities",
-      href: "#facilities",
+      href: "/#facilities",
       hasDropdown: true,
       dropdownItems: [
         { label: "Teams", href: "/teams" },
@@ -100,6 +100,35 @@ export default function Navbar() {
   // Handle dropdown toggle
   const toggleDropdown = (label) => {
     setActiveDropdown(activeDropdown === label ? null : label);
+  };
+
+  // Handle hover with delay for better UX
+  const [hoverTimeout, setHoverTimeout] = useState(null);
+
+  const handleMouseEnter = (label) => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+    setActiveDropdown(label);
+  };
+
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 200); // 200ms delay before closing
+    setHoverTimeout(timeout);
+  };
+
+  const handleDropdownMouseEnter = () => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+  };
+
+  const handleDropdownMouseLeave = () => {
+    setActiveDropdown(null);
   };
 
   return (
@@ -165,9 +194,6 @@ export default function Navbar() {
             className="object-contain"
             priority
           />
-
-         
-     
         </Link>
 
         {/* Desktop Nav Links */}
@@ -177,13 +203,13 @@ export default function Navbar() {
               key={link.label}
               className="relative"
               ref={link.hasDropdown ? dropdownRefs[link.label.toLowerCase()] : null}
+              onMouseEnter={() => link.hasDropdown && handleMouseEnter(link.label)}
+              onMouseLeave={() => link.hasDropdown && handleMouseLeave()}
             >
               <div
                 className={`flex items-center gap-1 cursor-pointer text-sm font-medium transition-colors duration-300 hover:text-sage ${scrolled ? "text-text-dark" : "text-white"
                   }`}
                 onClick={() => link.hasDropdown && toggleDropdown(link.label)}
-                onMouseEnter={() => link.hasDropdown && setActiveDropdown(link.label)}
-                onMouseLeave={() => link.hasDropdown && setActiveDropdown(null)}
               >
                 {link.hasDropdown ? (
                   <>
@@ -206,19 +232,25 @@ export default function Navbar() {
                 )}
               </div>
 
-              {/* Dropdown Menu - FIXED: Using Link instead of a tags */}
+              {/* Dropdown Menu - Enhanced with better UX */}
               {link.hasDropdown && activeDropdown === link.label && (
                 <div
                   className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-cream-dark overflow-hidden"
-                  onMouseEnter={() => setActiveDropdown(link.label)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  onMouseEnter={handleDropdownMouseEnter}
+                  onMouseLeave={handleDropdownMouseLeave}
                 >
                   {link.dropdownItems.map((item) => (
                     <Link
                       key={item.label}
                       href={item.href}
                       className="block px-4 py-3 text-sm text-text-dark hover:bg-cream hover:text-forest transition-colors border-b border-cream-dark last:border-0"
-                      onClick={() => setActiveDropdown(null)}
+                      onClick={() => {
+                        setActiveDropdown(null);
+                        if (hoverTimeout) {
+                          clearTimeout(hoverTimeout);
+                          setHoverTimeout(null);
+                        }
+                      }}
                     >
                       {item.label}
                     </Link>
@@ -255,7 +287,7 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu - FIXED: Using Link instead of a tags */}
+      {/* Mobile menu */}
       {menuOpen && (
         <div className="lg:hidden bg-white border-t border-cream-dark shadow-xl max-h-[80vh] overflow-y-auto">
           <ul className="flex flex-col py-4">

@@ -100,18 +100,18 @@ export default function About() {
     return (
       <motion.div
         ref={countRef}
-        className="px-4 text-center"
+        className="px-2 text-center"
         variants={fadeInUp}
       >
         <motion.p
-          className="font-serif text-4xl md:text-5xl text-sage leading-none mb-2"
+          className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-sage leading-none mb-1 sm:mb-2"
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
         >
           {displayValue}
         </motion.p>
-        <p className="text-text-muted text-xs tracking-wide uppercase">
+        <p className="text-text-muted text-[10px] sm:text-xs tracking-wide uppercase">
           {label}
         </p>
       </motion.div>
@@ -203,7 +203,7 @@ export default function About() {
             </motion.div>
 
             <motion.h2 
-              className="font-serif text-4xl md:text-5xl text-text-dark leading-[1.15] mb-6"
+              className="font-serif text-3xl sm:text-4xl md:text-5xl text-text-dark leading-[1.15] mb-6"
               variants={fadeInUp}
             >
               Sanctuary for Ayurvedic
@@ -266,12 +266,12 @@ export default function About() {
               ))}
             </motion.div>
 
-            {/* Statistics with Auto-Count Animation */}
+            {/* Statistics with Auto-Count Animation - Always 3 columns */}
             <motion.div
-              className="py-8 border-t border-sage/20 mt-8"
+              className="py-6 sm:py-8 border-t border-sage/20 mt-6 sm:mt-8"
               variants={fadeInUp}
             >
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-8">
                 <CountUpAnimation targetValue={98} label="Client Satisfaction Rate" duration={2000} />
                 <CountUpAnimation targetValue={15} label="Years of Experience" duration={2000} />
                 <CountUpAnimation targetValue={100} label="Webinar Attendees" duration={2000} />
