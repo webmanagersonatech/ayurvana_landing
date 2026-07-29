@@ -326,93 +326,187 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.2 }}
-                className="p-4 sm:p-6 flex flex-col xl:flex-row xl:items-end gap-3 xl:gap-4"
+                className="p-4 sm:p-6"
               >
-                {/* Gender Selection */}
-                <div className="flex-1 min-w-[100px]">
-                  <label className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase text-text-muted mb-1.5">
-                    <UserCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                    Gender
-                  </label>
-                  <select
-                    value={gender}
-                    onChange={(e) => setGender(e.target.value)}
-                    className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                {/* Desktop/Horizontal layout - hidden on mobile */}
+                <div className="hidden md:flex flex-nowrap items-end gap-3 overflow-x-auto">
+                  {/* Gender Selection */}
+                  <div className="flex-1 min-w-[100px] flex-shrink-0">
+                    <label className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase text-text-muted mb-1.5">
+                      <UserCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                      Gender
+                    </label>
+                    <select
+                      value={gender}
+                      onChange={(e) => setGender(e.target.value)}
+                      className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                    >
+                      {genderOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Guests */}
+                  <div className="flex-1 min-w-[100px] flex-shrink-0">
+                    <label className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase text-text-muted mb-1.5">
+                      <Users className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                      Guests
+                    </label>
+                    <select
+                      value={guests}
+                      onChange={(e) => setGuests(Number(e.target.value))}
+                      className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                    >
+                      {[1, 2, 3, 4, 5, 6].map((n) => (
+                        <option key={n} value={n}>
+                          {n} Guest{n > 1 ? "s" : ""}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Room Type */}
+                  <div className="flex-1 min-w-[120px] flex-shrink-0">
+                    <label className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase text-text-muted mb-1.5">
+                      <Grid3x3 className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                      Room Type
+                    </label>
+                    <select
+                      value={roomType}
+                      onChange={(e) => setRoomType(e.target.value)}
+                      className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                    >
+                      {roomOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Treatments */}
+                  <div className="flex-1 min-w-[140px] flex-shrink-0">
+                    <label className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase text-text-muted mb-1.5">
+                      <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                      Treatments
+                    </label>
+                    <select
+                      value={treatment}
+                      onChange={(e) => setTreatment(e.target.value)}
+                      className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                    >
+                      {treatmentOptions.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Book Now Button */}
+                  <button
+                    type="button"
+                    onClick={handleBookNow}
+                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-forest-dark to-forest hover:from-forest hover:to-forest-dark text-white px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap flex-shrink-0 min-w-[140px]"
                   >
-                    {genderOptions.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
+                    <ArrowRight className="w-4 h-4" />
+                    <span>Book Now</span>
+                  </button>
                 </div>
 
-                {/* Guests */}
-                <div className="flex-1 min-w-[100px]">
-                  <label className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase text-text-muted mb-1.5">
-                    <Users className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                    Guests
-                  </label>
-                  <select
-                    value={guests}
-                    onChange={(e) => setGuests(Number(e.target.value))}
-                    className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
-                  >
-                    {[1, 2, 3, 4, 5, 6].map((n) => (
-                      <option key={n} value={n}>
-                        {n} Guest{n > 1 ? "s" : ""}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                {/* Mobile/Vertical layout - shown only on mobile */}
+                <div className="md:hidden space-y-3">
+                  {/* Gender & Guests - Row 1 */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="flex items-center gap-1 text-[9px] font-semibold tracking-wide uppercase text-text-muted mb-1">
+                        <UserCircle className="w-3 h-3" />
+                        Gender
+                      </label>
+                      <select
+                        value={gender}
+                        onChange={(e) => setGender(e.target.value)}
+                        className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                      >
+                        {genderOptions.map((option) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
 
-                {/* Room Type */}
-                <div className="flex-1 min-w-[120px]">
-                  <label className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase text-text-muted mb-1.5">
-                    <Grid3x3 className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                    Room Type
-                  </label>
-                  <select
-                    value={roomType}
-                    onChange={(e) => setRoomType(e.target.value)}
-                    className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
-                  >
-                    {roomOptions.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                    <div>
+                      <label className="flex items-center gap-1 text-[9px] font-semibold tracking-wide uppercase text-text-muted mb-1">
+                        <Users className="w-3 h-3" />
+                        Guests
+                      </label>
+                      <select
+                        value={guests}
+                        onChange={(e) => setGuests(Number(e.target.value))}
+                        className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                      >
+                        {[1, 2, 3, 4, 5, 6].map((n) => (
+                          <option key={n} value={n}>
+                            {n} Guest{n > 1 ? "s" : ""}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
 
-                {/* Treatments */}
-                <div className="flex-1 min-w-[140px]">
-                  <label className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase text-text-muted mb-1.5">
-                    <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                    Treatments
-                  </label>
-                  <select
-                    value={treatment}
-                    onChange={(e) => setTreatment(e.target.value)}
-                    className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
-                  >
-                    {treatmentOptions.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                  {/* Room Type & Treatments - Row 2 */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="flex items-center gap-1 text-[9px] font-semibold tracking-wide uppercase text-text-muted mb-1">
+                        <Grid3x3 className="w-3 h-3" />
+                        Room Type
+                      </label>
+                      <select
+                        value={roomType}
+                        onChange={(e) => setRoomType(e.target.value)}
+                        className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                      >
+                        {roomOptions.map((option) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
 
-                {/* Book Now Button */}
-                <button
-                  type="button"
-                  onClick={handleBookNow}
-                  className="flex items-center justify-center gap-2 bg-gradient-to-r from-forest-dark to-forest hover:from-forest hover:to-forest-dark text-white px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap w-full xl:w-auto min-w-[140px]"
-                >
-                  <ArrowRight className="w-4 h-4" />
-                  <span>Book Now</span>
-                </button>
+                    <div>
+                      <label className="flex items-center gap-1 text-[9px] font-semibold tracking-wide uppercase text-text-muted mb-1">
+                        <Sparkles className="w-3 h-3" />
+                        Treatments
+                      </label>
+                      <select
+                        value={treatment}
+                        onChange={(e) => setTreatment(e.target.value)}
+                        className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                      >
+                        {treatmentOptions.map((option) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Book Now Button - Full width */}
+                  <button
+                    type="button"
+                    onClick={handleBookNow}
+                    className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-forest-dark to-forest hover:from-forest hover:to-forest-dark text-white px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                    <span>Book Now</span>
+                  </button>
+                </div>
               </motion.div>
             </AnimatePresence>
           </motion.div>
