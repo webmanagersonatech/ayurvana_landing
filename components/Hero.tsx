@@ -299,50 +299,64 @@ export default function Hero() {
             </div>
           </div>
         </div>
-
-        {/* Floating search card */}
+        {/* Floating search banner */}
+        {/* Floating search banner */}
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div
-            className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-cream-dark -mt-16 sm:-mt-20 md:-mt-16 lg:-mt-20 relative z-10"
+            className="bg-gradient-to-r from-forest-dark/95 to-forest/95 backdrop-blur-md shadow-2xl -mt-16 sm:-mt-20 md:-mt-16 lg:-mt-20 relative z-10 overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            {/* Title Header */}
-            <div className="px-4 sm:px-6 pt-4 sm:pt-5 pb-2 border-b border-gray-100">
-              <h2 className="text-lg sm:text-xl font-semibold text-forest-dark flex items-center gap-2">
-                <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
-                <span>Book Your Stay</span>
-              </h2>
-              <p className="text-xs sm:text-sm text-text-muted mt-0.5">
-                Fill in the details to book your Ayurveda wellness experience
-              </p>
-            </div>
+            {/* Decorative accent line */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
 
-            {/* Search form */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.2 }}
-                className="p-4 sm:p-6"
-              >
-                {/* Desktop/Horizontal layout - hidden on mobile */}
-                <div className="hidden md:flex flex-nowrap items-end gap-3 overflow-x-auto">
-                  {/* Gender Selection */}
-                  <div className="flex-1 min-w-[100px] flex-shrink-0">
-                    <label className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase text-text-muted mb-1.5">
-                      <UserCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+            {/* Subtle pattern overlay */}
+            <div className="absolute inset-0 opacity-5" style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 1px)`,
+              backgroundSize: '20px 20px'
+            }} />
+
+            {/* Content */}
+            <div className="relative px-4 sm:px-6 py-5 sm:py-6">
+              {/* Header with icon */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-gold/20 rounded-xl">
+                  <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
+                </div>
+                <div>
+                  <h2 className="text-lg sm:text-xl font-semibold text-white flex items-center gap-2">
+                    Start Your Wellness Journey
+                  </h2>
+                  <p className="text-xs sm:text-sm text-white/80 mt-0.5">
+                    Book your authentic Ayurveda experience today
+                  </p>
+                </div>
+              </div>
+
+              {/* Search form - 2 column grid on mobile */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                  className="grid grid-cols-2 gap-3 lg:grid-cols-5 lg:items-end"
+                >
+                  {/* Gender */}
+                  <div className="col-span-1">
+                    <label className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/80 mb-1.5">
+                      <UserCircle className="w-3.5 h-3.5" />
                       Gender
                     </label>
                     <select
                       value={gender}
                       onChange={(e) => setGender(e.target.value)}
-                      className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                      className="w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer"
+                      style={{ color: 'white' }}
                     >
                       {genderOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
+                        <option key={option.value} value={option.value} className="text-gray-900">
                           {option.label}
                         </option>
                       ))}
@@ -350,18 +364,19 @@ export default function Hero() {
                   </div>
 
                   {/* Guests */}
-                  <div className="flex-1 min-w-[100px] flex-shrink-0">
-                    <label className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase text-text-muted mb-1.5">
-                      <Users className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  <div className="col-span-1">
+                    <label className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/80 mb-1.5">
+                      <Users className="w-3.5 h-3.5" />
                       Guests
                     </label>
                     <select
                       value={guests}
                       onChange={(e) => setGuests(Number(e.target.value))}
-                      className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                      className="w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer"
+                      style={{ color: 'white' }}
                     >
                       {[1, 2, 3, 4, 5, 6].map((n) => (
-                        <option key={n} value={n}>
+                        <option key={n} value={n} className="text-gray-900">
                           {n} Guest{n > 1 ? "s" : ""}
                         </option>
                       ))}
@@ -369,18 +384,19 @@ export default function Hero() {
                   </div>
 
                   {/* Room Type */}
-                  <div className="flex-1 min-w-[120px] flex-shrink-0">
-                    <label className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase text-text-muted mb-1.5">
-                      <Grid3x3 className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  <div className="col-span-1">
+                    <label className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/80 mb-1.5">
+                      <Grid3x3 className="w-3.5 h-3.5" />
                       Room Type
                     </label>
                     <select
                       value={roomType}
                       onChange={(e) => setRoomType(e.target.value)}
-                      className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                      className="w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer"
+                      style={{ color: 'white' }}
                     >
                       {roomOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
+                        <option key={option.value} value={option.value} className="text-gray-900">
                           {option.label}
                         </option>
                       ))}
@@ -388,18 +404,19 @@ export default function Hero() {
                   </div>
 
                   {/* Treatments */}
-                  <div className="flex-1 min-w-[140px] flex-shrink-0">
-                    <label className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase text-text-muted mb-1.5">
-                      <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  <div className="col-span-1">
+                    <label className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/80 mb-1.5">
+                      <Sparkles className="w-3.5 h-3.5" />
                       Treatments
                     </label>
                     <select
                       value={treatment}
                       onChange={(e) => setTreatment(e.target.value)}
-                      className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                      className="w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer"
+                      style={{ color: 'white' }}
                     >
                       {treatmentOptions.map((option) => (
-                        <option key={option.value} value={option.value}>
+                        <option key={option.value} value={option.value} className="text-gray-900">
                           {option.label}
                         </option>
                       ))}
@@ -410,109 +427,16 @@ export default function Hero() {
                   <button
                     type="button"
                     onClick={handleBookNow}
-                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-forest-dark to-forest hover:from-forest hover:to-forest-dark text-white px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap flex-shrink-0 min-w-[140px]"
+                    className="col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-gold to-gold-light hover:from-gold-light hover:to-gold text-forest-dark px-8 py-2.5 text-sm font-semibold transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap w-full transform hover:scale-105 active:scale-95"
                   >
-                    <ArrowRight className="w-4 h-4" />
                     <span>Book Now</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
-                </div>
-
-                {/* Mobile/Vertical layout - shown only on mobile */}
-                <div className="md:hidden space-y-3">
-                  {/* Gender & Guests - Row 1 */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="flex items-center gap-1 text-[9px] font-semibold tracking-wide uppercase text-text-muted mb-1">
-                        <UserCircle className="w-3 h-3" />
-                        Gender
-                      </label>
-                      <select
-                        value={gender}
-                        onChange={(e) => setGender(e.target.value)}
-                        className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
-                      >
-                        {genderOptions.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="flex items-center gap-1 text-[9px] font-semibold tracking-wide uppercase text-text-muted mb-1">
-                        <Users className="w-3 h-3" />
-                        Guests
-                      </label>
-                      <select
-                        value={guests}
-                        onChange={(e) => setGuests(Number(e.target.value))}
-                        className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
-                      >
-                        {[1, 2, 3, 4, 5, 6].map((n) => (
-                          <option key={n} value={n}>
-                            {n} Guest{n > 1 ? "s" : ""}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Room Type & Treatments - Row 2 */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="flex items-center gap-1 text-[9px] font-semibold tracking-wide uppercase text-text-muted mb-1">
-                        <Grid3x3 className="w-3 h-3" />
-                        Room Type
-                      </label>
-                      <select
-                        value={roomType}
-                        onChange={(e) => setRoomType(e.target.value)}
-                        className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
-                      >
-                        {roomOptions.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="flex items-center gap-1 text-[9px] font-semibold tracking-wide uppercase text-text-muted mb-1">
-                        <Sparkles className="w-3 h-3" />
-                        Treatments
-                      </label>
-                      <select
-                        value={treatment}
-                        onChange={(e) => setTreatment(e.target.value)}
-                        className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
-                      >
-                        {treatmentOptions.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Book Now Button - Full width */}
-                  <button
-                    type="button"
-                    onClick={handleBookNow}
-                    className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-forest-dark to-forest hover:from-forest hover:to-forest-dark text-white px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
-                  >
-                    <ArrowRight className="w-4 h-4" />
-                    <span>Book Now</span>
-                  </button>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </motion.div>
         </div>
-
-        {/* Scrollbar hide utility */}
         <style jsx>{`
           .scrollbar-hide::-webkit-scrollbar {
             display: none;
