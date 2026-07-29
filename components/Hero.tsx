@@ -163,7 +163,7 @@ export default function Hero() {
   return (
     <>
       <section className="relative">
-        {/* Hero Image Section */}
+        {/* Hero Video Section */}
         <div className="relative h-[480px] sm:h-[560px] md:h-[650px] lg:h-[750px] overflow-hidden">
           <motion.div
             className="absolute inset-0"
@@ -171,14 +171,25 @@ export default function Hero() {
             animate={{ scale: 1 }}
             transition={{ duration: 1.4, ease: "easeOut" }}
           >
-            <Image
-              src="/images/bg-main-3.webp"
-              alt="Ayurvedic oil massage treatment"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ minHeight: '100%', minWidth: '100%' }}
+            >
+              <source src="/images/viedo.webm" type="video/webm" />
+              {/* Fallback image if video doesn't load */}
+              <Image
+                src="/images/ayurvana.png"
+                alt="Ayurvedic oil massage treatment"
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover"
+              />
+            </video>
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/80 via-forest/60 to-transparent" />
 
@@ -272,14 +283,14 @@ export default function Hero() {
                   {/* Primary CTA - Book Now */}
                   <button
                     onClick={handleBookNow}
-                    className="bg-gold-light hover:bg-gold-dark text-white font-semibold px-6 sm:px-8 py-1.5 sm:py-2 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg inline-block cursor-pointer text-sm sm:text-base"
+                    className="bg-gold-light hover:bg-gold-dark text-white font-semibold px-6 sm:px-8 py-1.5 sm:py-2  transition-all duration-300 hover:scale-105 hover:shadow-lg inline-block cursor-pointer text-sm sm:text-base"
                   >
                     Book Your Stay
                   </button>
 
                   {/* Secondary CTA */}
                   <button
-                    className="border-2 border-gold-light text-gold-light hover:bg-gold-light hover:text-white font-semibold px-6 sm:px-8 py-1.5 sm:py-2 rounded-full transition-all duration-300 hover:scale-105 inline-block cursor-pointer text-sm sm:text-base"
+                    className="border-2 border-gold-light text-gold-light hover:bg-gold-light hover:text-white font-semibold px-6 sm:px-8 py-1.5 sm:py-2  transition-all duration-300 hover:scale-105 inline-block cursor-pointer text-sm sm:text-base"
                   >
                     Learn More
                   </button>
