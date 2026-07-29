@@ -6,46 +6,32 @@ import {
   Sun,
   Wind,
   Droplets,
-  Flower,
+
   Heart,
-  Users,
-  Award,
-  Star,
-  Mail,
-  Shield,
-  Clock,
+
+  X,
   ArrowRight,
   Home,
   ChevronRight,
-  Phone,
-  MapPin,
-  Calendar,
-  UserCircle,
-  Stethoscope,
-  GraduationCap,
-  HeartPulse,
-  Microscope,
+
   Brain,
   Activity,
   Pill,
   TreePine,
-  Mountain,
-  Waves,
-  Utensils,
+
   Bed,
-  Bath,
-  Wifi,
-  Coffee,
-  Dumbbell,
-  UsersRound,
+
   Sprout,
-  Gem,
+
   Compass,
   Feather,
   Gift
 } from "lucide-react";
 import { Toaster } from 'react-hot-toast';
-
+import AyurvedicBookingForm from "../../components/Booking";
+import { AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import Link from "next/link";
 // ---------------------------------------------------------------------------
 // Animation Variants
 // ---------------------------------------------------------------------------
@@ -55,10 +41,7 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
+
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -75,10 +58,6 @@ const scaleIn = {
   visible: { opacity: 1, scale: 1 },
 };
 
-const slideInLeft = {
-  hidden: { opacity: 0, x: -30 },
-  visible: { opacity: 1, x: 0 },
-};
 
 // ---------------------------------------------------------------------------
 // Breadcrumb Component
@@ -120,72 +99,7 @@ function Breadcrumb({ currentPage, subPage }) {
   );
 }
 
-// ---------------------------------------------------------------------------
-// Treatment Data
-// ---------------------------------------------------------------------------
 
-const treatments = [
-  {
-    id: 1,
-    name: "Panchakarma Detox",
-    description: "A comprehensive detoxification program that eliminates toxins from the body through five therapeutic actions, restoring balance and vitality.",
-    duration: "7-21 Days",
-    benefits: ["Deep cleansing", "Boosted immunity", "Rejuvenated tissues"],
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80",
-    icon: Droplets,
-    price: "₹35,000"
-  },
-  {
-    id: 2,
-    name: "Ayurvedic Massage",
-    description: "Traditional therapeutic massages using medicated oils to promote relaxation, improve circulation, and balance the doshas.",
-    duration: "60-90 mins",
-    benefits: ["Stress relief", "Improved circulation", "Muscle relaxation"],
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80",
-    icon: Heart,
-    price: "₹4,500"
-  },
-  {
-    id: 3,
-    name: "Yoga & Meditation",
-    description: "Daily guided sessions combining asanas, pranayama, and meditation to enhance physical flexibility and mental clarity.",
-    duration: "90 mins",
-    benefits: ["Mental clarity", "Physical flexibility", "Inner peace"],
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80",
-    icon: Sun,
-    price: "₹3,000"
-  },
-  {
-    id: 4,
-    name: "Naturopathy Therapy",
-    description: "Natural healing therapies including hydrotherapy, mud therapy, and acupressure for holistic wellness and disease prevention.",
-    duration: "45-60 mins",
-    benefits: ["Natural healing", "Disease prevention", "Energy balance"],
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80",
-    icon: Leaf,
-    price: "₹5,000"
-  },
-  {
-    id: 5,
-    name: "Stress Management Program",
-    description: "Specialized program combining counseling, breathing techniques, and relaxation therapies to manage chronic stress and anxiety.",
-    duration: "5 Days",
-    benefits: ["Stress reduction", "Emotional balance", "Better sleep"],
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80",
-    icon: Brain,
-    price: "₹25,000"
-  },
-  {
-    id: 6,
-    name: "Weight Management",
-    description: "Holistic approach combining diet planning, exercise routines, and therapies to achieve sustainable weight loss and healthy living.",
-    duration: "14-21 Days",
-    benefits: ["Sustainable weight loss", "Increased energy", "Better metabolism"],
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80",
-    icon: Activity,
-    price: "₹40,000"
-  },
-];
 
 // ---------------------------------------------------------------------------
 // Benefits Data
@@ -239,16 +153,7 @@ const accommodations = [
   },
 ];
 
-// ---------------------------------------------------------------------------
-// Stats Section
-// ---------------------------------------------------------------------------
 
-const stats = [
-  { icon: Users, value: "10,000+", label: "Happy Guests" },
-  { icon: Award, value: "50+", label: "Wellness Programs" },
-  { icon: Star, value: "4.9", label: "Guest Rating" },
-  { icon: Leaf, value: "15+", label: "Years of Excellence" },
-];
 
 // ---------------------------------------------------------------------------
 // Treatments Section Component
@@ -261,6 +166,34 @@ const stats = [
 // ---------------------------------------------------------------------------
 
 export default function SonaGramaPage() {
+  const modalRef = useRef<HTMLDivElement>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  };
+  const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+      closeModal();
+    }
+  };
+
+  const handleBookingSubmit = (filters: any) => {
+    console.log('Booking submitted:', filters);
+    // Add your API call here
+    closeModal();
+  };
+  const handleBookNow = () => {
+
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
   return (
     <div className="bg-[#FBF7ED] min-h-screen">
       <Toaster position="top-right" />
@@ -343,18 +276,13 @@ export default function SonaGramaPage() {
               >
                 <motion.button
                   whileHover={{ scale: 1.02 }}
+                  onClick={handleBookNow}
                   whileTap={{ scale: 0.98 }}
-                  className="px-6 py-3 bg-[#C49A3C] text-white rounded-full text-sm font-semibold hover:bg-[#B08A35] transition-all duration-300 shadow-lg"
+                  className="px-6 py-3 bg-[#C49A3C] text-white  text-sm font-semibold hover:bg-[#B08A35] transition-all duration-300 shadow-lg"
                 >
                   Book Your Stay
                 </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-6 py-3 border border-white/30 text-white rounded-full text-sm font-semibold hover:bg-white/10 transition-all duration-300"
-                >
-                  Explore Programs
-                </motion.button>
+
               </motion.div>
             </motion.div>
           </div>
@@ -425,7 +353,7 @@ export default function SonaGramaPage() {
                   {/* Decorative corner accent */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-[#C49A3C]/10 rounded-bl-full" />
 
-              
+
 
                   {/* Bottom content */}
                   <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -742,8 +670,9 @@ export default function SonaGramaPage() {
               <div className="flex flex-wrap justify-center items-center gap-4">
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
+                  onClick={handleBookNow}
                   whileTap={{ scale: 0.95 }}
-                  className="group relative px-10 py-3.5 bg-[#C49A3C] text-white rounded-full font-semibold overflow-hidden shadow-2xl shadow-[#C49A3C]/30"
+                  className="group relative px-10 py-3.5 bg-[#C49A3C] text-white  font-semibold overflow-hidden shadow-2xl shadow-[#C49A3C]/30"
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     Book Your Wellness Journey
@@ -754,14 +683,16 @@ export default function SonaGramaPage() {
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 </motion.button>
 
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group relative px-10 py-3.5 text-white rounded-full font-semibold overflow-hidden"
-                >
-                  <span className="relative z-10">Contact Us</span>
-                  <span className="absolute bottom-2 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-[#C49A3C] group-hover:w-full transition-all duration-300" />
-                </motion.button>
+                <Link href="/contact">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="group relative px-10 py-3.5 text-white rounded-full font-semibold overflow-hidden"
+                  >
+                    <span className="relative z-10">Contact Us</span>
+                    <span className="absolute bottom-2 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-[#C49A3C] group-hover:w-full transition-all duration-300" />
+                  </motion.button>
+                </Link>
               </div>
 
               {/* Decorative bottom dots */}
@@ -780,6 +711,57 @@ export default function SonaGramaPage() {
           </div>
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto"
+            onClick={handleModalClick}
+            onKeyDown={handleKeyDown}
+            role="dialog"
+            aria-modal="true"
+          >
+            <motion.div
+              ref={modalRef}
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 30 }}
+              transition={{
+                type: "spring",
+                damping: 25,
+                stiffness: 300,
+                duration: 0.4
+              }}
+              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto"
+            >
+              {/* Close Button */}
+              <motion.button
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.2 }}
+                onClick={closeModal}
+                className="absolute top-4 right-4 z-10 p-2 bg-white/90 hover:bg-white rounded-full shadow-lg transition-colors"
+                aria-label="Close booking form"
+              >
+                <X className="w-5 h-5 text-forest-dark" />
+              </motion.button>
+
+              {/* Booking Form with Auto-filled Data */}
+              <AyurvedicBookingForm
+                onSearch={handleBookingSubmit}
+                variant="full"
+                showDatePicker={true}
+                theme="light"
+                className="w-full"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
