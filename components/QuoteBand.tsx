@@ -95,7 +95,7 @@ export default function QuoteBand() {
               
               {/* Image container */}
               <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-xl shadow-[#C9A84C]/20">
-                <img
+                <img loading="lazy" decoding="async"
                   src="https://img.magnific.com/premium-photo/professional-photo-attractive-female-nurse-blonde-hair-blue-scrubs-with-white-lab-coat_1139643-388.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
                   alt="Dr. Priya Sharma - Founder & Chief Ayurvedic Physician"
                   className="w-full h-full object-cover"

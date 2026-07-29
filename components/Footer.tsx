@@ -42,9 +42,9 @@ export default function Footer() {
                 <Image
                   src="/images/ayurvana.png"
                   alt="Ayurvana Logo"
-                  width={48}
-                  height={48}
-                  className="w-full h-full object-cover"
+                  width={70}
+                  height={40}
+                  className="w-full h-full object-contain"
                 />
               </div>
               <span className="text-2xl font-serif font-bold tracking-wide">AyurVana</span>

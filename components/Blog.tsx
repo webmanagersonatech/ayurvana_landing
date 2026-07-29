@@ -46,7 +46,7 @@ export default function Blog() {
           {articles.map((article) => (
             <article key={article.title} className="bg-white rounded-2xl overflow-hidden card-hover group">
               <div className="h-48 overflow-hidden">
-                <img
+                <img loading="lazy" decoding="async"
                   src={article.image}
                   alt={article.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

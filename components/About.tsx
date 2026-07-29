@@ -8,7 +8,7 @@ export default function About() {
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
     },
     {
-      title: "Ayurvedic Expertise",
+      title: "Personalized Wellness Plans",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
     },
   ];
@@ -137,7 +137,7 @@ export default function About() {
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <img
+                <img loading="lazy" decoding="async"
                   src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=80"
                   alt="Ayurvedic back massage"
                   className="w-full h-full object-cover"
@@ -149,7 +149,7 @@ export default function About() {
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <img
+                <img loading="lazy" decoding="async"
                   src="https://img.magnific.com/premium-photo/there-is-person-pouring-water-into-bowl-with-candles_974521-89235.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
                   alt="Ayurvedic oils and herbal ingredients"
                   className="w-full h-full object-cover"
@@ -162,7 +162,7 @@ export default function About() {
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src="https://img.magnific.com/free-photo/female-therapists-massaging-back-man-with-thai-herbal-compress-health-spa_637285-2255.jpg?t=st=1783315647~exp=1783319247~hmac=17e27141cdfeaba055b5f130f52971f33218d20560513c16b8fe05cfc8bde7ab&w=1480"
                 alt="Ayurvedic facial massage treatment"
                 className="w-full h-full object-cover"
@@ -217,7 +217,7 @@ export default function About() {
             >
               {features.map((item, index) => (
                 <motion.div 
-                  key={item.title}
+                  key={`${item.title}-${index}`}
                   variants={fadeInUp}
                 >
                   <motion.h3 

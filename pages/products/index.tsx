@@ -450,7 +450,7 @@ function CartSidebar({ isOpen, onClose, cart, updateQuantity, removeFromCart }) 
                     animate={{ opacity: 1, y: 0 }}
                     className="flex gap-4 p-3 bg-[#FBF7ED] rounded-lg"
                   >
-                    <img
+                    <img loading="lazy" decoding="async"
                       src={item.image}
                       alt={item.name}
                       className="w-20 h-20 object-cover rounded-md"
@@ -521,7 +521,7 @@ function ProductCard({ product, index, addToCart }) {
     >
       {/* Image Container */}
       <div className="relative overflow-hidden aspect-square bg-[#FBF7ED]">
-        <img
+        <img loading="lazy" decoding="async"
           src={product.image}
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -716,7 +716,7 @@ export default function ProductsPage() {
           transition={{ duration: 1 }}
           className="relative h-[300px] md:h-[350px]"
         >
-          <img
+          <img loading="lazy" decoding="async"
             src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&q=80"
             alt="Ayurvedic products and herbs"
             className="absolute inset-0 w-full h-full object-cover opacity-20"

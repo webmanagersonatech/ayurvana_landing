@@ -48,7 +48,7 @@ export default function Treatments() {
               }`}
             >
               <div className="md:w-2/5 h-56 md:h-auto">
-                <img
+                <img loading="lazy" decoding="async"
                   src={treatment.image}
                   alt={treatment.title}
                   className="w-full h-full object-cover"

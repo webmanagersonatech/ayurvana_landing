@@ -18,15 +18,9 @@ const experiences = [
 
 export default function WellnessExperience() {
   return (
-    <section id="services" className="py-20 bg-forest-dark relative overflow-hidden">
+    <section id="services" className="pb-20 relative overflow-hidden">
       {/* Background texture */}
-      <div className="absolute inset-0 opacity-10">
-        <img
-          src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=1600&q=60"
-          alt=""
-          className="w-full h-full object-cover"
-        />
-      </div>
+   
 
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
@@ -36,7 +30,7 @@ export default function WellnessExperience() {
             <br />
             <span className="italic text-gold-light">Experience</span>
           </h2>
-          <p className="text-white/60 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="text-white mt-4 max-w-xl mx-auto text-sm leading-relaxed">
             We combine ancient knowledge with serene surroundings and personalised care to offer an experience unlike any other.
           </p>
         </div>
@@ -54,7 +48,7 @@ export default function WellnessExperience() {
                   strokeWidth={1.5}
                 />
                 <h3 className="font-serif text-lg text-white font-semibold mb-2">{exp.title}</h3>
-                <p className="text-white/60 text-sm leading-relaxed">{exp.desc}</p>
+                <p className="text-white text-sm leading-relaxed">{exp.desc}</p>
               </div>
             );
           })}

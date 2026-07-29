@@ -78,7 +78,7 @@ export default function Home() {
         />
       </Head>
 
- 
+
 
       <main>
         <Hero />
@@ -121,21 +121,22 @@ export default function Home() {
 
           {/* Content */}
           <div className="relative z-10">
-            <QuoteBand />
+            <HowItWorks />
+            <WellnessExperience />
           </div>
         </div>
 
-        <HowItWorks />
-        <WellnessExperience />
+
+
         <PartnersBand />
-      
+
         <Testimonials />
         <SpaExperience />
         <FAQ />
         <Blog />
       </main>
 
-  
+
     </>
   );
 }

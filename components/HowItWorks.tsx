@@ -75,7 +75,7 @@ const heroCards = [
 
 function Hero() {
   return (
-    <section id="services" className="relative bg-[#FBF7ED]">
+    <section id="services" className="relative ">
       {/* image + overlay */}
       <motion.div
         initial={{ opacity: 0, scale: 1.05 }}
@@ -83,7 +83,7 @@ function Hero() {
         transition={{ duration: 1 }}
         className="relative h-[450px] md:h-[480px]"
       >
-        <img
+        <img loading="lazy" decoding="async"
           src="/images/bg1.webp"
           alt="Women meditating outdoors"
           className="absolute inset-0 w-full h-full object-cover"
@@ -126,152 +126,148 @@ function Hero() {
           </motion.div>
         </div>
       </motion.div>
-<motion.div
-  variants={staggerContainer}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.2 }}
-  className="max-w-7xl mx-auto px-6"
->
-  <div className="relative -mt-24 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-16">
-    {heroCards.map((card, index) => {
-      const Icon = card.icon;
-      return (
-        <motion.div
-          key={card.title}
-          variants={scaleIn}
-          transition={{ delay: index * 0.1 }}
-          whileHover={{
-            scale: 1.05,
-            y: -10,
-          }}
-          className="relative group"
-          style={{ perspective: 1000 }}
-        >
-          {/* 3D depth layers */}
-          <div className="absolute inset-0 bg-gradient-to-br from-forest-dark to-emerald-900 transform rotate-3 scale-95 opacity-20 group-hover:rotate-6 group-hover:scale-100 transition-all duration-700" />
-          <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 to-transparent transform -rotate-2 scale-90 opacity-0 group-hover:opacity-100 group-hover:rotate-0 group-hover:scale-100 transition-all duration-700" />
-
-          {/* Main content block with background image */}
-          <div 
-            className="relative p-8  shadow-2xl shadow-forest-dark/20 group-hover:shadow-3xl group-hover:shadow-forest-dark/30 transition-all duration-500 overflow-hidden"
-            style={{
-              backgroundImage: `url(${card.bgImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              minHeight: '320px',
-            }}
-          >
-            {/* Dark overlay for readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 group-hover:from-black/50 group-hover:via-black/30 group-hover:to-black/60 transition-all duration-700" />
-            
-            {/* Gradient overlay on hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-forest-dark/30 via-transparent to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-            {/* Top section with scale effect */}
-            <div className="relative z-10 flex items-start justify-between mb-6">
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="max-w-7xl mx-auto px-6"
+      >
+        <div className="relative -mt-24 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-16">
+          {heroCards.map((card, index) => {
+            const Icon = card.icon;
+            return (
               <motion.div
+                key={card.title}
+                variants={scaleIn}
+                transition={{ delay: index * 0.1 }}
                 whileHover={{
-                  scale: 1.3,
-                  rotate: [0, -10, 10, -5, 5, 0],
+                  scale: 1.05,
+                  y: -10,
                 }}
-                transition={{
-                  duration: 0.6,
-                  ease: "easeInOut"
-                }}
-                className="relative"
+                className="relative group"
+                style={{ perspective: 1000 }}
               >
-                {/* Glowing orb background */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-forest-dark/30 to-emerald-500/30 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-forest-dark to-emerald-700 flex items-center justify-center shadow-xl shadow-forest-dark/30 group-hover:shadow-2xl group-hover:shadow-forest-dark/50 transition-all duration-300 backdrop-blur-sm">
-                  <Icon className="w-8 h-8 text-white" strokeWidth={1.5} />
-                </div>
-              </motion.div>
+                {/* 3D depth layers */}
+                <div className="absolute inset-0 bg-gradient-to-br from-forest-dark to-emerald-900 transform rotate-3 scale-95 opacity-20 group-hover:rotate-6 group-hover:scale-100 transition-all duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 to-transparent transform -rotate-2 scale-90 opacity-0 group-hover:opacity-100 group-hover:rotate-0 group-hover:scale-100 transition-all duration-700" />
 
-              {/* Scale number */}
-              <motion.div
-                className="text-7xl font-bold font-serif text-white/10 group-hover:text-white/20 transition-colors duration-500"
-                whileHover={{ scale: 1.2 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 20
-                }}
-              >
-                {index + 1}
-              </motion.div>
-            </div>
-
-            {/* Title with scale animation */}
-            <motion.h3
-              className="relative z-10 font-serif text-2xl text-white mb-3 tracking-tight group-hover:tracking-wide transition-all duration-500 drop-shadow-lg"
-              whileHover={{ scale: 1.02, x: 4 }}
-              transition={{
-                type: "spring",
-                stiffness: 400,
-                damping: 25
-              }}
-            >
-              {card.title}
-            </motion.h3>
-
-            {/* Animated divider */}
-            <motion.div
-              className="relative z-10 w-16 h-1 bg-gradient-to-r from-amber-400 to-emerald-400 rounded-full mb-4 group-hover:w-24 transition-all duration-500"
-              whileHover={{ scale: 1.5 }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 20
-              }}
-            />
-
-            {/* Description */}
-            <p className="relative z-10 text-white/90 text-sm leading-relaxed group-hover:text-white transition-colors duration-300 drop-shadow-md">
-              {card.desc}
-            </p>
-
-            {/* Scale indicator at bottom */}
-            <motion.div
-              className="absolute bottom-4 right-4 z-10 w-8 h-8 rounded-full border-2 border-white/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm bg-white/10"
-              whileHover={{ scale: 1.5, rotate: 45 }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 20
-              }}
-            >
-              <svg className="w-4 h-4 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </motion.div>
-
-            {/* Scale dots decoration */}
-            <div className="absolute bottom-4 left-4 z-10 flex gap-1">
-              {[...Array(3)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="w-1.5 h-1.5 rounded-full bg-white/30 group-hover:bg-white/60 transition-colors duration-300"
-                  whileHover={{ scale: 2 }}
-                  transition={{
-                    delay: i * 0.1,
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 15
+                {/* Main content block with background image */}
+                <div
+                  className="relative p-8  shadow-2xl shadow-forest-dark/20 group-hover:shadow-3xl group-hover:shadow-forest-dark/30 transition-all duration-500 overflow-hidden"
+                  style={{
+                    backgroundImage: `url(${card.bgImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    minHeight: '320px',
                   }}
-                />
-              ))}
-            </div>
-          </div>
+                >
+                  {/* Dark overlay for readability */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 group-hover:from-black/50 group-hover:via-black/30 group-hover:to-black/60 transition-all duration-700" />
 
-          {/* Shadow depth layers */}
-          <div className="absolute -bottom-4 -right-4 w-full h-full bg-forest-dark/5 blur-xl group-hover:blur-2xl transition-all duration-700 -z-10" />
-          <div className="absolute -bottom-8 -right-8 w-full h-full bg-emerald-500/5 blur-2xl group-hover:blur-3xl transition-all duration-700 -z-20" />
-        </motion.div>
-      );
-    })}
-  </div>
-</motion.div>
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-forest-dark/30 via-transparent to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+                  {/* Top section with scale effect */}
+                  <div className="relative z-10 flex items-start justify-between mb-6">
+                    <motion.div
+                      whileHover={{
+                        scale: 1.3,
+                        rotate: [0, -10, 10, -5, 5, 0],
+                      }}
+                      transition={{
+                        duration: 0.6,
+                        ease: "easeInOut"
+                      }}
+                      className="relative"
+                    >
+
+                    </motion.div>
+
+                    {/* Scale number */}
+                    <motion.div
+                      className="text-7xl font-bold font-serif text-white/10 group-hover:text-white/20 transition-colors duration-500"
+                      whileHover={{ scale: 1.2 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20
+                      }}
+                    >
+                      {index + 1}
+                    </motion.div>
+                  </div>
+
+                  {/* Title with scale animation */}
+                  <motion.h3
+                    className="relative z-10 font-serif text-2xl text-white mb-3 tracking-tight group-hover:tracking-wide transition-all duration-500 drop-shadow-lg"
+                    whileHover={{ scale: 1.02, x: 4 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 25
+                    }}
+                  >
+                    {card.title}
+                  </motion.h3>
+
+                  {/* Animated divider */}
+                <div
+  className="bg-white mb-4"
+  style={{
+    width: "60px",
+    height: "12px",
+    borderRadius: "0 100% 0 100%",
+    transform: "rotate(-8deg)",
+  }}
+/>
+
+                  {/* Description */}
+                  <p className="relative z-10 text-white/90 text-sm leading-relaxed group-hover:text-white transition-colors duration-300 drop-shadow-md">
+                    {card.desc}
+                  </p>
+
+                  {/* Scale indicator at bottom */}
+                  <motion.div
+                    className="absolute bottom-4 right-4 z-10 w-8 h-8 rounded-full border-2 border-white/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-sm bg-white/10"
+                    whileHover={{ scale: 1.5, rotate: 45 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 20
+                    }}
+                  >
+                    <svg className="w-4 h-4 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </motion.div>
+
+                  {/* Scale dots decoration */}
+                  <div className="absolute bottom-4 left-4 z-10 flex gap-1">
+                    {[...Array(3)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="w-1.5 h-1.5 rounded-full bg-white/30 group-hover:bg-white/60 transition-colors duration-300"
+                        whileHover={{ scale: 2 }}
+                        transition={{
+                          delay: i * 0.1,
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 15
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Shadow depth layers */}
+                <div className="absolute -bottom-4 -right-4 w-full h-full bg-forest-dark/5 blur-xl group-hover:blur-2xl transition-all duration-700 -z-10" />
+                <div className="absolute -bottom-8 -right-8 w-full h-full bg-emerald-500/5 blur-2xl group-hover:blur-3xl transition-all duration-700 -z-20" />
+              </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
     </section>
   );
 }

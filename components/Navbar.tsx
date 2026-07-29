@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import AyurvedicBookingForm from "./Booking";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isBookingFormOpen, setIsBookingFormOpen] = useState(false); // New state for booking form
 
   // Refs for dropdowns
   const dropdownRefs = {
@@ -34,6 +36,18 @@ export default function Navbar() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Prevent body scroll when booking form is open
+  useEffect(() => {
+    if (isBookingFormOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isBookingFormOpen]);
 
   const navLinks = [
     { label: "Home", href: "/" },
@@ -116,7 +130,7 @@ export default function Navbar() {
   const handleMouseLeave = () => {
     const timeout = setTimeout(() => {
       setActiveDropdown(null);
-    }, 200); // 200ms delay before closing
+    }, 200);
     setHoverTimeout(timeout);
   };
 
@@ -131,238 +145,294 @@ export default function Navbar() {
     setActiveDropdown(null);
   };
 
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-sm navbar-scrolled" : "bg-gradient-to-b from-black/60 to-transparent"
-        }`}
-    >
-      {/* Top bar with social icons */}
-      <div className={`hidden lg:block border-b transition-colors duration-300 ${scrolled ? "border-cream-dark" : "border-white/20"}`}>
-        <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
-          {/* Left side - Contact Info */}
-          <div className={`flex items-center gap-6 text-xs transition-colors duration-300 ${scrolled ? "text-text-muted" : "text-white/80"}`}>
-            <span className="flex items-center gap-1">
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-              hello@ayurvana.com
-            </span>
-            <span className="flex items-center gap-1">
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-              +91 413 221 4567
-            </span>
-            <span>Mon – Sat: 8:00am – 8:00pm</span>
-          </div>
+  // Open booking form
+  const openBookingForm = (e) => {
+    e.preventDefault();
+    setIsBookingFormOpen(true);
+  };
 
-          {/* Right side - Social Icons and Book Appointment */}
-          <div className={`flex items-center gap-6 text-xs transition-colors duration-300 ${scrolled ? "text-text-muted" : "text-white/80"}`}>
-            {/* Social Icons */}
-            <div className="flex items-center gap-3">
-              {socialIcons.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`transition-colors duration-300 hover:text-gold ${scrolled ? "text-text-muted" : "text-white/80"
-                    }`}
-                  aria-label={social.label}
-                >
-                  {social.icon}
-                </a>
-              ))}
+  // Close booking form
+  const closeBookingForm = () => {
+    setIsBookingFormOpen(false);
+  };
+
+  return (
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-sm navbar-scrolled shadow-md" : "bg-gradient-to-b from-black/60 to-transparent"
+          }`}
+      >
+        {/* Top bar with social icons */}
+        <div className={`hidden lg:block border-b transition-colors duration-300 ${scrolled ? "border-cream-dark" : "border-white/20"
+          }`}>
+          <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+            {/* Left side - Contact Info */}
+            <div className={`flex items-center gap-6 text-xs transition-colors duration-300 ${scrolled ? "text-text-muted" : "text-white/80"
+              }`}>
+              <span className="flex items-center gap-1">
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                hello@ayurvana.com
+              </span>
+              <span className="flex items-center gap-1">
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                +91 413 221 4567
+              </span>
+              <span>Mon – Sat: 8:00am – 8:00pm</span>
             </div>
 
-            {/* Divider */}
-            <div className={`h-6 w-px ${scrolled ? "bg-cream-dark" : "bg-white/20"}`}></div>
-
-            {/* Book Appointment Button */}
-            <a href="#appointment" className="bg-gold text-white px-4 py-1.5 rounded-full text-xs font-medium hover:bg-gold-light transition-colors whitespace-nowrap">
-              Book Appointment
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main nav */}
-      <nav className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/images/ayurvana.png"
-            alt="Ayurvana Logo"
-            width={96}
-            height={56}
-            className="object-contain"
-            priority
-          />
-        </Link>
-
-        {/* Desktop Nav Links */}
-        <ul className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li
-              key={link.label}
-              className="relative"
-              ref={link.hasDropdown ? dropdownRefs[link.label.toLowerCase()] : null}
-              onMouseEnter={() => link.hasDropdown && handleMouseEnter(link.label)}
-              onMouseLeave={() => link.hasDropdown && handleMouseLeave()}
-            >
-              <div
-                className={`flex items-center gap-1 cursor-pointer text-sm font-medium transition-colors duration-300 hover:text-sage ${scrolled ? "text-text-dark" : "text-white"
-                  }`}
-                onClick={() => link.hasDropdown && toggleDropdown(link.label)}
-              >
-                {link.hasDropdown ? (
-                  <>
-                    <Link href={link.href} className="hover:text-sage">
-                      {link.label}
-                    </Link>
-                    <svg
-                      className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === link.label ? 'rotate-180' : ''}`}
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </>
-                ) : (
-                  <Link href={link.href} className="hover:text-sage">
-                    {link.label}
-                  </Link>
-                )}
-              </div>
-
-              {/* Dropdown Menu - Enhanced with better UX */}
-              {link.hasDropdown && activeDropdown === link.label && (
-                <div
-                  className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-cream-dark overflow-hidden"
-                  onMouseEnter={handleDropdownMouseEnter}
-                  onMouseLeave={handleDropdownMouseLeave}
-                >
-                  {link.dropdownItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      className="block px-4 py-3 text-sm text-text-dark hover:bg-cream hover:text-forest transition-colors border-b border-cream-dark last:border-0"
-                      onClick={() => {
-                        setActiveDropdown(null);
-                        if (hoverTimeout) {
-                          clearTimeout(hoverTimeout);
-                          setHoverTimeout(null);
-                        }
-                      }}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-
-        {/* Desktop Right Section - Get Started CTA */}
-        <div className="hidden lg:flex items-center gap-6">
-          {/* CTA */}
-          <a
-            href="#appointment"
-            className="btn-primary text-sm"
-          >
-            Get Started
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-          </a>
-        </div>
-
-        {/* Mobile menu toggle */}
-        <button
-          className={`lg:hidden p-2 transition-colors ${scrolled ? "text-text-dark" : "text-white"}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
-          ) : (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
-          )}
-        </button>
-      </nav>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="lg:hidden bg-white border-t border-cream-dark shadow-xl max-h-[80vh] overflow-y-auto">
-          <ul className="flex flex-col py-4">
-            {navLinks.map((link) => (
-              <li key={link.label} className="border-b border-cream-dark last:border-0">
-                {link.hasDropdown ? (
-                  <>
-                    <div
-                      className="flex items-center justify-between px-6 py-3 text-sm text-text-dark hover:text-forest hover:bg-cream transition-colors cursor-pointer"
-                      onClick={() => toggleDropdown(link.label)}
-                    >
-                      <span>{link.label}</span>
-                      <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === link.label ? 'rotate-180' : ''}`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
-                    {activeDropdown === link.label && (
-                      <div className="bg-cream-light">
-                        {link.dropdownItems.map((item) => (
-                          <Link
-                            key={item.label}
-                            href={item.href}
-                            className="block px-10 py-2.5 text-sm text-text-muted hover:text-forest transition-colors"
-                            onClick={() => {
-                              setMenuOpen(false);
-                              setActiveDropdown(null);
-                            }}
-                          >
-                            {item.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    href={link.href}
-                    className="block px-6 py-3 text-sm text-text-dark hover:text-forest hover:bg-cream transition-colors"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                )}
-              </li>
-            ))}
-            {/* Social Icons in Mobile Menu */}
-            <li className="px-6 py-3 border-b border-cream-dark">
-              <div className="flex items-center gap-4">
+            {/* Right side - Social Icons and Book Appointment */}
+            <div className={`flex items-center gap-6 text-xs transition-colors duration-300 ${scrolled ? "text-text-muted" : "text-white/80"
+              }`}>
+              {/* Social Icons */}
+              <div className="flex items-center gap-3">
                 {socialIcons.map((social, index) => (
                   <a
                     key={index}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-text-muted hover:text-gold transition-colors"
+                    className={`transition-colors duration-300 hover:text-gold ${scrolled ? "text-text-muted" : "text-white/80"
+                      }`}
                     aria-label={social.label}
                   >
                     {social.icon}
                   </a>
                 ))}
               </div>
-            </li>
-            <li className="px-6 pt-3">
-              <a href="#appointment" className="btn-primary w-full justify-center">
+
+              {/* Divider */}
+              <div className={`h-6 w-px ${scrolled ? "bg-cream-dark" : "bg-white/20"
+                }`}></div>
+
+              {/* Book Appointment Button - Updated to open modal */}
+              <button
+                onClick={openBookingForm}
+                className="bg-gold text-white px-4 py-1.5 rounded-full text-xs font-medium hover:bg-gold-light transition-colors whitespace-nowrap"
+              >
                 Book Appointment
-              </a>
-            </li>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Main nav - Fixed alignment */}
+        <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="relative inline-flex items-center">
+            <span className="absolute -top-0 -left-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 border-t-4 border-l-4 border-sage"></span>
+            <span className="absolute -bottom-0 -right-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 border-b-4 border-r-4 border-sage"></span>
+            <div className="bg-white px-3 py-2 sm:px-4 sm:py-2">
+              <Image
+                src="/images/ayurvana.png"
+                alt="Ayurvana Logo"
+                width={130}
+                height={75}
+                className="w-[110px] sm:w-[120px] md:w-[130px] h-auto object-contain"
+                priority
+              />
+            </div>
+          </Link>
+
+          {/* Desktop Nav Links */}
+          <ul className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <li
+                key={link.label}
+                className="relative"
+                ref={link.hasDropdown ? dropdownRefs[link.label.toLowerCase()] : null}
+                onMouseEnter={() => link.hasDropdown && handleMouseEnter(link.label)}
+                onMouseLeave={() => link.hasDropdown && handleMouseLeave()}
+              >
+                <div
+                  className={`flex items-center gap-1 cursor-pointer text-sm font-medium transition-colors duration-300 hover:text-sage ${scrolled ? "text-text-dark" : "text-white"
+                    }`}
+                  onClick={() => link.hasDropdown && toggleDropdown(link.label)}
+                >
+                  {link.hasDropdown ? (
+                    <>
+                      <Link href={link.href} className="hover:text-sage">
+                        {link.label}
+                      </Link>
+                      <svg
+                        className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === link.label ? 'rotate-180' : ''
+                          }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </>
+                  ) : (
+                    <Link href={link.href} className="hover:text-sage">
+                      {link.label}
+                    </Link>
+                  )}
+                </div>
+
+                {/* Dropdown Menu */}
+                {link.hasDropdown && activeDropdown === link.label && (
+                  <div
+                    className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-cream-dark overflow-hidden"
+                    onMouseEnter={handleDropdownMouseEnter}
+                    onMouseLeave={handleDropdownMouseLeave}
+                  >
+                    {link.dropdownItems.map((item) => (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        className="block px-4 py-3 text-sm text-text-dark hover:bg-cream hover:text-forest transition-colors border-b border-cream-dark last:border-0"
+                        onClick={() => {
+                          setActiveDropdown(null);
+                          if (hoverTimeout) {
+                            clearTimeout(hoverTimeout);
+                            setHoverTimeout(null);
+                          }
+                        }}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </li>
+            ))}
           </ul>
+
+          {/* Mobile menu toggle */}
+          <button
+            className={`lg:hidden p-2 transition-colors ${scrolled ? "text-text-dark" : "text-white"
+              }`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </nav>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="lg:hidden bg-white border-t border-cream-dark shadow-xl max-h-[80vh] overflow-y-auto">
+            <ul className="flex flex-col py-4">
+              {navLinks.map((link) => (
+                <li key={link.label} className="border-b border-cream-dark last:border-0">
+                  {link.hasDropdown ? (
+                    <>
+                      <div
+                        className="flex items-center justify-between px-6 py-3 text-sm text-text-dark hover:text-forest hover:bg-cream transition-colors cursor-pointer"
+                        onClick={() => toggleDropdown(link.label)}
+                      >
+                        <span>{link.label}</span>
+                        <svg
+                          className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === link.label ? 'rotate-180' : ''
+                            }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                      {activeDropdown === link.label && (
+                        <div className="bg-cream-light">
+                          {link.dropdownItems.map((item) => (
+                            <Link
+                              key={item.label}
+                              href={item.href}
+                              className="block px-10 py-2.5 text-sm text-text-muted hover:text-forest transition-colors"
+                              onClick={() => {
+                                setMenuOpen(false);
+                                setActiveDropdown(null);
+                              }}
+                            >
+                              {item.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="block px-6 py-3 text-sm text-text-dark hover:text-forest hover:bg-cream transition-colors"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+              {/* Social Icons in Mobile Menu */}
+              <li className="px-6 py-3 border-b border-cream-dark">
+                <div className="flex items-center gap-4">
+                  {socialIcons.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-text-muted hover:text-gold transition-colors"
+                      aria-label={social.label}
+                    >
+                      {social.icon}
+                    </a>
+                  ))}
+                </div>
+              </li>
+              <li className="px-6 pt-3">
+                <button 
+                  onClick={openBookingForm} 
+                  className="btn-primary w-full justify-center"
+                >
+                  Book Appointment
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}
+      </header>
+
+      {/* Booking Form Modal */}
+      {isBookingFormOpen && (
+        <div className="fixed inset-0 z-[999] overflow-y-auto">
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
+            onClick={closeBookingForm}
+          ></div>
+          
+          {/* Modal Container */}
+          <div className="relative min-h-screen flex items-center justify-center p-4">
+            <div className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+              {/* Close Button */}
+              <button
+                onClick={closeBookingForm}
+                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/90 hover:bg-gray-100 transition-colors shadow-lg"
+                aria-label="Close booking form"
+              >
+                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              
+              {/* Booking Form */}
+              <AyurvedicBookingForm onClose={closeBookingForm} />
+            </div>
+          </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

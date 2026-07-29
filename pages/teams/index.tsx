@@ -305,7 +305,7 @@ function TeamMemberCard({ member, index }) {
                 {/* Floating Image */}
                 <div className="absolute left-1/2 top-6 -translate-x-1/2 z-20">
                     <div className="bg-white p-1.5 shadow-xl ring-2 ring-[#C49A3C] transition-transform duration-300 group-hover:scale-105">
-                        <img
+                        <img loading="lazy" decoding="async"
                             src={member.image}
                             alt={member.name}
                             className="h-44 w-32 rounded-md object-cover"
@@ -443,7 +443,7 @@ export default function TeamsPage() {
     transition={{ duration: 1 }}
     className="relative h-[260px] sm:h-[280px] md:h-[320px] lg:h-[350px]"
   >
-    <img
+    <img loading="lazy" decoding="async"
       src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=1200&q=80"
       alt="Ayurvedic team and practitioners"
       className="absolute inset-0 w-full h-full object-cover opacity-20"

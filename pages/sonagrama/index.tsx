@@ -273,7 +273,7 @@ export default function SonaGramaPage() {
           transition={{ duration: 1 }}
           className="relative h-[450px] md:h-[500px]"
         >
-          <img
+          <img loading="lazy" decoding="async"
             src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80"
             alt="SonaGrama Wellness Resort"
             className="absolute inset-0 w-full h-full object-cover opacity-30"
@@ -414,7 +414,7 @@ export default function SonaGramaPage() {
                 className="relative group"
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src="/images/restort.webp"
                     alt="SonaGrama Resort"
                     className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-110"
@@ -631,7 +631,7 @@ export default function SonaGramaPage() {
                     {/* Image - Left side on desktop */}
                     <div className="md:w-1/3 lg:w-1/4 relative overflow-hidden rounded-xl flex-shrink-0">
                       <div className="aspect-[4/3] w-full">
-                        <img
+                        <img loading="lazy" decoding="async"
                           src={acc.image}
                           alt={acc.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

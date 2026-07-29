@@ -45,7 +45,7 @@ export default function PartnersBand() {
               key={partner.id}
               className="flex items-center justify-center"
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={partner.logo}
                 alt={partner.alt}
                 width={100}

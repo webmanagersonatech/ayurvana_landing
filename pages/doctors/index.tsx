@@ -288,7 +288,7 @@ function DoctorCard({ doctor, index }) {
         {/* Floating Image */}
         <div className="absolute left-1/2 top-6 -translate-x-1/2 z-20">
           <div className="relative bg-white p-1.5 shadow-xl ring-2 ring-[#C49A3C] transition-transform duration-300 group-hover:scale-105">
-            <img
+            <img loading="lazy" decoding="async"
               src={doctor.image}
               alt={doctor.name}
               className="h-44 w-32 rounded-md object-cover"
@@ -474,7 +474,7 @@ export default function DoctorsPage() {
           transition={{ duration: 1 }}
           className="relative h-[350px] md:h-[400px]"
         >
-          <img
+          <img loading="lazy" decoding="async"
             src="https://images.unsplash.com/photo-1585435557343-3b092031a831?w=1200&q=80"
             alt="Medical professionals and healthcare"
             className="absolute inset-0 w-full h-full object-cover opacity-20"
@@ -534,7 +534,7 @@ export default function DoctorsPage() {
                 <div className="flex -space-x-2">
                   {doctors.slice(0, 5).map((doc, i) => (
                     <div key={i} className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full border-2 border-white overflow-hidden">
-                      <img src={doc.image} alt={doc.name} className="w-full h-full object-cover" />
+                      <img loading="lazy" decoding="async" src={doc.image} alt={doc.name} className="w-full h-full object-cover" />
                     </div>
                   ))}
                   {doctors.length > 5 && (
