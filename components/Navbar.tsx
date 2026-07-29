@@ -67,7 +67,7 @@ export default function Navbar() {
       label: "Research",
       href: "/#research",
     },
-    { label: "Treatments", href: "/#treatments" },
+    { label: "Services", href: "/#services" },
     { label: "Blog", href: "/#blog" },
     { label: "Contact", href: "/contact" },
   ];
