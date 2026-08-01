@@ -191,112 +191,149 @@ export default function About() {
           </motion.div>
 
           {/* Content - Right side */}
+          {/* Content - Right side */}
           <motion.div
-            className="order-2 lg:order-2"
+            className="order-2 lg:order-2 relative overflow-hidden"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div
-              className="flex items-center gap-2 mb-5"
-              variants={fadeInUp}
-            >
-              <motion.svg
-                className="w-4 h-4 text-sage"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                animate={{ rotate: 360 }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 pointer-events-none opacity-10 z-0"
+              style={{
+                backgroundImage: "url('/images/bgimage-4.png')",
+                backgroundSize: "60%",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            />
+
+            {/* Content */}
+            <div className="relative z-10">
+              <motion.div
+                className="flex items-center gap-2 mb-5"
+                variants={fadeInUp}
               >
-                <circle cx="12" cy="12" r="9" strokeWidth={1.8} />
-                <path strokeLinecap="round" strokeWidth={1.8} d="M12 8v8M8 12h8" />
-              </motion.svg>
-              <span className="text-sage text-xs font-semibold tracking-[0.2em] uppercase">
-                About Us
-              </span>
-            </motion.div>
-
-            <motion.h2
-              className="font-serif text-3xl sm:text-4xl md:text-5xl text-text-dark leading-[1.15] mb-6"
-              variants={fadeInUp}
-            >
-              Sanctuary for Ayurvedic
-              <br />
-              Healing and Wellness
-            </motion.h2>
-
-            <motion.div
-              className="space-y-8"
-              variants={staggerContainer}
-            >
-              {features.map((item, index) => (
-                <motion.div
-                  key={`${item.title}-${index}`}
-                  variants={fadeInUp}
+                <motion.svg
+                  className="w-4 h-4 text-sage"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                 >
-                  <motion.h3
-                    className="font-serif text-xl text-text-dark mb-3"
-                    whileHover={{ x: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    {item.title}
-                  </motion.h3>
-                  <div className="flex items-start gap-4">
-                    <motion.span
-                      className="mt-0.5 w-6 h-6 rounded-full border border-sage flex items-center justify-center flex-shrink-0"
-                      whileHover={{
-                        scale: 1.2,
-                        backgroundColor: "rgba(163, 135, 106, 0.1)"
-                      }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <motion.svg
-                        className="w-3 h-3 text-sage"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        initial={{ pathLength: 0 }}
-                        whileInView={{ pathLength: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.2 + index * 0.2 }}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2.5}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </motion.svg>
-                    </motion.span>
-                    <motion.p
-                      className="text-text-muted text-sm leading-relaxed"
-                      whileHover={{ x: 3 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      {item.desc}
-                    </motion.p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+                  <circle cx="12" cy="12" r="9" strokeWidth={1.8} />
+                  <path
+                    strokeLinecap="round"
+                    strokeWidth={1.8}
+                    d="M12 8v8M8 12h8"
+                  />
+                </motion.svg>
 
-            {/* Statistics with Auto-Count Animation - Always 3 columns */}
-            <motion.div
-              className="py-6 sm:py-8 border-t border-sage/20 mt-6 sm:mt-8"
-              variants={fadeInUp}
-            >
-              <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-8">
-                <CountUpAnimation targetValue={98} label="Client Satisfaction Rate" duration={2000} />
-                <CountUpAnimation targetValue={15} label="Years of Experience" duration={2000} />
-                <CountUpAnimation targetValue={100} label="Webinar Attendees" duration={2000} />
-              </div>
-            </motion.div>
+                <span className="text-sage text-xs font-semibold tracking-[0.2em] uppercase">
+                  About Us
+                </span>
+              </motion.div>
+
+              <motion.h2
+                className="font-serif text-3xl sm:text-4xl md:text-5xl text-text-dark leading-[1.15] mb-6"
+                variants={fadeInUp}
+              >
+                Sanctuary for Ayurvedic
+                <br />
+                Healing and Wellness
+              </motion.h2>
+
+              <motion.div
+                className="space-y-8"
+                variants={staggerContainer}
+              >
+                {features.map((item, index) => (
+                  <motion.div
+                    key={`${item.title}-${index}`}
+                    variants={fadeInUp}
+                  >
+                    <motion.h3
+                      className="font-serif text-xl text-text-dark mb-3"
+                      whileHover={{ x: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      {item.title}
+                    </motion.h3>
+
+                    <div className="flex items-start gap-4">
+                      <motion.span
+                        className="mt-0.5 w-6 h-6 rounded-full border border-sage flex items-center justify-center flex-shrink-0"
+                        whileHover={{
+                          scale: 1.2,
+                          backgroundColor: "rgba(163, 135, 106, 0.1)",
+                        }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <motion.svg
+                          className="w-3 h-3 text-sage"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          initial={{ pathLength: 0 }}
+                          whileInView={{ pathLength: 1 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            duration: 0.5,
+                            delay: 0.2 + index * 0.2,
+                          }}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2.5}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </motion.svg>
+                      </motion.span>
+
+                      <motion.p
+                        className="text-text-muted text-sm leading-relaxed"
+                        whileHover={{ x: 3 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        {item.desc}
+                      </motion.p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              {/* Statistics */}
+              <motion.div
+                className="py-6 sm:py-8 border-t border-sage/20 mt-6 sm:mt-8"
+                variants={fadeInUp}
+              >
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-8">
+                  <CountUpAnimation
+                    targetValue={98}
+                    label="Client Satisfaction Rate"
+                    duration={2000}
+                  />
+                  <CountUpAnimation
+                    targetValue={15}
+                    label="Years of Experience"
+                    duration={2000}
+                  />
+                  <CountUpAnimation
+                    targetValue={100}
+                    label="Webinar Attendees"
+                    duration={2000}
+                  />
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>
