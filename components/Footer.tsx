@@ -128,7 +128,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 hover:text-white transition-colors duration-300 group">
                 <FaPhone className="w-4 h-4 text-gold group-hover:scale-110 transition-transform" />
-                <span>+91 413 221 4567</span>
+                <span>+91 94425 05939</span>
               </li>
               <li className="flex items-center gap-3 hover:text-white transition-colors duration-300 group">
                 <FaEnvelope className="w-4 h-4 text-gold group-hover:scale-110 transition-transform" />
