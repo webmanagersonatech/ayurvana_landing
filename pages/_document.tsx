@@ -12,7 +12,7 @@ export default function Document() {
           rel="stylesheet"
         />
         {/* Favicon */}
-        <link rel="icon" href="/images/ayurvana.png" />
+        <link rel="icon" href="/images/Ayurvana.webp" />
         {/* Theme color */}
         <meta name="theme-color" content="#2D5016" />
       </Head>
