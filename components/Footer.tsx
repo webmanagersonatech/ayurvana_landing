@@ -40,7 +40,7 @@ export default function Footer() {
             <div className="flex items-center ">
               <div className="w-[70px] h-[40px] flex items-center justify-center overflow-hidden ">
                 <Image
-                  src="/images/ayurvana.png"
+                  src="/images/Ayurvana.webp"
                   alt="Ayurvana Logo"
                   width={70}
                   height={40}

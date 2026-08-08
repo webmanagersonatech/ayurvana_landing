@@ -11,6 +11,10 @@ export default function About() {
       title: "Personalized Wellness Plans",
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
     },
+    {
+      title: "Natural Healing Remedies",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+    },
   ];
 
   // Animation variants
@@ -310,29 +314,7 @@ export default function About() {
                 ))}
               </motion.div>
 
-              {/* Statistics */}
-              <motion.div
-                className="py-6 sm:py-8 border-t border-sage/20 mt-6 sm:mt-8"
-                variants={fadeInUp}
-              >
-                <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 lg:gap-8">
-                  <CountUpAnimation
-                    targetValue={98}
-                    label="Client Satisfaction Rate"
-                    duration={2000}
-                  />
-                  <CountUpAnimation
-                    targetValue={15}
-                    label="Years of Experience"
-                    duration={2000}
-                  />
-                  <CountUpAnimation
-                    targetValue={100}
-                    label="Webinar Attendees"
-                    duration={2000}
-                  />
-                </div>
-              </motion.div>
+
             </div>
           </motion.div>
         </div>

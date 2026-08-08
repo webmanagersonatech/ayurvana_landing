@@ -83,6 +83,7 @@ export default function Home() {
       <main>
         <Hero />
         <About />
+
         <div
           className="relative bg-fixed bg-center bg-cover"
           style={{
@@ -91,7 +92,7 @@ export default function Home() {
           }}
         >
           {/* Darker overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/80 via-forest/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-black/60 z-[5]" />
 
           {/* Ayurvedic Corner Decorations - Compact */}
           {['top-left', 'top-right', 'bottom-left', 'bottom-right'].map((pos) => {
