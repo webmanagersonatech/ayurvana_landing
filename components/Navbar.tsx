@@ -63,7 +63,7 @@ export default function Navbar() {
       dropdownItems: [
         { label: "Teams", href: "/teams" },
         { label: "Doctors", href: "/doctors" },
-        { label: "Sonagrama", href: "/sonagrama" },
+        { label: "Sonagramam", href: "/sonagramam" },
       ]
     },
     {
