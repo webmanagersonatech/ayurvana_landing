@@ -20,12 +20,9 @@ import {
   SlidersHorizontal,
   ChevronRight,
   Home,
-  ShoppingCart,
-  Minus,
-  Plus,
 } from "lucide-react";
-import { useState, useMemo, useEffect, useRef } from "react";
-import toast, { Toaster } from 'react-hot-toast';
+import { useState, useMemo } from "react";
+import { useCart } from "../../context/CartContext";
 
 // Animation variants
 const fadeInUp = {
@@ -227,126 +224,6 @@ const categories = [
 ];
 
 // ---------------------------------------------------------------------------
-// Cart Hook - Fixed toast duplication
-// ---------------------------------------------------------------------------
-
-const useCart = () => {
-  const [cartItems, setCartItems] = useState([]);
-  const toastShownRef = useRef(false);
-
-  const addToCart = (product) => {
-    setCartItems((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
-      if (existing) {
-        // Show toast for quantity update - only if not already shown
-        if (!toastShownRef.current) {
-          toast.success(`${product.name} quantity updated in cart!`, {
-            duration: 3000,
-            position: 'bottom-right',
-            style: {
-              background: '#1B3324',
-              color: '#fff',
-              borderRadius: '10px',
-              padding: '16px',
-            },
-            icon: '🛒',
-          });
-          toastShownRef.current = true;
-          setTimeout(() => {
-            toastShownRef.current = false;
-          }, 100);
-        }
-        return prev.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      }
-      // Show toast for new item added - only if not already shown
-      if (!toastShownRef.current) {
-        toast.success(`${product.name} added to cart!`, {
-          duration: 3000,
-          position: 'bottom-right',
-          style: {
-            background: '#1B3324',
-            color: '#fff',
-            borderRadius: '10px',
-            padding: '16px',
-          },
-          icon: '✅',
-        });
-        toastShownRef.current = true;
-        setTimeout(() => {
-          toastShownRef.current = false;
-        }, 100);
-      }
-      return [...prev, { ...product, quantity: 1 }];
-    });
-  };
-
-  const removeFromCart = (productId) => {
-    const product = cartItems.find(item => item.id === productId);
-    if (product) {
-      toast.error(`${product.name} removed from cart`, {
-        duration: 3000,
-        position: 'bottom-right',
-        style: {
-          background: '#dc2626',
-          color: '#fff',
-          borderRadius: '10px',
-          padding: '16px',
-        },
-      });
-    }
-    setCartItems((prev) => prev.filter((item) => item.id !== productId));
-  };
-
-  const updateQuantity = (productId, quantity) => {
-    if (quantity <= 0) {
-      removeFromCart(productId);
-      return;
-    }
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
-      )
-    );
-  };
-
-  const getTotalItems = () => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
-  };
-
-  const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
-
-  const clearCart = () => {
-    toast('Cart cleared', {
-      duration: 2000,
-      position: 'bottom-right',
-      style: {
-        background: '#6E695D',
-        color: '#fff',
-        borderRadius: '10px',
-        padding: '16px',
-      },
-    });
-    setCartItems([]);
-  };
-
-  return {
-    cartItems,
-    addToCart,
-    removeFromCart,
-    updateQuantity,
-    getTotalItems,
-    getTotalPrice,
-    clearCart,
-  };
-};
-
-// ---------------------------------------------------------------------------
 // Breadcrumb Component
 // ---------------------------------------------------------------------------
 
@@ -383,127 +260,6 @@ function Breadcrumb({ currentPage, category }) {
         </>
       )}
     </nav>
-  );
-}
-
-// ---------------------------------------------------------------------------
-// Cart Sidebar Component
-// ---------------------------------------------------------------------------
-
-function CartSidebar({ isOpen, onClose, cart, updateQuantity, removeFromCart }) {
-  const { cartItems, getTotalPrice } = cart;
-
-  if (!isOpen) return null;
-
-  return (
-    <>
-      {/* Backdrop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/50 z-50"
-        onClick={onClose}
-      />
-
-      {/* Sidebar */}
-      <motion.div
-        initial={{ x: "100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "100%" }}
-        transition={{ type: "spring", damping: 25, stiffness: 200 }}
-        className="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-xl z-50 overflow-y-auto"
-      >
-        <div className="p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-serif text-[#2E2A22] flex items-center gap-2">
-              <ShoppingCart className="w-6 h-6" />
-              Your Cart
-            </h2>
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-[#FBF7ED] rounded-full transition-colors"
-            >
-              ✕
-            </button>
-          </div>
-
-          {cartItems.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="w-20 h-20 bg-[#FBF7ED] rounded-full flex items-center justify-center mx-auto mb-4">
-                <ShoppingBag className="w-10 h-10 text-[#6E695D]" />
-              </div>
-              <h3 className="font-serif text-xl text-[#2E2A22] mb-2">
-                Your cart is empty
-              </h3>
-              <p className="text-[#6E695D] text-sm">
-                Start shopping to add items to your cart
-              </p>
-            </div>
-          ) : (
-            <>
-              <div className="space-y-4 mb-6">
-                {cartItems.map((item) => (
-                  <motion.div
-                    key={item.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="flex gap-4 p-3 bg-[#FBF7ED] rounded-lg"
-                  >
-                    <img loading="lazy" decoding="async"
-                      src={item.image}
-                      alt={item.name}
-                      className="w-20 h-20 object-cover rounded-md"
-                    />
-                    <div className="flex-1">
-                      <h4 className="font-medium text-[#2E2A22] text-sm line-clamp-2">
-                        {item.name}
-                      </h4>
-                      <p className="text-[#1B3324] font-semibold text-sm mt-1">
-                        ₹{item.price}
-                      </p>
-                      <div className="flex items-center gap-2 mt-2">
-                        <button
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="p-1 bg-white rounded-full shadow-sm hover:bg-[#EDE7D9] transition-colors"
-                        >
-                          <Minus className="w-3 h-3" />
-                        </button>
-                        <span className="text-sm font-medium w-6 text-center">
-                          {item.quantity}
-                        </span>
-                        <button
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="p-1 bg-white rounded-full shadow-sm hover:bg-[#EDE7D9] transition-colors"
-                        >
-                          <Plus className="w-3 h-3" />
-                        </button>
-                        <button
-                          onClick={() => removeFromCart(item.id)}
-                          className="ml-auto text-red-500 text-xs hover:text-red-700 transition-colors"
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="border-t border-[#EDE7D9] pt-4">
-                <div className="flex justify-between text-lg font-serif font-semibold text-[#2E2A22] mb-4">
-                  <span>Total</span>
-                  <span>₹{getTotalPrice()}</span>
-                </div>
-                <button className="w-full bg-forest-dark text-white py-3 rounded-lg font-medium hover:bg-[#2D5016] transition-colors">
-                  Proceed to Checkout
-                </button>
-              </div>
-            </>
-          )}
-        </div>
-      </motion.div>
-    </>
   );
 }
 
@@ -653,8 +409,7 @@ export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All Products");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("featured");
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const cart = useCart();
+  const { addToCart } = useCart();
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
@@ -696,18 +451,6 @@ export default function ProductsPage() {
 
   return (
     <div className="bg-[#FBF7ED] min-h-screen">
-      {/* Toaster Component */}
-      <Toaster
-        position="bottom-right"
-        toastOptions={{
-          duration: 3000,
-          style: {
-            borderRadius: '10px',
-            padding: '16px',
-          },
-        }}
-      />
-
       {/* Hero Section */}
       <section className="relative bg-forest-dark overflow-hidden">
         <motion.div
@@ -764,24 +507,6 @@ export default function ProductsPage() {
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Breadcrumb */}
         <Breadcrumb currentPage="Products" category={selectedCategory} />
-
-        {/* Cart Button */}
-        <div className="flex justify-end mb-4">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsCartOpen(true)}
-            className="relative bg-forest-dark text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#2D5016] transition-colors"
-          >
-            <ShoppingCart className="w-5 h-5" />
-            Cart
-            {cart.getTotalItems() > 0 && (
-              <span className="absolute -top-2 -right-2 bg-[#C49A3C] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
-                {cart.getTotalItems()}
-              </span>
-            )}
-          </motion.button>
-        </div>
 
         {/* Features */}
         <Features />
@@ -869,7 +594,7 @@ export default function ProductsPage() {
               key={product.id}
               product={product}
               index={index}
-              addToCart={cart.addToCart}
+              addToCart={addToCart}
             />
           ))}
         </motion.div>
@@ -895,15 +620,6 @@ export default function ProductsPage() {
           </motion.div>
         )}
       </div>
-
-      {/* Cart Sidebar */}
-      <CartSidebar
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        cart={cart}
-        updateQuantity={cart.updateQuantity}
-        removeFromCart={cart.removeFromCart}
-      />
     </div>
   );
 }

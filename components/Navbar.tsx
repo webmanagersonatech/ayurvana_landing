@@ -2,13 +2,15 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import AyurvedicBookingForm from "./Booking";
+import { useCart } from "../context/CartContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(0); // For cart items count
+  const { getTotalItems, openCart } = useCart();
+  const cartCount = getTotalItems(); // Live cart items count from global cart
 
   // Refs for dropdowns
   const dropdownRefs = {
@@ -157,12 +159,10 @@ export default function Navbar() {
     setIsBookingFormOpen(false);
   };
 
-  // Handle cart click
+  // Handle cart click - opens the global cart sidebar
   const handleCartClick = (e) => {
     e.preventDefault();
-    // Navigate to cart page or open cart sidebar
-    // window.location.href = '/cart';
-    console.log('Cart clicked');
+    openCart();
   };
 
   return (

@@ -36,7 +36,7 @@ export default function Home() {
           property="og:description"
           content="Experience authentic Ayurvedic healing at Ayurvana — personalised treatments for mind, body & spirit. Book your consultation today."
         />
-        <meta property="og:image" content="https://ayurvanalanding.vercel.app/images/Ayurvana.webp" />
+        <meta property="og:image" content="https://ayurvanalanding.vercel.app/images/ayurvana.png" />
         <meta property="og:locale" content="en_IN" />
         <meta property="og:site_name" content="Ayurvana Ayurveda" />
 
@@ -44,7 +44,7 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Ayurvana Ayurveda | Holistic Healing & Wellness" />
         <meta name="twitter:description" content="Authentic Ayurvedic treatments in Puducherry. Personalised care for mind, body & spirit." />
-        <meta name="twitter:image" content="https://ayurvanalanding.vercel.app/images/Ayurvana.webp" />
+        <meta name="twitter:image" content="https://ayurvanalanding.vercel.app/images/ayurvana.png" />
 
         {/* Schema.org structured data */}
         <script
@@ -68,7 +68,7 @@ export default function Home() {
               },
               openingHours: "Mo-Sa 08:00-20:00",
               priceRange: "₹₹",
-              image: "https://ayurvanalanding.vercel.app/images/Ayurvana.webp",
+              image: "https://ayurvanalanding.vercel.app/images/ayurvana.png",
               sameAs: [
                 "https://facebook.com/Ayurvana",
                 "https://instagram.com/Ayurvana",
