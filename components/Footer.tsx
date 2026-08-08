@@ -51,7 +51,7 @@ export default function Footer() {
             </div>
 
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
-              A sanctuary for Ayurvedic healing and holistic wellness in the heart of Puducherry.
+              A sanctuary for Ayurvedic healing and holistic wellness in the heart of Salem.
             </p>
 
             <div className="flex gap-3">

@@ -17,7 +17,7 @@ const testimonials = [
   },
   {
     name: "Meena Subramaniam",
-    location: "Puducherry",
+    location: "Salem",
     rating: 5,
     text: "Wivana is my monthly ritual now. The abhyanga massage keeps my stress levels in check and the herbal teas they recommend are wonderful. Truly a sanctuary.",
     avatar: "MS",

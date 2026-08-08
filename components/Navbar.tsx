@@ -300,9 +300,10 @@ export default function Navbar() {
           {/* Mobile menu toggle + Cart Icon */}
           <div className="flex items-center gap-2 lg:hidden">
             {/* Cart Icon - Mobile */}
+            {/* Cart Icon - Mobile */}
             <button
               onClick={handleCartClick}
-              className={`p-2 rounded-full transition-colors duration-300 ${scrolled ? "text-text-dark" : "text-white"
+              className={`relative p-2 rounded-full transition-colors duration-300 hover:bg-white/10 ${scrolled ? "text-text-dark hover:text-sage" : "text-white hover:text-sage"
                 }`}
               aria-label="Shopping cart"
             >
