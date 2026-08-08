@@ -124,7 +124,7 @@ export default function Footer() {
             <ul className="space-y-4 text-white/60 text-sm">
               <li className="flex items-start gap-3 hover:text-white transition-colors duration-300 group">
                 <FaMapMarkerAlt className="w-4 h-4 mt-0.5 text-gold group-hover:scale-110 transition-transform" />
-                <span>12, Rangapillai Street, White Town, Puducherry 605001</span>
+                <span>Sona Valliappa Campus, <br></br> Kakapalayam-Attyampatti Road, Kandarkulamanickam (Post), <br></br> Salem – 637504.</span>
               </li>
               <li className="flex items-center gap-3 hover:text-white transition-colors duration-300 group">
                 <FaPhone className="w-4 h-4 text-gold group-hover:scale-110 transition-transform" />
@@ -132,7 +132,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 hover:text-white transition-colors duration-300 group">
                 <FaEnvelope className="w-4 h-4 text-gold group-hover:scale-110 transition-transform" />
-                <span>hello@ayurvana.com</span>
+                <span>support@ayurvana.com</span>
               </li>
               <li className="flex items-center gap-3 hover:text-white transition-colors duration-300 group">
                 <FaClock className="w-4 h-4 text-gold group-hover:scale-110 transition-transform" />
@@ -157,7 +157,7 @@ export default function Footer() {
           <span className="text-white/40 text-xs">
             © {currentYear} Ayurvana Ayurveda. All rights reserved.
           </span>
-          <div className="flex items-center gap-6 text-white/40 text-xs">
+          {/* <div className="flex items-center gap-6 text-white/40 text-xs">
             <a href="#" className="hover:text-gold-light transition-colors duration-300 relative group">
               Privacy Policy
               <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
@@ -170,7 +170,7 @@ export default function Footer() {
               Sitemap
               <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

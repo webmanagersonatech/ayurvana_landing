@@ -18,12 +18,12 @@ export default function Home() {
     <>
       <Head>
         {/* Primary SEO */}
-        <title>Ayurvana Ayurveda | Holistic Healing & Wellness in Puducherry</title>
+        <title>Ayurvana Ayurveda | Holistic Healing & Wellness in salem</title>
         <meta
           name="description"
-          content="Experience authentic Ayurvedic healing at Ayurvana — a serene wellness sanctuary in Puducherry offering Panchakarma, Shirodhara, Abhyanga, and personalised holistic treatments."
+          content="Experience authentic Ayurvedic healing at Ayurvana — a serene wellness sanctuary in salem offering Panchakarma, Shirodhara, Abhyanga, and personalised holistic treatments."
         />
-        <meta name="keywords" content="Ayurveda Puducherry, Ayurvedic treatment, Panchakarma, Shirodhara, holistic healing, wellness spa, Ayurvana, herbal therapy" />
+        <meta name="keywords" content="Ayurveda salem, Ayurvedic treatment, Panchakarma, Shirodhara, holistic healing, wellness spa, Ayurvana, herbal therapy" />
         <meta name="author" content="Ayurvana Ayurveda" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://Ayurvana.com/" />
@@ -31,20 +31,20 @@ export default function Home() {
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://Ayurvana.com/" />
-        <meta property="og:title" content="Ayurvana Ayurveda | Holistic Healing & Wellness in Puducherry" />
+        <meta property="og:title" content="Ayurvana Ayurveda | Holistic Healing & Wellness in Slem" />
         <meta
           property="og:description"
           content="Experience authentic Ayurvedic healing at Ayurvana — personalised treatments for mind, body & spirit. Book your consultation today."
         />
-        <meta property="og:image" content="https://ayurvanalanding.vercel.app/images/ayurvana.png" />
+        <meta property="og:image" content="https://ayurvanalanding.vercel.app/images/Ayurvana.webp" />
         <meta property="og:locale" content="en_IN" />
         <meta property="og:site_name" content="Ayurvana Ayurveda" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Ayurvana Ayurveda | Holistic Healing & Wellness" />
-        <meta name="twitter:description" content="Authentic Ayurvedic treatments in Puducherry. Personalised care for mind, body & spirit." />
-        <meta name="twitter:image" content="https://ayurvanalanding.vercel.app/images/ayurvana.png" />
+        <meta name="twitter:description" content="Authentic Ayurvedic treatments in salem. Personalised care for mind, body & spirit." />
+        <meta name="twitter:image" content="https://ayurvanalanding.vercel.app/images/Ayurvana.webp" />
 
         {/* Schema.org structured data */}
         <script
@@ -55,20 +55,20 @@ export default function Home() {
               "@type": "HealthAndBeautyBusiness",
               name: "Ayurvana Ayurveda",
               description:
-                "Authentic Ayurvedic wellness sanctuary offering Panchakarma, Shirodhara, Abhyanga and personalised holistic treatments in Puducherry.",
+                "Authentic Ayurvedic wellness sanctuary offering Panchakarma, Shirodhara, Abhyanga and personalised holistic treatments in salem.",
               url: "https://Ayurvana.com",
               telephone: "+91-413-221-4567",
               email: "hello@Ayurvana.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "12, Rangapillai Street, White Town",
-                addressLocality: "Puducherry",
+                addressLocality: "salem",
                 postalCode: "605001",
                 addressCountry: "IN",
               },
               openingHours: "Mo-Sa 08:00-20:00",
               priceRange: "₹₹",
-              image: "https://ayurvanalanding.vercel.app/images/ayurvana.png",
+              image: "https://ayurvanalanding.vercel.app/images/Ayurvana.webp",
               sameAs: [
                 "https://facebook.com/Ayurvana",
                 "https://instagram.com/Ayurvana",
