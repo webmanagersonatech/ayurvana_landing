@@ -10,7 +10,7 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
   const { getTotalItems, openCart } = useCart();
-  const cartCount = getTotalItems(); // Live cart items count from global cart
+  const cartCount = getTotalItems();
 
   // Refs for dropdowns
   const dropdownRefs = {
@@ -56,6 +56,7 @@ export default function Navbar() {
     { label: "Home", href: "/" },
     { label: "About", href: "/#about" },
     { label: "Products", href: "/products" },
+    { label: "Therapies", href: "/therapies" },
     {
       label: "Facilities",
       href: "/#facilities",
@@ -299,7 +300,7 @@ export default function Navbar() {
 
           {/* Mobile menu toggle + Cart Icon */}
           <div className="flex items-center gap-2 lg:hidden">
-            {/* Cart Icon - Mobile */}
+
             {/* Cart Icon - Mobile */}
             <button
               onClick={handleCartClick}

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Link from "next/link";
 import {
   Stethoscope,
   ClipboardList,
@@ -15,6 +16,7 @@ import {
   FlaskRound,
   Flower2,
 } from "lucide-react";
+import { therapies } from "../lib/therapiesData";
 
 // Animation variants
 const fadeInUp = {
@@ -46,32 +48,17 @@ const scaleIn = {
 // Hero section
 // ---------------------------------------------------------------------------
 
-const heroCards = [
-  {
-    title: "Chiropractic Adjustments",
-    desc: "We bring the right people together to challenge established thinking and drive transform in 2020",
-    icon: Pill,
-    bgImage: "https://img.magnific.com/free-photo/side-view-man-getting-professional-massage_23-2150649766.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", // Replace with actual image path
-  },
-  {
-    title: "Massage & Body Therapy",
-    desc: "We bring the right people together to challenge established thinking and drive transform in 2020",
-    icon: PersonStanding,
-    bgImage: "https://img.magnific.com/premium-photo/male-masseur-performing-neck-massage-stretcher-female-client_242111-13897.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", // Replace with actual image path
-  },
-  {
-    title: "Aromatherapy Sessions",
-    desc: "We bring the right people together to challenge established thinking and drive transform in 2020",
-    icon: FlaskRound,
-    bgImage: "https://img.magnific.com/premium-photo/soapmaking-workshop-natural-ingredients-traditional-techniques_223582-10432.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", // Replace with actual image path
-  },
-  {
-    title: "Ayurvedic Treatments",
-    desc: "We bring the right people together to challenge established thinking and drive transform in 2020",
-    icon: Flower2,
-    bgImage: "https://img.magnific.com/premium-photo/facial-massage-man-bath-male-attendant-conducts-procedures-client-sauna-relaxing-massage_209484-30930.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80", // Replace with actual image path
-  },
-];
+// Cards are pulled live from lib/therapiesData.ts — add a therapy there and
+// it can show up here automatically. No more hardcoded placeholder cards.
+const heroCardIcons = [Pill, PersonStanding, FlaskRound, Flower2];
+
+const heroCards = therapies.slice(0, 4).map((t, i) => ({
+  title: t.title,
+  desc: t.excerpt,
+  slug: t.slug,
+  icon: heroCardIcons[i % heroCardIcons.length],
+  bgImage: t.image,
+}));
 
 function Hero() {
   return (
@@ -111,8 +98,8 @@ function Hero() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="font-serif text-4xl md:text-5xl text-white mt-4 leading-tight"
             >
-              Discover Alternative Health{" "}
-              <span className="italic text-gold-light">Treatments</span>
+              Restore Balance to{" "}
+              <span className="italic text-gold-light">Mind, Body & Spirit</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
@@ -120,8 +107,8 @@ function Hero() {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="text-white/85 text-sm md:text-base mt-5 leading-relaxed max-w-md"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+              From classical Ayurvedic massages to advanced regenerative
+              care, explore therapies tailored to your body and mind.
             </motion.p>
           </motion.div>
         </div>
@@ -148,6 +135,7 @@ function Hero() {
                 className="relative group"
                 style={{ perspective: 1000 }}
               >
+                <Link href={`/therapies/${card.slug}`} className="block">
                 {/* 3D depth layers */}
                 <div className="absolute inset-0 bg-gradient-to-br from-forest-dark to-emerald-900 transform rotate-3 scale-95 opacity-20 group-hover:rotate-6 group-hover:scale-100 transition-all duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 to-transparent transform -rotate-2 scale-90 opacity-0 group-hover:opacity-100 group-hover:rotate-0 group-hover:scale-100 transition-all duration-700" />
@@ -181,7 +169,7 @@ function Hero() {
                       }}
                       className="relative"
                     >
-
+                      <Icon className="w-7 h-7 text-gold-light" strokeWidth={1.5} />
                     </motion.div>
 
                     {/* Scale number */}
@@ -212,18 +200,18 @@ function Hero() {
                   </motion.h3>
 
                   {/* Animated divider */}
-                <div
-  className="bg-white mb-4"
-  style={{
-    width: "60px",
-    height: "12px",
-    borderRadius: "0 100% 0 100%",
-    transform: "rotate(-8deg)",
-  }}
-/>
+                  <div
+                    className="bg-white mb-4"
+                    style={{
+                      width: "60px",
+                      height: "12px",
+                      borderRadius: "0 100% 0 100%",
+                      transform: "rotate(-8deg)",
+                    }}
+                  />
 
                   {/* Description */}
-                  <p className="relative z-10 text-white/90 text-sm leading-relaxed group-hover:text-white transition-colors duration-300 drop-shadow-md">
+                  <p className="relative z-10 text-white/90 text-sm leading-relaxed group-hover:text-white transition-colors duration-300 drop-shadow-md line-clamp-3">
                     {card.desc}
                   </p>
 
@@ -259,6 +247,7 @@ function Hero() {
                     ))}
                   </div>
                 </div>
+                </Link>
 
                 {/* Shadow depth layers */}
                 <div className="absolute -bottom-4 -right-4 w-full h-full bg-forest-dark/5 blur-xl group-hover:blur-2xl transition-all duration-700 -z-10" />
@@ -303,67 +292,7 @@ const steps = [
   },
 ];
 
-function HowItWorks() {
-  return (
-    <section className="py-20 px-6 bg-[#FBF7ED]">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={fadeInUp}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="text-xs font-semibold tracking-widest text-[#1B3324]/70 uppercase">
-            How It Works
-          </span>
-          <h2 className="font-serif text-3xl md:text-4xl text-[#2E2A22] mt-3">
-            Your Wellness Journey
-          </h2>
-        </motion.div>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={step.title}
-                variants={fadeInUp}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="text-center"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                  className="w-16 h-16 bg-[#1B3324] rounded-full flex items-center justify-center mx-auto mb-4"
-                >
-                  <Icon className="w-7 h-7 text-white" strokeWidth={1.5} />
-                </motion.div>
-                <span className="text-sm font-semibold text-[#1B3324]/50 block mb-1">
-                  {step.number}
-                </span>
-                <h3 className="font-serif text-lg text-[#2E2A22] mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-[#6E695D] text-sm leading-relaxed max-w-xs mx-auto">
-                  {step.desc}
-                </p>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
 
 // ---------------------------------------------------------------------------
 // Why Choose Us

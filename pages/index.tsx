@@ -6,7 +6,7 @@ import QuoteBand from "../components/QuoteBand";
 import HowItWorks from "../components/HowItWorks";
 import WellnessExperience from "../components/WellnessExperience";
 import PartnersBand from "../components/PartnersBand";
-import Treatments from "../components/Treatments";
+
 import Testimonials from "../components/Testimonials";
 import SpaExperience from "../components/SpaExperience";
 import FAQ from "../components/FAQ";
@@ -128,6 +128,8 @@ export default function Home() {
         </div>
 
 
+
+       
 
         <PartnersBand />
 
