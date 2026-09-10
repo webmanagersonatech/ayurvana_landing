@@ -72,6 +72,7 @@ export default function Navbar() {
       href: "/#research",
     },
     { label: "Services", href: "/#services" },
+    { label: "Compare", href: "/compare" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ];

@@ -7,6 +7,9 @@ import HowItWorks from "../components/HowItWorks";
 import WellnessExperience from "../components/WellnessExperience";
 import PartnersBand from "../components/PartnersBand";
 
+import Packages from "../components/Packages";
+
+
 import Testimonials from "../components/Testimonials";
 import SpaExperience from "../components/SpaExperience";
 import FAQ from "../components/FAQ";
@@ -132,6 +135,11 @@ export default function Home() {
        
 
         <PartnersBand />
+
+        
+
+        <Packages />
+
 
         <Testimonials />
         <SpaExperience />
