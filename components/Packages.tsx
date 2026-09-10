@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, Leaf, Clock, Sparkles, ArrowRight } from "lucide-react";
+import { useBookingModal } from "../context/BookingModalContext";
 
 interface Package {
   duration: string;
@@ -65,6 +66,7 @@ const packages: Package[] = [
 
 export default function Packages() {
   const [active, setActive] = useState(1);
+  const { openBookingModal } = useBookingModal();
 
   return (
     <section id="packages" className="py-20 relative overflow-hidden bg-cream">
@@ -140,9 +142,13 @@ export default function Packages() {
               <div className="border-t border-black/10 pt-4">
                 <p className="text-text-light text-xs mb-1">Starting from</p>
                 <p className="font-serif text-xl text-forest mb-4">{pkg.price}</p>
-                <a href="#booking" className="btn-outline w-full justify-center text-xs">
+                <button
+                  type="button"
+                  onClick={() => openBookingModal(`${pkg.label} Package (${pkg.duration})`)}
+                  className="btn-outline w-full justify-center text-xs"
+                >
                   Enquire Now <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                </button>
               </div>
             </motion.div>
           ))}

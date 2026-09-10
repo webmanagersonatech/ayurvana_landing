@@ -53,6 +53,7 @@ interface BookingFormProps {
     theme?: 'light' | 'dark';
     initialData?: Partial<BookingFilters>;
     onClose?: () => void;
+    contextLabel?: string;
 }
 
 interface FormErrors {
@@ -533,6 +534,7 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
     theme = 'light',
     initialData = {},
     onClose,
+    contextLabel,
 }) => {
     // Personal Information
     const [name, setName] = useState(initialData.name || '');
@@ -800,6 +802,16 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                     <p className={`text-sm mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                         Please fill in all details to confirm your reservation
                     </p>
+
+                    {contextLabel && (
+                        <div className={`inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full text-xs font-medium ${isDark
+                            ? 'bg-forest/20 text-forest-light border border-forest/30'
+                            : 'bg-forest/8 text-forest-dark border border-forest/20'
+                            }`}>
+                            <Info className="w-3.5 h-3.5 text-forest shrink-0" />
+                            Enquiring about: <strong className="font-semibold">{contextLabel}</strong>
+                        </div>
+                    )}
                 </div>
 
                 <div className={`p-6 ${isCompact ? 'space-y-3' : 'space-y-4'}`}>

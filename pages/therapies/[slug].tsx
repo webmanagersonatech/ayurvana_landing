@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { Home, ChevronRight, Clock, Tag, CheckCircle2, ArrowRight, Plus, Minus } from "lucide-react";
 import { therapies, getTherapyBySlug, getRelatedTherapies, Therapy } from "../../lib/therapiesData";
+import { useBookingModal } from "../../context/BookingModalContext";
 
 interface Props {
   therapy: Therapy;
@@ -16,6 +17,7 @@ const SITE_URL = "https://www.ayurvana.com";
 export default function TherapyPage({ therapy, related }: Props) {
   const router = useRouter();
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const { openBookingModal } = useBookingModal();
 
   if (router.isFallback) {
     return (
@@ -119,9 +121,13 @@ export default function TherapyPage({ therapy, related }: Props) {
             <span className="flex items-center gap-1.5">
               <Tag className="w-3.5 h-3.5" /> {therapy.price}
             </span>
-            <a href="#appointment" className="btn-gold ml-auto">
+            <button
+              type="button"
+              onClick={() => openBookingModal(therapy.title)}
+              className="btn-gold ml-auto"
+            >
               Book This Therapy
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -228,9 +234,13 @@ export default function TherapyPage({ therapy, related }: Props) {
                     <span className="text-text-dark font-medium">{therapy.category}</span>
                   </div>
                 </div>
-                <a href="#appointment" className="btn-primary w-full justify-center text-sm mt-5">
+                <button
+                  type="button"
+                  onClick={() => openBookingModal(therapy.title)}
+                  className="btn-primary w-full justify-center text-sm mt-5"
+                >
                   Book Now
-                </a>
+                </button>
               </div>
 
               <div className="bg-white rounded-2xl p-6 card-hover">

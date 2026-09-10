@@ -57,7 +57,7 @@ export default function CenterProfile({ center, others }: Props) {
     );
   }
 
-  const pageUrl = `${SITE_URL}/compare/${center.slug}`;
+  const pageUrl = `${SITE_URL}/packages/${center.slug}`;
   const metaTitle = `${center.name} — Treatments, Packages & Room Tariff | Ayurvana Market Profile`;
   const metaDescription = `${center.positioning} Compare ${center.name}'s treatments, package pricing and room tariff with Ayurvana Ayurveda.`;
   const entryPackage = center.packages[0];
@@ -77,7 +77,7 @@ export default function CenterProfile({ center, others }: Props) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Compare", item: `${SITE_URL}/compare` },
+      { "@type": "ListItem", position: 2, name: "Packages", item: `${SITE_URL}/packages` },
       { "@type": "ListItem", position: 3, name: center.name, item: pageUrl },
     ],
   };
@@ -112,7 +112,7 @@ export default function CenterProfile({ center, others }: Props) {
               <Home className="w-3.5 h-3.5" />
               <Link href="/" className="hover:text-cream transition-colors">Home</Link>
               <ChevronRight className="w-3.5 h-3.5" />
-              <Link href="/compare" className="hover:text-cream transition-colors">Compare</Link>
+              <Link href="/packages" className="hover:text-cream transition-colors">Packages</Link>
               <ChevronRight className="w-3.5 h-3.5" />
               <span className="text-cream/80">{center.name}</span>
             </nav>
@@ -264,7 +264,7 @@ export default function CenterProfile({ center, others }: Props) {
                 <p className="text-white/50 text-xs mt-1 mb-6">
                   vs {entryPackage.price} at {center.name} ({entryPackage.duration})
                 </p>
-                <Link href="/compare" className="btn-gold">
+                <Link href="/packages" className="btn-gold">
                   See full comparison <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -277,7 +277,7 @@ export default function CenterProfile({ center, others }: Props) {
           <section className="max-w-7xl mx-auto px-6 mt-16">
             <div className="flex items-center justify-between mb-6">
               <h2 className="font-serif text-2xl text-text-dark">Other Profiles</h2>
-              <Link href="/compare" className="text-forest text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
+              <Link href="/packages" className="text-forest text-sm font-medium inline-flex items-center gap-1 hover:gap-2 transition-all">
                 View all <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -285,7 +285,7 @@ export default function CenterProfile({ center, others }: Props) {
               {others.map((o) => (
                 <Link
                   key={o.slug}
-                  href={`/compare/${o.slug}`}
+                  href={`/packages/${o.slug}`}
                   className="bg-white rounded-2xl border border-black/10 p-5 card-hover"
                 >
                   <p className="font-serif text-lg text-text-dark mb-1">{o.name}</p>
@@ -302,7 +302,7 @@ export default function CenterProfile({ center, others }: Props) {
         )}
 
         <section className="max-w-3xl mx-auto px-6 mt-16 text-center">
-          <Link href="/compare" className="text-text-muted text-sm inline-flex items-center gap-1.5 hover:text-forest transition-colors mb-6">
+          <Link href="/packages" className="text-text-muted text-sm inline-flex items-center gap-1.5 hover:text-forest transition-colors mb-6">
             <ArrowLeft className="w-3.5 h-3.5" /> Back to all profiles
           </Link>
           <p className="text-text-light text-xs leading-relaxed">

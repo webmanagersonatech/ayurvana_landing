@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import AyurvedicBookingForm from "./Booking";
 import { useCart } from "../context/CartContext";
+import { useBookingModal } from "../context/BookingModalContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [isBookingFormOpen, setIsBookingFormOpen] = useState(false);
   const { getTotalItems, openCart } = useCart();
+  const { openBookingModal } = useBookingModal();
   const cartCount = getTotalItems();
 
   // Refs for dropdowns
@@ -40,18 +40,6 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Prevent body scroll when booking form is open
-  useEffect(() => {
-    if (isBookingFormOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isBookingFormOpen]);
-
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "About", href: "/#about" },
@@ -72,7 +60,7 @@ export default function Navbar() {
       href: "/#research",
     },
     { label: "Services", href: "/#services" },
-    { label: "Compare", href: "/compare" },
+    { label: "packages", href: "/packages" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ];
@@ -153,12 +141,7 @@ export default function Navbar() {
   // Open booking form
   const openBookingForm = (e) => {
     e.preventDefault();
-    setIsBookingFormOpen(true);
-  };
-
-  // Close booking form
-  const closeBookingForm = () => {
-    setIsBookingFormOpen(false);
+    openBookingModal();
   };
 
   // Handle cart click - opens the global cart sidebar
@@ -419,36 +402,6 @@ export default function Navbar() {
           </div>
         )}
       </header>
-
-      {/* Booking Form Modal */}
-      {isBookingFormOpen && (
-        <div className="fixed inset-0 z-[999] overflow-y-auto">
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
-            onClick={closeBookingForm}
-          ></div>
-
-          {/* Modal Container */}
-          <div className="relative min-h-screen flex items-center justify-center p-4">
-            <div className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-              {/* Close Button */}
-              <button
-                onClick={closeBookingForm}
-                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/90 hover:bg-gray-100 transition-colors shadow-lg"
-                aria-label="Close booking form"
-              >
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-
-              {/* Booking Form */}
-              <AyurvedicBookingForm onClose={closeBookingForm} />
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }

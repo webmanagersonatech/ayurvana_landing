@@ -12,7 +12,7 @@ export default function ComparePage() {
           name="description"
           content="See how Ayurvana's Ayurvedic packages compare with leading wellness retreats across treatments, programs and tariffs — one detailed profile per center."
         />
-        <link rel="canonical" href="https://www.ayurvana.com/compare" />
+        <link rel="canonical" href="https://www.ayurvana.com/packages" />
       </Head>
 
       <main className="bg-cream min-h-screen pb-24">
@@ -73,7 +73,7 @@ export default function ComparePage() {
               return (
                 <Link
                   key={c.slug}
-                  href={`/compare/${c.slug}`}
+                  href={`/packages/${c.slug}`}
                   className="group bg-white rounded-2xl border border-black/10 p-6 md:p-7 card-hover flex flex-col"
                 >
                   <div className="flex items-start justify-between gap-4 mb-3">
