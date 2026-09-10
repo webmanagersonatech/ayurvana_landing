@@ -59,7 +59,7 @@ export default function ComparePage() {
         </section>
 
         {/* Center directory */}
-        <section className="max-w-6xl mx-auto px-6 mt-16">
+        <section className="max-w-7xl mx-auto px-6 mt-16">
           <div className="flex items-center justify-between mb-8">
             <h2 className="font-serif text-2xl md:text-3xl text-text-dark">
               Center-Wise Profiles
