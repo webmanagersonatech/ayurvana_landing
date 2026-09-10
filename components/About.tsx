@@ -5,15 +5,15 @@ export default function About() {
   const features = [
     {
       title: "Ayurvedic Expertise",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+      desc: "Experience time-honoured Ayurvedic wisdom guided by expert practitioners for holistic well-being.",
     },
     {
       title: "Personalized Wellness Plans",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+      desc: "Tailored wellness programs designed to meet your unique needs, body, and lifestyle.",
     },
     {
       title: "Natural Healing Remedies",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+      desc: "Embrace natural therapies and Ayurvedic remedies that support balance, vitality, and lasting wellness.",
     },
   ];
 
