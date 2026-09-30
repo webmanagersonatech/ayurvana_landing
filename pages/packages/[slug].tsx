@@ -20,7 +20,7 @@ interface Props {
   others: Competitor[];
 }
 
-const SITE_URL = "https://www.ayurvana.com";
+const SITE_URL = "https://www.ayurvanaindia.com";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {

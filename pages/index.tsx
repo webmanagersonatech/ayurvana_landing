@@ -29,11 +29,11 @@ export default function Home() {
         <meta name="keywords" content="Ayurveda salem, Ayurvedic treatment, Panchakarma, Shirodhara, holistic healing, wellness spa, Ayurvana, herbal therapy" />
         <meta name="author" content="Ayurvana Ayurveda" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://Ayurvana.com/" />
+        <link rel="canonical" href="https://ayurvanaindia.com/" />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://Ayurvana.com/" />
+        <meta property="og:url" content="https://ayurvanaindia.com/" />
         <meta property="og:title" content="Ayurvana Ayurveda | Holistic Healing & Wellness in Slem" />
         <meta
           property="og:description"
@@ -59,9 +59,9 @@ export default function Home() {
               name: "Ayurvana Ayurveda",
               description:
                 "Authentic Ayurvedic wellness sanctuary offering Panchakarma, Shirodhara, Abhyanga and personalised holistic treatments in salem.",
-              url: "https://Ayurvana.com",
+              url: "https://ayurvanaindia.com",
               telephone: "+91-413-221-4567",
-              email: "hello@Ayurvana.com",
+              email: "hello@ayurvanaindia.com",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "12, Rangapillai Street, White Town",

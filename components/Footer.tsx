@@ -51,7 +51,7 @@ export default function Footer() {
             </div>
 
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
-              A sanctuary for Ayurvedic healing and holistic wellness in the heart of Salem.
+              A Natural  healing and holistic wellness in the heart of Salem.
             </p>
 
             <div className="flex gap-3">
@@ -128,11 +128,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 hover:text-white transition-colors duration-300 group">
                 <FaPhone className="w-4 h-4 text-gold group-hover:scale-110 transition-transform" />
-                <span>+91 94425 05939</span>
+                <span>+91 9442700366</span>
               </li>
               <li className="flex items-center gap-3 hover:text-white transition-colors duration-300 group">
                 <FaEnvelope className="w-4 h-4 text-gold group-hover:scale-110 transition-transform" />
-                <span>support@ayurvana.com</span>
+                <span>info@ayurvanaindia.com</span>
               </li>
               <li className="flex items-center gap-3 hover:text-white transition-colors duration-300 group">
                 <FaClock className="w-4 h-4 text-gold group-hover:scale-110 transition-transform" />
@@ -155,7 +155,7 @@ export default function Footer() {
       <div className="relative border-t border-white/10 bg-forest-dark/50">
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <span className="text-white/40 text-xs">
-            © {currentYear} Ayurvana Ayurveda. All rights reserved.
+            © {currentYear} Ayurvana . All rights reserved.
           </span>
           {/* <div className="flex items-center gap-6 text-white/40 text-xs">
             <a href="#" className="hover:text-gold-light transition-colors duration-300 relative group">

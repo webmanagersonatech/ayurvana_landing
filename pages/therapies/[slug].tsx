@@ -12,7 +12,7 @@ interface Props {
   related: Therapy[];
 }
 
-const SITE_URL = "https://www.ayurvana.com";
+const SITE_URL = "https://www.ayurvanaindia.com";
 
 export default function TherapyPage({ therapy, related }: Props) {
   const router = useRouter();

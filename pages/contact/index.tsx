@@ -36,18 +36,18 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Us",
-    details: "123 Ayurveda Lane, Varanasi, Uttar Pradesh 221001, India",
+    details: "Sona Valliappa Campus, Kakapalayam-Attyampatti Road, Kandarkulamanickam (Post), Salem – 637504, Tamil Nadu, India"
   },
   {
     icon: Phone,
     title: "Call Us",
-    details: "+91 98765 43210",
+    details: "+91 9442700366",
     sub: "Mon-Sat 9AM to 6PM",
   },
   {
     icon: Mail,
     title: "Email Us",
-    details: "info@ayurvedawellness.com",
+    details: "info@ayurvanaindia.com",
     sub: "We reply within 24 hours",
   },
   {
@@ -329,21 +329,22 @@ export default function ContactPage() {
           {/* Right Side - Map & Info - Equal Height */}
           <motion.div className="flex flex-col h-full">
             {/* Map Section - Takes remaining space */}
-            <div className="flex-1 flex flex-col">
-              <h3 className="font-serif text-2xl text-[#2E2A22] mb-4">Find Us</h3>
-              <div className="aspect-video bg-[#EDE7D9] overflow-hidden flex-1">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28860.682278284678!2d82.9739422678797!3d25.31764514309468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2db76febcf4d%3A0x68131710853ff0b5!2sVaranasi%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Store Location"
-                  className="w-full h-full"
-                />
-              </div>
-            </div>
+         <div className="flex-1 flex flex-col">
+  <h3 className="font-serif text-2xl text-[#2E2A22] mb-4">Find Us</h3>
+
+  <div className="aspect-video bg-[#EDE7D9] overflow-hidden flex-1">
+    <iframe
+      src="https://www.google.com/maps?q=Sona%20Valliappa%20Campus,%20Kakapalayam-Attyampatti%20Road,%20Kandarkulamanickam,%20Salem%20637504&output=embed"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      title="Sona Valliappa Campus Location"
+      className="w-full h-full"
+    />
+  </div>
+</div>
 
             {/* Quick Connect - Fixed height at bottom */}
             <div className="border-t border-[#EDE7D9] pt-8 mt-8">

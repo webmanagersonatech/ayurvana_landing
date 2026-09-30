@@ -12,7 +12,7 @@ export default function ComparePage() {
           name="description"
           content="See how Ayurvana's Ayurvedic packages compare with leading wellness retreats across treatments, programs and tariffs — one detailed profile per center."
         />
-        <link rel="canonical" href="https://www.ayurvana.com/packages" />
+        <link rel="canonical" href="https://www.ayurvanaindia.com/packages" />
       </Head>
 
       <main className="bg-cream min-h-screen pb-24">

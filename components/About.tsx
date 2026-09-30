@@ -249,8 +249,8 @@ export default function About() {
                 className="font-serif text-3xl sm:text-4xl md:text-5xl text-text-dark leading-[1.15] mb-6"
                 variants={fadeInUp}
               >
-                Sanctuary for Ayurvedic
-                <br />
+                Natural 
+                
                 Healing and Wellness
               </motion.h2>
 

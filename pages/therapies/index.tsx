@@ -23,7 +23,7 @@ export default function TherapiesIndex() {
           name="description"
           content="Explore all therapies offered at AyurVana — from traditional Ayurvedic massages to advanced regenerative treatments. Find the right therapy for your needs."
         />
-        <link rel="canonical" href="https://www.ayurvana.com/therapies" />
+        <link rel="canonical" href="https://www.ayurvanaindia.com/therapies" />
       </Head>
 
       {/* Hero */}
