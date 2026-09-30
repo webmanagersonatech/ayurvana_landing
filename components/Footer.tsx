@@ -1,11 +1,56 @@
 import Link from "next/link";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaLeaf } from "react-icons/fa";
-import Image from 'next/image';
+import Image from "next/image";
+import { getTherapyBySlug } from "../lib/therapiesData";
+
+// Footer therapy links are pulled from therapiesData, so titles and URLs always match real pages.
+const footerTherapySlugs = [
+  "physiotherapy-rehabilitation-therapy",
+  "panchakarma-detox-therapy",
+  "led-laser-therapy",
+  "ayurvedic-facial-therapy",
+  "rejuvenation-therapy",
+  "pain-therapy",
+  "sleep-therapy",
+  "aromatherapy",
+];
+
+const footerTherapies = footerTherapySlugs
+  .map((slug) => getTherapyBySlug(slug))
+  .filter((t): t is NonNullable<typeof t> => Boolean(t))
+  .map((t) => ({ label: t.title, href: `/therapies/${t.slug}` }));
+
+const navigateLinks = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/#about" },
+  { label: "Therapies", href: "/therapies" },
+  { label: "Packages", href: "/packages" },
+  { label: "Products", href: "/products" },
+  { label: "Doctors", href: "/doctors" },
+  { label: "Our Team", href: "/teams" },
+  { label: "Sonagramam", href: "/sonagramam" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+];
+
+const socialLinks = [
+  { icon: FaFacebook, label: "Facebook", href: "https://facebook.com/ayurvana" },
+  { icon: FaInstagram, label: "Instagram", href: "https://instagram.com/ayurvana" },
+  { icon: FaTwitter, label: "Twitter", href: "https://twitter.com/ayurvana" },
+  { icon: FaYoutube, label: "YouTube", href: "https://youtube.com/ayurvana" },
+];
+
+const linkClass =
+  "text-white/60 text-sm hover:text-gold-light transition-all duration-300 flex items-center gap-2 group";
+const dot = (
+  <span className="w-1 h-1 rounded-full bg-gold/40 group-hover:bg-gold transition-colors"></span>
+);
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-forest-dark text-white overflow-hidden" id="contact">
+    <footer className="relative bg-forest-dark text-white overflow-hidden" id="footer">
       {/* Decorative corner leaves */}
       <div className="absolute top-0 right-0 opacity-10 pointer-events-none">
         <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,15 +100,12 @@ export default function Footer() {
             </p>
 
             <div className="flex gap-3">
-              {[
-                { icon: FaFacebook, label: "Facebook" },
-                { icon: FaInstagram, label: "Instagram" },
-                { icon: FaTwitter, label: "Twitter" },
-                { icon: FaYoutube, label: "YouTube" }
-              ].map((social) => (
+              {socialLinks.map((social) => (
                 <a
                   key={social.label}
-                  href={`#${social.label.toLowerCase()}`}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-white/10 hover:bg-gold/30 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg border border-white/5 hover:border-gold/40"
                   aria-label={social.label}
                 >
@@ -80,17 +122,22 @@ export default function Footer() {
               <span className="absolute -bottom-2 left-0 w-8 h-0.5 bg-gold/50"></span>
             </h4>
             <ul className="space-y-3">
-              {["Abhyanga Massage", "Shirodhara", "Panchakarma", "Dhathura Therapy", "Rasayana", "Yoga & Pranayama"].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#treatments"
-                    className="text-white/60 text-sm hover:text-gold-light transition-all duration-300 flex items-center gap-2 group"
-                  >
-                    <span className="w-1 h-1 rounded-full bg-gold/40 group-hover:bg-gold transition-colors"></span>
-                    {item}
-                  </a>
+              {footerTherapies.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className={linkClass}>
+                    {dot}
+                    {item.label}
+                  </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/therapies"
+                  className="text-gold-light text-sm font-medium hover:text-white transition-all duration-300 flex items-center gap-2"
+                >
+                  View All Therapies →
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -101,15 +148,12 @@ export default function Footer() {
               <span className="absolute -bottom-2 left-0 w-8 h-0.5 bg-gold/50"></span>
             </h4>
             <ul className="space-y-3">
-              {["About Us", "Services", "Treatments", "Testimonials", "Blog", "Contact"].map((item) => (
-                <li key={item}>
-                  <a
-                    href={`#${item.toLowerCase().replace(" ", "")}`}
-                    className="text-white/60 text-sm hover:text-gold-light transition-all duration-300 flex items-center gap-2 group"
-                  >
-                    <span className="w-1 h-1 rounded-full bg-gold/40 group-hover:bg-gold transition-colors"></span>
-                    {item}
-                  </a>
+              {navigateLinks.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className={linkClass}>
+                    {dot}
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -128,11 +172,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 hover:text-white transition-colors duration-300 group">
                 <FaPhone className="w-4 h-4 text-gold group-hover:scale-110 transition-transform" />
-                <span>+91 9442700366</span>
+                <a href="tel:+919442700366" className="hover:text-gold-light transition-colors">+91 9442700366</a>
               </li>
               <li className="flex items-center gap-3 hover:text-white transition-colors duration-300 group">
                 <FaEnvelope className="w-4 h-4 text-gold group-hover:scale-110 transition-transform" />
-                <span>info@ayurvanaindia.com</span>
+                <a href="mailto:info@ayurvanaindia.com" className="hover:text-gold-light transition-colors">info@ayurvanaindia.com</a>
               </li>
               <li className="flex items-center gap-3 hover:text-white transition-colors duration-300 group">
                 <FaClock className="w-4 h-4 text-gold group-hover:scale-110 transition-transform" />
