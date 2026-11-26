@@ -1,0 +1,17 @@
+export { default as StatBand } from "./StatBand";
+export { default as Village } from "./Village";
+export { default as Healing } from "./Healing";
+export { default as Spa } from "./Spa";
+export { default as SheHealth } from "./SheHealth";
+export { default as Prana } from "./Prana";
+export { default as Day } from "./Day";
+export { default as Dining } from "./Dining";
+export { default as SonaGramam } from "./SonaGramam";
+export { default as Unwind } from "./Unwind";
+export { default as Beyond } from "./Beyond";
+export { default as Stay } from "./Stay";
+export { default as Cottage } from "./Cottage";
+export { default as Furniture } from "./Furniture";
+export { default as Programmes } from "./Programmes";
+export { default as ProShop } from "./ProShop";
+export { default as Explore } from "./Explore";

@@ -53,12 +53,14 @@ export default function Navbar() {
         { label: "Teams", href: "/teams" },
         { label: "Doctors", href: "/doctors" },
         { label: "Sonagramam", href: "/sonagramam" },
+        { label: "The Village", href: "/sonagramam#village" },
+        { label: "Wellness", href: "/wellness" },
+        { label: "Life at Ayurvana", href: "/experiences" },
+        { label: "Rooms & Cottages", href: "/stay" },
+        { label: "A Day at Ayurvana", href: "/day" },
       ]
     },
-    {
-      label: "Research",
-      href: "/#research",
-    },
+   
     { label: "Services", href: "/#services" },
     { label: "Packages", href: "/packages" },
     { label: "Blog", href: "/blog" },

@@ -32,6 +32,7 @@ import AyurvedicBookingForm from "../../components/Booking";
 import { AnimatePresence } from "framer-motion";
 import { useState, useRef } from "react";
 import Link from "next/link";
+import { Village, SonaGramam, Cottage, Furniture, Programmes } from "../../components/village";
 // ---------------------------------------------------------------------------
 // Animation Variants
 // ---------------------------------------------------------------------------
@@ -385,233 +386,24 @@ export default function SonaGramaPage() {
             </motion.div>
           </motion.div>
 
-          {/* Benefits Section */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={staggerContainer}
-            className="mb-20"
-          >
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <div className="flex items-center justify-center gap-3 mb-3">
-                <Gift className="w-5 h-5 text-[#b89a65]" />
-                <span className="text-sm font-semibold tracking-[0.15em] text-[#b89a65] uppercase">
-                  Benefits
-                </span>
-              </div>
-              <motion.h2
-                variants={fadeInUp}
-                className="font-serif text-3xl md:text-4xl text-[#873f2b]"
-              >
-                Rejuvenate Your{" "}
-                <span className="text-[#b89a65]">Body, Mind & Spirit</span>
-              </motion.h2>
-              <motion.p
-                variants={fadeInUp}
-                className="text-[#796c60] max-w-2xl mx-auto mt-3"
-              >
-                Experience comprehensive wellness through our holistic approach
-              </motion.p>
-            </motion.div>
-
-            <div className="space-y-12">
-              {/* Physical Benefits */}
-              <motion.div variants={fadeInUp}>
-                <h3 className="text-xl font-serif font-semibold text-[#873f2b] mb-6 flex items-center gap-2 border-b border-[#d9cbbb] pb-3">
-                  <Heart className="w-5 h-5 text-[#b89a65]" />
-                  Physical Benefits
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {benefits.physical.map((benefit, index) => (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      whileHover={{ x: 4 }}
-                      className="group relative pl-6"
-                    >
-                      {/* Decorative line */}
-                      <div className="absolute left-0 top-0 w-[2px] h-full bg-[#b89a65]/30 group-hover:bg-[#b89a65] transition-colors duration-300" />
-
-                      <div className="flex items-start gap-4">
-                        <div className="p-2 bg-[#873f2b]/5 rounded-full flex-shrink-0 mt-1 group-hover:bg-[#873f2b]/10 transition-colors duration-300">
-                          <benefit.icon className="w-4 h-4 text-[#873f2b]" />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-[#873f2b] text-sm group-hover:text-[#b89a65] transition-colors duration-300">
-                            {benefit.title}
-                          </h4>
-                          <p className="text-xs text-[#796c60] mt-1 leading-relaxed">{benefit.desc}</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Mental Benefits */}
-              <motion.div variants={fadeInUp}>
-                <h3 className="text-xl font-serif font-semibold text-[#873f2b] mb-6 flex items-center gap-2 border-b border-[#d9cbbb] pb-3">
-                  <Brain className="w-5 h-5 text-[#b89a65]" />
-                  Mental & Emotional Benefits
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {benefits.mental.map((benefit, index) => (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      whileHover={{ x: 4 }}
-                      className="group relative pl-6"
-                    >
-                      <div className="absolute left-0 top-0 w-[2px] h-full bg-[#b89a65]/30 group-hover:bg-[#b89a65] transition-colors duration-300" />
-
-                      <div className="flex items-start gap-4">
-                        <div className="p-2 bg-[#873f2b]/5 rounded-full flex-shrink-0 mt-1 group-hover:bg-[#873f2b]/10 transition-colors duration-300">
-                          <benefit.icon className="w-4 h-4 text-[#873f2b]" />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-[#873f2b] text-sm group-hover:text-[#b89a65] transition-colors duration-300">
-                            {benefit.title}
-                          </h4>
-                          <p className="text-xs text-[#796c60] mt-1 leading-relaxed">{benefit.desc}</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Spiritual Benefits */}
-              <motion.div variants={fadeInUp}>
-                <h3 className="text-xl font-serif font-semibold text-[#873f2b] mb-6 flex items-center gap-2 border-b border-[#d9cbbb] pb-3">
-                  <Heart className="w-5 h-5 text-[#b89a65]" />
-                  Spiritual Benefits
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {benefits.spiritual.map((benefit, index) => (
-                    <motion.div
-                      key={index}
-                      variants={fadeInUp}
-                      whileHover={{ x: 4 }}
-                      className="group relative pl-6"
-                    >
-                      <div className="absolute left-0 top-0 w-[2px] h-full bg-[#b89a65]/30 group-hover:bg-[#b89a65] transition-colors duration-300" />
-
-                      <div className="flex items-start gap-4">
-                        <div className="p-2 bg-[#873f2b]/5 rounded-full flex-shrink-0 mt-1 group-hover:bg-[#873f2b]/10 transition-colors duration-300">
-                          <benefit.icon className="w-4 h-4 text-[#873f2b]" />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-[#873f2b] text-sm group-hover:text-[#b89a65] transition-colors duration-300">
-                            {benefit.title}
-                          </h4>
-                          <p className="text-xs text-[#796c60] mt-1 leading-relaxed">{benefit.desc}</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+      
 
 
 
-          {/* Accommodation Section */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={staggerContainer}
-            className="mb-20"
-          >
-            <motion.div variants={fadeInUp} className="text-center mb-12">
-              <div className="flex items-center justify-center gap-3 mb-3">
-                <Bed className="w-5 h-5 text-[#b89a65]" />
-                <span className="text-sm font-semibold tracking-[0.15em] text-[#b89a65] uppercase">
-                  Accommodation
-                </span>
-              </div>
-              <motion.h2
-                variants={fadeInUp}
-                className="font-serif text-3xl md:text-4xl text-[#873f2b]"
-              >
-                Luxurious {" "}
-                <span className="text-[#b89a65]">Stay</span> Options
-              </motion.h2>
-              <motion.p
-                variants={fadeInUp}
-                className="text-[#796c60] max-w-2xl mx-auto mt-3"
-              >
-                Choose from our carefully designed accommodations for a comfortable and rejuvenating stay
-              </motion.p>
-            </motion.div>
-
-            <div className="space-y-8">
-              {accommodations.map((acc, index) => (
-                <motion.div
-                  key={acc.id}
-                  variants={scaleIn}
-                  whileHover={{ x: 8 }}
-                  className="group relative border-b border-[#d9cbbb] pb-8 last:border-b-0 last:pb-0 transition-all duration-300"
-                >
-                  <div className="flex flex-col md:flex-row gap-6">
-                    {/* Image - Left side on desktop */}
-                    <div className="md:w-1/3 lg:w-1/4 relative overflow-hidden rounded-xl flex-shrink-0">
-                      <div className="aspect-[4/3] w-full">
-                        <img loading="lazy" decoding="async"
-                          src={acc.image}
-                          alt={acc.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                      {/* Price tag - positioned absolutely on image */}
-                      <div className="absolute top-3 right-3 bg-[#b89a65] px-4 py-1.5 rounded-full">
-                        <span className="text-sm font-semibold text-white">{acc.price}</span>
-                      </div>
-                    </div>
-
-                    {/* Content - Right side */}
-                    <div className="flex-1 flex flex-col justify-center">
-                      <div className="flex items-start justify-between gap-4">
-                        <h3 className="font-serif font-semibold text-[#873f2b] text-xl md:text-2xl group-hover:text-[#b89a65] transition-colors duration-300">
-                          {acc.name}
-                        </h3>
-                        {/* Decorative number */}
-                        <span className="text-4xl font-serif text-[#d9cbbb] font-light opacity-50">
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                      </div>
-
-                      <p className="text-sm text-[#796c60] leading-relaxed mt-2 max-w-2xl">
-                        {acc.description}
-                      </p>
-
-                      {/* Features as inline chips */}
-                      <div className="flex flex-wrap gap-2 mt-4">
-                        {acc.features.map((feature, i) => (
-                          <span
-                            key={i}
-                            className="text-xs bg-transparent text-[#796c60] px-3 py-1 rounded-full border border-[#d9cbbb] hover:border-[#b89a65] hover:text-[#b89a65] transition-colors duration-300"
-                          >
-                            {feature}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Decorative accent line */}
-                      <div className="w-12 h-[2px] bg-[#b89a65]/50 group-hover:w-24 transition-all duration-500 mt-4" />
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
 
 
         </div>
         {/* Call to Action */}
-        <motion.div
+       
+      </div>
+
+      {/* Sections from the client website */}
+      <Village />
+      <SonaGramam />
+      <Cottage />
+      <Furniture />
+      <Programmes />
+ <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
@@ -710,8 +502,6 @@ export default function SonaGramaPage() {
             </motion.div>
           </div>
         </motion.div>
-      </div>
-
       <AnimatePresence>
         {isModalOpen && (
           <motion.div

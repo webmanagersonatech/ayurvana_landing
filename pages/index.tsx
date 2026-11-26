@@ -14,6 +14,7 @@ import Testimonials from "../components/Testimonials";
 import SpaExperience from "../components/SpaExperience";
 import FAQ from "../components/FAQ";
 import Blog from "../components/Blog";
+import { StatBand, Explore } from "../components/village";
 
 
 export default function Home() {
@@ -132,7 +133,8 @@ export default function Home() {
 
 
 
-       
+        <StatBand />
+        <Explore />
 
         <PartnersBand />
 
@@ -145,6 +147,7 @@ export default function Home() {
         <SpaExperience />
         <FAQ />
         <Blog />
+       
       </main>
 
 
