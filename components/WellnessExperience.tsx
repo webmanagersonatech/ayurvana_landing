@@ -1,57 +1,70 @@
-import { 
-  Leaf, 
-  Droplets, 
-  Wind, 
-  Flower2, 
-  Brain, 
-  Sparkles 
-} from 'lucide-react';
 
-const experiences = [
-  { icon: Leaf, title: "Authentic Ayurveda", desc: "Rooted in classical texts, every therapy follows traditional protocols refined over centuries." },
-  { icon: Droplets, title: "Panchakarma Therapy", desc: "The five-stage detoxification ritual that cleanses toxins and restores your body's innate balance." },
-  { icon: Wind, title: "Yoga & Pranayama", desc: "Breathing and movement practices integrated with treatments for a complete healing journey." },
-  { icon: Flower2, title: "Herbal Treatments", desc: "Freshly prepared medicated oils, ghee, and herbal concoctions unique to each prescription." },
-  { icon: Brain, title: "Stress Management", desc: "Proven techniques combining shirodhara, meditation, and lifestyle counselling for deep calm." },
-  { icon: Sparkles, title: "Rasayana Therapy", desc: "Anti-ageing and rejuvenation protocols that replenish vitality and promote cellular renewal." },
+
+const steps = [
+  {
+    label: "01 / Restore",
+    title: ["Begin with yourself."],
+    desc: "Physician-guided care, traditional therapies and a programme shaped around your needs.",
+  },
+  {
+    label: "02 / Reconnect",
+    title: ["Find your own pace."],
+    desc: "Movement, breath, nourishing food and quiet spaces make room for a more considered day.",
+  },
+  {
+    label: "03 / Belong",
+    title: ["Take a little of it home."],
+    desc: "Meet makers, learn a craft and carry a slower, more grounded rhythm beyond your stay.",
+  },
 ];
 
 export default function WellnessExperience() {
   return (
-    <section id="services" className="pb-20 relative overflow-hidden">
-      {/* Background texture */}
-   
-
+    <section
+      id="services"
+      className="relative overflow-hidden pb-16"
+    >
       <div className="relative max-w-7xl mx-auto px-6">
+        {/* Heading */}
         <div className="text-center mb-14">
-          <span className="text-gold-light text-xs font-semibold tracking-widest uppercase">Why Choose Us</span>
+          <span className="text-gold-light text-xs font-semibold tracking-widest uppercase">
+            A slower way to feel well
+          </span>
+
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white mt-3 leading-tight">
-            The Ultimate Ayurvedic Wellness
-            <br />
-            <span className="italic text-gold-light">Experience</span>
+            Wellness is
+           
+            <span className="italic text-gold-light"> not a room.</span>
           </h2>
-          <p className="text-white mt-4 max-w-xl mx-auto text-sm leading-relaxed">
-            We combine ancient knowledge with serene surroundings and personalised care to offer an experience unlike any other.
+
+          <p className="text-white/85 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+            It is a sequence of moments, places and practices that begin to feel
+            like a new rhythm.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3">
-          {experiences.map((exp) => {
-            const IconComponent = exp.icon;
-            return (
-              <div
-                key={exp.title}
-                className="p-6 border border-white/20 hover:border-white transition-all duration-300 group text-center"
-              >
-                <IconComponent 
-                  className="w-10 h-10 mx-auto mb-4 text-gold-light group-hover:text-white transition-colors duration-300" 
-                  strokeWidth={1.5}
-                />
-                <h3 className="font-serif text-lg text-white font-semibold mb-2">{exp.title}</h3>
-                <p className="text-white text-sm leading-relaxed">{exp.desc}</p>
-              </div>
-            );
-          })}
+        {/* Steps */}
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {steps.map((step) => (
+            <div
+              key={step.label}
+              className="group relative -mt-px md:mt-0 md:-ml-px p-8  border border-white/20 hover:border-white hover:z-10 transition-all duration-300"
+            >
+              <p className="text-gold-light group-hover:text-white transition-colors duration-300 text-xs font-semibold tracking-widest uppercase mb-5">
+                {step.label}
+              </p>
+
+              <h3 className="font-serif text-2xl lg:text-3xl text-white leading-tight mb-4">
+                {step.title[0]}
+                <br />
+                <span className="italic">{step.title[1]}</span>
+              </h3>
+
+              <p className="text-white/85 text-sm leading-relaxed">
+                {step.desc}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

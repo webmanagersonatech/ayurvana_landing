@@ -1,154 +1,69 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { motion } from "framer-motion";
 
 export default function About() {
-  const features = [
+  const pillars = [
     {
-      title: "Ayurvedic Expertise",
-      desc: "Experience time-honoured Ayurvedic wisdom guided by expert practitioners for holistic well-being.",
+      number: "01",
+      tag: "Heal",
+      title: "Heal",
+      desc: "Personalised Ayurvedic and naturopathic programmes guided by qualified practitioners, with care shaped around the individual.",
     },
     {
-      title: "Personalized Wellness Plans",
-      desc: "Tailored wellness programs designed to meet your unique needs, body, and lifestyle.",
+      number: "02",
+      tag: "Unwind",
+      title: "Unwind",
+      desc: "A natural pond, a 1.5 km track, an amphitheatre beneath the stars and food prepared with your programme in mind.",
     },
     {
-      title: "Natural Healing Remedies",
-      desc: "Embrace natural therapies and Ayurvedic remedies that support balance, vitality, and lasting wellness.",
+      number: "03",
+      tag: "Belong",
+      title: "Belong",
+      desc: "Sona Gramam brings guests closer to regional craft through pottery, weaving, painting, workshops and artisan encounters.",
     },
   ];
 
-  // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 }
-  };
-
-  const fadeInLeft = {
-    hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0 }
-  };
-
-  const fadeInRight = {
-    hidden: { opacity: 0, x: 50 },
-    visible: { opacity: 1, x: 0 }
+    visible: { opacity: 1, y: 0 },
   };
 
   const staggerContainer = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
   const imageVariants = {
     hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.6 }
-    }
-  };
-
-  // Auto-counting animation component
-  const CountUpAnimation = ({ targetValue, label, duration = 2000 }) => {
-    const [count, setCount] = useState(0);
-    const countRef = useRef(null);
-    const isInView = useInView(countRef, { once: true, margin: "-100px" });
-    const [hasAnimated, setHasAnimated] = useState(false);
-
-    useEffect(() => {
-      if (isInView && !hasAnimated) {
-        setHasAnimated(true);
-        const startTime = Date.now();
-        const startValue = 0;
-
-        const updateCount = () => {
-          const elapsedTime = Date.now() - startTime;
-          const progress = Math.min(elapsedTime / duration, 1);
-
-          // Easing function for smooth animation
-          const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-          const currentValue = startValue + (targetValue - startValue) * easeOutQuart;
-
-          setCount(currentValue);
-
-          if (progress < 1) {
-            requestAnimationFrame(updateCount);
-          } else {
-            setCount(targetValue);
-          }
-        };
-
-        requestAnimationFrame(updateCount);
-      }
-    }, [isInView, targetValue, duration, hasAnimated]);
-
-    // Format the count based on the value type
-    const formatCount = (value) => {
-      if (targetValue.toString().includes('%')) {
-        return `${Math.round(value)}%`;
-      } else if (targetValue.toString().includes('+')) {
-        return `${Math.round(value)}+`;
-      } else {
-        return Math.round(value);
-      }
-    };
-
-    // Extract numeric value for calculation
-    const numericValue = parseFloat(targetValue.toString().replace(/[^0-9.]/g, ''));
-    const displayValue = formatCount(count);
-
-    return (
-      <motion.div
-        ref={countRef}
-        className="px-2 text-center"
-        variants={fadeInUp}
-      >
-        <motion.p
-          className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-forest-light leading-none mb-1 sm:mb-2"
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
-        >
-          {displayValue}
-        </motion.p>
-        <p className="text-text-muted text-[10px] sm:text-xs tracking-wide uppercase">
-          {label}
-        </p>
-      </motion.div>
-    );
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
   };
 
   return (
-    <section id="about" className="relative py-12 bg-cream overflow-hidden">
-      {/* Background Decorative Images */}
-
-      {/* Bottom Left Corner Image */}
+    <section id="about" className="relative py-12 sm:py-16 bg-cream overflow-hidden">
+      {/* Bottom left decorative image */}
       <div className="absolute bottom-0 left-0 opacity-20 pointer-events-none">
         <img
           src="/images/image-1.png"
-          alt="Decorative background"
+          alt=""
+          aria-hidden="true"
           className="w-48 h-48 sm:w-64 sm:h-64 lg:w-96 lg:h-96 object-contain"
         />
       </div>
 
-      {/* Top Right Corner Leaf Structure */}
+      {/* Top right decorative leaf */}
       <div className="absolute top-0 right-0 opacity-30 pointer-events-none">
         <img
           src="/images/image-2.png"
-          alt="Decorative leaf"
+          alt=""
+          aria-hidden="true"
           className="w-48 h-48 sm:w-64 sm:h-64 lg:w-96 lg:h-96 object-contain"
         />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Images grid - Left side */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Images grid - left */}
           <motion.div
-            className="grid grid-cols-2 gap-4 order-1 lg:order-1"
+            className="grid grid-cols-2 gap-4"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -161,7 +76,9 @@ export default function About() {
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <img loading="lazy" decoding="async"
+                <img
+                  loading="lazy"
+                  decoding="async"
                   src="/images/a2.webp"
                   alt="Ayurvedic back massage"
                   className="w-full h-full object-cover"
@@ -173,7 +90,9 @@ export default function About() {
                 whileHover={{ scale: 1.03 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <img loading="lazy" decoding="async"
+                <img
+                  loading="lazy"
+                  decoding="async"
                   src="/images/a3.webp"
                   alt="Ayurvedic oils and herbal ingredients"
                   className="w-full h-full object-cover"
@@ -186,7 +105,9 @@ export default function About() {
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <img loading="lazy" decoding="async"
+              <img
+                loading="lazy"
+                decoding="async"
                 src="/images/a1.webp"
                 alt="Ayurvedic facial massage treatment"
                 className="w-full h-full object-cover"
@@ -194,16 +115,15 @@ export default function About() {
             </motion.div>
           </motion.div>
 
-          {/* Content - Right side */}
-          {/* Content - Right side */}
+          {/* Content - right */}
           <motion.div
-            className="order-2 lg:order-2 relative overflow-hidden"
+            className="relative overflow-hidden"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            {/* Background Image */}
+            {/* Background image */}
             <div
               className="absolute inset-0 pointer-events-none opacity-10 z-0"
               style={{
@@ -214,107 +134,64 @@ export default function About() {
               }}
             />
 
-            {/* Content */}
             <div className="relative z-10">
-              <motion.div
-                className="flex items-center gap-2 mb-5"
-                variants={fadeInUp}
-              >
+              {/* Eyebrow */}
+              <motion.div className="flex items-center gap-2 mb-5" variants={fadeInUp}>
                 <motion.svg
                   className="w-4 h-4 text-forest-light"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                   animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
                 >
                   <circle cx="12" cy="12" r="9" strokeWidth={1.8} />
-                  <path
-                    strokeLinecap="round"
-                    strokeWidth={1.8}
-                    d="M12 8v8M8 12h8"
-                  />
+                  <path strokeLinecap="round" strokeWidth={1.8} d="M12 8v8M8 12h8" />
                 </motion.svg>
-
                 <span className="text-forest-light text-xs font-semibold tracking-[0.2em] uppercase">
-                  About Us
+                  A different kind of retreat
                 </span>
               </motion.div>
 
+              {/* Heading */}
               <motion.h2
                 className="font-serif text-3xl sm:text-4xl md:text-5xl text-text-dark leading-[1.15] mb-6"
                 variants={fadeInUp}
               >
-                Natural 
-                
-                Healing and Wellness
+                Come for the treatment.
+                <br />
+                <span className="italic text-forest-light">Stay for the village.</span>
               </motion.h2>
 
-              <motion.div
-                className="space-y-8"
-                variants={staggerContainer}
-              >
-                {features.map((item, index) => (
+            
+
+              {/* Pillars */}
+              <motion.div className="space-y-6" variants={staggerContainer}>
+                {pillars.map((item) => (
                   <motion.div
-                    key={`${item.title}-${index}`}
+                    key={item.number}
                     variants={fadeInUp}
+                    className="flex items-start gap-4 pt-5 border-t border-forest-light/20"
                   >
-                    <motion.h3
-                      className="font-serif text-xl text-text-dark mb-3"
-                      whileHover={{ x: 5 }}
+                    <div className="shrink-0 w-12">
+                      <p className="font-serif text-2xl text-forest-light leading-none">
+                        {item.number}
+                      </p>
+                      <p className="text-[10px] tracking-[0.2em] uppercase text-text-muted mt-1.5">
+                        {item.tag}
+                      </p>
+                    </div>
+
+                    <motion.div
+                      whileHover={{ x: 4 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      {item.title}
-                    </motion.h3>
-
-                    <div className="flex items-start gap-4">
-                      <motion.span
-                        className="mt-0.5 w-6 h-6 rounded-full border border-forest-light flex items-center justify-center flex-shrink-0"
-                        whileHover={{
-                          scale: 1.2,
-                          backgroundColor: "rgba(163, 135, 106, 0.1)",
-                        }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        <motion.svg
-                          className="w-3 h-3 text-forest-light"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          initial={{ pathLength: 0 }}
-                          whileInView={{ pathLength: 1 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            duration: 0.5,
-                            delay: 0.2 + index * 0.2,
-                          }}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2.5}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </motion.svg>
-                      </motion.span>
-
-                      <motion.p
-                        className="text-text-muted text-sm leading-relaxed"
-                        whileHover={{ x: 3 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        {item.desc}
-                      </motion.p>
-                    </div>
+                      <h3 className="font-serif text-xl text-text-dark mb-1.5">{item.title}</h3>
+                      <p className="text-text-muted text-sm leading-relaxed">{item.desc}</p>
+                    </motion.div>
                   </motion.div>
                 ))}
               </motion.div>
-
-
             </div>
           </motion.div>
         </div>
