@@ -69,7 +69,7 @@ function Hero() {
   initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
   transition={{ duration: 1 }}
-  className="relative h-[450px] md:h-[480px] bg-warm-brown"
+  className="relative h-[450px] md:h-[480px] bg-[#35231d]"
 >
   <div className="relative max-w-7xl mx-auto px-6 h-full flex flex-col justify-center">
     <motion.div
