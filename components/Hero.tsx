@@ -304,7 +304,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Floating search banner */}
+{/* Floating search banner */}
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div
             className="shadow-2xl -mt-16 sm:-mt-20 md:-mt-16 lg:-mt-20 relative z-10 overflow-hidden bg-black"
@@ -321,10 +321,13 @@ export default function Hero() {
               style={{ backgroundImage: "url('/images/bg.webp')" }}
             />
 
+            {/* 3. Black overlay 65% (above the image) */}
+            <div className="absolute inset-0 z-[2] bg-black/65" />
+
             {/* Decorative accent line */}
             <div className="absolute top-0 left-0 right-0 h-1 z-[2] bg-gradient-to-r from-gold via-gold-light to-gold" />
 
-            {/* 3. Content (top) */}
+            {/* 4. Content (top) */}
             <div className="relative z-[3] px-4 sm:px-6 py-5 sm:py-6">
               {/* Header with icon */}
               <div className="flex items-center gap-3 mb-4">
