@@ -54,7 +54,7 @@ export default function Hero() {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleAnimationComplete = () => {
-    console.log('All letters have animated!');
+    console.log("All letters have animated!");
   };
 
   const badges = [
@@ -114,14 +114,13 @@ export default function Hero() {
 
   // Handle Book Now click
   const handleBookNow = () => {
-    // Gather all data from hero form
     const data: BookingPrefillData = {
       name: "Guest",
       gender: mapGenderToBooking(gender),
       guests: guests,
       roomType: roomType,
       treatment: treatment,
-      date: checkIn || new Date().toISOString().split('T')[0],
+      date: checkIn || new Date().toISOString().split("T")[0],
       time: "10:00 AM",
       email: "",
       phone: "",
@@ -130,13 +129,13 @@ export default function Hero() {
 
     setPrefillData(data);
     setIsModalOpen(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
   // Close modal
   const closeModal = () => {
     setIsModalOpen(false);
-    document.body.style.overflow = 'unset';
+    document.body.style.overflow = "unset";
   };
 
   // Handle click outside to close
@@ -148,22 +147,26 @@ export default function Hero() {
 
   // Handle escape key
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') {
+    if (e.key === "Escape") {
       closeModal();
     }
   };
 
   // Handle booking form submission
   const handleBookingSubmit = (filters: any) => {
-    console.log('Booking submitted:', filters);
+    console.log("Booking submitted:", filters);
     // Add your API call here
     closeModal();
   };
 
+  const selectClass =
+    "w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer";
+  const labelClass =
+    "flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/80 mb-1.5";
+
   return (
     <>
       <section className="relative">
-
         <div className="relative h-[480px] sm:h-[560px] md:h-[650px] lg:h-[750px] overflow-hidden">
           <motion.div
             className="absolute inset-0"
@@ -180,9 +183,8 @@ export default function Hero() {
               className="object-cover"
             />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/80 via-forest/60 to-transparent" />
+          <div className="absolute inset-0 bg-black/55" />
 
-          {/* Text content */}
           {/* Text content */}
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl mx-auto px-4 w-full">
@@ -293,9 +295,7 @@ export default function Hero() {
                     Book Your Stay
                   </button>
 
-                  <button
-                    className="border border-cream text-cream hover:bg-cream hover:text-forest font-medium uppercase tracking-[0.18em] text-[11px] sm:text-xs px-6 sm:px-8 py-3 transition-all duration-300 hover:-translate-y-0.5 inline-block cursor-pointer"
-                  >
+                  <button className="border border-cream text-cream hover:bg-cream hover:text-forest font-medium uppercase tracking-[0.18em] text-[11px] sm:text-xs px-6 sm:px-8 py-3 transition-all duration-300 hover:-translate-y-0.5 inline-block cursor-pointer">
                     Learn More
                   </button>
                 </div>
@@ -303,24 +303,29 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        {/* Floating search banner */}
+
         {/* Floating search banner */}
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div
-            className="shadow-2xl -mt-16 sm:-mt-20 md:-mt-16 lg:-mt-20 relative z-10 overflow-hidden bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/bg.webp')" }}
+            className="shadow-2xl -mt-16 sm:-mt-20 md:-mt-16 lg:-mt-20 relative z-10 overflow-hidden bg-black"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            {/* Dark overlay for text readability (change /50 to adjust) */}
-            <div className="absolute inset-0 bg-black/50" />
+            {/* 1. Black layer (bottom) */}
+            <div className="absolute inset-0 bg-black z-0" />
+
+            {/* 2. BG image (above the black layer) */}
+            <div
+              className="absolute inset-0 z-[1] bg-cover bg-center"
+              style={{ backgroundImage: "url('/images/bg.webp')" }}
+            />
 
             {/* Decorative accent line */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
+            <div className="absolute top-0 left-0 right-0 h-1 z-[2] bg-gradient-to-r from-gold via-gold-light to-gold" />
 
-            {/* Content */}
-            <div className="relative px-4 sm:px-6 py-5 sm:py-6">
+            {/* 3. Content (top) */}
+            <div className="relative z-[3] px-4 sm:px-6 py-5 sm:py-6">
               {/* Header with icon */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-gold/20 rounded-xl">
@@ -347,14 +352,14 @@ export default function Hero() {
                 >
                   {/* Gender */}
                   <div className="col-span-1">
-                    <label className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/80 mb-1.5">
+                    <label className={labelClass}>
                       <UserCircle className="w-3.5 h-3.5" />
                       Gender
                     </label>
                     <select
                       value={gender}
                       onChange={(e) => setGender(e.target.value)}
-                      className="w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer"
+                      className={selectClass}
                       style={{ color: "white" }}
                     >
                       {genderOptions.map((option) => (
@@ -367,14 +372,14 @@ export default function Hero() {
 
                   {/* Guests */}
                   <div className="col-span-1">
-                    <label className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/80 mb-1.5">
+                    <label className={labelClass}>
                       <Users className="w-3.5 h-3.5" />
                       Guests
                     </label>
                     <select
                       value={guests}
                       onChange={(e) => setGuests(Number(e.target.value))}
-                      className="w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer"
+                      className={selectClass}
                       style={{ color: "white" }}
                     >
                       {[1, 2, 3, 4, 5, 6].map((n) => (
@@ -387,14 +392,14 @@ export default function Hero() {
 
                   {/* Room Type */}
                   <div className="col-span-1">
-                    <label className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/80 mb-1.5">
+                    <label className={labelClass}>
                       <Grid3x3 className="w-3.5 h-3.5" />
                       Room Type
                     </label>
                     <select
                       value={roomType}
                       onChange={(e) => setRoomType(e.target.value)}
-                      className="w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer"
+                      className={selectClass}
                       style={{ color: "white" }}
                     >
                       {roomOptions.map((option) => (
@@ -407,14 +412,14 @@ export default function Hero() {
 
                   {/* Treatments */}
                   <div className="col-span-1">
-                    <label className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/80 mb-1.5">
+                    <label className={labelClass}>
                       <Sparkles className="w-3.5 h-3.5" />
                       Treatments
                     </label>
                     <select
                       value={treatment}
                       onChange={(e) => setTreatment(e.target.value)}
-                      className="w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer"
+                      className={selectClass}
                       style={{ color: "white" }}
                     >
                       {treatmentOptions.map((option) => (
@@ -439,6 +444,7 @@ export default function Hero() {
             </div>
           </motion.div>
         </div>
+
         <style jsx>{`
           .scrollbar-hide::-webkit-scrollbar {
             display: none;
@@ -450,7 +456,7 @@ export default function Hero() {
         `}</style>
       </section>
 
-      {/* Booking Modal - Opens with Smooth Animation */}
+      {/* Booking Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
@@ -473,7 +479,7 @@ export default function Hero() {
                 type: "spring",
                 damping: 25,
                 stiffness: 300,
-                duration: 0.4
+                duration: 0.4,
               }}
               className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto"
             >
