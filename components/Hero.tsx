@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import SplitText from "./Splittext";
+import Link from "next/link";
 import AyurvedicBookingForm from "./Booking";
 import {
   Leaf,
@@ -294,17 +295,19 @@ export default function Hero() {
                   >
                     Book Your Stay
                   </button>
-
-                  <button className="border border-cream text-cream hover:bg-cream hover:text-forest font-medium uppercase tracking-[0.18em] text-[11px] sm:text-xs px-6 sm:px-8 py-3 transition-all duration-300 hover:-translate-y-0.5 inline-block cursor-pointer">
+                  <Link
+                    href="/sonagramam"
+                    className="border border-cream text-cream hover:bg-cream hover:text-forest font-medium uppercase tracking-[0.18em] text-[11px] sm:text-xs px-6 sm:px-8 py-3 transition-all duration-300 hover:-translate-y-0.5 inline-block cursor-pointer"
+                  >
                     Learn More
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-{/* Floating search banner */}
+        {/* Floating search banner */}
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div
             className="shadow-2xl -mt-16 sm:-mt-20 md:-mt-16 lg:-mt-20 relative z-10 overflow-hidden bg-black"

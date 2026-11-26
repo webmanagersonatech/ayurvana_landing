@@ -89,17 +89,17 @@ export default function SpaExperience() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.6 }}
-      className="py-20 bg-cream"
+      className="py-20 bg-[#35231d]"
       id="gallery"
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
+        <div className="text-center  mb-14">
           <motion.span
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={titleVariants}
-            className="section-label"
+            className="section-label text-white"
           >
             Our Space
           </motion.span>
@@ -108,7 +108,8 @@ export default function SpaExperience() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={titleVariants}
-            className="section-title mt-3"
+            
+            className="section-title mt-3 text-white"
           >
             Our AyurVana Experience
           </motion.h2>
@@ -117,7 +118,7 @@ export default function SpaExperience() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={subtitleVariants}
-            className="text-text-muted mt-4 max-w-xl mx-auto text-sm"
+            className="text-text-muted mt-4 max-w-xl mx-auto text-sm leading-relaxed text-white/80"
           >
             Step inside Ayurvana — a world of calm, crafted with care.
           </motion.p>
