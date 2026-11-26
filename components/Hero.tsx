@@ -172,7 +172,7 @@ export default function Hero() {
             transition={{ duration: 1.4, ease: "easeOut" }}
           >
             <Image
-              src="/images/hero-1.jpeg"
+              src="public/images/hero-1.webp"
               alt="Ayurvedic oil massage treatment"
               fill
               priority
