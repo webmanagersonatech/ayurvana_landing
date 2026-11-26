@@ -42,7 +42,7 @@ export default function Hero() {
         transition={{ duration: 1.5, ease: "easeOut" }}
       >
         <img
-          src="/images/bgmain.png"
+          src="/images/bg-main-3.webp"
           alt="Ayurvedic massage treatment"
           className="w-full h-full object-cover"
         />
@@ -188,7 +188,7 @@ export default function Hero() {
             </div>
             <motion.button
               type="button"
-              className="btn-primary text-white px-7 py-2.5 rounded-full text-sm font-medium transition-colors duration-200 whitespace-nowrap flex items-center gap-2"
+              className="btn-primary whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -211,7 +211,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.1 }}
               >
                 {tag}
-                {i < tags.length - 1 && <span className="w-1 h-1 rounded-full bg-white/50" />}
+                {i < tags.length - 1 && <span className="w-1 h-1 rounded-full bg-cream-light/50" />}
               </motion.span>
             ))}
           </motion.div>

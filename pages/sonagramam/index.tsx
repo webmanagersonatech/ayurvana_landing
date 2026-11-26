@@ -65,7 +65,7 @@ const scaleIn = {
 
 function Breadcrumb({ currentPage, subPage }) {
   return (
-    <nav className="flex items-center gap-2 text-sm text-[#6E695D] py-4">
+    <nav className="flex items-center gap-2 text-sm text-[#796c60] py-4">
       <motion.div
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
@@ -89,7 +89,7 @@ function Breadcrumb({ currentPage, subPage }) {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-[#1B3324] font-medium"
+            className="text-[#873f2b] font-medium"
           >
             {subPage}
           </motion.span>
@@ -195,11 +195,11 @@ export default function SonaGramaPage() {
   };
 
   return (
-    <div className="bg-[#FBF7ED] min-h-screen">
+    <div className="bg-[#fbf8f1] min-h-screen">
       <Toaster position="top-right" />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-[#1B3324] to-[#2A4D36] overflow-hidden">
+      <section className="relative bg-gradient-to-r from-[#873f2b] to-[#743927] overflow-hidden">
         <motion.div
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -234,8 +234,8 @@ export default function SonaGramaPage() {
                 transition={{ delay: 0.4 }}
                 className="flex items-center gap-3 mb-4"
               >
-                <Leaf className="w-5 h-5 text-[#C49A3C]" />
-                <span className="text-xs font-semibold tracking-[0.2em] text-[#C49A3C] uppercase">
+                <Leaf className="w-5 h-5 text-[#b89a65]" />
+                <span className="text-xs font-semibold tracking-[0.2em] text-[#b89a65] uppercase">
                   Heritage Wellness Resort
                 </span>
               </motion.div>
@@ -247,7 +247,7 @@ export default function SonaGramaPage() {
                 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight"
               >
                 Welcome to{" "}
-                <span className="text-[#C49A3C]">SonaGrama</span>
+                <span className="text-[#b89a65]">SonaGrama</span>
               </motion.h1>
 
               <motion.p
@@ -263,7 +263,7 @@ export default function SonaGramaPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
-                className="text-[#C49A3C] text-sm sm:text-base mt-2 font-medium"
+                className="text-[#b89a65] text-sm sm:text-base mt-2 font-medium"
               >
                 Experience holistic healing through personalized treatments, yoga sessions, and natural therapies in a peaceful environment.
               </motion.p>
@@ -278,7 +278,7 @@ export default function SonaGramaPage() {
                   whileHover={{ scale: 1.02 }}
                   onClick={handleBookNow}
                   whileTap={{ scale: 0.98 }}
-                  className="px-6 py-3 bg-[#C49A3C] text-white  text-sm font-semibold hover:bg-[#B08A35] transition-all duration-300 shadow-lg"
+                  className="px-6 py-3 bg-[#b89a65] text-white  text-sm font-semibold hover:bg-[#9a7f4f] transition-all duration-300 shadow-lg"
                 >
                   Book Your Stay
                 </motion.button>
@@ -309,29 +309,29 @@ export default function SonaGramaPage() {
             >
               <div>
                 <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4">
-                  <Sprout className="w-5 h-5 text-[#C49A3C]" />
-                  <span className="text-sm font-semibold tracking-[0.15em] text-[#C49A3C] uppercase">
+                  <Sprout className="w-5 h-5 text-[#b89a65]" />
+                  <span className="text-sm font-semibold tracking-[0.15em] text-[#b89a65] uppercase">
                     About SonaGrama
                   </span>
                 </motion.div>
                 <motion.h2
                   variants={fadeInUp}
-                  className="font-serif text-3xl md:text-4xl text-[#1B3324] mb-4"
+                  className="font-serif text-3xl md:text-4xl text-[#873f2b] mb-4"
                 >
                   Where Tradition Meets{" "}
-                  <span className="text-[#C49A3C]">Tranquility</span>
+                  <span className="text-[#b89a65]">Tranquility</span>
                 </motion.h2>
-                <motion.p variants={fadeInUp} className="text-[#6E695D] leading-relaxed mb-4">
+                <motion.p variants={fadeInUp} className="text-[#796c60] leading-relaxed mb-4">
                   SonaGrama is more than just a resort - it's a sanctuary for holistic healing and self-discovery. Nestled in serene surroundings, our heritage wellness resort combines ancient Ayurvedic wisdom with modern therapeutic practices.
                 </motion.p>
-                <motion.p variants={fadeInUp} className="text-[#6E695D] leading-relaxed mb-6">
+                <motion.p variants={fadeInUp} className="text-[#796c60] leading-relaxed mb-6">
                   Experience the perfect blend of tradition and luxury at SonaGrama, where every treatment is personalized for your unique path to wellness. Our expert practitioners guide you through transformative healing journeys that restore balance and vitality.
                 </motion.p>
                 <motion.button
                   variants={fadeInUp}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="flex items-center gap-2 text-[#1B3324] font-semibold hover:text-[#C49A3C] transition-colors group"
+                  className="flex items-center gap-2 text-[#873f2b] font-semibold hover:text-[#b89a65] transition-colors group"
                 >
                   Learn More About Us
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -348,18 +348,18 @@ export default function SonaGramaPage() {
                     className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   {/* Dark gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1B3324]/80 via-[#1B3324]/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#873f2b]/80 via-[#873f2b]/30 to-transparent" />
 
                   {/* Decorative corner accent */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#C49A3C]/10 rounded-bl-full" />
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#b89a65]/10 rounded-bl-full" />
 
 
 
                   {/* Bottom content */}
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-[2px] bg-[#C49A3C]" />
-                      <span className="text-[#C49A3C] text-xs font-medium tracking-wider uppercase">Premium Retreat</span>
+                      <div className="w-10 h-[2px] bg-[#b89a65]" />
+                      <span className="text-[#b89a65] text-xs font-medium tracking-wider uppercase">Premium Retreat</span>
                     </div>
                     <h3 className="text-white font-serif text-2xl mb-2">Serenity by Nature</h3>
                     <p className="text-white/70 text-sm">Immersive wellness experience in 50+ acres of greenery</p>
@@ -367,17 +367,17 @@ export default function SonaGramaPage() {
                 </div>
 
                 {/* Floating info card */}
-                <div className="absolute -top-5 -right-8 bg-white rounded-2xl shadow-2xl p-4 border-l-4 border-[#C49A3C]">
+                <div className="absolute -top-5 -right-8 bg-cream-light rounded-2xl shadow-2xl p-4 border-l-4 border-[#b89a65]">
                   <div className="flex items-center gap-3">
                     <div className="relative">
-                      <div className="p-2 bg-[#1B3324] rounded-full">
-                        <TreePine className="w-5 h-5 text-[#C49A3C]" />
+                      <div className="p-2 bg-[#873f2b] rounded-full">
+                        <TreePine className="w-5 h-5 text-[#b89a65]" />
                       </div>
                       <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-white" />
                     </div>
                     <div>
-                      <p className="text-xs text-[#6E695D]">Property Size</p>
-                      <p className="text-sm font-bold text-[#1B3324]">50+ Acres of Serenity</p>
+                      <p className="text-xs text-[#796c60]">Property Size</p>
+                      <p className="text-sm font-bold text-[#873f2b]">50+ Acres of Serenity</p>
                     </div>
                   </div>
                 </div>
@@ -395,21 +395,21 @@ export default function SonaGramaPage() {
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <div className="flex items-center justify-center gap-3 mb-3">
-                <Gift className="w-5 h-5 text-[#C49A3C]" />
-                <span className="text-sm font-semibold tracking-[0.15em] text-[#C49A3C] uppercase">
+                <Gift className="w-5 h-5 text-[#b89a65]" />
+                <span className="text-sm font-semibold tracking-[0.15em] text-[#b89a65] uppercase">
                   Benefits
                 </span>
               </div>
               <motion.h2
                 variants={fadeInUp}
-                className="font-serif text-3xl md:text-4xl text-[#1B3324]"
+                className="font-serif text-3xl md:text-4xl text-[#873f2b]"
               >
                 Rejuvenate Your{" "}
-                <span className="text-[#C49A3C]">Body, Mind & Spirit</span>
+                <span className="text-[#b89a65]">Body, Mind & Spirit</span>
               </motion.h2>
               <motion.p
                 variants={fadeInUp}
-                className="text-[#6E695D] max-w-2xl mx-auto mt-3"
+                className="text-[#796c60] max-w-2xl mx-auto mt-3"
               >
                 Experience comprehensive wellness through our holistic approach
               </motion.p>
@@ -418,8 +418,8 @@ export default function SonaGramaPage() {
             <div className="space-y-12">
               {/* Physical Benefits */}
               <motion.div variants={fadeInUp}>
-                <h3 className="text-xl font-serif font-semibold text-[#1B3324] mb-6 flex items-center gap-2 border-b border-[#E8DDC4] pb-3">
-                  <Heart className="w-5 h-5 text-[#C49A3C]" />
+                <h3 className="text-xl font-serif font-semibold text-[#873f2b] mb-6 flex items-center gap-2 border-b border-[#d9cbbb] pb-3">
+                  <Heart className="w-5 h-5 text-[#b89a65]" />
                   Physical Benefits
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -431,17 +431,17 @@ export default function SonaGramaPage() {
                       className="group relative pl-6"
                     >
                       {/* Decorative line */}
-                      <div className="absolute left-0 top-0 w-[2px] h-full bg-[#C49A3C]/30 group-hover:bg-[#C49A3C] transition-colors duration-300" />
+                      <div className="absolute left-0 top-0 w-[2px] h-full bg-[#b89a65]/30 group-hover:bg-[#b89a65] transition-colors duration-300" />
 
                       <div className="flex items-start gap-4">
-                        <div className="p-2 bg-[#1B3324]/5 rounded-full flex-shrink-0 mt-1 group-hover:bg-[#1B3324]/10 transition-colors duration-300">
-                          <benefit.icon className="w-4 h-4 text-[#1B3324]" />
+                        <div className="p-2 bg-[#873f2b]/5 rounded-full flex-shrink-0 mt-1 group-hover:bg-[#873f2b]/10 transition-colors duration-300">
+                          <benefit.icon className="w-4 h-4 text-[#873f2b]" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-[#1B3324] text-sm group-hover:text-[#C49A3C] transition-colors duration-300">
+                          <h4 className="font-semibold text-[#873f2b] text-sm group-hover:text-[#b89a65] transition-colors duration-300">
                             {benefit.title}
                           </h4>
-                          <p className="text-xs text-[#6E695D] mt-1 leading-relaxed">{benefit.desc}</p>
+                          <p className="text-xs text-[#796c60] mt-1 leading-relaxed">{benefit.desc}</p>
                         </div>
                       </div>
                     </motion.div>
@@ -451,8 +451,8 @@ export default function SonaGramaPage() {
 
               {/* Mental Benefits */}
               <motion.div variants={fadeInUp}>
-                <h3 className="text-xl font-serif font-semibold text-[#1B3324] mb-6 flex items-center gap-2 border-b border-[#E8DDC4] pb-3">
-                  <Brain className="w-5 h-5 text-[#C49A3C]" />
+                <h3 className="text-xl font-serif font-semibold text-[#873f2b] mb-6 flex items-center gap-2 border-b border-[#d9cbbb] pb-3">
+                  <Brain className="w-5 h-5 text-[#b89a65]" />
                   Mental & Emotional Benefits
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -463,17 +463,17 @@ export default function SonaGramaPage() {
                       whileHover={{ x: 4 }}
                       className="group relative pl-6"
                     >
-                      <div className="absolute left-0 top-0 w-[2px] h-full bg-[#C49A3C]/30 group-hover:bg-[#C49A3C] transition-colors duration-300" />
+                      <div className="absolute left-0 top-0 w-[2px] h-full bg-[#b89a65]/30 group-hover:bg-[#b89a65] transition-colors duration-300" />
 
                       <div className="flex items-start gap-4">
-                        <div className="p-2 bg-[#1B3324]/5 rounded-full flex-shrink-0 mt-1 group-hover:bg-[#1B3324]/10 transition-colors duration-300">
-                          <benefit.icon className="w-4 h-4 text-[#1B3324]" />
+                        <div className="p-2 bg-[#873f2b]/5 rounded-full flex-shrink-0 mt-1 group-hover:bg-[#873f2b]/10 transition-colors duration-300">
+                          <benefit.icon className="w-4 h-4 text-[#873f2b]" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-[#1B3324] text-sm group-hover:text-[#C49A3C] transition-colors duration-300">
+                          <h4 className="font-semibold text-[#873f2b] text-sm group-hover:text-[#b89a65] transition-colors duration-300">
                             {benefit.title}
                           </h4>
-                          <p className="text-xs text-[#6E695D] mt-1 leading-relaxed">{benefit.desc}</p>
+                          <p className="text-xs text-[#796c60] mt-1 leading-relaxed">{benefit.desc}</p>
                         </div>
                       </div>
                     </motion.div>
@@ -483,8 +483,8 @@ export default function SonaGramaPage() {
 
               {/* Spiritual Benefits */}
               <motion.div variants={fadeInUp}>
-                <h3 className="text-xl font-serif font-semibold text-[#1B3324] mb-6 flex items-center gap-2 border-b border-[#E8DDC4] pb-3">
-                  <Heart className="w-5 h-5 text-[#C49A3C]" />
+                <h3 className="text-xl font-serif font-semibold text-[#873f2b] mb-6 flex items-center gap-2 border-b border-[#d9cbbb] pb-3">
+                  <Heart className="w-5 h-5 text-[#b89a65]" />
                   Spiritual Benefits
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -495,17 +495,17 @@ export default function SonaGramaPage() {
                       whileHover={{ x: 4 }}
                       className="group relative pl-6"
                     >
-                      <div className="absolute left-0 top-0 w-[2px] h-full bg-[#C49A3C]/30 group-hover:bg-[#C49A3C] transition-colors duration-300" />
+                      <div className="absolute left-0 top-0 w-[2px] h-full bg-[#b89a65]/30 group-hover:bg-[#b89a65] transition-colors duration-300" />
 
                       <div className="flex items-start gap-4">
-                        <div className="p-2 bg-[#1B3324]/5 rounded-full flex-shrink-0 mt-1 group-hover:bg-[#1B3324]/10 transition-colors duration-300">
-                          <benefit.icon className="w-4 h-4 text-[#1B3324]" />
+                        <div className="p-2 bg-[#873f2b]/5 rounded-full flex-shrink-0 mt-1 group-hover:bg-[#873f2b]/10 transition-colors duration-300">
+                          <benefit.icon className="w-4 h-4 text-[#873f2b]" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-[#1B3324] text-sm group-hover:text-[#C49A3C] transition-colors duration-300">
+                          <h4 className="font-semibold text-[#873f2b] text-sm group-hover:text-[#b89a65] transition-colors duration-300">
                             {benefit.title}
                           </h4>
-                          <p className="text-xs text-[#6E695D] mt-1 leading-relaxed">{benefit.desc}</p>
+                          <p className="text-xs text-[#796c60] mt-1 leading-relaxed">{benefit.desc}</p>
                         </div>
                       </div>
                     </motion.div>
@@ -527,21 +527,21 @@ export default function SonaGramaPage() {
           >
             <motion.div variants={fadeInUp} className="text-center mb-12">
               <div className="flex items-center justify-center gap-3 mb-3">
-                <Bed className="w-5 h-5 text-[#C49A3C]" />
-                <span className="text-sm font-semibold tracking-[0.15em] text-[#C49A3C] uppercase">
+                <Bed className="w-5 h-5 text-[#b89a65]" />
+                <span className="text-sm font-semibold tracking-[0.15em] text-[#b89a65] uppercase">
                   Accommodation
                 </span>
               </div>
               <motion.h2
                 variants={fadeInUp}
-                className="font-serif text-3xl md:text-4xl text-[#1B3324]"
+                className="font-serif text-3xl md:text-4xl text-[#873f2b]"
               >
                 Luxurious {" "}
-                <span className="text-[#C49A3C]">Stay</span> Options
+                <span className="text-[#b89a65]">Stay</span> Options
               </motion.h2>
               <motion.p
                 variants={fadeInUp}
-                className="text-[#6E695D] max-w-2xl mx-auto mt-3"
+                className="text-[#796c60] max-w-2xl mx-auto mt-3"
               >
                 Choose from our carefully designed accommodations for a comfortable and rejuvenating stay
               </motion.p>
@@ -553,7 +553,7 @@ export default function SonaGramaPage() {
                   key={acc.id}
                   variants={scaleIn}
                   whileHover={{ x: 8 }}
-                  className="group relative border-b border-[#E8DDC4] pb-8 last:border-b-0 last:pb-0 transition-all duration-300"
+                  className="group relative border-b border-[#d9cbbb] pb-8 last:border-b-0 last:pb-0 transition-all duration-300"
                 >
                   <div className="flex flex-col md:flex-row gap-6">
                     {/* Image - Left side on desktop */}
@@ -566,7 +566,7 @@ export default function SonaGramaPage() {
                         />
                       </div>
                       {/* Price tag - positioned absolutely on image */}
-                      <div className="absolute top-3 right-3 bg-[#C49A3C] px-4 py-1.5 rounded-full">
+                      <div className="absolute top-3 right-3 bg-[#b89a65] px-4 py-1.5 rounded-full">
                         <span className="text-sm font-semibold text-white">{acc.price}</span>
                       </div>
                     </div>
@@ -574,16 +574,16 @@ export default function SonaGramaPage() {
                     {/* Content - Right side */}
                     <div className="flex-1 flex flex-col justify-center">
                       <div className="flex items-start justify-between gap-4">
-                        <h3 className="font-serif font-semibold text-[#1B3324] text-xl md:text-2xl group-hover:text-[#C49A3C] transition-colors duration-300">
+                        <h3 className="font-serif font-semibold text-[#873f2b] text-xl md:text-2xl group-hover:text-[#b89a65] transition-colors duration-300">
                           {acc.name}
                         </h3>
                         {/* Decorative number */}
-                        <span className="text-4xl font-serif text-[#E8DDC4] font-light opacity-50">
+                        <span className="text-4xl font-serif text-[#d9cbbb] font-light opacity-50">
                           {String(index + 1).padStart(2, '0')}
                         </span>
                       </div>
 
-                      <p className="text-sm text-[#6E695D] leading-relaxed mt-2 max-w-2xl">
+                      <p className="text-sm text-[#796c60] leading-relaxed mt-2 max-w-2xl">
                         {acc.description}
                       </p>
 
@@ -592,7 +592,7 @@ export default function SonaGramaPage() {
                         {acc.features.map((feature, i) => (
                           <span
                             key={i}
-                            className="text-xs bg-transparent text-[#6E695D] px-3 py-1 rounded-full border border-[#E8DDC4] hover:border-[#C49A3C] hover:text-[#C49A3C] transition-colors duration-300"
+                            className="text-xs bg-transparent text-[#796c60] px-3 py-1 rounded-full border border-[#d9cbbb] hover:border-[#b89a65] hover:text-[#b89a65] transition-colors duration-300"
                           >
                             {feature}
                           </span>
@@ -600,7 +600,7 @@ export default function SonaGramaPage() {
                       </div>
 
                       {/* Decorative accent line */}
-                      <div className="w-12 h-[2px] bg-[#C49A3C]/50 group-hover:w-24 transition-all duration-500 mt-4" />
+                      <div className="w-12 h-[2px] bg-[#b89a65]/50 group-hover:w-24 transition-all duration-500 mt-4" />
                     </div>
                   </div>
                 </motion.div>
@@ -636,10 +636,10 @@ export default function SonaGramaPage() {
           </div>
 
           {/* Decorative top border */}
-          <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#C49A3C] to-transparent z-10" />
+          <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#b89a65] to-transparent z-10" />
 
           {/* Decorative bottom border */}
-          <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#C49A3C]/50 to-transparent z-10" />
+          <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#b89a65]/50 to-transparent z-10" />
 
           <div className="relative z-10 max-w-4xl mx-auto px-4 py-20">
             <motion.div
@@ -648,16 +648,16 @@ export default function SonaGramaPage() {
             >
               {/* Decorative element */}
               <div className="flex items-center justify-center gap-4 mb-6">
-                <div className="w-12 h-[1px] bg-[#C49A3C]" />
-                <Leaf className="w-8 h-8 text-[#C49A3C] animate-pulse" />
-                <div className="w-12 h-[1px] bg-[#C49A3C]" />
+                <div className="w-12 h-[1px] bg-[#b89a65]" />
+                <Leaf className="w-8 h-8 text-[#b89a65] animate-pulse" />
+                <div className="w-12 h-[1px] bg-[#b89a65]" />
               </div>
 
               <h2 className="font-serif text-3xl md:text-5xl text-white mb-4 leading-tight">
                 Ready to Rejuvenate Your{" "}
-                <span className="text-[#C49A3C] relative inline-block">
+                <span className="text-[#b89a65] relative inline-block">
                   Body, Mind, and Spirit?
-                  <span className="absolute -bottom-2 left-0 right-0 h-[2px] bg-[#C49A3C]/50" />
+                  <span className="absolute -bottom-2 left-0 right-0 h-[2px] bg-[#b89a65]/50" />
                 </span>
               </h2>
 
@@ -672,7 +672,7 @@ export default function SonaGramaPage() {
                   whileHover={{ scale: 1.05, y: -2 }}
                   onClick={handleBookNow}
                   whileTap={{ scale: 0.95 }}
-                  className="group relative px-10 py-3.5 bg-[#C49A3C] text-white  font-semibold overflow-hidden shadow-2xl shadow-[#C49A3C]/30"
+                  className="group relative px-10 py-3.5 bg-[#b89a65] text-white  font-semibold overflow-hidden shadow-2xl shadow-[#b89a65]/30"
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     Book Your Wellness Journey
@@ -690,7 +690,7 @@ export default function SonaGramaPage() {
                     className="group relative px-10 py-3.5 text-white rounded-full font-semibold overflow-hidden"
                   >
                     <span className="relative z-10">Contact Us</span>
-                    <span className="absolute bottom-2 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-[#C49A3C] group-hover:w-full transition-all duration-300" />
+                    <span className="absolute bottom-2 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-[#b89a65] group-hover:w-full transition-all duration-300" />
                   </motion.button>
                 </Link>
               </div>
@@ -700,7 +700,7 @@ export default function SonaGramaPage() {
                 {[...Array(5)].map((_, i) => (
                   <div
                     key={i}
-                    className="w-1.5 h-1.5 rounded-full bg-[#C49A3C]/30"
+                    className="w-1.5 h-1.5 rounded-full bg-[#b89a65]/30"
                     style={{
                       opacity: 0.3 + (i * 0.15),
                     }}
@@ -744,7 +744,7 @@ export default function SonaGramaPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
                 onClick={closeModal}
-                className="absolute top-4 right-4 z-10 p-2 bg-white/90 hover:bg-white rounded-full shadow-lg transition-colors"
+                className="absolute top-4 right-4 z-10 p-2 bg-cream-light/90 hover:bg-cream-light rounded-full shadow-lg transition-colors"
                 aria-label="Close booking form"
               >
                 <X className="w-5 h-5 text-forest-dark" />

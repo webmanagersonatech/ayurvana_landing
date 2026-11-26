@@ -19,16 +19,16 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-forest text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-forest-light transition-all duration-300 inline-flex items-center gap-2;
+    @apply bg-forest text-cream-light border border-forest px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.18em] hover:bg-forest-dark hover:border-forest-dark hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center justify-center gap-3;
   }
   .btn-outline {
-    @apply border border-forest text-forest px-6 py-3 rounded-full text-sm font-medium hover:bg-forest hover:text-white transition-all duration-300 inline-flex items-center gap-2;
+    @apply border border-forest text-forest px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.18em] hover:bg-forest hover:text-cream-light hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center justify-center gap-3;
   }
   .btn-gold {
-    @apply bg-gold text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gold-light transition-all duration-300 inline-flex items-center gap-2;
+    @apply bg-gold text-cream-light border border-gold px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.18em] hover:bg-gold-dark hover:border-gold-dark hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center justify-center gap-3;
   }
   .section-label {
-    @apply text-sage text-xs font-semibold tracking-widest uppercase;
+    @apply text-forest-light text-xs font-semibold tracking-widest uppercase;
   }
   .section-title {
     @apply font-serif text-3xl md:text-4xl lg:text-5xl text-text-dark leading-tight;
@@ -43,10 +43,10 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F5F0E8;
+  background: #F5EEE2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #7A9E5B;
+  background: #A85B42;
   border-radius: 3px;
 }
 

@@ -53,7 +53,7 @@ const scaleIn = {
 
 function Breadcrumb({ currentPage, subPage }) {
     return (
-        <nav className="flex items-center gap-2 text-sm text-[#6E695D] py-4">
+        <nav className="flex items-center gap-2 text-sm text-[#796c60] py-4">
             <motion.div
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -77,7 +77,7 @@ function Breadcrumb({ currentPage, subPage }) {
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-[#1B3324] font-medium"
+                        className="text-[#873f2b] font-medium"
                     >
                         {subPage}
                     </motion.span>
@@ -288,15 +288,15 @@ function TeamMemberCard({ member, index }) {
             whileHover={{ y: -8 }}
             className="group h-full "
         >
-            <div className="relative flex h-full flex-col rounded-2xl border border-[#E8DDC4] bg-white shadow-lg transition-all duration-300 hover:shadow-2xl">
+            <div className="relative flex h-full flex-col rounded-2xl border border-[#d9cbbb] bg-cream-light shadow-lg transition-all duration-300 hover:shadow-2xl">
 
                 {/* Header */}
-                <div className="relative h-32 rounded-t-2xl overflow-hidden bg-gradient-to-r from-[#1B3324] to-[#2A4D36]">
+                <div className="relative h-32 rounded-t-2xl overflow-hidden bg-gradient-to-r from-[#873f2b] to-[#743927]">
                     <div
                         className="absolute inset-0 opacity-10"
                         style={{
                             backgroundImage:
-                                "radial-gradient(circle,#C49A3C 1px,transparent 1px)",
+                                "radial-gradient(circle,#b89a65 1px,transparent 1px)",
                             backgroundSize: "20px 20px",
                         }}
                     />
@@ -304,7 +304,7 @@ function TeamMemberCard({ member, index }) {
 
                 {/* Floating Image */}
                 <div className="absolute left-1/2 top-6 -translate-x-1/2 z-20">
-                    <div className="bg-white p-1.5 shadow-xl ring-2 ring-[#C49A3C] transition-transform duration-300 group-hover:scale-105">
+                    <div className="bg-cream-light p-1.5 shadow-xl ring-2 ring-[#b89a65] transition-transform duration-300 group-hover:scale-105">
                         <img loading="lazy" decoding="async"
                             src={member.image}
                             alt={member.name}
@@ -317,19 +317,19 @@ function TeamMemberCard({ member, index }) {
                 <div className="flex flex-1 flex-col px-6 pt-28 pb-6">
 
                     {/* Name */}
-                    <h3 className="text-center text-2xl font-serif font-semibold text-[#2E2A22] leading-tight min-h-[64px] flex items-center justify-center">
+                    <h3 className="text-center text-2xl font-serif font-semibold text-[#2c211c] leading-tight min-h-[64px] flex items-center justify-center">
                         {member.name}
                     </h3>
 
                     {/* Role */}
-                    <p className="mt-2 text-center text-xs font-semibold uppercase tracking-[0.25em] text-[#C49A3C] min-h-[32px] flex items-center justify-center">
+                    <p className="mt-2 text-center text-xs font-semibold uppercase tracking-[0.25em] text-[#b89a65] min-h-[32px] flex items-center justify-center">
                         {member.role}
                     </p>
 
                     {/* Badge */}
                     <div className="mt-4 h-8 flex items-center justify-center">
                         {member.badge && (
-                            <span className="rounded-full border border-[#C49A3C]/30 bg-[#C49A3C]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-[#C49A3C]">
+                            <span className="rounded-full border border-[#b89a65]/30 bg-[#b89a65]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-[#b89a65]">
                                 {member.badge}
                             </span>
                         )}
@@ -337,32 +337,32 @@ function TeamMemberCard({ member, index }) {
 
                     {/* Specialty */}
                     <div className="mt-2 min-h-[46px] text-center text-sm leading-6">
-                        <span className="font-semibold text-[#6E695D]">
+                        <span className="font-semibold text-[#796c60]">
                             Specialty:
                         </span>{" "}
-                        <span className="text-[#2E2A22]">
+                        <span className="text-[#2c211c]">
                             {member.specialty}
                         </span>
                     </div>
 
                     {/* Experience & Rating */}
-                    <div className="mt-2 flex items-center justify-center gap-8 border-y border-[#F3E8D3] py-4 text-sm">
+                    <div className="mt-2 flex items-center justify-center gap-8 border-y border-[#f1e6d7] py-4 text-sm">
                         <div className="flex items-center gap-2">
-                            <Clock className="h-4 w-4 text-[#C49A3C]" />
+                            <Clock className="h-4 w-4 text-[#b89a65]" />
                             <span>{member.experience}</span>
                         </div>
 
                         <div className="flex items-center gap-2">
-                            <Star className="h-4 w-4 fill-[#C49A3C] text-[#C49A3C]" />
+                            <Star className="h-4 w-4 fill-[#b89a65] text-[#b89a65]" />
                             <span>{member.rating}</span>
-                            <span className="text-[#6E695D]">
+                            <span className="text-[#796c60]">
                                 ({member.reviews})
                             </span>
                         </div>
                     </div>
 
                     {/* Button */}
-                    {/* <button className="mt-auto w-full rounded-full border border-[#C49A3C] py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#C49A3C] transition-all duration-300 hover:bg-[#C49A3C] hover:text-white">
+                    {/* <button className="mt-auto w-full rounded-full border border-[#b89a65] py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#b89a65] transition-all duration-300 hover:bg-[#b89a65] hover:text-white">
                         View Profile
                     </button> */}
 
@@ -432,11 +432,11 @@ export default function TeamsPage() {
     }, [selectedSpecialty, searchQuery, sortBy]);
 
     return (
-        <div className="bg-[#FBF7ED] min-h-screen">
+        <div className="bg-[#fbf8f1] min-h-screen">
             <Toaster />
 
        {/* Hero Section - Team */}
-<section className="relative bg-[#1B3324] overflow-hidden">
+<section className="relative bg-[#873f2b] overflow-hidden">
   <motion.div
     initial={{ opacity: 0, scale: 1.05 }}
     animate={{ opacity: 1, scale: 1 }}
@@ -461,7 +461,7 @@ export default function TeamsPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] text-[#C49A3C] uppercase"
+          className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] text-[#b89a65] uppercase"
         >
           Our Team
         </motion.span>
@@ -473,7 +473,7 @@ export default function TeamsPage() {
           className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mt-2 sm:mt-3 leading-tight"
         >
           Meet Our{" "}
-          <span className="italic text-[#C49A3C]">Ayurvedic</span> Experts
+          <span className="italic text-[#b89a65]">Ayurvedic</span> Experts
         </motion.h1>
 
         <motion.p
@@ -502,7 +502,7 @@ export default function TeamsPage() {
                     variants={fadeIn}
                     className="mb-6"
                 >
-                    <p className="text-[#6E695D] text-sm">
+                    <p className="text-[#796c60] text-sm">
                         Showing {filteredMembers.length} of {teamMembers.length} team members
                     </p>
                 </motion.div>
@@ -529,13 +529,13 @@ export default function TeamsPage() {
                         variants={fadeInUp}
                         className="text-center py-16"
                     >
-                        <div className="w-20 h-20 bg-[#EDE7D9] rounded-full flex items-center justify-center mx-auto mb-4">
-                            <Search className="w-10 h-10 text-[#6E695D]" />
+                        <div className="w-20 h-20 bg-[#ede3d4] rounded-full flex items-center justify-center mx-auto mb-4">
+                            <Search className="w-10 h-10 text-[#796c60]" />
                         </div>
-                        <h3 className="font-serif text-2xl text-[#2E2A22] mb-2">
+                        <h3 className="font-serif text-2xl text-[#2c211c] mb-2">
                             No team members found
                         </h3>
-                        <p className="text-[#6E695D]">
+                        <p className="text-[#796c60]">
                             Try adjusting your search or filter criteria
                         </p>
                     </motion.div>

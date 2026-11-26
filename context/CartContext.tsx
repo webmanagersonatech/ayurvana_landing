@@ -43,7 +43,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
             duration: 3000,
             position: "bottom-right",
             style: {
-              background: "#1B3324",
+              background: "#873f2b",
               color: "#fff",
               borderRadius: "10px",
               padding: "16px",
@@ -66,7 +66,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           duration: 3000,
           position: "bottom-right",
           style: {
-            background: "#1B3324",
+            background: "#873f2b",
             color: "#fff",
             borderRadius: "10px",
             padding: "16px",
@@ -122,7 +122,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       duration: 2000,
       position: "bottom-right",
       style: {
-        background: "#6E695D",
+        background: "#796c60",
         color: "#fff",
         borderRadius: "10px",
         padding: "16px",

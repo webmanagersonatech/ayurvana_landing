@@ -163,7 +163,7 @@ export default function Hero() {
   return (
     <>
       <section className="relative">
-        {/* Hero Video Section */}
+
         <div className="relative h-[480px] sm:h-[560px] md:h-[650px] lg:h-[750px] overflow-hidden">
           <motion.div
             className="absolute inset-0"
@@ -171,36 +171,42 @@ export default function Hero() {
             animate={{ scale: 1 }}
             transition={{ duration: 1.4, ease: "easeOut" }}
           >
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{ minHeight: '100%', minWidth: '100%' }}
-            >
-              <source src="/images/viedo.webm" type="video/webm" />
-              {/* Fallback image if video doesn't load */}
-              <Image
-                src="/images/ayurvana.png"
-                alt="Ayurvedic oil massage treatment"
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover"
-              />
-            </video>
+            <Image
+              src="/images/hero-1.jpeg"
+              alt="Ayurvedic oil massage treatment"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/80 via-forest/60 to-transparent" />
 
           {/* Text content */}
+          {/* Text content */}
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl mx-auto px-4 w-full">
               <div className="max-w-6xl flex flex-col">
-                {/* Welcome Text */}
+                {/* Eyebrow */}
                 <SplitText
-                  text="Welcome to Sona Health & Wellness"
+                  text="A Sona Star Initiative · Salem, Tamil Nadu"
                   className="text-gold-light text-[10px] sm:text-xs font-semibold tracking-widest uppercase mb-3 sm:mb-4 overflow-visible"
+                  delay={50}
+                  duration={1.25}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                  textAlign="left"
+                  onLetterAnimationComplete={handleAnimationComplete}
+                />
+
+                {/* Brand name */}
+                <SplitText
+                  text="Ayurvana"
+                  className="font-serif italic text-gold-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-none mb-3 sm:mb-5 overflow-visible"
                   delay={50}
                   duration={1.25}
                   ease="power3.out"
@@ -215,8 +221,8 @@ export default function Hero() {
 
                 {/* Heading - Line 1 */}
                 <SplitText
-                  text="Experience Holistic"
-                  className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white leading-tight overflow-visible"
+                  text="A village for the body,"
+                  className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white leading-tight overflow-visible"
                   delay={50}
                   duration={1.25}
                   ease="power3.out"
@@ -229,11 +235,11 @@ export default function Hero() {
                   onLetterAnimationComplete={handleAnimationComplete}
                 />
 
-                {/* Heading - Line 2: "Healing" in gold */}
+                {/* Heading - Line 2 */}
                 <div className="flex flex-wrap mt-1 items-center gap-1 sm:gap-2 overflow-visible">
                   <SplitText
-                    text="Healing"
-                    className="italic text-gold-light font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl overflow-visible"
+                    text="the mind"
+                    className="italic text-gold-light font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl overflow-visible"
                     delay={50}
                     duration={1.25}
                     ease="power3.out"
@@ -247,8 +253,8 @@ export default function Hero() {
                   />
 
                   <SplitText
-                    text="and Comfortable Stay."
-                    className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white leading-tight overflow-visible"
+                    text="and the hands."
+                    className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white leading-tight overflow-visible"
                     delay={50}
                     duration={1.25}
                     ease="power3.out"
@@ -262,9 +268,9 @@ export default function Hero() {
                   />
                 </div>
 
-                {/* Description Paragraph */}
+                {/* Description */}
                 <SplitText
-                  text="Experience authentic Ayurveda treatments and peaceful stay surrounded by nature."
+                  text="Where physician-led care, restorative rituals and living craft traditions come together."
                   className="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed mt-4 sm:mt-6 max-w-lg overflow-visible"
                   delay={50}
                   duration={1.25}
@@ -280,17 +286,15 @@ export default function Hero() {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap gap-4 mt-6 sm:mt-8">
-                  {/* Primary CTA - Book Now */}
                   <button
                     onClick={handleBookNow}
-                    className="bg-gold-light hover:bg-gold-dark text-white font-semibold px-6 sm:px-8 py-1.5 sm:py-2  transition-all duration-300 hover:scale-105 hover:shadow-lg inline-block cursor-pointer text-sm sm:text-base"
+                    className="bg-cream text-forest hover:bg-white font-medium uppercase tracking-[0.18em] text-[11px] sm:text-xs px-6 sm:px-8 py-3 transition-all duration-300 hover:-translate-y-0.5 inline-block cursor-pointer"
                   >
                     Book Your Stay
                   </button>
 
-                  {/* Secondary CTA */}
                   <button
-                    className="border-2 border-gold-light text-gold-light hover:bg-gold-light hover:text-white font-semibold px-6 sm:px-8 py-1.5 sm:py-2  transition-all duration-300 hover:scale-105 inline-block cursor-pointer text-sm sm:text-base"
+                    className="border border-cream text-cream hover:bg-cream hover:text-forest font-medium uppercase tracking-[0.18em] text-[11px] sm:text-xs px-6 sm:px-8 py-3 transition-all duration-300 hover:-translate-y-0.5 inline-block cursor-pointer"
                   >
                     Learn More
                   </button>
@@ -303,19 +307,17 @@ export default function Hero() {
         {/* Floating search banner */}
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div
-            className="bg-gradient-to-r from-forest-dark/95 to-forest/95 backdrop-blur-md shadow-2xl -mt-16 sm:-mt-20 md:-mt-16 lg:-mt-20 relative z-10 overflow-hidden"
+            className="shadow-2xl -mt-16 sm:-mt-20 md:-mt-16 lg:-mt-20 relative z-10 overflow-hidden bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/bg.webp')" }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
+            {/* Dark overlay for text readability (change /50 to adjust) */}
+            <div className="absolute inset-0 bg-black/50" />
+
             {/* Decorative accent line */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-gold via-gold-light to-gold" />
-
-            {/* Subtle pattern overlay */}
-            <div className="absolute inset-0 opacity-5" style={{
-              backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 1px)`,
-              backgroundSize: '20px 20px'
-            }} />
 
             {/* Content */}
             <div className="relative px-4 sm:px-6 py-5 sm:py-6">
@@ -353,10 +355,10 @@ export default function Hero() {
                       value={gender}
                       onChange={(e) => setGender(e.target.value)}
                       className="w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer"
-                      style={{ color: 'white' }}
+                      style={{ color: "white" }}
                     >
                       {genderOptions.map((option) => (
-                        <option key={option.value} value={option.value} className="text-gray-900">
+                        <option key={option.value} value={option.value} className="text-text-dark">
                           {option.label}
                         </option>
                       ))}
@@ -373,10 +375,10 @@ export default function Hero() {
                       value={guests}
                       onChange={(e) => setGuests(Number(e.target.value))}
                       className="w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer"
-                      style={{ color: 'white' }}
+                      style={{ color: "white" }}
                     >
                       {[1, 2, 3, 4, 5, 6].map((n) => (
-                        <option key={n} value={n} className="text-gray-900">
+                        <option key={n} value={n} className="text-text-dark">
                           {n} Guest{n > 1 ? "s" : ""}
                         </option>
                       ))}
@@ -393,10 +395,10 @@ export default function Hero() {
                       value={roomType}
                       onChange={(e) => setRoomType(e.target.value)}
                       className="w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer"
-                      style={{ color: 'white' }}
+                      style={{ color: "white" }}
                     >
                       {roomOptions.map((option) => (
-                        <option key={option.value} value={option.value} className="text-gray-900">
+                        <option key={option.value} value={option.value} className="text-text-dark">
                           {option.label}
                         </option>
                       ))}
@@ -413,10 +415,10 @@ export default function Hero() {
                       value={treatment}
                       onChange={(e) => setTreatment(e.target.value)}
                       className="w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer"
-                      style={{ color: 'white' }}
+                      style={{ color: "white" }}
                     >
                       {treatmentOptions.map((option) => (
-                        <option key={option.value} value={option.value} className="text-gray-900">
+                        <option key={option.value} value={option.value} className="text-text-dark">
                           {option.label}
                         </option>
                       ))}
@@ -427,7 +429,7 @@ export default function Hero() {
                   <button
                     type="button"
                     onClick={handleBookNow}
-                    className="col-span-2 lg:col-span-1 flex items-center justify-center gap-2 bg-gradient-to-r from-gold to-gold-light hover:from-gold-light hover:to-gold text-forest-dark px-8 py-2.5 text-sm font-semibold transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap w-full transform hover:scale-105 active:scale-95"
+                    className="group col-span-2 lg:col-span-1 flex items-center justify-center gap-2 border border-cream-light text-cream-light uppercase tracking-[0.15em] px-8 py-2.5 text-sm font-semibold transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap w-full transform hover:scale-105 active:scale-95"
                   >
                     <span>Book Now</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -481,7 +483,7 @@ export default function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
                 onClick={closeModal}
-                className="absolute top-4 right-4 z-10 p-2 bg-white/90 hover:bg-white rounded-full shadow-lg transition-colors"
+                className="absolute top-4 right-4 z-10 p-2 bg-cream-light/90 hover:bg-cream-light rounded-full shadow-lg transition-colors"
                 aria-label="Close booking form"
               >
                 <X className="w-5 h-5 text-forest-dark" />

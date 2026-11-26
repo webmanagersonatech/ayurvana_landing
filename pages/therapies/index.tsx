@@ -58,7 +58,7 @@ export default function TherapiesIndex() {
               className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeCategory === cat
                   ? "bg-forest text-white"
-                  : "bg-white text-text-muted hover:bg-forest/10"
+                  : "bg-cream-light text-text-muted hover:bg-forest/10"
               }`}
             >
               {cat}
@@ -78,7 +78,7 @@ export default function TherapiesIndex() {
               <Link
                 key={therapy.slug}
                 href={`/therapies/${therapy.slug}`}
-                className="bg-white rounded-2xl overflow-hidden card-hover group block"
+                className="bg-cream-light rounded-2xl overflow-hidden card-hover group block"
               >
                 <div className="h-48 overflow-hidden relative">
                   <img
@@ -88,12 +88,12 @@ export default function TherapiesIndex() {
                     alt={therapy.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <span className="absolute top-3 left-3 bg-white/90 text-forest text-xs font-semibold px-3 py-1 rounded-full">
+                  <span className="absolute top-3 left-3 bg-cream-light/90 text-forest text-xs font-semibold px-3 py-1 rounded-full">
                     {therapy.tag}
                   </span>
                 </div>
                 <div className="p-6">
-                  <span className="text-sage text-xs font-semibold uppercase tracking-wide">
+                  <span className="text-forest-light text-xs font-semibold uppercase tracking-wide">
                     {therapy.category}
                   </span>
                   <h2 className="font-serif text-lg font-semibold text-text-dark mt-2 mb-2 leading-snug group-hover:text-forest transition-colors">

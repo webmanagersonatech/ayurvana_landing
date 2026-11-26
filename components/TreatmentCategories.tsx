@@ -75,7 +75,7 @@ const categories: Category[] = [
 
 export default function TreatmentCategories() {
   return (
-    <section id="treatments" className="py-20 relative overflow-hidden bg-white">
+    <section id="treatments" className="py-20 relative overflow-hidden bg-cream-light">
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
           <span className="section-label">What We Treat</span>

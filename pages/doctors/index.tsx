@@ -69,7 +69,7 @@ const slideInLeft = {
 
 function Breadcrumb({ currentPage, subPage }) {
   return (
-    <nav className="flex items-center gap-2 text-sm text-[#6E695D] py-4">
+    <nav className="flex items-center gap-2 text-sm text-[#796c60] py-4">
       <motion.div
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
@@ -93,7 +93,7 @@ function Breadcrumb({ currentPage, subPage }) {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-[#1B3324] font-medium"
+            className="text-[#873f2b] font-medium"
           >
             {subPage}
           </motion.span>
@@ -267,34 +267,34 @@ function DoctorCard({ doctor, index }) {
       whileHover={{ y: -8 }}
       className="group h-full"
     >
-      <div className="relative flex h-full flex-col rounded-2xl border border-[#E8DDC4] bg-white shadow-lg transition-all duration-300 hover:shadow-2xl">
+      <div className="relative flex h-full flex-col rounded-2xl border border-[#d9cbbb] bg-cream-light shadow-lg transition-all duration-300 hover:shadow-2xl">
 
         {/* Header with Medical Theme */}
-        <div className="relative h-32 rounded-t-2xl overflow-hidden bg-gradient-to-r from-[#1B3324] to-[#2A4D36]">
+        <div className="relative h-32 rounded-t-2xl overflow-hidden bg-gradient-to-r from-[#873f2b] to-[#743927]">
           <div className="absolute inset-0 flex items-center justify-center opacity-10">
             <Stethoscope className="w-32 h-32 text-white" />
           </div>
           <div className="absolute top-3 right-3 flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full">
-            <Star className="w-4 h-4 fill-[#C49A3C] text-[#C49A3C]" />
+            <Star className="w-4 h-4 fill-[#b89a65] text-[#b89a65]" />
             <span className="text-white text-sm font-medium">{doctor.rating}</span>
             <span className="text-white/60 text-xs">({doctor.reviews})</span>
           </div>
           <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
-            <Award className="w-4 h-4 text-[#C49A3C]" />
+            <Award className="w-4 h-4 text-[#b89a65]" />
             <span className="text-white/80 text-xs">{doctor.experience}</span>
           </div>
         </div>
 
         {/* Floating Image */}
         <div className="absolute left-1/2 top-6 -translate-x-1/2 z-20">
-          <div className="relative bg-white p-1.5 shadow-xl ring-2 ring-[#C49A3C] transition-transform duration-300 group-hover:scale-105">
+          <div className="relative bg-cream-light p-1.5 shadow-xl ring-2 ring-[#b89a65] transition-transform duration-300 group-hover:scale-105">
             <img loading="lazy" decoding="async"
               src={doctor.image}
               alt={doctor.name}
               className="h-44 w-32 rounded-md object-cover"
             />
-            <div className="absolute -bottom-2 -right-2 bg-[#1B3324] rounded-full p-1.5 border-2 border-white">
-              <Stethoscope className="w-4 h-4 text-[#C49A3C]" />
+            <div className="absolute -bottom-2 -right-2 bg-[#873f2b] rounded-full p-1.5 border-2 border-white">
+              <Stethoscope className="w-4 h-4 text-[#b89a65]" />
             </div>
           </div>
         </div>
@@ -303,13 +303,13 @@ function DoctorCard({ doctor, index }) {
         <div className="flex flex-1 flex-col px-6 pt-28 pb-6">
 
           {/* Name & Qualifications */}
-          <h3 className="text-center text-xl font-serif font-semibold text-[#2E2A22] leading-tight min-h-[56px] flex items-center justify-center">
+          <h3 className="text-center text-xl font-serif font-semibold text-[#2c211c] leading-tight min-h-[56px] flex items-center justify-center">
             {doctor.name}
           </h3>
 
           <div className="flex items-center justify-center gap-2 mt-1">
-            <GraduationCap className="w-4 h-4 text-[#C49A3C]" />
-            <p className="text-center text-xs text-[#6E695D] font-medium">
+            <GraduationCap className="w-4 h-4 text-[#b89a65]" />
+            <p className="text-center text-xs text-[#796c60] font-medium">
               {doctor.qualifications}
             </p>
           </div>
@@ -317,7 +317,7 @@ function DoctorCard({ doctor, index }) {
           {/* Badge */}
           <div className="mt-3 h-7 flex items-center justify-center">
             {doctor.badge && (
-              <span className="rounded-full border border-[#1B3324]/20 bg-[#1B3324]/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-[#1B3324]">
+              <span className="rounded-full border border-[#873f2b]/20 bg-[#873f2b]/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-[#873f2b]">
                 {doctor.badge}
               </span>
             )}
@@ -325,28 +325,28 @@ function DoctorCard({ doctor, index }) {
 
           {/* Specialization */}
           <div className="mt-4 min-h-[48px] text-center">
-            <div className="inline-flex items-center gap-2 bg-[#F5F0E8] px-4 py-1.5 rounded-full">
-              <HeartPulse className="w-4 h-4 text-[#C49A3C]" />
-              <span className="text-sm font-medium text-[#2E2A22]">{doctor.specialization}</span>
+            <div className="inline-flex items-center gap-2 bg-[#f5eee2] px-4 py-1.5 rounded-full">
+              <HeartPulse className="w-4 h-4 text-[#b89a65]" />
+              <span className="text-sm font-medium text-[#2c211c]">{doctor.specialization}</span>
             </div>
           </div>
 
           {/* Department */}
-          <div className="mt-3 flex items-center justify-center gap-2 text-sm text-[#6E695D]">
-            <Activity className="w-4 h-4 text-[#C49A3C]" />
+          <div className="mt-3 flex items-center justify-center gap-2 text-sm text-[#796c60]">
+            <Activity className="w-4 h-4 text-[#b89a65]" />
             <span>{doctor.department}</span>
           </div>
 
           {/* Languages & Availability */}
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-2 border-t border-[#F3E8D3] pt-4">
-            <div className="flex items-center gap-1.5 text-xs text-[#6E695D]">
-              <Users className="w-3.5 h-3.5 text-[#C49A3C]" />
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-2 border-t border-[#f1e6d7] pt-4">
+            <div className="flex items-center gap-1.5 text-xs text-[#796c60]">
+              <Users className="w-3.5 h-3.5 text-[#b89a65]" />
               <span>{doctor.languages.join(", ")}</span>
             </div>
           </div>
 
-          <div className="mt-2 flex items-center justify-center gap-1.5 text-xs text-[#6E695D]">
-            <Clock className="w-3.5 h-3.5 text-[#C49A3C]" />
+          <div className="mt-2 flex items-center justify-center gap-1.5 text-xs text-[#796c60]">
+            <Clock className="w-3.5 h-3.5 text-[#b89a65]" />
             <span>{doctor.availability}</span>
           </div>
 
@@ -355,7 +355,7 @@ function DoctorCard({ doctor, index }) {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="mt-4 w-full rounded-full bg-[#1B3324] py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-[#2A4D36] hover:shadow-lg"
+            className="mt-4 w-full rounded-full bg-[#873f2b] py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-[#743927] hover:shadow-lg"
           >
             Book Appointment
           </motion.button>
@@ -463,11 +463,11 @@ export default function DoctorsPage() {
   }, [selectedSpecialty, searchQuery, sortBy]);
 
   return (
-    <div className="bg-[#FBF7ED] min-h-screen">
+    <div className="bg-[#fbf8f1] min-h-screen">
       <Toaster position="top-right" />
 
       {/* Hero Section - Medical Theme */}
-      <section className="relative bg-gradient-to-r from-[#1B3324] to-[#2A4D36] overflow-hidden">
+      <section className="relative bg-gradient-to-r from-[#873f2b] to-[#743927] overflow-hidden">
         <motion.div
           initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -500,8 +500,8 @@ export default function DoctorsPage() {
                 transition={{ delay: 0.4 }}
                 className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3"
               >
-                <Stethoscope className="w-4 h-4 sm:w-5 sm:h-5 text-[#C49A3C]" />
-                <span className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] text-[#C49A3C] uppercase">
+                <Stethoscope className="w-4 h-4 sm:w-5 sm:h-5 text-[#b89a65]" />
+                <span className="text-[10px] sm:text-xs font-semibold tracking-[0.15em] text-[#b89a65] uppercase">
                   Expert Doctors
                 </span>
               </motion.div>
@@ -513,7 +513,7 @@ export default function DoctorsPage() {
                 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight"
               >
                 Meet Your{" "}
-                <span className="text-[#C49A3C]">Ayurvedic</span> Doctors
+                <span className="text-[#b89a65]">Ayurvedic</span> Doctors
               </motion.h1>
 
               <motion.p
@@ -538,7 +538,7 @@ export default function DoctorsPage() {
                     </div>
                   ))}
                   {doctors.length > 5 && (
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full border-2 border-white bg-[#C49A3C] flex items-center justify-center">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full border-2 border-white bg-[#b89a65] flex items-center justify-center">
                       <span className="text-white text-[8px] sm:text-[10px] font-bold">+{doctors.length - 5}</span>
                     </div>
                   )}
@@ -567,13 +567,13 @@ export default function DoctorsPage() {
         >
           <motion.h2
             variants={fadeInUp}
-            className="font-serif text-3xl text-center text-[#1B3324] mb-3"
+            className="font-serif text-3xl text-center text-[#873f2b] mb-3"
           >
-            Why Choose Our <span className="text-[#C49A3C]">Doctors</span>
+            Why Choose Our <span className="text-[#b89a65]">Doctors</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-center text-[#6E695D] max-w-2xl mx-auto mb-10"
+            className="text-center text-[#796c60] max-w-2xl mx-auto mb-10"
           >
             Our team of dedicated Ayurvedic professionals brings together expertise, compassion, and a commitment to your well-being.
           </motion.p>
@@ -583,15 +583,15 @@ export default function DoctorsPage() {
                 key={index}
                 variants={fadeInUp}
                 whileHover={{ y: -4 }}
-                className="bg-white  border border-[#E8DDC4] p-6 text-center shadow-sm hover:shadow-lg transition-all duration-300"
+                className="bg-cream-light  border border-[#d9cbbb] p-6 text-center shadow-sm hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex justify-center mb-4">
-                  <div className="p-3 bg-[#1B3324]/5 rounded-full">
-                    <reason.icon className="w-7 h-7 text-[#1B3324]" />
+                  <div className="p-3 bg-[#873f2b]/5 rounded-full">
+                    <reason.icon className="w-7 h-7 text-[#873f2b]" />
                   </div>
                 </div>
-                <h3 className="text-lg font-serif font-semibold text-[#1B3324] mb-2">{reason.title}</h3>
-                <p className="text-sm text-[#6E695D] leading-relaxed">{reason.desc}</p>
+                <h3 className="text-lg font-serif font-semibold text-[#873f2b] mb-2">{reason.title}</h3>
+                <p className="text-sm text-[#796c60] leading-relaxed">{reason.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -607,7 +607,7 @@ export default function DoctorsPage() {
           variants={fadeIn}
           className="mb-6"
         >
-          <p className="text-[#6E695D] text-sm">
+          <p className="text-[#796c60] text-sm">
             Showing {filteredDoctors.length} of {doctors.length} doctors
           </p>
         </motion.div>
@@ -634,13 +634,13 @@ export default function DoctorsPage() {
             variants={fadeInUp}
             className="text-center py-16"
           >
-            <div className="w-20 h-20 bg-[#EDE7D9] rounded-full flex items-center justify-center mx-auto mb-4">
-              <Search className="w-10 h-10 text-[#6E695D]" />
+            <div className="w-20 h-20 bg-[#ede3d4] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Search className="w-10 h-10 text-[#796c60]" />
             </div>
-            <h3 className="font-serif text-2xl text-[#2E2A22] mb-2">
+            <h3 className="font-serif text-2xl text-[#2c211c] mb-2">
               No doctors found
             </h3>
-            <p className="text-[#6E695D]">
+            <p className="text-[#796c60]">
               Try adjusting your search or filter criteria
             </p>
           </motion.div>

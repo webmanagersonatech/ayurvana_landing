@@ -5,7 +5,7 @@ const testimonials = [
     rating: 5,
     text: "The shirodhara session at Wivana was transformative. After years of insomnia, I finally slept soundly. The therapists are incredibly knowledgeable and gentle.",
     avatar: "AK",
-    color: "bg-sage",
+    color: "bg-forest-light",
   },
   {
     name: "Rajan Pillai",
@@ -47,7 +47,7 @@ function StarRating({ count }) {
 
 export default function Testimonials() {
   return (
-    <section className="py-20 bg-white" id="testimonials">
+    <section className="py-20 bg-cream-light" id="testimonials">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
           <div>

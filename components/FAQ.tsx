@@ -144,7 +144,7 @@ export default function FAQ() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.6 }}
-      className="py-20 bg-white"
+      className="py-20 bg-cream-light"
       id="faq"
     >
       <div className="max-w-7xl mx-auto px-6">
@@ -165,12 +165,12 @@ export default function FAQ() {
             className="overflow-hidden lg:sticky lg:top-24 relative min-h-[500px] lg:min-h-[600px]"
           >
             <motion.img
-              src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80"
+              src="/images/faq.webp"
               alt="Relaxing Ayurvedic treatment"
               className="w-full h-full object-cover absolute inset-0"
               whileHover={{
                 scale: 1.05,
-                transition: { duration: 0.6, ease: "easeOut" },
+                transition: { duration: 0.6, ease: "easeOut" }
               }}
             />
             
@@ -180,14 +180,14 @@ export default function FAQ() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm rounded-xl p-4 z-10"
+              className="absolute bottom-6 left-6 right-6 bg-cream-light/90 backdrop-blur-sm rounded-xl p-4 z-10"
             >
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.7, duration: 0.5 }}
-                className="text-sm font-medium text-stone-800"
+                className="text-sm font-medium text-text-dark"
               >
                 ✧ 5,000 Years of Healing Wisdom
               </motion.p>
@@ -196,7 +196,7 @@ export default function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.8, duration: 0.5 }}
-                className="text-xs text-stone-500 mt-1"
+                className="text-xs text-text-muted mt-1"
               >
                 Experience authentic Ayurvedic treatments
               </motion.p>
@@ -252,14 +252,14 @@ export default function FAQ() {
                           scale: open === index ? 1.2 : 1,
                         }}
                         transition={{ duration: 0.3 }}
-                        className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-sage/10 text-sage text-xs font-bold shrink-0"
+                        className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-forest-light/10 text-forest-light text-xs font-bold shrink-0"
                       >
                         {String(index + 1).padStart(2, "0")}
                       </motion.span>
                       {faq.q}
                     </span>
                     <motion.svg
-                      className={`w-4 h-4 text-sage shrink-0`}
+                      className={`w-4 h-4 text-forest-light shrink-0`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"

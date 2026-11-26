@@ -55,11 +55,11 @@ export default function RoomTariff() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`bg-white rounded-2xl p-6 card-hover flex flex-col ${
+              className={`bg-cream-light rounded-2xl p-6 card-hover flex flex-col ${
                 room.featured ? "border-2 border-gold shadow-xl" : "border border-black/10"
               }`}
             >
-              <div className="w-11 h-11 rounded-full bg-sage/15 flex items-center justify-center mb-4">
+              <div className="w-11 h-11 rounded-full bg-forest-light/15 flex items-center justify-center mb-4">
                 <BedDouble className="w-5 h-5 text-forest" strokeWidth={1.5} />
               </div>
               <h3 className="font-serif text-lg text-text-dark mb-2">{room.name}</h3>

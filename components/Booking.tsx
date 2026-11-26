@@ -389,7 +389,7 @@ const InputField = ({
 
     return (
         <div className="relative">
-            <label className={`flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase mb-2 ${dark ? 'text-gray-400' : 'text-gray-500'
+            <label className={`flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase mb-2 ${dark ? 'text-text-light' : 'text-text-muted'
                 }`}>
                 <Icon className="w-3.5 h-3.5 text-forest" />
                 {label}
@@ -410,8 +410,8 @@ const InputField = ({
                         : focused
                             ? 'border-forest shadow-md'
                             : dark
-                                ? 'bg-gray-800 border-gray-700 text-white hover:border-forest/50 focus:border-forest'
-                                : 'bg-white/80 backdrop-blur-sm border-gray-100 hover:border-forest/30 focus:border-forest text-gray-800'
+                                ? 'bg-forest-dark border-[#4a3b33] text-white hover:border-forest/50 focus:border-forest'
+                                : 'bg-cream-light/80 backdrop-blur-sm border-cream-dark hover:border-forest/30 focus:border-forest text-text-dark'
                         }`}
                 />
                 {error && (
@@ -454,7 +454,7 @@ const SelectWithIcon = ({
 
     return (
         <div className="relative">
-            <label className={`flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase mb-2 ${dark ? 'text-gray-400' : 'text-gray-500'
+            <label className={`flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase mb-2 ${dark ? 'text-text-light' : 'text-text-muted'
                 }`}>
                 <Icon className="w-3.5 h-3.5 text-forest" />
                 {label}
@@ -467,17 +467,17 @@ const SelectWithIcon = ({
                     className={`w-full border-2 rounded-xl px-4 py-2.5 text-sm focus:outline-none transition-all duration-300 cursor-pointer hover:shadow-md flex items-center justify-between ${disabled ? 'opacity-60 cursor-not-allowed' : ''} ${isOpen
                         ? 'border-forest shadow-md'
                         : dark
-                            ? 'bg-gray-800 border-gray-700 text-white hover:border-forest/50'
-                            : 'bg-white/80 backdrop-blur-sm border-gray-100 hover:border-forest/30 text-gray-800'
+                            ? 'bg-forest-dark border-[#4a3b33] text-white hover:border-forest/50'
+                            : 'bg-cream-light/80 backdrop-blur-sm border-cream-dark hover:border-forest/30 text-text-dark'
                         }`}
                 >
                     <span className="flex items-center gap-2">
                         {selectedOption && <selectedOption.icon className="w-4 h-4 text-forest" />}
-                        <span className={dark ? 'text-white' : 'text-gray-800'}>
+                        <span className={dark ? 'text-white' : 'text-text-dark'}>
                             {selectedOption?.label || 'Select'}
                         </span>
                     </span>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''} ${dark ? 'text-gray-400' : 'text-gray-400'
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''} ${dark ? 'text-text-light' : 'text-text-light'
                         }`} />
                 </button>
 
@@ -488,7 +488,7 @@ const SelectWithIcon = ({
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.2 }}
-                            className={`absolute z-50 w-full mt-1 border-2 rounded-xl shadow-lg overflow-hidden max-h-60 overflow-y-auto ${dark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'
+                            className={`absolute z-50 w-full mt-1 border-2 rounded-xl shadow-lg overflow-hidden max-h-60 overflow-y-auto ${dark ? 'bg-forest-dark border-[#4a3b33]' : 'bg-cream-light border-cream-dark'
                                 }`}
                         >
                             {options.map((option: any) => (
@@ -500,11 +500,11 @@ const SelectWithIcon = ({
                                         setIsOpen(false);
                                     }}
                                     className={`w-full px-4 py-2.5 text-sm text-left transition-colors flex items-center gap-2 ${dark
-                                        ? 'hover:bg-gray-700 text-white'
-                                        : 'hover:bg-forest/5 text-gray-800'
+                                        ? 'hover:bg-[#3d2f28] text-white'
+                                        : 'hover:bg-forest/5 text-text-dark'
                                         } ${value === option.value
                                             ? dark
-                                                ? 'bg-gray-700 text-forest-light'
+                                                ? 'bg-[#3d2f28] text-forest-light'
                                                 : 'bg-forest/10 text-forest-dark font-medium'
                                             : ''
                                         }`}
@@ -762,8 +762,8 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className={`relative overflow-hidden ${isDark
-                ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-gray-700'
-                : 'bg-white/95 backdrop-blur-xl border border-forest/10'
+                ? 'bg-gradient-to-br from-forest-dark via-[#3d2f28] to-forest-dark border border-[#4a3b33]'
+                : 'bg-cream-light/95 backdrop-blur-xl border border-forest/10'
                 } ${className}`}
         >
             {/* Decorative Elements */}
@@ -771,7 +771,7 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                 <svg className="absolute top-0 right-0 w-64 h-64 opacity-5" viewBox="0 0 200 200">
                     <path
                         d="M 100 0 C 150 50 200 100 150 150 C 100 200 50 150 0 100 C 0 50 50 0 100 0 Z"
-                        fill={isDark ? '#4ade80' : '#2d5a27'}
+                        fill={isDark ? '#e0c08e' : '#873f2b'}
                         className="blur-3xl"
                     />
                 </svg>
@@ -780,7 +780,7 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                         cx="100"
                         cy="100"
                         r="80"
-                        fill={isDark ? '#fbbf24' : '#d4a545'}
+                        fill={isDark ? '#e0c08e' : '#b89a65'}
                         className="blur-3xl"
                     />
                 </svg>
@@ -790,16 +790,16 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
             <div className="relative">
                 {/* Header */}
                 <div className={`relative px-6 pt-6 pb-4 text-center border-b ${isDark
-                    ? 'border-gray-700'
+                    ? 'border-[#4a3b33]'
                     : 'border-forest/10'
                     }`}>
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-forest via-amber to-saffron" />
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-forest via-gold to-forest-light" />
 
                     <h3 className={`text-2xl font-serif font-bold ${isDark ? 'text-white' : 'text-forest-dark'
                         }`}>
                         Complete Your Booking
                     </h3>
-                    <p className={`text-sm mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                    <p className={`text-sm mt-1 ${isDark ? 'text-text-light' : 'text-text-muted'}`}>
                         Please fill in all details to confirm your reservation
                     </p>
 
@@ -816,8 +816,8 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
 
                 <div className={`p-6 ${isCompact ? 'space-y-3' : 'space-y-4'}`}>
                     {/* Personal Information */}
-                    <div className={`${!isCompact ? 'bg-gradient-to-r from-forest/5 to-saffron/5 rounded-2xl p-4' : ''}`}>
-                        <h4 className={`text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2 ${isDark ? 'text-gray-400' : 'text-gray-500'
+                    <div className={`${!isCompact ? 'bg-gradient-to-r from-forest/5 to-gold/5 rounded-2xl p-4' : ''}`}>
+                        <h4 className={`text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2 ${isDark ? 'text-text-light' : 'text-text-muted'
                             }`}>
                             <User className="w-3.5 h-3.5 text-forest" />
                             Personal Information
@@ -874,7 +874,7 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
 
                     {/* Booking Details */}
                     <div>
-                        <h4 className={`text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2 ${isDark ? 'text-gray-400' : 'text-gray-500'
+                        <h4 className={`text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2 ${isDark ? 'text-text-light' : 'text-text-muted'
                             }`}>
                             <Calendar className="w-3.5 h-3.5 text-forest" />
                             Booking Details
@@ -889,7 +889,7 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                                 dark={isDark}
                             />
                             <div className="relative">
-                                <label className={`flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'
+                                <label className={`flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase mb-2 ${isDark ? 'text-text-light' : 'text-text-muted'
                                     }`}>
                                     <Users className="w-3.5 h-3.5 text-forest" />
                                     Guests
@@ -899,8 +899,8 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                                         value={guests}
                                         onChange={(e) => setGuests(Number(e.target.value))}
                                         className={`w-full border-2 rounded-xl px-4 py-2.5 text-sm focus:outline-none transition-all duration-300 appearance-none cursor-pointer hover:shadow-md ${isDark
-                                            ? 'bg-gray-800 border-gray-700 text-white hover:border-forest/50 focus:border-forest'
-                                            : 'bg-white/80 backdrop-blur-sm border-gray-100 hover:border-forest/30 focus:border-forest text-gray-800'
+                                            ? 'bg-forest-dark border-[#4a3b33] text-white hover:border-forest/50 focus:border-forest'
+                                            : 'bg-cream-light/80 backdrop-blur-sm border-cream-dark hover:border-forest/30 focus:border-forest text-text-dark'
                                             }`}
                                     >
                                         {[1, 2, 3, 4, 5, 6].map((n) => (
@@ -909,7 +909,7 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                                             </option>
                                         ))}
                                     </select>
-                                    <ChevronDown className={`absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none ${isDark ? 'text-gray-400' : 'text-gray-400'
+                                    <ChevronDown className={`absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none ${isDark ? 'text-text-light' : 'text-text-light'
                                         }`} />
                                 </div>
                             </div>
@@ -962,13 +962,13 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             className={`rounded-2xl p-4 ${isDark
-                                ? 'bg-gray-800/50 border border-gray-700'
-                                : 'bg-gradient-to-r from-amber/10 to-forest/10 border border-amber/20'
+                                ? 'bg-forest-dark/50 border border-[#4a3b33]'
+                                : 'bg-gradient-to-r from-gold/10 to-forest/10 border border-gold/20'
                                 }`}
                         >
-                            <h4 className={`text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2 ${isDark ? 'text-gray-400' : 'text-gray-500'
+                            <h4 className={`text-xs font-semibold uppercase tracking-wider mb-3 flex items-center gap-2 ${isDark ? 'text-text-light' : 'text-text-muted'
                                 }`}>
-                                <Package className="w-3.5 h-3.5 text-amber" />
+                                <Package className="w-3.5 h-3.5 text-gold" />
                                 Select Your Package
                                 {filteredPackages.length === 1 && (
                                     <span className="ml-auto text-[10px] text-forest font-normal">
@@ -986,22 +986,22 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                                         className={`relative p-4 rounded-xl border-2 text-left transition-all duration-300 ${selectedPackage === pkg.id
                                             ? 'border-forest bg-forest/5 shadow-md'
                                             : isDark
-                                                ? 'border-gray-700 hover:border-gray-600 bg-gray-800/50'
-                                                : 'border-gray-200 hover:border-forest/30 bg-white/50'
+                                                ? 'border-[#4a3b33] hover:border-[#5a4a40] bg-forest-dark/50'
+                                                : 'border-cream-dark hover:border-forest/30 bg-cream-light/50'
                                             }`}
                                     >
                                         <div className="flex items-start gap-3">
                                             <div className={`p-2 rounded-lg ${selectedPackage === pkg.id
                                                 ? 'bg-forest text-white'
                                                 : isDark
-                                                    ? 'bg-gray-700 text-gray-400'
-                                                    : 'bg-gray-100 text-gray-600'
+                                                    ? 'bg-[#3d2f28] text-text-light'
+                                                    : 'bg-cream-dark text-text-muted'
                                                 }`}>
                                                 <pkg.icon className="w-4 h-4" />
                                             </div>
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-center justify-between gap-2">
-                                                    <h5 className={`font-semibold text-sm ${isDark ? 'text-white' : 'text-gray-800'
+                                                    <h5 className={`font-semibold text-sm ${isDark ? 'text-white' : 'text-text-dark'
                                                         }`}>
                                                         {pkg.name}
                                                     </h5>
@@ -1011,7 +1011,7 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                                                         </span>
                                                     )}
                                                 </div>
-                                                <p className="text-xs mt-0.5 text-gray-500">
+                                                <p className="text-xs mt-0.5 text-text-muted">
                                                     {pkg.days} days • {pkg.description}
                                                 </p>
                                                 {selectedPackage === pkg.id && (
@@ -1054,7 +1054,7 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                     {showDatePicker && (
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                             <div className="relative">
-                                <label className={`flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'
+                                <label className={`flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase mb-2 ${isDark ? 'text-text-light' : 'text-text-muted'
                                     }`}>
                                     <Calendar className="w-3.5 h-3.5 text-forest" />
                                     Date
@@ -1064,16 +1064,16 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                                     value={selectedDate}
                                     onChange={(e) => setSelectedDate(e.target.value)}
                                     className={`w-full border-2 rounded-xl px-4 py-2.5 text-sm focus:outline-none transition-all duration-300 cursor-pointer hover:shadow-md ${isDark
-                                        ? 'bg-gray-800 border-gray-700 text-white hover:border-forest/50 focus:border-forest'
-                                        : 'bg-white/80 backdrop-blur-sm border-gray-100 hover:border-forest/30 focus:border-forest text-gray-800'
+                                        ? 'bg-forest-dark border-[#4a3b33] text-white hover:border-forest/50 focus:border-forest'
+                                        : 'bg-cream-light/80 backdrop-blur-sm border-cream-dark hover:border-forest/30 focus:border-forest text-text-dark'
                                         }`}
                                     min={new Date().toISOString().split('T')[0]}
                                 />
                             </div>
                             <div className="relative">
-                                <label className={`flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'
+                                <label className={`flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase mb-2 ${isDark ? 'text-text-light' : 'text-text-muted'
                                     }`}>
-                                    <Clock className="w-3.5 h-3.5 text-amber" />
+                                    <Clock className="w-3.5 h-3.5 text-gold" />
                                     Time
                                 </label>
                                 <div className="relative">
@@ -1081,8 +1081,8 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                                         value={selectedTime}
                                         onChange={(e) => setSelectedTime(e.target.value)}
                                         className={`w-full border-2 rounded-xl px-4 py-2.5 text-sm focus:outline-none transition-all duration-300 appearance-none cursor-pointer hover:shadow-md ${isDark
-                                            ? 'bg-gray-800 border-gray-700 text-white hover:border-forest/50 focus:border-forest'
-                                            : 'bg-white/80 backdrop-blur-sm border-gray-100 hover:border-forest/30 focus:border-forest text-gray-800'
+                                            ? 'bg-forest-dark border-[#4a3b33] text-white hover:border-forest/50 focus:border-forest'
+                                            : 'bg-cream-light/80 backdrop-blur-sm border-cream-dark hover:border-forest/30 focus:border-forest text-text-dark'
                                             }`}
                                     >
                                         <option value="">Select Time</option>
@@ -1092,7 +1092,7 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                                             </option>
                                         ))}
                                     </select>
-                                    <ChevronDown className={`absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none ${isDark ? 'text-gray-400' : 'text-gray-400'
+                                    <ChevronDown className={`absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none ${isDark ? 'text-text-light' : 'text-text-light'
                                         }`} />
                                 </div>
                             </div>
@@ -1109,7 +1109,7 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                             type="button"
                             onClick={handleSubmit}
                             disabled={isSubmitting}
-                            className="relative group w-full bg-gradient-to-r from-forest-dark via-forest to-forest-light hover:from-forest hover:via-forest-dark hover:to-forest text-white px-6 py-4 rounded-xl text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
+                            className="relative group w-full bg-forest hover:bg-forest-dark text-cream-light uppercase tracking-[0.15em] px-6 py-4 rounded-xl text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
                         >
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
@@ -1161,8 +1161,8 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             className={`rounded-xl p-3 text-sm ${isDark
-                                ? 'bg-forest/10 border border-forest/20 text-gray-300'
-                                : 'bg-forest/5 border border-forest/20 text-gray-700'
+                                ? 'bg-forest/10 border border-forest/20 text-cream-dark'
+                                : 'bg-forest/5 border border-forest/20 text-text-dark'
                                 }`}
                         >
                             <div className="flex items-center gap-2">
@@ -1181,18 +1181,18 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                     )}
 
                     {/* Trust Badges */}
-                    <div className={`flex items-center justify-center gap-6 pt-2 text-xs border-t ${isDark ? 'border-gray-700 text-gray-400' : 'border-gray-100 text-gray-500'
+                    <div className={`flex items-center justify-center gap-6 pt-2 text-xs border-t ${isDark ? 'border-[#4a3b33] text-text-light' : 'border-cream-dark text-text-muted'
                         }`}>
                         <span className="flex items-center gap-1.5">
                             <Shield className="w-3.5 h-3.5 text-forest" />
                             Verified Centers
                         </span>
                         <span className="flex items-center gap-1.5">
-                            <Award className="w-3.5 h-3.5 text-saffron" />
+                            <Award className="w-3.5 h-3.5 text-gold" />
                             Certified Therapists
                         </span>
                         <span className="flex items-center gap-1.5">
-                            <Heart className="w-3.5 h-3.5 text-amber" />
+                            <Heart className="w-3.5 h-3.5 text-gold" />
                             Natural Ingredients
                         </span>
                     </div>

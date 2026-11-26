@@ -64,55 +64,49 @@ function Hero() {
   return (
     <section id="services" className="relative ">
       {/* image + overlay */}
-      <motion.div
-        initial={{ opacity: 0, scale: 1.05 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1 }}
-        className="relative h-[450px] md:h-[480px]"
+   {/* solid bg */}
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1 }}
+  className="relative h-[450px] md:h-[480px] bg-[#35231d]"
+>
+  <div className="relative max-w-7xl mx-auto px-6 h-full flex flex-col justify-center">
+    <motion.div
+      initial={{ opacity: 0, x: -30 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.3, duration: 0.6 }}
+      className="max-w-xl"
+    >
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="text-xs font-semibold tracking-widest text-white/90 uppercase"
       >
-        <img loading="lazy" decoding="async"
-          src="/images/bg1.webp"
-          alt="Women meditating outdoors"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1B3324]/80 via-[#1B3324]/40 to-transparent" />
-
-        <div className="relative max-w-7xl mx-auto px-6 h-full flex flex-col justify-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="max-w-xl"
-          >
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="text-xs font-semibold tracking-widest text-white/90 uppercase"
-            >
-              Our Service
-            </motion.span>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="font-serif text-4xl md:text-5xl text-white mt-4 leading-tight"
-            >
-              Restore Balance to{" "}
-              <span className="italic text-gold-light">Mind, Body & Spirit</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="text-white/85 text-sm md:text-base mt-5 leading-relaxed max-w-md"
-            >
-              From classical Ayurvedic massages to advanced regenerative
-              care, explore therapies tailored to your body and mind.
-            </motion.p>
-          </motion.div>
-        </div>
-      </motion.div>
+        Our Service
+      </motion.span>
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.6 }}
+        className="font-serif text-4xl md:text-5xl text-white mt-4 leading-tight"
+      >
+        Restore Balance to{" "}
+        <span className="italic text-gold-light">Mind, Body & Spirit</span>
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.6 }}
+        className="text-white/85 text-sm md:text-base mt-5 leading-relaxed max-w-md"
+      >
+        From classical Ayurvedic massages to advanced regenerative
+        care, explore therapies tailored to your body and mind.
+      </motion.p>
+    </motion.div>
+  </div>
+</motion.div>
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -137,8 +131,8 @@ function Hero() {
               >
                 <Link href={`/therapies/${card.slug}`} className="block">
                 {/* 3D depth layers */}
-                <div className="absolute inset-0 bg-gradient-to-br from-forest-dark to-emerald-900 transform rotate-3 scale-95 opacity-20 group-hover:rotate-6 group-hover:scale-100 transition-all duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/10 to-transparent transform -rotate-2 scale-90 opacity-0 group-hover:opacity-100 group-hover:rotate-0 group-hover:scale-100 transition-all duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-br from-forest-dark to-forest transform rotate-3 scale-95 opacity-20 group-hover:rotate-6 group-hover:scale-100 transition-all duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-gold/10 to-transparent transform -rotate-2 scale-90 opacity-0 group-hover:opacity-100 group-hover:rotate-0 group-hover:scale-100 transition-all duration-700" />
 
                 {/* Main content block with background image */}
                 <div
@@ -154,7 +148,7 @@ function Hero() {
                   <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 group-hover:from-black/50 group-hover:via-black/30 group-hover:to-black/60 transition-all duration-700" />
 
                   {/* Gradient overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-forest-dark/30 via-transparent to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-forest-dark/30 via-transparent to-forest-light/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
                   {/* Top section with scale effect */}
                   <div className="relative z-10 flex items-start justify-between mb-6">
@@ -201,7 +195,7 @@ function Hero() {
 
                   {/* Animated divider */}
                   <div
-                    className="bg-white mb-4"
+                    className="bg-cream-light mb-4"
                     style={{
                       width: "60px",
                       height: "12px",
@@ -251,7 +245,7 @@ function Hero() {
 
                 {/* Shadow depth layers */}
                 <div className="absolute -bottom-4 -right-4 w-full h-full bg-forest-dark/5 blur-xl group-hover:blur-2xl transition-all duration-700 -z-10" />
-                <div className="absolute -bottom-8 -right-8 w-full h-full bg-emerald-500/5 blur-2xl group-hover:blur-3xl transition-all duration-700 -z-20" />
+                <div className="absolute -bottom-8 -right-8 w-full h-full bg-forest-light/5 blur-2xl group-hover:blur-3xl transition-all duration-700 -z-20" />
               </motion.div>
             );
           })}

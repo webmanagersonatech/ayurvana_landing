@@ -192,7 +192,7 @@ const categories = [
 
 function Breadcrumb({ currentPage, category }) {
   return (
-    <nav className="flex items-center gap-2 text-sm text-[#6E695D] py-4">
+    <nav className="flex items-center gap-2 text-sm text-[#796c60] py-4">
       <motion.div
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
@@ -216,7 +216,7 @@ function Breadcrumb({ currentPage, category }) {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-[#1B3324] font-medium"
+            className="text-[#873f2b] font-medium"
           >
             {category}
           </motion.span>
@@ -236,10 +236,10 @@ function ProductCard({ product, index, addToCart }) {
       variants={scaleIn}
       transition={{ delay: index * 0.05 }}
       whileHover={{ y: -8 }}
-      className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300"
+      className="group bg-cream-light rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300"
     >
       {/* Image Container */}
-      <div className="relative overflow-hidden aspect-square bg-[#FBF7ED]">
+      <div className="relative overflow-hidden aspect-square bg-[#fbf8f1]">
         <img loading="lazy" decoding="async"
           src={product.image}
           alt={product.name}
@@ -251,14 +251,14 @@ function ProductCard({ product, index, addToCart }) {
           </span>
         )}
         {product.isOrganic && (
-          <span className="absolute top-3 right-3 bg-[#C49A3C] text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1">
+          <span className="absolute top-3 right-3 bg-[#b89a65] text-white text-xs font-semibold px-3 py-1 rounded-full flex items-center gap-1">
             <Leaf className="w-3 h-3" /> Organic
           </span>
         )}
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="absolute bottom-3 right-3 bg-white text-[#1B3324] p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          className="absolute bottom-3 right-3 bg-cream-light text-[#873f2b] p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         >
           <Heart className="w-5 h-5" />
         </motion.button>
@@ -267,35 +267,35 @@ function ProductCard({ product, index, addToCart }) {
       {/* Content */}
       <div className="p-5">
         <div className="flex items-start justify-between mb-2">
-          <span className="text-xs text-[#6E695D] font-medium">
+          <span className="text-xs text-[#796c60] font-medium">
             {product.category}
           </span>
           <div className="flex items-center gap-1">
-            <Star className="w-4 h-4 fill-[#C49A3C] text-[#C49A3C]" />
-            <span className="text-sm font-semibold text-[#2E2A22]">
+            <Star className="w-4 h-4 fill-[#b89a65] text-[#b89a65]" />
+            <span className="text-sm font-semibold text-[#2c211c]">
               {product.rating}
             </span>
-            <span className="text-xs text-[#6E695D]">({product.reviews})</span>
+            <span className="text-xs text-[#796c60]">({product.reviews})</span>
           </div>
         </div>
 
-        <h3 className="font-serif text-lg text-[#2E2A22] mb-2 line-clamp-2 group-hover:text-[#1B3324] transition-colors">
+        <h3 className="font-serif text-lg text-[#2c211c] mb-2 line-clamp-2 group-hover:text-[#873f2b] transition-colors">
           {product.name}
         </h3>
 
-        <p className="text-[#6E695D] text-sm leading-relaxed mb-3 line-clamp-2">
+        <p className="text-[#796c60] text-sm leading-relaxed mb-3 line-clamp-2">
           {product.description}
         </p>
 
-        <div className="flex items-center justify-between pt-3 border-t border-[#EDE7D9]">
-          <span className="font-serif text-xl font-semibold text-[#1B3324]">
+        <div className="flex items-center justify-between pt-3 border-t border-[#ede3d4]">
+          <span className="font-serif text-xl font-semibold text-[#873f2b]">
             ₹{product.price}
           </span>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => addToCart(product)}
-            className="bg-forest-dark text-white px-4 py-2 rounded-md text-sm font-medium flex items-center gap-2 hover:bg-[#2D5016] transition-colors"
+            className="bg-[#873f2b] text-cream-light px-4 py-2 uppercase tracking-[0.12em] text-sm font-medium flex items-center gap-2 hover:bg-forest-dark transition-colors"
           >
             <ShoppingBag className="w-4 h-4" /> Add to Cart
           </motion.button>
@@ -348,14 +348,14 @@ function Features() {
             key={feature.title}
             variants={fadeInUp}
             transition={{ delay: index * 0.1 }}
-            className="flex items-center gap-3 p-2.5 bg-gradient-to-r from-[#FBF7ED] to-white rounded-lg border-l-4 border-[#1B3324] shadow-sm hover:shadow-md transition-all duration-300"
+            className="flex items-center gap-3 p-2.5 bg-gradient-to-r from-[#fbf8f1] to-white rounded-lg border-l-4 border-[#873f2b] shadow-sm hover:shadow-md transition-all duration-300"
           >
-            <Icon className="w-5 h-5 text-[#1B3324] flex-shrink-0" />
+            <Icon className="w-5 h-5 text-[#873f2b] flex-shrink-0" />
             <div className="flex-1 min-w-0">
-              <h4 className="font-semibold text-xs text-[#2E2A22]">
+              <h4 className="font-semibold text-xs text-[#2c211c]">
                 {feature.title}
               </h4>
-              <p className="text-[10px] text-[#6E695D] truncate">{feature.desc}</p>
+              <p className="text-[10px] text-[#796c60] truncate">{feature.desc}</p>
             </div>
           </motion.div>
         );
@@ -413,7 +413,7 @@ export default function ProductsPage() {
   }, [selectedCategory, searchQuery, sortBy]);
 
   return (
-    <div className="bg-[#FBF7ED] min-h-screen">
+    <div className="bg-[#fbf8f1] min-h-screen">
       {/* Hero Section */}
       <section className="relative bg-forest-dark overflow-hidden">
         <motion.div
@@ -440,7 +440,7 @@ export default function ProductsPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="text-xs font-semibold tracking-widest text-[#C49A3C] uppercase"
+                className="text-xs font-semibold tracking-widest text-[#b89a65] uppercase"
               >
                 Our Products
               </motion.span>
@@ -451,7 +451,7 @@ export default function ProductsPage() {
                 className="font-serif text-4xl md:text-5xl text-white mt-4 leading-tight"
               >
                 Ayurvedic{" "}
-                <span className="italic text-[#C49A3C]">Wellness</span> Products
+                <span className="italic text-[#b89a65]">Wellness</span> Products
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0 }}
@@ -486,13 +486,13 @@ export default function ProductsPage() {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             {/* Search */}
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6E695D]" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#796c60]" />
               <input
                 type="text"
                 placeholder="Search products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white rounded-lg border border-[#EDE7D9] focus:outline-none focus:border-[#1B3324] text-[#2E2A22] placeholder-[#6E695D]"
+                className="w-full pl-10 pr-4 py-3 bg-cream-light rounded-lg border border-[#ede3d4] focus:outline-none focus:border-[#873f2b] text-[#2c211c] placeholder-[#796c60]"
               />
             </div>
 
@@ -502,7 +502,7 @@ export default function ProductsPage() {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="appearance-none bg-white border border-[#EDE7D9] rounded-lg px-4 py-3 pr-10 text-[#2E2A22] text-sm focus:outline-none focus:border-[#1B3324] cursor-pointer"
+                  className="appearance-none bg-cream-light border border-[#ede3d4] rounded-lg px-4 py-3 pr-10 text-[#2c211c] text-sm focus:outline-none focus:border-[#873f2b] cursor-pointer"
                 >
                   {categories.map((cat) => (
                     <option key={cat} value={cat}>
@@ -510,7 +510,7 @@ export default function ProductsPage() {
                     </option>
                   ))}
                 </select>
-                <Filter className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6E695D] pointer-events-none" />
+                <Filter className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#796c60] pointer-events-none" />
               </div>
 
               {/* Sort Dropdown */}
@@ -518,14 +518,14 @@ export default function ProductsPage() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="appearance-none bg-white border border-[#EDE7D9] rounded-lg px-4 py-3 pr-10 text-[#2E2A22] text-sm focus:outline-none focus:border-[#1B3324] cursor-pointer"
+                  className="appearance-none bg-cream-light border border-[#ede3d4] rounded-lg px-4 py-3 pr-10 text-[#2c211c] text-sm focus:outline-none focus:border-[#873f2b] cursor-pointer"
                 >
                   <option value="featured">Featured</option>
                   <option value="price-low">Price: Low to High</option>
                   <option value="price-high">Price: High to Low</option>
                   <option value="rating">Top Rated</option>
                 </select>
-                <SlidersHorizontal className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6E695D] pointer-events-none" />
+                <SlidersHorizontal className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#796c60] pointer-events-none" />
               </div>
             </div>
           </div>
@@ -539,7 +539,7 @@ export default function ProductsPage() {
           variants={fadeIn}
           className="mb-6"
         >
-          <p className="text-[#6E695D] text-sm">
+          <p className="text-[#796c60] text-sm">
             Showing {filteredProducts.length} of {products.length} products
           </p>
         </motion.div>
@@ -571,13 +571,13 @@ export default function ProductsPage() {
             variants={fadeInUp}
             className="text-center py-16"
           >
-            <div className="w-20 h-20 bg-[#EDE7D9] rounded-full flex items-center justify-center mx-auto mb-4">
-              <Search className="w-10 h-10 text-[#6E695D]" />
+            <div className="w-20 h-20 bg-[#ede3d4] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Search className="w-10 h-10 text-[#796c60]" />
             </div>
-            <h3 className="font-serif text-2xl text-[#2E2A22] mb-2">
+            <h3 className="font-serif text-2xl text-[#2c211c] mb-2">
               No products found
             </h3>
-            <p className="text-[#6E695D]">
+            <p className="text-[#796c60]">
               Try adjusting your search or filter criteria
             </p>
           </motion.div>

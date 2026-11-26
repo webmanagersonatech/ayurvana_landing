@@ -14,7 +14,7 @@ export default function Document() {
         {/* Favicon */}
         <link rel="icon" href="/images/Ayurvana.webp" />
         {/* Theme color */}
-        <meta name="theme-color" content="#2D5016" />
+        <meta name="theme-color" content="#873f2b" />
       </Head>
       <body>
         <Main />

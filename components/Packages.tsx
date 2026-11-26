@@ -108,7 +108,7 @@ export default function Packages() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               onClick={() => setActive(i)}
-              className={`relative bg-white rounded-2xl p-7 cursor-pointer card-hover flex flex-col ${
+              className={`relative bg-cream-light rounded-2xl p-7 cursor-pointer card-hover flex flex-col ${
                 active === i
                   ? "border-2 border-gold shadow-xl"
                   : "border border-black/10"
@@ -120,7 +120,7 @@ export default function Packages() {
                 </span>
               )}
 
-              <div className="flex items-center gap-2 text-sage mb-3">
+              <div className="flex items-center gap-2 text-forest-light mb-3">
                 <Clock className="w-4 h-4" strokeWidth={1.5} />
                 <span className="text-xs font-semibold tracking-widest uppercase">
                   {pkg.duration}
@@ -155,11 +155,11 @@ export default function Packages() {
         </div>
 
         <div className="flex items-center justify-center gap-2 mt-10 text-text-muted text-xs">
-          <Leaf className="w-4 h-4 text-sage" strokeWidth={1.5} />
+          <Leaf className="w-4 h-4 text-forest-light" strokeWidth={1.5} />
           <span>All packages include accommodation, meals, and consultation. Final pricing is confirmed after your physician assessment.</span>
         </div>
 
-        <div className="flex items-center justify-center gap-2 mt-3 text-sage text-xs font-medium">
+        <div className="flex items-center justify-center gap-2 mt-3 text-forest-light text-xs font-medium">
           <Sparkles className="w-4 h-4" strokeWidth={1.5} />
           <span>Compare us — Ayurvana offers the same clinical depth as leading retreats at a fraction of the cost.</span>
         </div>

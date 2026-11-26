@@ -35,7 +35,7 @@ export default function ComparePage() {
 
         {/* Ayurvana packages recap */}
         <section className="max-w-6xl mx-auto px-6 -mt-10">
-          <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+          <div className="bg-cream-light rounded-2xl shadow-xl p-6 md:p-8">
             <div className="flex items-center gap-2 mb-6">
               <ShieldCheck className="w-5 h-5 text-forest" strokeWidth={1.5} />
               <h2 className="font-serif text-xl text-text-dark">Ayurvana's Own Packages</h2>
@@ -46,7 +46,7 @@ export default function ComparePage() {
                   key={pkg.duration}
                   className="border border-forest/15 rounded-xl p-4 hover:border-gold transition-colors duration-300"
                 >
-                  <p className="text-sage text-xs font-semibold tracking-widest uppercase mb-1">
+                  <p className="text-forest-light text-xs font-semibold tracking-widest uppercase mb-1">
                     {pkg.duration}
                   </p>
                   <p className="font-serif text-lg text-text-dark mb-2">{pkg.focus}</p>
@@ -74,7 +74,7 @@ export default function ComparePage() {
                 <Link
                   key={c.slug}
                   href={`/packages/${c.slug}`}
-                  className="group bg-white rounded-2xl border border-black/10 p-6 md:p-7 card-hover flex flex-col"
+                  className="group bg-cream-light rounded-2xl border border-black/10 p-6 md:p-7 card-hover flex flex-col"
                 >
                   <div className="flex items-start justify-between gap-4 mb-3">
                     <h3 className="font-serif text-xl md:text-2xl text-text-dark leading-snug">
@@ -96,12 +96,12 @@ export default function ComparePage() {
 
                   <div className="mt-auto pt-5 border-t border-black/5 flex items-center gap-6 text-xs">
                     <span className="flex items-center gap-1.5 text-text-muted">
-                      <LayoutGrid className="w-3.5 h-3.5 text-sage" strokeWidth={1.5} />
+                      <LayoutGrid className="w-3.5 h-3.5 text-forest-light" strokeWidth={1.5} />
                       {c.categories.length} categories
                     </span>
                     {entryPackage && (
                       <span className="flex items-center gap-1.5 text-text-muted">
-                        <IndianRupee className="w-3.5 h-3.5 text-sage" strokeWidth={1.5} />
+                        <IndianRupee className="w-3.5 h-3.5 text-forest-light" strokeWidth={1.5} />
                         From {entryPackage.price.split("–")[0].trim()}
                       </span>
                     )}

@@ -176,7 +176,7 @@ export default function TherapyPage({ therapy, related }: Props) {
               <ul className="grid sm:grid-cols-2 gap-3">
                 {therapy.benefits.map((b) => (
                   <li key={b} className="flex items-start gap-2.5 text-text-muted text-sm leading-relaxed">
-                    <CheckCircle2 className="w-4 h-4 text-sage shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-forest-light shrink-0 mt-0.5" />
                     {b}
                   </li>
                 ))}
@@ -191,7 +191,7 @@ export default function TherapyPage({ therapy, related }: Props) {
                 </h2>
                 <div className="space-y-3">
                   {therapy.faqs.map((faq, i) => (
-                    <div key={i} className="bg-white rounded-xl border border-forest/10 overflow-hidden">
+                    <div key={i} className="bg-cream-light rounded-xl border border-forest/10 overflow-hidden">
                       <button
                         onClick={() => setOpenFaq(openFaq === i ? null : i)}
                         className="w-full flex items-center justify-between gap-4 text-left px-5 py-4"
@@ -216,7 +216,7 @@ export default function TherapyPage({ therapy, related }: Props) {
           {/* Sidebar */}
           <aside className="w-full">
             <div className="sticky top-32 space-y-6">
-              <div className="bg-white rounded-2xl p-6 card-hover">
+              <div className="bg-cream-light rounded-2xl p-6 card-hover">
                 <h3 className="font-serif text-lg font-semibold text-text-dark mb-4">
                   Session Details
                 </h3>
@@ -243,7 +243,7 @@ export default function TherapyPage({ therapy, related }: Props) {
                 </button>
               </div>
 
-              <div className="bg-white rounded-2xl p-6 card-hover">
+              <div className="bg-cream-light rounded-2xl p-6 card-hover">
                 <h3 className="font-serif text-lg font-semibold text-text-dark mb-4">
                   Recommended For
                 </h3>
@@ -278,7 +278,7 @@ export default function TherapyPage({ therapy, related }: Props) {
                 <Link
                   key={r.slug}
                   href={`/therapies/${r.slug}`}
-                  className="bg-white rounded-2xl overflow-hidden card-hover group block"
+                  className="bg-cream-light rounded-2xl overflow-hidden card-hover group block"
                 >
                   <div className="h-44 overflow-hidden">
                     <img

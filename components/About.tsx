@@ -108,7 +108,7 @@ export default function About() {
         variants={fadeInUp}
       >
         <motion.p
-          className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-sage leading-none mb-1 sm:mb-2"
+          className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-forest-light leading-none mb-1 sm:mb-2"
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, type: "spring", stiffness: 200 }}
@@ -162,7 +162,7 @@ export default function About() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <img loading="lazy" decoding="async"
-                  src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=600&q=80"
+                  src="/images/a2.webp"
                   alt="Ayurvedic back massage"
                   className="w-full h-full object-cover"
                 />
@@ -174,7 +174,7 @@ export default function About() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <img loading="lazy" decoding="async"
-                  src="https://img.magnific.com/premium-photo/there-is-person-pouring-water-into-bowl-with-candles_974521-89235.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
+                  src="/images/a3.webp"
                   alt="Ayurvedic oils and herbal ingredients"
                   className="w-full h-full object-cover"
                 />
@@ -187,7 +187,7 @@ export default function About() {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <img loading="lazy" decoding="async"
-                src="https://img.magnific.com/free-photo/female-therapists-massaging-back-man-with-thai-herbal-compress-health-spa_637285-2255.jpg?t=st=1783315647~exp=1783319247~hmac=17e27141cdfeaba055b5f130f52971f33218d20560513c16b8fe05cfc8bde7ab&w=1480"
+                src="/images/a1.webp"
                 alt="Ayurvedic facial massage treatment"
                 className="w-full h-full object-cover"
               />
@@ -221,7 +221,7 @@ export default function About() {
                 variants={fadeInUp}
               >
                 <motion.svg
-                  className="w-4 h-4 text-sage"
+                  className="w-4 h-4 text-forest-light"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -240,7 +240,7 @@ export default function About() {
                   />
                 </motion.svg>
 
-                <span className="text-sage text-xs font-semibold tracking-[0.2em] uppercase">
+                <span className="text-forest-light text-xs font-semibold tracking-[0.2em] uppercase">
                   About Us
                 </span>
               </motion.div>
@@ -273,7 +273,7 @@ export default function About() {
 
                     <div className="flex items-start gap-4">
                       <motion.span
-                        className="mt-0.5 w-6 h-6 rounded-full border border-sage flex items-center justify-center flex-shrink-0"
+                        className="mt-0.5 w-6 h-6 rounded-full border border-forest-light flex items-center justify-center flex-shrink-0"
                         whileHover={{
                           scale: 1.2,
                           backgroundColor: "rgba(163, 135, 106, 0.1)",
@@ -281,7 +281,7 @@ export default function About() {
                         transition={{ type: "spring", stiffness: 300 }}
                       >
                         <motion.svg
-                          className="w-3 h-3 text-sage"
+                          className="w-3 h-3 text-forest-light"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"

@@ -19,7 +19,7 @@ export default function QuoteBand() {
               }}
               className="lg:text-left"
             >
-              <div className="text-6xl font-serif text-[#C9A84C] leading-none mb-4">"</div>
+              <div className="text-6xl font-serif text-[#b89a65] leading-none mb-4">"</div>
             </motion.div>
 
             {/* Quote Text - WHITE */}
@@ -47,7 +47,7 @@ export default function QuoteBand() {
                 delay: 0.4,
                 ease: "easeOut"
               }}
-              className="text-[#D4AF37] text-sm not-italic block"
+              className="text-[#e0c08e] text-sm not-italic block"
             >
               — Dr. Priya Sharma, Founder & Chief Ayurvedic Physician
             </motion.cite>
@@ -62,7 +62,7 @@ export default function QuoteBand() {
                 delay: 0.6,
                 ease: "easeInOut"
               }}
-              className="h-0.5 bg-[#C9A84C] mt-6 mx-auto lg:mx-0"
+              className="h-0.5 bg-[#b89a65] mt-6 mx-auto lg:mx-0"
             />
           </div>
 
@@ -82,7 +82,7 @@ export default function QuoteBand() {
             <div className="relative">
               {/* Decorative ring - GOLD */}
               <motion.div
-                className="absolute -inset-4 rounded-full border-2 border-[#C9A84C]/40"
+                className="absolute -inset-4 rounded-full border-2 border-[#b89a65]/40"
                 animate={{ 
                   rotate: 360,
                   scale: [1, 1.05, 1]
@@ -94,7 +94,7 @@ export default function QuoteBand() {
               />
               
               {/* Image container */}
-              <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-xl shadow-[#C9A84C]/20">
+              <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-xl shadow-[#b89a65]/20">
                 <img loading="lazy" decoding="async"
                   src="https://img.magnific.com/premium-photo/professional-photo-attractive-female-nurse-blonde-hair-blue-scrubs-with-white-lab-coat_1139643-388.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
                   alt="Dr. Priya Sharma - Founder & Chief Ayurvedic Physician"
@@ -102,7 +102,7 @@ export default function QuoteBand() {
                 />
                 
                 {/* Overlay gradient - GOLD TINT */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#C9A84C]/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#b89a65]/30 to-transparent" />
               </div>
 
               {/* Floating badge - GOLD */}
@@ -111,9 +111,9 @@ export default function QuoteBand() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.6 }}
-                className="absolute -bottom-2 -right-2 bg-white rounded-full px-4 py-2 shadow-lg"
+                className="absolute -bottom-2 -right-2 bg-cream-light rounded-full px-4 py-2 shadow-lg"
               >
-                <span className="text-xs font-semibold text-sage">15+ Years</span>
+                <span className="text-xs font-semibold text-forest-light">15+ Years</span>
               </motion.div>
             </div>
           </motion.div>

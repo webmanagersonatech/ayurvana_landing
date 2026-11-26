@@ -48,7 +48,7 @@ export default function BlogIndex() {
       <section className="relative bg-forest-dark pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <svg width="100%" height="100%" viewBox="0 0 800 400" fill="none" preserveAspectRatio="xMidYMid slice">
-            <path d="M800 0C800 0 700 40 660 100C620 160 600 240 560 300C520 360 440 400 400 400C400 400 500 360 540 300C580 240 600 160 640 100C680 40 800 0 800 0Z" fill="#C49A3C" />
+            <path d="M800 0C800 0 700 40 660 100C620 160 600 240 560 300C520 360 440 400 400 400C400 400 500 360 540 300C580 240 600 160 640 100C680 40 800 0 800 0Z" fill="#b89a65" />
           </svg>
         </div>
         <div className="relative max-w-7xl mx-auto px-6">
@@ -82,7 +82,7 @@ export default function BlogIndex() {
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeCategory === cat
                     ? "bg-forest text-white"
-                    : "bg-white text-text-muted hover:bg-forest/10"
+                    : "bg-cream-light text-text-muted hover:bg-forest/10"
                 }`}
               >
                 {cat}
@@ -96,7 +96,7 @@ export default function BlogIndex() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search articles..."
-              className="w-full bg-white border border-forest/10 rounded-full pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest/20"
+              className="w-full bg-cream-light border border-forest/10 rounded-full pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest/20"
             />
           </div>
         </div>
@@ -122,7 +122,7 @@ export default function BlogIndex() {
                 >
                   <Link
                     href={`/blog/${featured.slug}`}
-                    className="group grid md:grid-cols-2 gap-8 items-center bg-white rounded-3xl overflow-hidden card-hover"
+                    className="group grid md:grid-cols-2 gap-8 items-center bg-cream-light rounded-3xl overflow-hidden card-hover"
                   >
                     <div className="h-72 md:h-full overflow-hidden">
                       <img
@@ -135,7 +135,7 @@ export default function BlogIndex() {
                     </div>
                     <div className="p-8 md:pr-12">
                       <div className="flex items-center gap-3 mb-4">
-                        <span className="bg-sage/10 text-sage text-xs font-semibold px-3 py-1 rounded-full">
+                        <span className="bg-forest-light/10 text-forest-light text-xs font-semibold px-3 py-1 rounded-full">
                           {featured.category}
                         </span>
                         <span className="text-text-light text-xs flex items-center gap-1">
@@ -167,7 +167,7 @@ export default function BlogIndex() {
                   <motion.article
                     key={post.slug}
                     variants={fadeInUp}
-                    className="bg-white rounded-2xl overflow-hidden card-hover group"
+                    className="bg-cream-light rounded-2xl overflow-hidden card-hover group"
                   >
                     <Link href={`/blog/${post.slug}`}>
                       <div className="h-48 overflow-hidden">
@@ -181,7 +181,7 @@ export default function BlogIndex() {
                       </div>
                       <div className="p-6">
                         <div className="flex items-center gap-3 mb-3">
-                          <span className="bg-sage/10 text-sage text-xs font-semibold px-3 py-1 rounded-full">
+                          <span className="bg-forest-light/10 text-forest-light text-xs font-semibold px-3 py-1 rounded-full">
                             {post.category}
                           </span>
                           <span className="text-text-light text-xs">{post.readTime}</span>

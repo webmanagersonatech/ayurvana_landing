@@ -59,14 +59,14 @@ export function BookingModalProvider({ children }: { children: ReactNode }) {
 
           {/* Modal Container */}
           <div className="relative min-h-screen flex items-center justify-center p-4">
-            <div className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="relative bg-cream-light rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
               {/* Close Button */}
               <button
                 onClick={closeBookingModal}
-                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/90 hover:bg-gray-100 transition-colors shadow-lg"
+                className="absolute top-4 right-4 z-10 p-2 rounded-full bg-cream-light/90 hover:bg-cream-dark transition-colors shadow-lg"
                 aria-label="Close booking form"
               >
-                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>

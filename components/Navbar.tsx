@@ -60,7 +60,7 @@ export default function Navbar() {
       href: "/#research",
     },
     { label: "Services", href: "/#services" },
-    { label: "packages", href: "/packages" },
+    { label: "Packages", href: "/packages" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ];
@@ -154,7 +154,7 @@ export default function Navbar() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? "bg-white/95 backdrop-blur-sm navbar-scrolled shadow-md py-2"
+          ? "bg-cream-light/95 backdrop-blur-sm navbar-scrolled shadow-md py-2"
           : "bg-gradient-to-b from-black/60 to-transparent pb-4"
           }`}
       >
@@ -174,7 +174,7 @@ export default function Navbar() {
       overflow-hidden
       ${scrolled
                   ? "w-[110px] sm:w-[120px] h-[72px] sm:h-[78px] bg-transparent border-0 rounded-none"
-                  : "w-[130px] sm:w-[145px] md:w-[155px] h-[90px] sm:h-[98px] md:h-[105px] bg-white/95 border-l-4 border-r-4 border-b-4 border-sage rounded-b-[42px]"
+                  : "w-[130px] sm:w-[145px] md:w-[155px] h-[90px] sm:h-[98px] md:h-[105px] bg-cream-light border-l-4 border-r-4 border-b-4 border-forest rounded-b-[42px]"
                 }
     `}
             >
@@ -198,7 +198,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Links with Cart Icon */}
-          <ul className="hidden lg:flex items-center gap-8">
+          <ul className="hidden lg:flex items-center gap-5 xl:gap-7">
             {navLinks.map((link) => (
               <li
                 key={link.label}
@@ -208,13 +208,13 @@ export default function Navbar() {
                 onMouseLeave={() => link.hasDropdown && handleMouseLeave()}
               >
                 <div
-                  className={`flex items-center gap-1 cursor-pointer text-sm font-medium transition-colors duration-300 hover:text-sage ${scrolled ? "text-text-dark" : "text-white"
+                  className={`flex items-center gap-1 cursor-pointer text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-300 hover:text-gold ${scrolled ? "text-text-dark" : "text-cream-light"
                     }`}
                   onClick={() => link.hasDropdown && toggleDropdown(link.label)}
                 >
                   {link.hasDropdown ? (
                     <>
-                      <Link href={link.href} className="hover:text-sage">
+                      <Link href={link.href} className="hover:text-gold">
                         {link.label}
                       </Link>
                       <svg
@@ -228,7 +228,7 @@ export default function Navbar() {
                       </svg>
                     </>
                   ) : (
-                    <Link href={link.href} className="hover:text-sage">
+                    <Link href={link.href} className="hover:text-gold">
                       {link.label}
                     </Link>
                   )}
@@ -237,7 +237,7 @@ export default function Navbar() {
                 {/* Dropdown Menu */}
                 {link.hasDropdown && activeDropdown === link.label && (
                   <div
-                    className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border border-cream-dark overflow-hidden"
+                    className="absolute top-full left-0 mt-2 w-56 bg-cream-light shadow-xl border border-cream-dark overflow-hidden"
                     onMouseEnter={handleDropdownMouseEnter}
                     onMouseLeave={handleDropdownMouseLeave}
                   >
@@ -245,7 +245,7 @@ export default function Navbar() {
                       <Link
                         key={item.label}
                         href={item.href}
-                        className="block px-4 py-3 text-sm text-text-dark hover:bg-cream hover:text-forest transition-colors border-b border-cream-dark last:border-0"
+                        className="block px-4 py-3 text-[11px] uppercase tracking-[0.1em] text-text-dark hover:bg-cream hover:text-forest transition-colors border-b border-cream-dark last:border-0"
                         onClick={() => {
                           setActiveDropdown(null);
                           if (hoverTimeout) {
@@ -266,7 +266,7 @@ export default function Navbar() {
             <li className="relative">
               <button
                 onClick={handleCartClick}
-                className={`p-2 rounded-full transition-colors duration-300 hover:bg-white/10 ${scrolled ? "text-text-dark hover:text-sage" : "text-white hover:text-sage"
+                className={`p-2 rounded-full transition-colors duration-300 hover:bg-white/10 ${scrolled ? "text-text-dark hover:text-gold" : "text-cream-light hover:text-gold"
                   }`}
                 aria-label="Shopping cart"
               >
@@ -274,12 +274,14 @@ export default function Navbar() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-forest text-cream-light text-[10px] rounded-full h-5 w-5 flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
               </button>
             </li>
+
+           
           </ul>
 
           {/* Mobile menu toggle + Cart Icon */}
@@ -288,7 +290,7 @@ export default function Navbar() {
             {/* Cart Icon - Mobile */}
             <button
               onClick={handleCartClick}
-              className={`relative p-2 rounded-full transition-colors duration-300 hover:bg-white/10 ${scrolled ? "text-text-dark hover:text-sage" : "text-white hover:text-sage"
+              className={`relative p-2 rounded-full transition-colors duration-300 hover:bg-white/10 ${scrolled ? "text-text-dark hover:text-gold" : "text-cream-light hover:text-gold"
                 }`}
               aria-label="Shopping cart"
             >
@@ -296,14 +298,14 @@ export default function Navbar() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-forest text-cream-light text-[10px] rounded-full h-5 w-5 flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
             </button>
 
             <button
-              className={`p-2 transition-colors ${scrolled ? "text-text-dark" : "text-white"
+              className={`p-2 transition-colors ${scrolled ? "text-text-dark" : "text-cream-light"
                 }`}
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
@@ -323,7 +325,7 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="lg:hidden bg-white border-t border-cream-dark shadow-xl max-h-[80vh] overflow-y-auto">
+          <div className="lg:hidden bg-cream-light border-t border-cream-dark shadow-xl max-h-[80vh] overflow-y-auto">
             <ul className="flex flex-col py-4">
               {navLinks.map((link) => (
                 <li key={link.label} className="border-b border-cream-dark last:border-0">

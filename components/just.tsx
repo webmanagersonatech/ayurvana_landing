@@ -272,14 +272,14 @@ export default function Hero() {
                   {/* Primary CTA - Book Now */}
                   <button
                     onClick={handleBookNow}
-                    className="bg-gold-light hover:bg-gold-dark text-white font-semibold px-6 sm:px-8 py-1.5 sm:py-2 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg inline-block cursor-pointer text-sm sm:text-base"
+                    className="bg-cream text-forest hover:bg-white font-medium uppercase tracking-[0.18em] text-[11px] sm:text-xs px-6 sm:px-8 py-3 transition-all duration-300 hover:-translate-y-0.5 inline-block cursor-pointer"
                   >
                     Book Your Stay
                   </button>
 
                   {/* Secondary CTA */}
                   <button
-                    className="border-2 border-gold-light text-gold-light hover:bg-gold-light hover:text-white font-semibold px-6 sm:px-8 py-1.5 sm:py-2 rounded-full transition-all duration-300 hover:scale-105 inline-block cursor-pointer text-sm sm:text-base"
+                    className="border border-cream text-cream hover:bg-cream hover:text-forest font-medium uppercase tracking-[0.18em] text-[11px] sm:text-xs px-6 sm:px-8 py-3 transition-all duration-300 hover:-translate-y-0.5 inline-block cursor-pointer"
                   >
                     Learn More
                   </button>
@@ -292,13 +292,13 @@ export default function Hero() {
         {/* Floating search card */}
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div
-            className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-cream-dark -mt-16 sm:-mt-20 md:-mt-16 lg:-mt-20 relative z-10"
+            className="bg-cream-light/95 backdrop-blur-md rounded-2xl shadow-2xl border border-cream-dark -mt-16 sm:-mt-20 md:-mt-16 lg:-mt-20 relative z-10"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
             {/* Title Header */}
-            <div className="px-4 sm:px-6 pt-4 sm:pt-5 pb-2 border-b border-gray-100">
+            <div className="px-4 sm:px-6 pt-4 sm:pt-5 pb-2 border-b border-cream-dark">
               <h2 className="text-lg sm:text-xl font-semibold text-forest-dark flex items-center gap-2">
                 <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
                 <span>Book Your Stay</span>
@@ -326,7 +326,7 @@ export default function Hero() {
                   <select
                     value={gender}
                     onChange={(e) => setGender(e.target.value)}
-                    className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                    className="w-full border-2 border-cream-dark hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-cream-light"
                   >
                     {genderOptions.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -345,7 +345,7 @@ export default function Hero() {
                   <select
                     value={guests}
                     onChange={(e) => setGuests(Number(e.target.value))}
-                    className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                    className="w-full border-2 border-cream-dark hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-cream-light"
                   >
                     {[1, 2, 3, 4, 5, 6].map((n) => (
                       <option key={n} value={n}>
@@ -364,7 +364,7 @@ export default function Hero() {
                   <select
                     value={roomType}
                     onChange={(e) => setRoomType(e.target.value)}
-                    className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                    className="w-full border-2 border-cream-dark hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-cream-light"
                   >
                     {roomOptions.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -383,7 +383,7 @@ export default function Hero() {
                   <select
                     value={treatment}
                     onChange={(e) => setTreatment(e.target.value)}
-                    className="w-full border-2 border-gray-100 hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-white"
+                    className="w-full border-2 border-cream-dark hover:border-forest/30 focus:border-forest rounded-lg px-3 py-2 text-sm text-text-dark focus:outline-none transition-colors appearance-none bg-cream-light"
                   >
                     {treatmentOptions.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -397,7 +397,7 @@ export default function Hero() {
                 <button
                   type="button"
                   onClick={handleBookNow}
-                  className="flex items-center justify-center gap-2 bg-gradient-to-r from-forest-dark to-forest hover:from-forest hover:to-forest-dark text-white px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap w-full xl:w-auto min-w-[140px]"
+                  className="flex items-center justify-center gap-2 bg-forest hover:bg-forest-dark text-cream-light uppercase tracking-[0.15em] px-6 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap w-full xl:w-auto min-w-[140px]"
                 >
                   <ArrowRight className="w-4 h-4" />
                   <span>Book Now</span>
@@ -452,7 +452,7 @@ export default function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.2 }}
                 onClick={closeModal}
-                className="absolute top-4 right-4 z-10 p-2 bg-white/90 hover:bg-white rounded-full shadow-lg transition-colors"
+                className="absolute top-4 right-4 z-10 p-2 bg-cream-light/90 hover:bg-cream-light rounded-full shadow-lg transition-colors"
                 aria-label="Close booking form"
               >
                 <X className="w-5 h-5 text-forest-dark" />

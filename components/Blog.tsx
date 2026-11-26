@@ -22,7 +22,7 @@ export default function Blog() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article) => (
-            <Link href={`/blog/${article.slug}`} key={article.slug} className="bg-white rounded-2xl overflow-hidden card-hover group block">
+            <Link href={`/blog/${article.slug}`} key={article.slug} className="bg-cream-light rounded-2xl overflow-hidden card-hover group block">
               <div className="h-48 overflow-hidden">
                 <img loading="lazy" decoding="async"
                   src={article.image}
@@ -32,7 +32,7 @@ export default function Blog() {
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="bg-sage/10 text-sage text-xs font-semibold px-3 py-1 rounded-full">
+                  <span className="bg-forest-light/10 text-forest-light text-xs font-semibold px-3 py-1 rounded-full">
                     {article.category}
                   </span>
                   <span className="text-text-light text-xs">{article.readTime}</span>

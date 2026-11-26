@@ -151,7 +151,7 @@ export default function BlogPostPage({ post, related }: Props) {
             {[FaFacebook, FaTwitter, FaLinkedin, Link2].map((Icon, idx) => (
               <button
                 key={idx}
-                className="w-9 h-9 rounded-full bg-white border border-forest/10 flex items-center justify-center text-forest hover:bg-forest hover:text-white transition-all duration-300"
+                className="w-9 h-9 rounded-full bg-cream-light border border-forest/10 flex items-center justify-center text-forest hover:bg-forest hover:text-white transition-all duration-300"
                 aria-label="Share"
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -197,7 +197,7 @@ export default function BlogPostPage({ post, related }: Props) {
                 {[FaFacebook, FaTwitter, FaLinkedin, Link2].map((Icon, idx) => (
                   <button
                     key={idx}
-                    className="w-9 h-9 rounded-full bg-white border border-forest/10 flex items-center justify-center text-forest hover:bg-forest hover:text-white transition-all duration-300"
+                    className="w-9 h-9 rounded-full bg-cream-light border border-forest/10 flex items-center justify-center text-forest hover:bg-forest hover:text-white transition-all duration-300"
                     aria-label="Share"
                   >
                     <Icon className="w-4 h-4" />
@@ -212,8 +212,8 @@ export default function BlogPostPage({ post, related }: Props) {
             <div className="sticky top-32 space-y-6">
 
               {headings && headings.length > 1 && (
-                <div className="bg-white rounded-2xl p-6 card-hover">
-                  <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-sage mb-4">
+                <div className="bg-cream-light rounded-2xl p-6 card-hover">
+                  <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-forest-light mb-4">
                     <List className="w-3.5 h-3.5" />
                     In this article
                   </span>
@@ -233,7 +233,7 @@ export default function BlogPostPage({ post, related }: Props) {
                 </div>
               )}
 
-              <div className="bg-white rounded-2xl p-6 card-hover">
+              <div className="bg-cream-light rounded-2xl p-6 card-hover">
                 <img
                   src={post.author.avatar}
                   alt={post.author.name}
@@ -244,7 +244,7 @@ export default function BlogPostPage({ post, related }: Props) {
                   {post.author.name}
                 </h3>
 
-                <p className="text-sage text-xs font-semibold uppercase tracking-wide mb-3">
+                <p className="text-forest-light text-xs font-semibold uppercase tracking-wide mb-3">
                   {post.author.role}
                 </p>
 
@@ -279,7 +279,7 @@ export default function BlogPostPage({ post, related }: Props) {
                 <Link
                   key={r.slug}
                   href={`/blog/${r.slug}`}
-                  className="bg-white rounded-2xl overflow-hidden card-hover group block"
+                  className="bg-cream-light rounded-2xl overflow-hidden card-hover group block"
                 >
                   <div className="h-44 overflow-hidden">
                     <img

@@ -103,7 +103,7 @@ export default function CenterProfile({ center, others }: Props) {
             className="absolute inset-0 opacity-[0.06]"
             style={{
               backgroundImage:
-                "radial-gradient(circle at 1px 1px, #F5F0E8 1px, transparent 0)",
+                "radial-gradient(circle at 1px 1px, #f5eee2 1px, transparent 0)",
               backgroundSize: "26px 26px",
             }}
           />
@@ -154,7 +154,7 @@ export default function CenterProfile({ center, others }: Props) {
         {/* Treatments grid */}
         <section className="max-w-7xl mx-auto px-6 mt-14">
           <div className="flex items-center gap-2 mb-6">
-            <LayoutGrid className="w-5 h-5 text-sage" strokeWidth={1.5} />
+            <LayoutGrid className="w-5 h-5 text-forest-light" strokeWidth={1.5} />
             <h2 className="font-serif text-2xl text-text-dark">Treatments &amp; Programs</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
@@ -163,7 +163,7 @@ export default function CenterProfile({ center, others }: Props) {
               return (
                 <div
                   key={cat.category}
-                  className="bg-white rounded-2xl border border-black/10 p-6 flex gap-4"
+                  className="bg-cream-light rounded-2xl border border-black/10 p-6 flex gap-4"
                 >
                   <div className="w-10 h-10 rounded-full bg-forest/8 flex items-center justify-center shrink-0">
                     <Icon className="w-5 h-5 text-forest" strokeWidth={1.5} />
@@ -181,10 +181,10 @@ export default function CenterProfile({ center, others }: Props) {
         {/* Packages */}
         <section className="max-w-7xl mx-auto px-6 mt-14">
           <div className="flex items-center gap-2 mb-6">
-            <IndianRupee className="w-5 h-5 text-sage" strokeWidth={1.5} />
+            <IndianRupee className="w-5 h-5 text-forest-light" strokeWidth={1.5} />
             <h2 className="font-serif text-2xl text-text-dark">Package Pricing</h2>
           </div>
-          <div className="bg-white rounded-2xl border border-black/10 overflow-x-auto">
+          <div className="bg-cream-light rounded-2xl border border-black/10 overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-forest/5 text-left">
@@ -211,11 +211,11 @@ export default function CenterProfile({ center, others }: Props) {
         {/* Room tariff */}
         <section className="max-w-7xl mx-auto px-6 mt-14">
           <div className="flex items-center gap-2 mb-6">
-            <BedDouble className="w-5 h-5 text-sage" strokeWidth={1.5} />
+            <BedDouble className="w-5 h-5 text-forest-light" strokeWidth={1.5} />
             <h2 className="font-serif text-2xl text-text-dark">Room Tariff</h2>
           </div>
           {center.rooms.length > 0 ? (
-            <div className="bg-white rounded-2xl border border-black/10 overflow-x-auto">
+            <div className="bg-cream-light rounded-2xl border border-black/10 overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-forest/5 text-left">
@@ -236,7 +236,7 @@ export default function CenterProfile({ center, others }: Props) {
               </table>
             </div>
           ) : (
-            <p className="text-text-muted text-sm italic bg-white rounded-2xl border border-black/10 px-6 py-5">
+            <p className="text-text-muted text-sm italic bg-cream-light rounded-2xl border border-black/10 px-6 py-5">
               {center.roomNote}
             </p>
           )}
@@ -286,7 +286,7 @@ export default function CenterProfile({ center, others }: Props) {
                 <Link
                   key={o.slug}
                   href={`/packages/${o.slug}`}
-                  className="bg-white rounded-2xl border border-black/10 p-5 card-hover"
+                  className="bg-cream-light rounded-2xl border border-black/10 p-5 card-hover"
                 >
                   <p className="font-serif text-lg text-text-dark mb-1">{o.name}</p>
                   {o.location && (

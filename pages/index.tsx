@@ -91,7 +91,7 @@ export default function Home() {
           className="relative bg-fixed bg-center bg-cover"
           style={{
             backgroundImage:
-              "url('/images/bg.webp')",
+              "url('/images/bg2.webp')",
           }}
         >
           {/* Darker overlay */}

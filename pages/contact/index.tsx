@@ -61,7 +61,7 @@ const contactInfo = [
 // Breadcrumb Component
 function Breadcrumb() {
   return (
-    <nav className="flex items-center gap-2 text-sm text-[#6E695D] py-4">
+    <nav className="flex items-center gap-2 text-sm text-[#796c60] py-4">
       <motion.div
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
@@ -75,7 +75,7 @@ function Breadcrumb() {
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.1 }}
-        className="text-[#1B3324] font-medium"
+        className="text-[#873f2b] font-medium"
       >
         Contact
       </motion.span>
@@ -114,7 +114,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-[#FBF7ED] min-h-screen">
+    <div className="bg-[#fbf8f1] min-h-screen">
       {/* Hero Section */}
       <section className="relative bg-forest-dark overflow-hidden">
         <motion.div
@@ -135,7 +135,7 @@ export default function ContactPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="text-xs font-semibold tracking-widest text-[#C49A3C] uppercase"
+                className="text-xs font-semibold tracking-widest text-[#b89a65] uppercase"
               >
                 Get In Touch
               </motion.span>
@@ -145,7 +145,7 @@ export default function ContactPage() {
                 transition={{ delay: 0.4, duration: 0.6 }}
                 className="font-serif text-4xl md:text-5xl text-white mt-4 leading-tight"
               >
-                Contact <span className="italic text-[#C49A3C]">Us</span>
+                Contact <span className="italic text-[#b89a65]">Us</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0 }}
@@ -171,7 +171,7 @@ export default function ContactPage() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#EDE7D9] overflow-hidden mb-20"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#ede3d4] overflow-hidden mb-20"
         >
           {contactInfo.map((info, index) => {
             const Icon = info.icon;
@@ -180,21 +180,21 @@ export default function ContactPage() {
                 key={info.title}
                 variants={fadeInUp}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white p-8 hover:bg-[#FBF7ED] transition-colors duration-300"
+                className="bg-cream-light p-8 hover:bg-[#fbf8f1] transition-colors duration-300"
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 mt-1">
-                    <Icon className="w-6 h-6 text-[#C49A3C]" />
+                    <Icon className="w-6 h-6 text-[#b89a65]" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-lg font-semibold text-[#2E2A22] mb-1">
+                    <h3 className="font-serif text-lg font-semibold text-[#2c211c] mb-1">
                       {info.title}
                     </h3>
-                    <p className="text-[#6E695D] text-sm leading-relaxed">
+                    <p className="text-[#796c60] text-sm leading-relaxed">
                       {info.details}
                     </p>
                     {info.sub && (
-                      <p className="text-[#6E695D] text-xs mt-1">{info.sub}</p>
+                      <p className="text-[#796c60] text-xs mt-1">{info.sub}</p>
                     )}
                   </div>
                 </div>
@@ -213,82 +213,82 @@ export default function ContactPage() {
         >
           {/* Contact Form - Left Side */}
           <motion.div className="flex flex-col h-full">
-            <div className="border-b border-[#EDE7D9] pb-6 mb-8">
-              <h2 className="font-serif text-3xl text-[#2E2A22] mb-2">
+            <div className="border-b border-[#ede3d4] pb-6 mb-8">
+              <h2 className="font-serif text-3xl text-[#2c211c] mb-2">
                 Send a Message
               </h2>
-              <p className="text-[#6E695D]">
+              <p className="text-[#796c60]">
                 We'd love to hear from you. Fill out the form below.
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col">
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-[#2E2A22]">
-                  Full Name <span className="text-[#C49A3C]">*</span>
+                <label className="block text-sm font-medium text-[#2c211c]">
+                  Full Name <span className="text-[#b89a65]">*</span>
                 </label>
-                <div className="relative border-b-2 border-[#EDE7D9] focus-within:border-[#1B3324] transition-colors">
-                  <User className="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6E695D]" />
+                <div className="relative border-b-2 border-[#ede3d4] focus-within:border-[#873f2b] transition-colors">
+                  <User className="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 text-[#796c60]" />
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full pl-8 py-3 bg-transparent focus:outline-none text-[#2E2A22] placeholder:text-[#6E695D]/60"
+                    className="w-full pl-8 py-3 bg-transparent focus:outline-none text-[#2c211c] placeholder:text-[#796c60]/60"
                     placeholder="John Doe"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-[#2E2A22]">
-                  Email Address <span className="text-[#C49A3C]">*</span>
+                <label className="block text-sm font-medium text-[#2c211c]">
+                  Email Address <span className="text-[#b89a65]">*</span>
                 </label>
-                <div className="relative border-b-2 border-[#EDE7D9] focus-within:border-[#1B3324] transition-colors">
-                  <Mail className="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6E695D]" />
+                <div className="relative border-b-2 border-[#ede3d4] focus-within:border-[#873f2b] transition-colors">
+                  <Mail className="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 text-[#796c60]" />
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full pl-8 py-3 bg-transparent focus:outline-none text-[#2E2A22] placeholder:text-[#6E695D]/60"
+                    className="w-full pl-8 py-3 bg-transparent focus:outline-none text-[#2c211c] placeholder:text-[#796c60]/60"
                     placeholder="john@example.com"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-[#2E2A22]">
-                  Subject <span className="text-[#C49A3C]">*</span>
+                <label className="block text-sm font-medium text-[#2c211c]">
+                  Subject <span className="text-[#b89a65]">*</span>
                 </label>
-                <div className="relative border-b-2 border-[#EDE7D9] focus-within:border-[#1B3324] transition-colors">
-                  <MessageSquare className="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6E695D]" />
+                <div className="relative border-b-2 border-[#ede3d4] focus-within:border-[#873f2b] transition-colors">
+                  <MessageSquare className="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 text-[#796c60]" />
                   <input
                     type="text"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full pl-8 py-3 bg-transparent focus:outline-none text-[#2E2A22] placeholder:text-[#6E695D]/60"
+                    className="w-full pl-8 py-3 bg-transparent focus:outline-none text-[#2c211c] placeholder:text-[#796c60]/60"
                     placeholder="How can we help?"
                   />
                 </div>
               </div>
 
               <div className="space-y-2 flex-1">
-                <label className="block text-sm font-medium text-[#2E2A22]">
-                  Message <span className="text-[#C49A3C]">*</span>
+                <label className="block text-sm font-medium text-[#2c211c]">
+                  Message <span className="text-[#b89a65]">*</span>
                 </label>
-                <div className="border-b-2 border-[#EDE7D9] focus-within:border-[#1B3324] transition-colors h-full">
+                <div className="border-b-2 border-[#ede3d4] focus-within:border-[#873f2b] transition-colors h-full">
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full py-3 bg-transparent focus:outline-none text-[#2E2A22] placeholder:text-[#6E695D]/60 resize-none h-full min-h-[120px]"
+                    className="w-full py-3 bg-transparent focus:outline-none text-[#2c211c] placeholder:text-[#796c60]/60 resize-none h-full min-h-[120px]"
                     placeholder="Write your message here..."
                   />
                 </div>
@@ -299,7 +299,7 @@ export default function ContactPage() {
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#1B3324] text-white py-4 font-medium flex items-center justify-center gap-3 hover:bg-[#2D5016] transition-colors disabled:opacity-70 disabled:cursor-not-allowed group mt-4"
+                className="w-full bg-[#873f2b] text-white py-4 font-medium flex items-center justify-center gap-3 hover:bg-[#873f2b] transition-colors disabled:opacity-70 disabled:cursor-not-allowed group mt-4"
               >
                 {isSubmitting ? (
                   <>
@@ -330,9 +330,9 @@ export default function ContactPage() {
           <motion.div className="flex flex-col h-full">
             {/* Map Section - Takes remaining space */}
          <div className="flex-1 flex flex-col">
-  <h3 className="font-serif text-2xl text-[#2E2A22] mb-4">Find Us</h3>
+  <h3 className="font-serif text-2xl text-[#2c211c] mb-4">Find Us</h3>
 
-  <div className="aspect-video bg-[#EDE7D9] overflow-hidden flex-1">
+  <div className="aspect-video bg-[#ede3d4] overflow-hidden flex-1">
     <iframe
       src="https://www.google.com/maps?q=Sona%20Valliappa%20Campus,%20Kakapalayam-Attyampatti%20Road,%20Kandarkulamanickam,%20Salem%20637504&output=embed"
       width="100%"
@@ -347,27 +347,27 @@ export default function ContactPage() {
 </div>
 
             {/* Quick Connect - Fixed height at bottom */}
-            <div className="border-t border-[#EDE7D9] pt-8 mt-8">
-              <h3 className="font-serif text-2xl text-[#2E2A22] mb-4">
+            <div className="border-t border-[#ede3d4] pt-8 mt-8">
+              <h3 className="font-serif text-2xl text-[#2c211c] mb-4">
                 Quick Connect
               </h3>
               <div className="flex flex-wrap gap-4">
                 <a
                   href="#"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#1B3324] text-white hover:bg-[#2D5016] transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#873f2b] text-white hover:bg-[#873f2b] transition-colors"
                 >
                   <MessageCircle className="w-5 h-5" />
                   Chat with us
                 </a>
                 <a
                   href="tel:+919876543210"
-                  className="inline-flex items-center gap-2 px-6 py-3 border border-[#1B3324] text-[#1B3324] hover:bg-[#1B3324] hover:text-white transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-[#873f2b] text-[#873f2b] hover:bg-[#873f2b] hover:text-white transition-colors"
                 >
                   <Phone className="w-5 h-5" />
                   Call now
                 </a>
               </div>
-              <p className="text-[#6E695D] text-sm mt-4">
+              <p className="text-[#796c60] text-sm mt-4">
                 <span className="font-medium">Response time:</span> Within 24 hours
               </p>
             </div>
