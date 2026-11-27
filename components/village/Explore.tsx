@@ -1,7 +1,9 @@
+"use client";
+
+import { useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
 import { IMG } from "./ui";
-import { ParallaxImage, Reveal, ScrollLine, Stagger, StaggerItem, TextReveal, variants } from "../motion";
 
 const tiles = [
   ["/wellness", "treatment-courtyard.jpg", "Wellness", "Ayurveda, spa, She Health and yoga."],
@@ -11,44 +13,70 @@ const tiles = [
   ["/day", "pond-dusk.jpg", "A day at Ayurvana", "An illustrative daily rhythm."],
 ];
 
-// Desktop: alternate cards sit slightly lower for a gentle staggered rhythm
-const offsets = ["lg:mt-0", "lg:mt-10", "lg:mt-0", "lg:mt-10", "lg:mt-0"];
+const last = tiles.length - 1;
+
+function Slide({ tile, index, progress }: { tile: string[]; index: number; progress: MotionValue<number> }) {
+  const [href, img, title, text] = tile;
+  // The photo drifts a little slower than its slide, which gives depth
+  const imageX = useTransform(progress, [(index - 1) / last, (index + 1) / last], ["-12%", "12%"]);
+
+  return (
+    <div className="relative h-full w-screen shrink-0 overflow-hidden">
+      <motion.div className="absolute inset-0" style={{ x: imageX }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={`${IMG}/${img}`}
+          alt={title}
+          loading={index === 0 ? "eager" : "lazy"}
+          decoding="async"
+          className="h-full w-full object-cover"
+        />
+      </motion.div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-black/35" />
+      <div className="absolute inset-x-0 bottom-0 px-6 pb-16 text-white lg:px-[8vw] lg:pb-20">
+        <h3 className="card-title !text-white !text-3xl lg:!text-6xl">{title}</h3>
+        <p className="mt-3 max-w-md text-base text-white/85 lg:text-lg">{text}</p>
+        <Link
+          href={href}
+          className="mt-6 inline-block rounded-full border border-white/60 px-7 py-3 text-xs uppercase tracking-[0.2em] transition-colors duration-300 hover:bg-white hover:text-black"
+        >
+          Explore ↗
+        </Link>
+      </div>
+    </div>
+  );
+}
 
 export default function Explore() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
+  const smooth = useSpring(scrollYProgress, { stiffness: 80, damping: 24, mass: 0.4, restDelta: 0.0005 });
+  const progress = reduceMotion ? scrollYProgress : smooth;
+  const x = useTransform(progress, [0, 1], ["0vw", `-${last * 100}vw`]);
+
   return (
-    <section id="explore" className="py-20 lg:py-28 bg-cream-light overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="section-head center max-w-3xl mx-auto">
-          <Reveal variant="fadeIn">
-            <span className="section-label">Explore Ayurvana</span>
-          </Reveal>
-          <TextReveal as="h2" className="section-title mt-3" text="Discover the village, one place at a time." delay={0.1} />
-        </div>
-
-        <Reveal variant="fadeIn" delay={0.2} className="mb-10">
-          <ScrollLine />
-        </Reveal>
-
-        <Stagger className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4" gap={0.1}>
-          {tiles.map(([href, img, t, d], i) => (
-            <StaggerItem key={href} variant="clipUp" className={offsets[i]}>
-              <Link href={href} className="group block relative h-72 lg:h-96 overflow-hidden rounded-2xl">
-                <ParallaxImage src={`${IMG}/${img}`} strength={6} className="transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <motion.div
-                  className="absolute bottom-0 p-5 text-white"
-                  variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08, delayChildren: 0.35 } } }}
-                >
-                  <motion.h3 variants={variants.fadeUp} className="card-title !text-white">{t}</motion.h3>
-                  <motion.p variants={variants.fadeUp} className="text-sm text-white/80 mt-1 leading-snug">{d}</motion.p>
-                  <motion.span variants={variants.fadeUp} className="text-xs tracking-[0.2em] uppercase text-gold-light mt-3 inline-block transition-transform duration-300 group-hover:translate-x-1">
-                    Explore ↗
-                  </motion.span>
-                </motion.div>
-              </Link>
-            </StaggerItem>
+    // One screen of scrolling per slide
+    <section id="explore" ref={sectionRef} className="relative bg-cream-light" style={{ height: `${tiles.length * 100}vh` }}>
+      <div className="sticky top-0 h-screen overflow-hidden">
+        <div className="relative h-full w-full overflow-hidden bg-black">
+        <motion.div className="flex h-full w-max will-change-transform" style={{ x }}>
+          {tiles.map((tile, i) => (
+            <Slide key={tile[0]} tile={tile} index={i} progress={progress} />
           ))}
-        </Stagger>
+        </motion.div>
+
+       <div className="pointer-events-none absolute inset-x-0 top-0 px-6 pt-24 text-center text-white lg:px-[8vw]">
+  <span className="section-label !text-white">Explore Ayurvana</span>
+  <h2 className="mt-2 text-lg text-white/85 lg:text-2xl">
+    Discover the village, one place at a time.
+  </h2>
+</div>
+
+        <div className="absolute inset-x-6 bottom-8 h-px bg-white/25 lg:inset-x-[8vw]">
+          <motion.div className="h-full origin-left bg-white" style={{ scaleX: progress }} />
+        </div>
+        </div>
       </div>
     </section>
   );
