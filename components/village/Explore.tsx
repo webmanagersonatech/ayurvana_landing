@@ -74,10 +74,7 @@ export default function Explore() {
             </h2>
           </div>
 
-          {/* Progress line on the right, filling from bottom to top */}
-          <div className="absolute bottom-16 right-3 top-48 w-px bg-white/25 lg:right-[3vw]">
-            <motion.div className="h-full w-full origin-bottom bg-white" style={{ scaleY: progress }} />
-          </div>
+       
         </div>
       </div>
     </section>
