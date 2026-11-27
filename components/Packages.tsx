@@ -69,14 +69,14 @@ export default function Packages() {
   const { openBookingModal } = useBookingModal();
 
   return (
-    <section id="packages" className="py-20 relative overflow-hidden bg-cream">
+    <section id="packages" className="section-pad relative overflow-hidden bg-cream">
       <div className="relative max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
+        <div className="section-head center">
           <span className="section-label">Wellness Packages</span>
           <h2 className="section-title mt-3">
-            Healing Journeys, <span className="italic text-forest">Tailored</span> to You
+            Healing Journeys, <span className="title-accent">Tailored</span> to You
           </h2>
-          <p className="text-text-muted mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="section-lead">
             From a short restorative escape to a complete disease-reversal program — every
             package is designed and supervised by our in-house Ayurvedic physicians.
           </p>
@@ -111,7 +111,7 @@ export default function Packages() {
               className={`relative bg-cream-light rounded-2xl p-7 cursor-pointer card-hover flex flex-col ${
                 active === i
                   ? "border-2 border-gold shadow-xl"
-                  : "border border-black/10"
+                  : "border border-line"
               }`}
             >
               {pkg.popular && (
@@ -127,8 +127,8 @@ export default function Packages() {
                 </span>
               </div>
 
-              <h3 className="font-serif text-2xl text-text-dark mb-1">{pkg.label}</h3>
-              <p className="text-text-muted text-sm mb-5">{pkg.focus}</p>
+              <h3 className="card-title mb-1">{pkg.label}</h3>
+              <p className="card-text mb-5">{pkg.focus}</p>
 
               <ul className="space-y-3 mb-6 flex-1">
                 {pkg.inclusions.map((item) => (
@@ -139,13 +139,13 @@ export default function Packages() {
                 ))}
               </ul>
 
-              <div className="border-t border-black/10 pt-4">
+              <div className="border-t border-line pt-4">
                 <p className="text-text-light text-xs mb-1">Starting from</p>
                 <p className="font-serif text-xl text-forest mb-4">{pkg.price}</p>
                 <button
                   type="button"
                   onClick={() => openBookingModal(`${pkg.label} Package (${pkg.duration})`)}
-                  className="btn-outline w-full justify-center text-xs"
+                  className="btn-outline w-full"
                 >
                   Enquire Now <ArrowRight className="w-3.5 h-3.5" />
                 </button>

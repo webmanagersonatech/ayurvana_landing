@@ -1,4 +1,4 @@
-
+import { lineArt } from "./siteImages";
 
 const steps = [
   {
@@ -22,45 +22,47 @@ export default function WellnessExperience() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden pb-16"
+      className="section-pad relative overflow-hidden bg-forest-dark on-dark"
     >
+      <img
+        src={lineArt.sprigLight}
+        alt=""
+        aria-hidden="true"
+        className="absolute -left-10 bottom-0 w-56 lg:w-80 opacity-[0.06] pointer-events-none select-none"
+      />
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Heading */}
-        <div className="text-center mb-14">
-          <span className="text-gold-light text-xs font-semibold tracking-widest uppercase">
-            A slower way to feel well
-          </span>
+        <div className="section-head center">
+          <span className="section-label">A slower way to feel well</span>
 
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white mt-3 leading-tight">
-            Wellness is
-           
-            <span className="italic text-gold-light"> not a room.</span>
+          <h2 className="section-title mt-3">
+            Wellness is <span className="title-accent">not a room.</span>
           </h2>
 
-          <p className="text-white/85 mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="section-lead">
             It is a sequence of moments, places and practices that begin to feel
             like a new rhythm.
           </p>
         </div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {steps.map((step) => (
             <div
               key={step.label}
-              className="group relative -mt-px md:mt-0 md:-ml-px p-8  border border-white/20 hover:border-white hover:z-10 transition-all duration-300"
+              className="group ui-card-dark p-8"
             >
               <p className="text-gold-light group-hover:text-white transition-colors duration-300 text-xs font-semibold tracking-widest uppercase mb-5">
                 {step.label}
               </p>
 
-              <h3 className="font-serif text-2xl lg:text-3xl text-white leading-tight mb-4">
+              <h3 className="card-title mb-4">
                 {step.title[0]}
                 <br />
                 <span className="italic">{step.title[1]}</span>
               </h3>
 
-              <p className="text-white/85 text-sm leading-relaxed">
+              <p className="card-text">
                 {step.desc}
               </p>
             </div>

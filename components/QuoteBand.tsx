@@ -1,10 +1,17 @@
 import { motion } from 'framer-motion';
+import { photos, lineArt } from './siteImages';
 
 export default function QuoteBand() {
   return (
-    <section className="py-14 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+    <section className="section-pad relative overflow-hidden bg-forest-dark on-dark">
+      <img
+        src={lineArt.lotusLight}
+        alt=""
+        aria-hidden="true"
+        className="absolute -right-10 top-1/2 -translate-y-1/2 w-72 lg:w-[28rem] opacity-[0.06] pointer-events-none select-none"
+      />
+      <div className="relative max-w-7xl mx-auto px-6">
+        <div className="flex flex-col lg:flex-row items-center gap-14 lg:gap-20">
           {/* Quote Content */}
           <div className="flex-1 text-center lg:text-left">
             {/* Animated Quote Mark - GOLD */}
@@ -19,7 +26,7 @@ export default function QuoteBand() {
               }}
               className="lg:text-left"
             >
-              <div className="text-6xl font-serif text-[#b89a65] leading-none mb-4">"</div>
+              <div className="text-6xl font-serif text-gold leading-none mb-4">"</div>
             </motion.div>
 
             {/* Quote Text - WHITE */}
@@ -47,7 +54,7 @@ export default function QuoteBand() {
                 delay: 0.4,
                 ease: "easeOut"
               }}
-              className="text-[#e0c08e] text-sm not-italic block"
+              className="text-gold-light text-sm not-italic block"
             >
               — Dr. Priya Sharma, Founder & Chief Ayurvedic Physician
             </motion.cite>
@@ -62,58 +69,38 @@ export default function QuoteBand() {
                 delay: 0.6,
                 ease: "easeInOut"
               }}
-              className="h-0.5 bg-[#b89a65] mt-6 mx-auto lg:mx-0"
+              className="h-0.5 bg-gold mt-6 mx-auto lg:mx-0"
             />
           </div>
 
-          {/* Doctor Image */}
+          {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: 50, scale: 0.9 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ 
-              duration: 0.8,
-              delay: 0.3,
-              type: "spring",
-              stiffness: 150
-            }}
-            className="flex-shrink-0"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex-shrink-0 w-full max-w-sm lg:max-w-md"
           >
             <div className="relative">
-              {/* Decorative ring - GOLD */}
-              <motion.div
-                className="absolute -inset-4 rounded-full border-2 border-[#b89a65]/40"
-                animate={{ 
-                  rotate: 360,
-                  scale: [1, 1.05, 1]
-                }}
-                transition={{ 
-                  rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-                  scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                }}
-              />
-              
-              {/* Image container */}
-              <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-xl shadow-[#b89a65]/20">
-                <img loading="lazy" decoding="async"
-                  src="https://img.magnific.com/premium-photo/professional-photo-attractive-female-nurse-blonde-hair-blue-scrubs-with-white-lab-coat_1139643-388.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80"
-                  alt="Dr. Priya Sharma - Founder & Chief Ayurvedic Physician"
+              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/20">
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src={photos.quote.src}
+                  alt={photos.quote.alt}
                   className="w-full h-full object-cover"
                 />
-                
-                {/* Overlay gradient - GOLD TINT */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#b89a65]/30 to-transparent" />
               </div>
 
-              {/* Floating badge - GOLD */}
+              {/* Floating badge */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.6 }}
-                className="absolute -bottom-2 -right-2 bg-cream-light rounded-full px-4 py-2 shadow-lg"
+                className="absolute -bottom-4 -left-4 bg-cream-light rounded-full px-5 py-2.5 shadow-lg"
               >
-                <span className="text-xs font-semibold text-forest-light">15+ Years</span>
+                <span className="text-xs font-semibold tracking-wide text-forest">15+ Years of Care</span>
               </motion.div>
             </div>
           </motion.div>

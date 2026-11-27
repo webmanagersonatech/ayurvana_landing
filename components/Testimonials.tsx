@@ -3,7 +3,7 @@ const testimonials = [
     name: "Ananya Krishnan",
     location: "Chennai",
     rating: 5,
-    text: "The shirodhara session at Wivana was transformative. After years of insomnia, I finally slept soundly. The therapists are incredibly knowledgeable and gentle.",
+    text: "The shirodhara session at Ayurvana was transformative. After years of insomnia, I finally slept soundly. The therapists are incredibly knowledgeable and gentle.",
     avatar: "AK",
     color: "bg-forest-light",
   },
@@ -19,7 +19,7 @@ const testimonials = [
     name: "Meena Subramaniam",
     location: "Salem",
     rating: 5,
-    text: "Wivana is my monthly ritual now. The abhyanga massage keeps my stress levels in check and the herbal teas they recommend are wonderful. Truly a sanctuary.",
+    text: "Ayurvana is my monthly ritual now. The abhyanga massage keeps my stress levels in check and the herbal teas they recommend are wonderful. Truly a sanctuary.",
     avatar: "MS",
     color: "bg-warm-brown",
   },
@@ -47,23 +47,20 @@ function StarRating({ count }) {
 
 export default function Testimonials() {
   return (
-    <section className="py-20 bg-cream-light" id="testimonials">
+    <section className="section-pad bg-cream-light" id="testimonials">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-14">
-          <div>
-            <span className="section-label">Testimonials</span>
-            <h2 className="section-title mt-3">What Our Customers Say</h2>
-          </div>
-          <a href="#reviews" className="btn-outline shrink-0">
-            See All Reviews
-          </a>
+        <div className="section-head center">
+          <span className="section-label">Testimonials</span>
+          <h2 className="section-title mt-3">
+            What Our <span className="title-accent">Guests</span> Say
+          </h2>
+          <p className="section-lead">Real stories from people who came for a treatment and left with a new rhythm.</p>
         </div>
-
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((t) => (
-            <div key={t.name} className="bg-cream rounded-2xl p-6 card-hover">
+            <div key={t.name} className="bg-cream rounded-2xl p-7 card-hover border border-line">
               <StarRating count={t.rating} />
-              <p className="text-text-dark text-sm leading-relaxed mt-4 mb-6 italic">
+              <p className="card-text !text-text-dark mt-4 mb-6 italic">
                 "{t.text}"
               </p>
               <div className="flex items-center gap-3">
@@ -77,6 +74,10 @@ export default function Testimonials() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <a href="#reviews" className="btn-outline">See All Reviews</a>
         </div>
       </div>
     </section>

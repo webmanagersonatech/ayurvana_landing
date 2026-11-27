@@ -1,4 +1,4 @@
-# Wivana Ayurveda — Next.js 15 Website
+# Ayurvana — Next.js Website
 
 A fully responsive, SEO-friendly Ayurvedic wellness landing page built with **Next.js 15** (Pages Router), **Tailwind CSS**, and **React 19**.
 
@@ -27,7 +27,7 @@ npm start
 ## Project Structure
 
 ```
-wivana/
+ayurvana/
 ├── pages/
 │   ├── _app.jsx          # Global CSS import
 │   ├── _document.jsx     # Custom HTML head (fonts, meta)

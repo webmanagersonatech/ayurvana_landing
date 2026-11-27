@@ -16,7 +16,7 @@ export default function Programmes() {
   const [i, setI] = useState(0);
   const s = stays[i];
   return (
-    <section id="programmes" className="py-20 bg-cream">
+    <section id="programmes" className="py-20 lg:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHead
           eyebrow="Stay longer"
@@ -24,7 +24,7 @@ export default function Programmes() {
         >
           A weekend rests you.
           <br />
-          <span className="italic text-forest-light">Three weeks change you.</span>
+          <span className="title-accent">Three weeks change you.</span>
         </SectionHead>
         <div role="tablist" aria-label="Stay length" className="flex flex-wrap gap-2 mb-8">
           {stays.map((t, n) => (
@@ -34,7 +34,7 @@ export default function Programmes() {
               type="button"
               aria-selected={i === n}
               onClick={() => setI(n)}
-              className={`px-5 py-2.5 text-[11px] tracking-[0.18em] uppercase border transition-colors ${
+              className={`px-5 py-2.5 text-xs font-semibold tracking-[0.16em] uppercase rounded-full border transition-colors ${
                 i === n ? "bg-forest text-cream-light border-forest" : "border-forest/40 text-forest hover:border-forest"
               }`}
             >
@@ -42,12 +42,12 @@ export default function Programmes() {
             </button>
           ))}
         </div>
-        <div role="tabpanel" className="grid md:grid-cols-2 bg-cream-light border border-line">
-          <Photo src="stay-experience.jpg" alt="Ayurvana guest stay experience" className="h-72 md:h-full min-h-[320px]" />
+        <div role="tabpanel" className="grid md:grid-cols-2 bg-cream-light border border-line rounded-2xl overflow-hidden">
+          <Photo src="stay-experience.jpg" alt="Ayurvana guest stay experience" className="h-72 md:h-full min-h-[320px] !rounded-none" />
           <div className="p-8 lg:p-12 flex flex-col justify-center">
-            <p className="text-[11px] tracking-[0.25em] text-forest-light font-semibold">{s.duration}</p>
-            <h3 className="font-serif text-3xl lg:text-4xl mt-3">{s.title}</h3>
-            <p className="text-text-muted text-sm leading-relaxed mt-4">{s.copy}</p>
+            <p className="text-xs tracking-[0.2em] text-forest-light font-semibold">{s.duration}</p>
+            <h3 className="font-serif text-3xl lg:text-4xl mt-3 text-text-dark">{s.title}</h3>
+            <p className="card-text mt-4">{s.copy}</p>
             <a href="/contact" className="btn-primary mt-6 self-start">Enquire about this stay ↗</a>
           </div>
         </div>

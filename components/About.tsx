@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { photos, lineArt } from "./siteImages";
 
 export default function About() {
   const pillars = [
@@ -38,26 +39,20 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="relative py-12 sm:py-16 bg-cream overflow-hidden">
-      {/* Bottom left decorative image */}
-      <div className="absolute bottom-0 left-0 opacity-20 pointer-events-none">
-        <img
-          src="/images/image-1.png"
-          alt=""
-          aria-hidden="true"
-          className="w-48 h-48 sm:w-64 sm:h-64 lg:w-96 lg:h-96 object-contain"
-        />
-      </div>
-
-      {/* Top right decorative leaf */}
-      <div className="absolute top-0 right-0 opacity-30 pointer-events-none">
-        <img
-          src="/images/image-2.png"
-          alt=""
-          aria-hidden="true"
-          className="w-48 h-48 sm:w-64 sm:h-64 lg:w-96 lg:h-96 object-contain"
-        />
-      </div>
+    <section id="about" className="section-pad relative bg-cream overflow-hidden">
+      {/* Line-art backgrounds — very low opacity */}
+      <img
+        src={lineArt.sprig}
+        alt=""
+        aria-hidden="true"
+        className="absolute -bottom-10 -left-10 w-48 sm:w-64 lg:w-96 opacity-[0.07] pointer-events-none select-none"
+      />
+      <img
+        src={lineArt.lotus}
+        alt=""
+        aria-hidden="true"
+        className="absolute top-6 -right-8 w-48 sm:w-64 lg:w-96 opacity-[0.06] pointer-events-none select-none"
+      />
 
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -79,8 +74,8 @@ export default function About() {
                 <img
                   loading="lazy"
                   decoding="async"
-                  src="/images/a2.webp"
-                  alt="Ayurvedic back massage"
+                  src={photos.aboutTop.src}
+                  alt={photos.aboutTop.alt}
                   className="w-full h-full object-cover"
                 />
               </motion.div>
@@ -93,8 +88,8 @@ export default function About() {
                 <img
                   loading="lazy"
                   decoding="async"
-                  src="/images/a3.webp"
-                  alt="Ayurvedic oils and herbal ingredients"
+                  src={photos.aboutBottom.src}
+                  alt={photos.aboutBottom.alt}
                   className="w-full h-full object-cover"
                 />
               </motion.div>
@@ -108,8 +103,8 @@ export default function About() {
               <img
                 loading="lazy"
                 decoding="async"
-                src="/images/a1.webp"
-                alt="Ayurvedic facial massage treatment"
+                src={photos.aboutTall.src}
+                alt={photos.aboutTall.alt}
                 className="w-full h-full object-cover"
               />
             </motion.div>
@@ -125,7 +120,7 @@ export default function About() {
           >
             {/* Background image */}
             <div
-              className="absolute inset-0 pointer-events-none opacity-10 z-0"
+              className="absolute inset-0 pointer-events-none opacity-[0.05] z-0"
               style={{
                 backgroundImage: "url('/images/bgimage-4.png')",
                 backgroundSize: "60%",
@@ -136,31 +131,18 @@ export default function About() {
 
             <div className="relative z-10">
               {/* Eyebrow */}
-              <motion.div className="flex items-center gap-2 mb-5" variants={fadeInUp}>
-                <motion.svg
-                  className="w-4 h-4 text-forest-light"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                >
-                  <circle cx="12" cy="12" r="9" strokeWidth={1.8} />
-                  <path strokeLinecap="round" strokeWidth={1.8} d="M12 8v8M8 12h8" />
-                </motion.svg>
-                <span className="text-forest-light text-xs font-semibold tracking-[0.2em] uppercase">
-                  A different kind of retreat
-                </span>
+              <motion.div className="mb-4" variants={fadeInUp}>
+                <span className="section-label">A different kind of retreat</span>
               </motion.div>
 
               {/* Heading */}
               <motion.h2
-                className="font-serif text-3xl sm:text-4xl md:text-5xl text-text-dark leading-[1.15] mb-6"
+                className="section-title mb-10"
                 variants={fadeInUp}
               >
                 Come for the treatment.
                 <br />
-                <span className="italic text-forest-light">Stay for the village.</span>
+                <span className="title-accent">Stay for the village.</span>
               </motion.h2>
 
             
@@ -171,13 +153,13 @@ export default function About() {
                   <motion.div
                     key={item.number}
                     variants={fadeInUp}
-                    className="flex items-start gap-4 pt-5 border-t border-forest-light/20"
+                    className="flex items-start gap-4 pt-5 border-t border-line"
                   >
                     <div className="shrink-0 w-12">
                       <p className="font-serif text-2xl text-forest-light leading-none">
                         {item.number}
                       </p>
-                      <p className="text-[10px] tracking-[0.2em] uppercase text-text-muted mt-1.5">
+                      <p className="text-xs tracking-[0.2em] uppercase text-text-light mt-1.5">
                         {item.tag}
                       </p>
                     </div>
@@ -186,8 +168,8 @@ export default function About() {
                       whileHover={{ x: 4 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <h3 className="font-serif text-xl text-text-dark mb-1.5">{item.title}</h3>
-                      <p className="text-text-muted text-sm leading-relaxed">{item.desc}</p>
+                      <h3 className="card-title mb-1.5">{item.title}</h3>
+                      <p className="card-text">{item.desc}</p>
                     </motion.div>
                   </motion.div>
                 ))}

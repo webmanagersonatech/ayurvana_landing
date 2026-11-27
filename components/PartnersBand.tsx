@@ -1,60 +1,37 @@
+// All logos are pre-trimmed, transparent PNGs exported at the same height
+// (see /public/images/logo-*.png). They are rendered at one fixed height here
+// so the row stays visually even no matter the logo's aspect ratio.
 const partners = [
-  { 
-    id: 1,
-    name: "Ayush Ministry",
-    logo: "/images/partner-1.png",
-    alt: "Ayush Ministry Logo"
-  },
-  { 
-    id: 2,
-    name: "Kerala Ayurveda",
-    logo: "/images/partner-2.png",
-    alt: "Kerala Ayurveda Logo"
-  },
-  { 
-    id: 3,
-    name: "Himalaya Wellness",
-    logo: "/images/partner-3.jpg",
-    alt: "Himalaya Wellness Logo"
-  },
-  { 
-    id: 4,
-    name: "Kama Ayurveda",
-    logo: "/images/partner-4.png",
-    alt: "Kama Ayurveda Logo"
-  },
-  { 
-    id: 5,
-    name: "Jiva Ayurveda",
-    logo: "/images/partner-5.jpg",
-    alt: "Jiva Ayurveda Logo"
-  },
+  { id: 1, name: "Ministry of AYUSH", logo: "/images/logo-ayush.png", w: 186, h: 96 },
+  { id: 2, name: "Kerala Ayurveda", logo: "/images/logo-kerala-ayurveda.png", w: 281, h: 96 },
+  { id: 3, name: "Himalaya Wellness", logo: "/images/logo-himalaya.png", w: 252, h: 96 },
+  { id: 4, name: "Kama Ayurveda", logo: "/images/logo-kama.png", w: 221, h: 96 },
+  { id: 5, name: "Jiva Ayurveda", logo: "/images/logo-jiva.png", w: 327, h: 96 },
 ];
 
 export default function PartnersBand() {
   return (
-    <section className="py-12 bg-cream-dark border-y border-cream">
+    <section className="py-14 bg-cream-dark border-y border-line">
       <div className="max-w-7xl mx-auto px-6">
-        <p className="text-center text-text-light text-xs tracking-widest uppercase mb-8">
-          Trusted Partners & Certifications
+        <p className="section-label w-full text-center mb-10">
+          Trusted Partners &amp; Certifications
         </p>
-        
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+
+        <ul className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 md:gap-x-16">
           {partners.map((partner) => (
-            <div
-              key={partner.id}
-              className="flex items-center justify-center"
-            >
-              <img loading="lazy" decoding="async"
+            <li key={partner.id} className="flex items-center justify-center">
+              <img
+                loading="lazy"
+                decoding="async"
                 src={partner.logo}
-                alt={partner.alt}
-                width={100}
-                height={50}
-                className="h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                alt={`${partner.name} logo`}
+                width={partner.w}
+                height={partner.h}
+                className="h-12 w-auto max-w-none object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
               />
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

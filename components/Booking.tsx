@@ -991,7 +991,7 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                                             }`}
                                     >
                                         <div className="flex items-start gap-3">
-                                            <div className={`p-2 rounded-lg ${selectedPackage === pkg.id
+                                            <div className={`p-2 rounded-xl ${selectedPackage === pkg.id
                                                 ? 'bg-forest text-white'
                                                 : isDark
                                                     ? 'bg-[#3d2f28] text-text-light'
@@ -1022,7 +1022,7 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                                                     >
                                                         <div className="flex flex-wrap gap-1">
                                                             {pkg.includes?.map((item, idx) => (
-                                                                <span key={idx} className="text-[10px] px-2 py-0.5 rounded-full bg-forest/10 text-forest-dark">
+                                                                <span key={idx} className="text-xs px-2 py-0.5 rounded-full bg-forest/10 text-forest-dark">
                                                                     {item}
                                                                 </span>
                                                             ))}
@@ -1109,7 +1109,7 @@ export const AyurvedicBookingForm: React.FC<BookingFormProps> = ({
                             type="button"
                             onClick={handleSubmit}
                             disabled={isSubmitting}
-                            className="relative group w-full bg-forest hover:bg-forest-dark text-cream-light uppercase tracking-[0.15em] px-6 py-4 rounded-xl text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
+                            className="relative group w-full bg-forest hover:bg-forest-dark text-cream-light uppercase tracking-[0.16em] px-6 py-4 rounded-full text-xs font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
                         >
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 

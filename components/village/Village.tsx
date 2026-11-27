@@ -13,7 +13,7 @@ const spaces = [
 
 export default function Village() {
   return (
-    <section id="village" className="pb-20  bg-cream-light">
+    <section id="village" className="pb-20 lg:pb-28 bg-cream-light">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHead
           eyebrow="The village"

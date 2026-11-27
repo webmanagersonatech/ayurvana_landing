@@ -34,14 +34,14 @@ const rooms: Room[] = [
 
 export default function RoomTariff() {
   return (
-    <section id="rooms" className="py-20 relative overflow-hidden bg-cream-dark">
+    <section id="rooms" className="section-pad relative overflow-hidden bg-cream-dark">
       <div className="relative max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
+        <div className="section-head center">
           <span className="section-label">Stay With Us</span>
           <h2 className="section-title mt-3">
-            Room <span className="italic text-forest">Tariff</span>
+            Room <span className="title-accent">Tariff</span>
           </h2>
-          <p className="text-text-muted mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="section-lead">
             Comfortable, healing-focused accommodation for every budget — priced well
             below comparable luxury retreats, without compromising on care.
           </p>
@@ -55,18 +55,18 @@ export default function RoomTariff() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className={`bg-cream-light rounded-2xl p-6 card-hover flex flex-col ${
-                room.featured ? "border-2 border-gold shadow-xl" : "border border-black/10"
+              className={`bg-cream-light rounded-2xl p-7 card-hover flex flex-col ${
+                room.featured ? "border-2 border-gold shadow-xl" : "border border-line"
               }`}
             >
               <div className="w-11 h-11 rounded-full bg-forest-light/15 flex items-center justify-center mb-4">
                 <BedDouble className="w-5 h-5 text-forest" strokeWidth={1.5} />
               </div>
-              <h3 className="font-serif text-lg text-text-dark mb-2">{room.name}</h3>
-              <p className="text-text-muted text-sm mb-5 flex-1">{room.desc}</p>
-              <div className="border-t border-black/10 pt-4">
+              <h3 className="card-title mb-2">{room.name}</h3>
+              <p className="card-text mb-5 flex-1">{room.desc}</p>
+              <div className="border-t border-line pt-4">
                 <p className="text-text-light text-xs mb-1">Per night</p>
-                <p className="font-serif text-lg text-forest">{room.price}</p>
+                <p className="font-serif text-xl text-forest">{room.price}</p>
               </div>
             </motion.div>
           ))}

@@ -75,14 +75,14 @@ const categories: Category[] = [
 
 export default function TreatmentCategories() {
   return (
-    <section id="treatments" className="py-20 relative overflow-hidden bg-cream-light">
+    <section id="treatments" className="section-pad relative overflow-hidden bg-cream-light">
       <div className="relative max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
+        <div className="section-head center">
           <span className="section-label">What We Treat</span>
           <h2 className="section-title mt-3">
-            Every Therapy Under <span className="italic text-forest">One Roof</span>
+            Every Therapy Under <span className="title-accent">One Roof</span>
           </h2>
-          <p className="text-text-muted mt-4 max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="section-lead">
             A complete spectrum of classical and clinical care — the same depth you'd
             find across India's leading wellness retreats, delivered by our own
             physicians and therapists.
@@ -99,15 +99,15 @@ export default function TreatmentCategories() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-cream rounded-2xl p-7 card-hover border border-black/5"
+                className="bg-cream rounded-2xl p-7 card-hover border border-line"
               >
                 <div className="w-12 h-12 rounded-full bg-forest/10 flex items-center justify-center mb-5">
                   <Icon className="w-6 h-6 text-forest" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-serif text-xl text-text-dark mb-3">{cat.title}</h3>
+                <h3 className="card-title mb-3">{cat.title}</h3>
                 <ul className="space-y-1.5">
                   {cat.treatments.map((t) => (
-                    <li key={t} className="text-sm text-text-muted flex items-start gap-2">
+                    <li key={t} className="card-text flex items-start gap-2">
                       <span className="text-gold mt-1.5 w-1 h-1 rounded-full bg-gold shrink-0" />
                       <span>{t}</span>
                     </li>

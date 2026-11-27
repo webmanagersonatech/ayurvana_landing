@@ -39,30 +39,10 @@ export function SectionHead({
   center?: boolean;
 }) {
   return (
-    <Reveal className={`mb-12 max-w-3xl ${center ? "mx-auto text-center" : ""}`}>
-      <span
-        className={`text-xs font-semibold tracking-[0.25em] uppercase ${
-          dark ? "text-gold-light" : "text-forest-light"
-        }`}
-      >
-        {eyebrow}
-      </span>
-      <h2
-        className={`font-serif text-3xl sm:text-4xl lg:text-5xl leading-[1.12] mt-4 ${
-          dark ? "text-white" : "text-text-dark"
-        }`}
-      >
-        {children}
-      </h2>
-      {lead && (
-        <p
-          className={`mt-5 text-sm sm:text-base leading-relaxed ${
-            dark ? "text-white/80" : "text-text-muted"
-          }`}
-        >
-          {lead}
-        </p>
-      )}
+    <Reveal className={`section-head max-w-3xl ${center ? "center mx-auto" : ""} ${dark ? "on-dark" : ""}`}>
+      <span className="section-label">{eyebrow}</span>
+      <h2 className="section-title mt-3">{children}</h2>
+      {lead && <p className="section-lead !max-w-2xl">{lead}</p>}
     </Reveal>
   );
 }
@@ -91,26 +71,14 @@ export function Card({
   dark?: boolean;
 }) {
   return (
-    <div
-      className={`p-6 border transition-colors duration-300 h-full ${
-        dark
-          ? "border-white/20 hover:border-white/60 text-white"
-          : "border-line bg-cream-light hover:border-forest-light"
-      }`}
-    >
+    <div className={`${dark ? "ui-card-dark on-dark" : "ui-card"} h-full`}>
       {tag && (
-        <p
-          className={`text-[10px] tracking-[0.2em] uppercase mb-3 ${
-            dark ? "text-gold-light" : "text-forest-light"
-          }`}
-        >
+        <p className={`text-xs tracking-[0.2em] uppercase mb-3 ${dark ? "text-gold-light" : "text-forest-light"}`}>
           {tag}
         </p>
       )}
-      <h3 className={`font-serif text-xl mb-2 ${dark ? "text-white" : "text-text-dark"}`}>{title}</h3>
-      <p className={`text-sm leading-relaxed ${dark ? "text-white/80" : "text-text-muted"}`}>
-        {children}
-      </p>
+      <h3 className="card-title mb-2">{title}</h3>
+      <p className="card-text">{children}</p>
     </div>
   );
 }
@@ -127,7 +95,7 @@ export function Photo({
   caption?: string;
 }) {
   return (
-    <figure className={`relative overflow-hidden group ${className}`}>
+    <figure className={`relative overflow-hidden rounded-2xl group ${className}`}>
       <img
         src={`${IMG}/${src}`}
         alt={alt}

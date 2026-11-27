@@ -14,7 +14,7 @@ const workshops = [
 
 export default function SonaGramam() {
   return (
-    <section id="gramam" className="pt-20 bg-cream">
+    <section id="gramam" className="pt-20 lg:pt-28 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHead
           eyebrow="Sona Gramam · The art village"

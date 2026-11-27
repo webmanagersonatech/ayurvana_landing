@@ -18,7 +18,7 @@ export default function Prana() {
           >
             Breath first.
             <br />
-            <span className="italic text-forest-light">Then everything else.</span>
+            <span className="title-accent">Then everything else.</span>
           </SectionHead>
           <div className="grid sm:grid-cols-2 gap-4">
             {items.map(([t, d]) => (

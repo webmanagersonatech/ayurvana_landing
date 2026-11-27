@@ -18,7 +18,7 @@ export default function Furniture() {
   const [open, setOpen] = useState<string[] | null>(null);
   const shown = pieces.filter((p) => f === "All pieces" || p[3] === f);
   return (
-    <section id="furniture" className="py-20  bg-cream-dark">
+    <section id="furniture" className="py-20 lg:py-28 bg-cream-dark">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHead
           eyebrow="Bespoke furniture · Sona Gramam"
@@ -26,9 +26,9 @@ export default function Furniture() {
         >
           Craft made tangible.
           <br />
-          <span className="italic text-forest-light">Designed to belong.</span>
+          <span className="title-accent">Designed to belong.</span>
         </SectionHead>
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px] tracking-[0.25em] uppercase text-text-muted mb-6">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs tracking-[0.2em] uppercase text-text-muted mb-6">
           <span>The collection</span>
           <span>{String(pieces.length).padStart(2, "0")} pieces</span>
           <span>Timber · Textile · Craft</span>
@@ -40,7 +40,7 @@ export default function Furniture() {
               type="button"
               aria-pressed={f === t}
               onClick={() => setF(t)}
-              className={`px-4 py-2 text-[11px] tracking-[0.16em] uppercase border transition-colors ${
+              className={`px-5 py-2.5 text-xs font-semibold tracking-[0.16em] uppercase rounded-full border transition-colors ${
                 f === t ? "bg-forest text-cream-light border-forest" : "border-forest/40 text-forest hover:border-forest"
               }`}
             >
@@ -51,13 +51,13 @@ export default function Furniture() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {shown.map((p) => (
             <Reveal key={p[0]}>
-              <figure className="bg-white border border-line">
+              <figure className="bg-white border border-line rounded-2xl overflow-hidden">
                 <button type="button" onClick={() => setOpen(p)} className="block w-full aspect-square overflow-hidden" aria-label={`View ${p[2]}`}>
                   <img src={`${IMG}/${p[0]}`} alt={p[1]} loading="lazy" decoding="async" className="w-full h-full object-contain p-3 hover:scale-105 transition-transform duration-500" />
                 </button>
                 <figcaption className="px-4 py-3 border-t border-line">
                   <b className="block text-xs tracking-[0.12em] uppercase font-semibold">{p[2]}</b>
-                  <small className="text-[10px] tracking-[0.18em] uppercase text-text-muted">{p[3]}</small>
+                  <small className="text-xs tracking-[0.16em] uppercase text-text-muted">{p[3]}</small>
                 </figcaption>
               </figure>
             </Reveal>
@@ -78,7 +78,7 @@ export default function Furniture() {
           onKeyDown={(e) => e.key === "Escape" && setOpen(null)}
         >
           <button type="button" aria-label="Close" autoFocus onClick={() => setOpen(null)} className="absolute top-5 right-6 text-white text-3xl">×</button>
-          <img src={`${IMG}/${open[0]}`} alt={open[1]} className="max-h-full max-w-full object-contain bg-white" onClick={(e) => e.stopPropagation()} />
+          <img src={`${IMG}/${open[0]}`} alt={open[1]} className="max-h-full max-w-full object-contain bg-white rounded-2xl" onClick={(e) => e.stopPropagation()} />
         </div>
       )}
     </section>

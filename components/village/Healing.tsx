@@ -17,7 +17,7 @@ export default function Healing() {
         >
           Predominantly Ayurvedic.
           <br />
-          <span className="italic text-forest-light">Entirely personal.</span>
+          <span className="title-accent">Entirely personal.</span>
         </SectionHead>
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           <Reveal>

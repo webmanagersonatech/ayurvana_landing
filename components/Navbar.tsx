@@ -239,7 +239,7 @@ export default function Navbar() {
                 {/* Dropdown Menu */}
                 {link.hasDropdown && activeDropdown === link.label && (
                   <div
-                    className="absolute top-full left-0 mt-2 w-56 bg-cream-light shadow-xl border border-cream-dark overflow-hidden"
+                    className="absolute top-full left-0 mt-2 w-56 bg-cream-light shadow-xl border border-line rounded-xl overflow-hidden"
                     onMouseEnter={handleDropdownMouseEnter}
                     onMouseLeave={handleDropdownMouseLeave}
                   >
@@ -327,7 +327,7 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="lg:hidden bg-cream-light border-t border-cream-dark shadow-xl max-h-[80vh] overflow-y-auto">
+          <div className="lg:hidden bg-cream-light border-t border-line shadow-xl max-h-[80vh] overflow-y-auto rounded-b-2xl">
             <ul className="flex flex-col py-4">
               {navLinks.map((link) => (
                 <li key={link.label} className="border-b border-cream-dark last:border-0">

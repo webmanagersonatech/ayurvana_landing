@@ -144,7 +144,7 @@ export default function FAQ() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.6 }}
-      className="py-20 bg-cream-light"
+      className="section-pad bg-cream-light"
       id="faq"
     >
       <div className="max-w-7xl mx-auto px-6">
@@ -162,7 +162,7 @@ export default function FAQ() {
               scale: 1.02,
               transition: { type: "spring", stiffness: 300, damping: 20 },
             }}
-            className="overflow-hidden lg:sticky lg:top-24 relative min-h-[500px] lg:min-h-[600px]"
+            className="overflow-hidden rounded-2xl lg:sticky lg:top-24 relative min-h-[500px] lg:min-h-[600px]"
           >
             <motion.img
               src="/images/faq.webp"
@@ -187,7 +187,7 @@ export default function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.7, duration: 0.5 }}
-                className="text-sm font-medium text-text-dark"
+                className="text-sm font-semibold text-text-dark"
               >
                 ✧ 5,000 Years of Healing Wisdom
               </motion.p>
@@ -216,11 +216,11 @@ export default function FAQ() {
             </motion.span>
             <motion.h2
               variants={titleVariants}
-              className="section-title mt-3 mb-8"
+              className="section-title mt-3"
             >
-              Frequently Asked
-              <br />Questions
+              Frequently Asked <span className="title-accent">Questions</span>
             </motion.h2>
+            <p className="section-lead mb-8">Everything you need to know before planning your stay at Ayurvana.</p>
 
             <motion.div
               variants={containerVariants}
@@ -237,7 +237,7 @@ export default function FAQ() {
                     scale: 1.01,
                     transition: { type: "spring", stiffness: 400, damping: 25 },
                   }}
-                  className="border border-cream-dark rounded-xl overflow-hidden"
+                  className="border border-line bg-cream-light rounded-2xl overflow-hidden"
                 >
                   <motion.button
                     className="w-full text-left px-5 py-4 flex items-center justify-between gap-4 hover:bg-cream transition-colors relative"

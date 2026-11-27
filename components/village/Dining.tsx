@@ -27,17 +27,17 @@ export default function Dining() {
           Food that follows the rhythm of your care.
         </SectionHead>
         <Reveal>
-          <div className="relative h-[380px] sm:h-[500px] overflow-hidden bg-forest-dark">
+          <div className="relative h-[380px] sm:h-[500px] overflow-hidden rounded-2xl bg-forest-dark">
             <img key={s.img} src={`${IMG}/${s.img}`} alt={s.alt} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 text-white max-w-2xl">
-              <p className="text-[11px] tracking-[0.2em] uppercase text-gold-light">{s.tag}</p>
+              <p className="text-xs tracking-[0.2em] uppercase text-gold-light">{s.tag}</p>
               <h3 className="font-serif text-3xl sm:text-4xl mt-2">{s.title}</h3>
               <p className="text-sm text-white/85 mt-2">{s.text}</p>
             </div>
             <div className="absolute top-4 right-4 flex items-center gap-2 text-white text-xs">
-              <button type="button" aria-label="Previous slide" onClick={() => go(i - 1)} className="w-10 h-10 border border-white/60 hover:bg-white/20">←</button>
-              <button type="button" aria-label="Next slide" onClick={() => go(i + 1)} className="w-10 h-10 border border-white/60 hover:bg-white/20">→</button>
+              <button type="button" aria-label="Previous slide" onClick={() => go(i - 1)} className="w-10 h-10 rounded-full border border-white/60 hover:bg-white/20 transition-colors">←</button>
+              <button type="button" aria-label="Next slide" onClick={() => go(i + 1)} className="w-10 h-10 rounded-full border border-white/60 hover:bg-white/20 transition-colors">→</button>
               <span className="ml-2 tracking-widest">{String(i + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>
             </div>
           </div>

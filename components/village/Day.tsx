@@ -36,7 +36,7 @@ export default function Day() {
               type="button"
               aria-pressed={tab === t}
               onClick={() => setTab(t)}
-              className={`px-5 py-2.5 text-[11px] tracking-[0.18em] uppercase border transition-colors ${
+              className={`px-5 py-2.5 text-xs font-semibold tracking-[0.16em] uppercase rounded-full border transition-colors ${
                 tab === t
                   ? "bg-forest text-cream-light border-forest"
                   : "border-forest/40 text-forest hover:border-forest"
@@ -51,8 +51,8 @@ export default function Day() {
             <li key={s.time} className="grid sm:grid-cols-[130px_1fr] gap-2 sm:gap-8 py-5">
               <time className="font-serif text-xl text-forest">{s.time}</time>
               <div>
-                <h3 className="font-serif text-xl text-text-dark">{s.title}</h3>
-                <p className="text-sm text-text-muted mt-1 leading-relaxed">{s.text}</p>
+                <h3 className="card-title">{s.title}</h3>
+                <p className="card-text mt-1">{s.text}</p>
               </div>
             </li>
           ))}

@@ -10,7 +10,7 @@ const gallery = [
 
 export default function Cottage() {
   return (
-    <section id="cottage-design" className="pt-20 pb-12  bg-cream">
+    <section id="cottage-design" className="pt-20 lg:pt-28 pb-12 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHead
           eyebrow="The private cottages · Design story"
@@ -18,14 +18,14 @@ export default function Cottage() {
         >
           Architecture shaped
           <br />
-          <span className="italic text-forest-light">by place and ritual.</span>
+          <span className="title-accent">by place and ritual.</span>
         </SectionHead>
         <div className="grid lg:grid-cols-[2fr_1fr] gap-6">
           <Reveal>
             <Photo src="cottage-living.jpg" alt="Leaf colourway cottage living room" caption="01 / The living space · Palace Verde" className="h-[320px] lg:h-[520px]" />
           </Reveal>
           <Reveal delay={0.1}>
-            <aside className="h-full bg-cream-light border border-line p-6 flex flex-col">
+            <aside className="h-full bg-cream-light border border-line rounded-2xl p-7 flex flex-col">
               <span className="text-[10px] tracking-[0.25em] uppercase text-forest-light">Material palette</span>
               <ul className="mt-4 divide-y divide-line flex-1">
                 {palette.map((p) => (

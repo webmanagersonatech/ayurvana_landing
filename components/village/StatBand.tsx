@@ -48,7 +48,7 @@ export default function StatBand() {
         {stats.map((s) => (
           <div key={s.label}>
             <Counter value={s.value} suffix={s.suffix} decimal={s.decimal} />
-            <p className="mt-2 text-[11px] tracking-[0.2em] uppercase text-text-muted">{s.label}</p>
+            <p className="mt-2 text-xs tracking-[0.2em] uppercase text-text-muted">{s.label}</p>
           </div>
         ))}
       </div>

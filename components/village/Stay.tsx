@@ -24,16 +24,16 @@ export default function Stay() {
         >
           Room for rest.
           <br />
-          <span className="italic text-forest-light">Space to reconnect.</span>
+          <span className="title-accent">Space to reconnect.</span>
         </SectionHead>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {rooms.map(([img, alt, t, d, price], i) => (
             <Reveal key={t} delay={i * 0.06}>
-              <article className="bg-white border border-line h-full flex flex-col">
-                <Photo src={img} alt={alt} className="h-48" />
-                <div className="p-5 flex flex-col flex-1">
-                  <h3 className="font-serif text-xl">{t}</h3>
-                  <p className="text-sm text-text-muted mt-2 flex-1 leading-relaxed">{d}</p>
+              <article className="bg-cream border border-line rounded-2xl overflow-hidden h-full flex flex-col">
+                <Photo src={img} alt={alt} className="aspect-[3/2] !rounded-none" />
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="card-title">{t}</h3>
+                  <p className="card-text mt-2 flex-1">{d}</p>
                   <span className="mt-4 text-xs tracking-wide text-forest font-semibold">{price}</span>
                 </div>
               </article>
@@ -41,9 +41,10 @@ export default function Stay() {
           ))}
         </div>
 
-        <Reveal className="mt-12 overflow-x-auto">
-          <table className="w-full min-w-[520px] text-left text-sm border border-line bg-white">
-            <thead className="bg-forest text-cream-light text-[11px] tracking-[0.18em] uppercase">
+        <Reveal className="mt-12">
+         <div className="overflow-x-auto rounded-2xl border border-line">
+          <table className="w-full min-w-[520px] text-left text-sm bg-cream">
+            <thead className="bg-forest text-cream-light text-xs tracking-[0.16em] uppercase">
               <tr>
                 <th className="p-4 font-medium">Accommodation</th>
                 <th className="p-4 font-medium">Basis</th>
@@ -60,6 +61,7 @@ export default function Stay() {
               ))}
             </tbody>
           </table>
+         </div>
         </Reveal>
         <p className="mt-6 text-xs text-text-light max-w-3xl leading-relaxed">
           All tariffs exclude GST. Premium rooms are approximately 20% above the single-occupancy tariff. Treatments,

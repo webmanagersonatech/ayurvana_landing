@@ -1,27 +1,11 @@
 import { motion, Variants } from "framer-motion";
+import { photos, lineArt } from "./siteImages";
 
-const gallery = [
-  {
-    src: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80",
-    alt: "Massage Therapy",
-    span: "md:row-span-2",
-  },
-  {
-    src: "https://img.magnific.com/premium-photo/ayurvedic-shirodhara-treatment-india_926199-3909061.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-    alt: "Ayurvedic Treatment",
-    span: "",
-  },
-  {
-    src: "https://img.magnific.com/premium-photo/ayurvedic-shirodhara-treatment-india_211214-2.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-    alt: "Face Therapy",
-    span: "md:row-span-2",
-  },
-  {
-    src: "https://img.magnific.com/premium-photo/ayurvedic-shirodhara-treatment-india_926199-2263056.jpg?uid=R224290380&ga=GA1.1.1847424523.1777460742&semt=ais_hybrid&w=740&q=80",
-    alt: "Essential Oils",
-    span: "",
-  },
-];
+const gallery = photos.gallery.map((g) => ({
+  src: g.src,
+  alt: g.label,
+  span: g.tall ? "md:row-span-2" : "",
+}));
 
 // Animation variants - Explicitly typed with proper transitions
 const containerVariants: Variants = {
@@ -89,17 +73,23 @@ export default function SpaExperience() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.6 }}
-      className="py-20 bg-[#35231d]"
+      className="section-pad relative overflow-hidden bg-forest-dark on-dark"
       id="gallery"
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center  mb-14">
+      <img
+        src={lineArt.lotusLight}
+        alt=""
+        aria-hidden="true"
+        className="absolute -left-12 top-10 w-64 lg:w-96 opacity-[0.05] pointer-events-none select-none"
+      />
+      <div className="relative max-w-7xl mx-auto px-6">
+        <div className="section-head center">
           <motion.span
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={titleVariants}
-            className="section-label text-white"
+            className="section-label"
           >
             Our Space
           </motion.span>
@@ -108,17 +98,16 @@ export default function SpaExperience() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={titleVariants}
-            
-            className="section-title mt-3 text-white"
+            className="section-title mt-3"
           >
-            Our AyurVana Experience
+            Our <span className="title-accent">Ayurvana</span> Experience
           </motion.h2>
           <motion.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={subtitleVariants}
-            className="text-text-muted mt-4 max-w-xl mx-auto text-sm leading-relaxed text-white/80"
+            className="section-lead"
           >
             Step inside Ayurvana — a world of calm, crafted with care.
           </motion.p>
@@ -129,13 +118,13 @@ export default function SpaExperience() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[180px]"
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[200px]"
         >
           {gallery.map((item, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`overflow-hidden ${item.span} group relative cursor-pointer`}
+              className={`overflow-hidden rounded-2xl ${item.span} group relative cursor-pointer`}
             >
               <motion.div
                 className="w-full h-full overflow-hidden"
@@ -147,6 +136,8 @@ export default function SpaExperience() {
                 <motion.img
                   src={item.src}
                   alt={item.alt}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                   whileHover={{
                     scale: 1.15,
@@ -160,7 +151,7 @@ export default function SpaExperience() {
                 initial={{ opacity: 0 }}
                 whileHover={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-black/40 flex items-center justify-center"
+                className="absolute inset-0 bg-black/35 flex items-center justify-center rounded-2xl"
               >
                 <motion.span
                   initial={{ scale: 0.8, opacity: 0 }}

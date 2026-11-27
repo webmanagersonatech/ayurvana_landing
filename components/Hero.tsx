@@ -161,7 +161,7 @@ export default function Hero() {
   };
 
   const selectClass =
-    "w-full bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer";
+    "w-full rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3.5 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer";
   const labelClass =
     "flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/80 mb-1.5";
 
@@ -177,7 +177,7 @@ export default function Hero() {
           >
             <Image
               src="/images/hero-1.webp"
-              alt="Ayurvedic oil massage treatment"
+              alt="Ayurvana village pond at dusk"
               fill
               priority
               sizes="100vw"
@@ -193,7 +193,7 @@ export default function Hero() {
                 {/* Eyebrow */}
                 <SplitText
                   text="A Sona Star Initiative · Salem, Tamil Nadu"
-                  className="text-gold-light text-[10px] sm:text-xs font-semibold tracking-widest uppercase mb-3 sm:mb-4 overflow-visible"
+                  className="text-gold-light text-xs font-semibold tracking-[0.2em] uppercase mb-3 sm:mb-4 overflow-visible"
                   delay={50}
                   duration={1.25}
                   ease="power3.out"
@@ -209,7 +209,7 @@ export default function Hero() {
                 {/* Brand name */}
                 <SplitText
                   text="Ayurvana"
-                  className="font-serif italic text-gold-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-none mb-3 sm:mb-5 overflow-visible"
+                  className="font-serif italic text-gold-light text-3xl sm:text-4xl lg:text-5xl leading-none mb-3 sm:mb-5 overflow-visible"
                   delay={50}
                   duration={1.25}
                   ease="power3.out"
@@ -225,7 +225,7 @@ export default function Hero() {
                 {/* Heading - Line 1 */}
                 <SplitText
                   text="A village for the body,"
-                  className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white leading-tight overflow-visible"
+                  className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.1] overflow-visible"
                   delay={50}
                   duration={1.25}
                   ease="power3.out"
@@ -242,7 +242,7 @@ export default function Hero() {
                 <div className="flex flex-wrap mt-1 items-center gap-1 sm:gap-2 overflow-visible">
                   <SplitText
                     text="the mind"
-                    className="italic text-gold-light font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl overflow-visible"
+                    className="italic text-gold-light font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.1] overflow-visible"
                     delay={50}
                     duration={1.25}
                     ease="power3.out"
@@ -257,7 +257,7 @@ export default function Hero() {
 
                   <SplitText
                     text="and the hands."
-                    className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white leading-tight overflow-visible"
+                    className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.1] overflow-visible"
                     delay={50}
                     duration={1.25}
                     ease="power3.out"
@@ -274,7 +274,7 @@ export default function Hero() {
                 {/* Description */}
                 <SplitText
                   text="Where physician-led care, restorative rituals and living craft traditions come together."
-                  className="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed mt-4 sm:mt-6 max-w-lg overflow-visible"
+                  className="text-white/80 text-sm sm:text-base leading-relaxed mt-5 sm:mt-6 max-w-lg overflow-visible"
                   delay={50}
                   duration={1.25}
                   ease="power3.out"
@@ -291,13 +291,13 @@ export default function Hero() {
                 <div className="flex flex-wrap gap-4 mt-6 sm:mt-8">
                   <button
                     onClick={handleBookNow}
-                    className="bg-cream text-forest hover:bg-white font-medium uppercase tracking-[0.18em] text-[11px] sm:text-xs px-6 sm:px-8 py-3 transition-all duration-300 hover:-translate-y-0.5 inline-block cursor-pointer"
+                    className="btn-light"
                   >
                     Book Your Stay
                   </button>
                   <Link
                     href="/sonagramam"
-                    className="border border-cream text-cream hover:bg-cream hover:text-forest font-medium uppercase tracking-[0.18em] text-[11px] sm:text-xs px-6 sm:px-8 py-3 transition-all duration-300 hover:-translate-y-0.5 inline-block cursor-pointer"
+                    className="btn-ghost-light"
                   >
                     Learn More
                   </Link>
@@ -310,38 +310,31 @@ export default function Hero() {
         {/* Floating search banner */}
         <div className="relative max-w-7xl mx-auto px-4">
           <motion.div
-            className="shadow-2xl -mt-16 sm:-mt-20 md:-mt-16 lg:-mt-20 relative z-10 overflow-hidden bg-black"
+            className="shadow-2xl -mt-16 sm:-mt-20 md:-mt-16 lg:-mt-20 relative z-10 overflow-hidden rounded-2xl bg-forest-dark border border-white/10 on-dark"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            {/* 1. Black layer (bottom) */}
-            <div className="absolute inset-0 bg-black z-0" />
-
-            {/* 2. BG image (above the black layer) */}
-            <div
-              className="absolute inset-0 z-[1] bg-cover bg-center"
-              style={{ backgroundImage: "url('/images/bg.webp')" }}
+            {/* Line-art background — very low opacity */}
+            <img
+              src="/images/lineart/lineart-lotus-light.svg"
+              alt=""
+              aria-hidden="true"
+              className="absolute -right-6 top-1/2 -translate-y-1/2 h-[140%] opacity-[0.06] pointer-events-none select-none"
             />
 
-            {/* 3. Black overlay 65% (above the image) */}
-            <div className="absolute inset-0 z-[2] bg-black/65" />
-
-            {/* Decorative accent line */}
-            <div className="absolute top-0 left-0 right-0 h-1 z-[2] bg-gradient-to-r from-gold via-gold-light to-gold" />
-
             {/* 4. Content (top) */}
-            <div className="relative z-[3] px-4 sm:px-6 py-5 sm:py-6">
+            <div className="relative z-[3] px-5 sm:px-8 py-6 sm:py-8">
               {/* Header with icon */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 bg-gold/20 rounded-xl">
                   <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
                 </div>
                 <div>
-                  <h2 className="text-lg sm:text-xl font-semibold text-white flex items-center gap-2">
+                  <h2 className="card-title flex items-center gap-2">
                     Start Your Wellness Journey
                   </h2>
-                  <p className="text-xs sm:text-sm text-white/80 mt-0.5">
+                  <p className="card-text mt-0.5">
                     Book your authentic Ayurveda experience today
                   </p>
                 </div>
@@ -440,7 +433,7 @@ export default function Hero() {
                   <button
                     type="button"
                     onClick={handleBookNow}
-                    className="group col-span-2 lg:col-span-1 flex items-center justify-center gap-2 border border-cream-light text-cream-light uppercase tracking-[0.15em] px-8 py-2.5 text-sm font-semibold transition-all duration-300 shadow-lg hover:shadow-xl whitespace-nowrap w-full transform hover:scale-105 active:scale-95"
+                    className="btn-light group col-span-2 lg:col-span-1 w-full whitespace-nowrap"
                   >
                     <span>Book Now</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -487,7 +480,7 @@ export default function Hero() {
                 stiffness: 300,
                 duration: 0.4,
               }}
-              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto"
+              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl"
             >
               {/* Close Button */}
               <motion.button

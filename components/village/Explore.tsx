@@ -11,7 +11,7 @@ const tiles = [
 
 export default function Explore() {
   return (
-    <section id="explore" className="py-20 bg-cream-light">
+    <section id="explore" className="py-20 lg:py-28 bg-cream-light">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHead eyebrow="Explore Ayurvana" center>
           Discover the village, one place at a time.
@@ -19,13 +19,13 @@ export default function Explore() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {tiles.map(([href, img, t, d], i) => (
             <Reveal key={href} delay={i * 0.05}>
-              <Link href={href} className="group block relative h-72 overflow-hidden">
+              <Link href={href} className="group block relative h-72 overflow-hidden rounded-2xl">
                 <img src={`${IMG}/${img}`} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 p-5 text-white">
-                  <h3 className="font-serif text-xl">{t}</h3>
-                  <p className="text-xs text-white/80 mt-1">{d}</p>
-                  <span className="text-[10px] tracking-[0.2em] uppercase text-gold-light mt-3 inline-block">Explore ↗</span>
+                  <h3 className="card-title !text-white">{t}</h3>
+                  <p className="text-sm text-white/80 mt-1 leading-snug">{d}</p>
+                  <span className="text-xs tracking-[0.2em] uppercase text-gold-light mt-3 inline-block">Explore ↗</span>
                 </div>
               </Link>
             </Reveal>
