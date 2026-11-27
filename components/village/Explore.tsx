@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
 import { IMG } from "./ui";
@@ -21,15 +21,15 @@ function Slide({ tile, index, progress }: { tile: string[]; index: number; progr
   const imageX = useTransform(progress, [(index - 1) / last, (index + 1) / last], ["-12%", "12%"]);
 
   return (
-    <div className="relative h-full w-screen shrink-0 overflow-hidden">
-      <motion.div className="absolute inset-0" style={{ x: imageX }}>
+    <div className="relative h-full w-full shrink-0 overflow-hidden">
+      <motion.div className="absolute inset-0 will-change-transform" style={{ x: imageX }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`${IMG}/${img}`}
           alt={title}
-          loading={index === 0 ? "eager" : "lazy"}
+          loading="eager"
           decoding="async"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-center"
         />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-black/35" />
@@ -51,31 +51,82 @@ export default function Explore() {
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
-  const smooth = useSpring(scrollYProgress, { stiffness: 80, damping: 24, mass: 0.4, restDelta: 0.0005 });
+
+  // Follows the scroll continuously, with a little softness
+  const smooth = useSpring(scrollYProgress, { stiffness: 90, damping: 25, mass: 0.4, restDelta: 0.0005 });
   const progress = reduceMotion ? scrollYProgress : smooth;
-  const x = useTransform(progress, [0, 1], ["0vw", `-${last * 100}vw`]);
+  // Percent of the container width, not vw, so the scrollbar does not matter
+  const x = useTransform(progress, [0, 1], ["0%", `-${last * 100}%`]);
+
+  // After scrolling or resizing stops, glide to the nearest full slide
+  useEffect(() => {
+    let timer: number | undefined;
+    let touching = false;
+
+    const settle = () => {
+      const section = sectionRef.current;
+      if (!section || touching) return;
+
+      const top = section.getBoundingClientRect().top;
+      const distance = section.offsetHeight - window.innerHeight;
+      const scrolled = -top;
+      if (scrolled <= 0 || scrolled >= distance) return; // outside the slider
+
+      const step = distance / last;
+      const target = Math.round(scrolled / step) * step;
+      if (Math.abs(target - scrolled) > 2) {
+        window.scrollTo({ top: window.scrollY + top + target, behavior: reduceMotion ? "auto" : "smooth" });
+      }
+    };
+
+    const schedule = () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(settle, 180);
+    };
+    const touchStart = () => {
+      touching = true;
+      window.clearTimeout(timer);
+    };
+    const touchEnd = () => {
+      touching = false;
+      schedule();
+    };
+
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    window.addEventListener("touchstart", touchStart, { passive: true });
+    window.addEventListener("touchend", touchEnd, { passive: true });
+    window.addEventListener("touchcancel", touchEnd, { passive: true });
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      window.removeEventListener("touchstart", touchStart);
+      window.removeEventListener("touchend", touchEnd);
+      window.removeEventListener("touchcancel", touchEnd);
+    };
+  }, [reduceMotion]);
 
   return (
     // One screen of scrolling per slide
     <section id="explore" ref={sectionRef} className="relative bg-cream-light" style={{ height: `${tiles.length * 100}vh` }}>
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-0 h-[100dvh] overflow-hidden">
         <div className="relative h-full w-full overflow-hidden bg-black">
-        <motion.div className="flex h-full w-max will-change-transform" style={{ x }}>
-          {tiles.map((tile, i) => (
-            <Slide key={tile[0]} tile={tile} index={i} progress={progress} />
-          ))}
-        </motion.div>
+          <motion.div className="flex h-full w-full will-change-transform" style={{ x }}>
+            {tiles.map((tile, i) => (
+              <Slide key={tile[0]} tile={tile} index={i} progress={progress} />
+            ))}
+          </motion.div>
 
-       <div className="pointer-events-none absolute inset-x-0 top-0 px-6 pt-24 text-center text-white lg:px-[8vw]">
-  <span className="section-label !text-white">Explore Ayurvana</span>
-  <h2 className="mt-2 text-lg text-white/85 lg:text-2xl">
-    Discover the village, one place at a time.
-  </h2>
-</div>
+          <div className="pointer-events-none absolute inset-x-0 top-0 px-6 pt-24 text-center text-white lg:px-[8vw]">
+            <span className="section-label !text-white">Explore Ayurvana</span>
+            <h2 className="mt-2 text-lg text-white/85 lg:text-2xl">Discover the village, one place at a time.</h2>
+          </div>
 
-        <div className="absolute inset-x-6 bottom-8 h-px bg-white/25 lg:inset-x-[8vw]">
-          <motion.div className="h-full origin-left bg-white" style={{ scaleX: progress }} />
-        </div>
+          <div className="absolute inset-x-6 bottom-8 h-px bg-white/25 lg:inset-x-[8vw]">
+            <motion.div className="h-full origin-left bg-white" style={{ scaleX: progress }} />
+          </div>
         </div>
       </div>
     </section>
