@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { IMG, Reveal, SectionHead } from "./ui";
+import { motion } from "framer-motion";
+import { IMG } from "./ui";
+import { ParallaxImage, Reveal, ScrollLine, Stagger, StaggerItem, TextReveal, variants } from "../motion";
 
 const tiles = [
   ["/wellness", "treatment-courtyard.jpg", "Wellness", "Ayurveda, spa, She Health and yoga."],
@@ -9,28 +11,44 @@ const tiles = [
   ["/day", "pond-dusk.jpg", "A day at Ayurvana", "An illustrative daily rhythm."],
 ];
 
+// Desktop: alternate cards sit slightly lower for a gentle staggered rhythm
+const offsets = ["lg:mt-0", "lg:mt-10", "lg:mt-0", "lg:mt-10", "lg:mt-0"];
+
 export default function Explore() {
   return (
-    <section id="explore" className="py-20 lg:py-28 bg-cream-light">
+    <section id="explore" className="py-20 lg:py-28 bg-cream-light overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <SectionHead eyebrow="Explore Ayurvana" center>
-          Discover the village, one place at a time.
-        </SectionHead>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {tiles.map(([href, img, t, d], i) => (
-            <Reveal key={href} delay={i * 0.05}>
-              <Link href={href} className="group block relative h-72 overflow-hidden rounded-2xl">
-                <img src={`${IMG}/${img}`} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 p-5 text-white">
-                  <h3 className="card-title !text-white">{t}</h3>
-                  <p className="text-sm text-white/80 mt-1 leading-snug">{d}</p>
-                  <span className="text-xs tracking-[0.2em] uppercase text-gold-light mt-3 inline-block">Explore ↗</span>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
+        <div className="section-head center max-w-3xl mx-auto">
+          <Reveal variant="fadeIn">
+            <span className="section-label">Explore Ayurvana</span>
+          </Reveal>
+          <TextReveal as="h2" className="section-title mt-3" text="Discover the village, one place at a time." delay={0.1} />
         </div>
+
+        <Reveal variant="fadeIn" delay={0.2} className="mb-10">
+          <ScrollLine />
+        </Reveal>
+
+        <Stagger className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4" gap={0.1}>
+          {tiles.map(([href, img, t, d], i) => (
+            <StaggerItem key={href} variant="clipUp" className={offsets[i]}>
+              <Link href={href} className="group block relative h-72 lg:h-96 overflow-hidden rounded-2xl">
+                <ParallaxImage src={`${IMG}/${img}`} strength={6} className="transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <motion.div
+                  className="absolute bottom-0 p-5 text-white"
+                  variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08, delayChildren: 0.35 } } }}
+                >
+                  <motion.h3 variants={variants.fadeUp} className="card-title !text-white">{t}</motion.h3>
+                  <motion.p variants={variants.fadeUp} className="text-sm text-white/80 mt-1 leading-snug">{d}</motion.p>
+                  <motion.span variants={variants.fadeUp} className="text-xs tracking-[0.2em] uppercase text-gold-light mt-3 inline-block transition-transform duration-300 group-hover:translate-x-1">
+                    Explore ↗
+                  </motion.span>
+                </motion.div>
+              </Link>
+            </StaggerItem>
+          ))}
+        </Stagger>
       </div>
     </section>
   );
