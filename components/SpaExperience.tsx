@@ -9,9 +9,6 @@ const gallery = photos.gallery.map((g) => ({
   span: g.tall ? "md:row-span-2" : "",
 }));
 
-// Soft gold used for the popup accents. Change it to match your brand.
-const GOLD = "#c9a45c";
-
 // Animation variants
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -50,7 +47,7 @@ const subtitleVariants: Variants = {
 };
 
 const roundButton =
-  "flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#c9a45c]/60 text-xl text-[#e8d3a2] transition-colors hover:bg-[#c9a45c] hover:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8d3a2]";
+  "flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/50 text-xl text-white transition-colors hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white";
 
 type LightboxProps = {
   index: number;
@@ -125,75 +122,64 @@ function Lightbox({ index, onClose, onChange }: LightboxProps) {
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-3 backdrop-blur-md sm:p-6"
     >
       <motion.div
-        initial={{ scale: 0.92, y: 30 }}
-        animate={{ scale: 1, y: 0 }}
-        exit={{ scale: 0.95, y: 20 }}
-        transition={{ type: "spring", stiffness: 260, damping: 26 }}
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 30 }}
+        transition={{ type: "spring", stiffness: 240, damping: 28 }}
         onClick={(e) => e.stopPropagation()}
-        className="relative max-h-full w-full max-w-4xl overflow-y-auto rounded-t-[3rem] rounded-b-2xl border border-[#c9a45c]/50 bg-forest-dark p-3 shadow-2xl sm:rounded-t-[5rem] sm:p-5"
+        className="relative grid max-h-full w-full max-w-5xl overflow-y-auto rounded-3xl bg-forest-dark on-dark shadow-2xl md:grid-cols-[1.6fr_1fr]"
       >
-        {/* Inner gold frame */}
-        <div className="pointer-events-none absolute inset-1.5 rounded-t-[2.7rem] rounded-b-xl border border-[#c9a45c]/25 sm:rounded-t-[4.7rem]" />
-
-        {/* Header */}
-        <div className="relative flex flex-col items-center pb-3 pt-2">
-          <img src={lineArt.lotusLight} alt="" aria-hidden="true" className="w-12 opacity-80" />
-          <span className="mt-1 text-[11px] uppercase tracking-[0.35em]" style={{ color: GOLD }}>
-            Ayurvana
-          </span>
-          <button
-            ref={closeRef}
-            type="button"
-            onClick={onClose}
-            aria-label="Close"
-            className={`${roundButton} absolute right-3 top-3 sm:right-6`}
-          >
-            ✕
-          </button>
-        </div>
+        <button
+          ref={closeRef}
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className={`${roundButton} absolute right-4 top-4 z-10 bg-black/40`}
+        >
+          ✕
+        </button>
 
         {/* Photo, swipe left or right on phones */}
-        <div className="relative overflow-hidden rounded-xl bg-black/30">
+        <div className="relative h-[48vh] overflow-hidden bg-black/30 md:h-[75vh]">
           <AnimatePresence mode="wait" initial={false}>
             <motion.img
               key={index}
               src={item.src}
               alt={item.alt}
-              initial={{ opacity: 0, scale: 1.04 }}
+              initial={{ opacity: 0, scale: 1.06 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.35 }}
               drag={total > 1 ? "x" : false}
               dragConstraints={{ left: 0, right: 0 }}
               onDragEnd={(_, info) => {
                 if (info.offset.x < -60) next();
                 if (info.offset.x > 60) prev();
               }}
-              className="h-[55vh] w-full cursor-grab object-contain active:cursor-grabbing"
+              className="h-full w-full cursor-grab object-contain active:cursor-grabbing"
             />
           </AnimatePresence>
         </div>
 
-        {/* Caption and arrows */}
-        <div className="relative flex items-center justify-between gap-3 px-2 pt-4">
-          <button type="button" onClick={prev} aria-label="Previous photo" className={roundButton}>
-            ‹
-          </button>
-          <div className="text-center" aria-live="polite">
-            <p className="font-serif text-xl italic text-white sm:text-2xl">{item.alt}</p>
-            <div className="mx-auto my-2 h-px w-16" style={{ backgroundColor: GOLD }} />
+        {/* Side panel */}
+        <div className="flex min-w-0 flex-col items-center justify-between gap-5 p-6 text-center md:pt-20">
+          <div aria-live="polite">
+            <span className="section-label">Ayurvana</span>
+            <h3 className="section-title mt-3">
+              <span className="title-accent">{item.alt}</span>
+            </h3>
+            <div className="mx-auto my-4 flex items-center justify-center gap-2 text-white/50">
+              <span className="h-px w-10 bg-current" />
+              <span className="h-1.5 w-1.5 rotate-45 bg-current" />
+              <span className="h-px w-10 bg-current" />
+            </div>
             <p className="text-xs tracking-widest text-white/60">
               {index + 1} / {total}
             </p>
           </div>
-          <button type="button" onClick={next} aria-label="Next photo" className={roundButton}>
-            ›
-          </button>
-        </div>
 
-        {/* Thumbnails */}
-        <div className="relative mt-3 overflow-x-auto pb-2">
-          <div className="mx-auto flex w-max gap-2 px-2 py-1">
+          {/* Thumbnails */}
+          <div className="flex flex-wrap justify-center gap-2">
             {gallery.map((thumb, i) => (
               <button
                 key={i}
@@ -201,15 +187,24 @@ function Lightbox({ index, onClose, onChange }: LightboxProps) {
                 onClick={() => onChange(i)}
                 aria-label={`Show ${thumb.alt}`}
                 aria-current={i === index}
-                className={`h-12 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition-opacity ${
+                className={`h-14 w-11 overflow-hidden rounded-t-full rounded-b-md border-2 transition-opacity ${
                   i === index
-                    ? "border-[#c9a45c] opacity-100"
+                    ? "border-white opacity-100"
                     : "border-transparent opacity-50 hover:opacity-100"
                 }`}
               >
                 <img src={thumb.src} alt="" className="h-full w-full object-cover" />
               </button>
             ))}
+          </div>
+
+          <div className="flex gap-4">
+            <button type="button" onClick={prev} aria-label="Previous photo" className={roundButton}>
+              ‹
+            </button>
+            <button type="button" onClick={next} aria-label="Next photo" className={roundButton}>
+              ›
+            </button>
           </div>
         </div>
       </motion.div>
@@ -275,7 +270,7 @@ export default function SpaExperience() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[200px]"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[260px]"
         >
           {gallery.map((item, index) => (
             <motion.button
@@ -284,20 +279,20 @@ export default function SpaExperience() {
               onClick={() => setActiveIndex(index)}
               aria-label={`View ${item.alt}`}
               variants={itemVariants}
-              className={`overflow-hidden rounded-2xl ${item.span} group relative cursor-pointer`}
+              className={`${item.span} group relative cursor-pointer overflow-hidden rounded-t-[7rem] rounded-b-2xl border border-white/30 bg-white/5 p-2 transition-shadow duration-300 hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white`}
             >
-              <img
-                src={item.src}
-                alt={item.alt}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-              />
-
-              {/* Hover overlay */}
-              <span className="absolute inset-0 flex items-center justify-center rounded-2xl bg-black/35 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                <span className="text-white text-sm font-medium tracking-wider uppercase px-4 py-2 border border-white/50 rounded-full backdrop-blur-sm">
-                  {item.alt}
+              <span className="relative block h-full w-full overflow-hidden rounded-t-[6.5rem] rounded-b-xl">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+                {/* Name is always visible, so phone users see it too */}
+                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-3 pb-4 pt-12 text-center">
+                  <span className="block text-sm font-medium uppercase tracking-wider text-white">{item.alt}</span>
+                  <span className="mx-auto mt-2 block h-px w-8 bg-white/70 transition-all duration-500 group-hover:w-24" />
                 </span>
               </span>
             </motion.button>
