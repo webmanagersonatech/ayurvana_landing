@@ -287,7 +287,7 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={5}
+                    rows={4}
                     className="w-full py-3 bg-transparent focus:outline-none text-[#2c211c] placeholder:text-[#796c60]/60 resize-none h-full min-h-[120px]"
                     placeholder="Write your message here..."
                   />

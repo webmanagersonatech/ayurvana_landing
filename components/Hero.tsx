@@ -3,17 +3,9 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { DM_Sans, Italiana } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Sparkles,
-  Calendar,
-  Users,
-  Grid3x3,
-  ArrowRight,
-  UserCircle,
-  X,
-} from "lucide-react";
-import SplitText from "./Splittext";
+import { X } from "lucide-react";
 import AyurvedicBookingForm from "./Booking";
 
 interface BookingPrefillData {
@@ -29,54 +21,12 @@ interface BookingPrefillData {
   aadharNumber?: string;
 }
 
-const genderOptions = [
-  { value: "any", label: "Any Gender" },
-  { value: "male", label: "Male" },
-  { value: "female", label: "Female" },
-  { value: "couple", label: "Couple" },
-];
+// Fonts from the client's design
+const italiana = Italiana({ subsets: ["latin"], weight: "400" });
+const dmSans = DM_Sans({ subsets: ["latin"], weight: ["300", "400", "500", "600"] });
 
-const guestOptions = [1, 2, 3, 4, 5, 6].map((n) => ({
-  value: String(n),
-  label: `${n} Guest${n > 1 ? "s" : ""}`,
-}));
-
-const roomOptions = [
-  { value: "all", label: "All Rooms" },
-  { value: "deluxe", label: "Deluxe Room" },
-  { value: "ayurveda-suite", label: "Ayurveda Suite" },
-  { value: "garden-cottage", label: "Garden Cottage" },
-  { value: "family-suite", label: "Family Suite" },
-];
-
-const treatmentOptions = [
-  { value: "all", label: "All Treatments" },
-  { value: "abhyanga", label: "Abhyanga Massage" },
-  { value: "shirodhara", label: "Shirodhara" },
-  { value: "panchakarma", label: "Panchakarma" },
-  { value: "pizhichil", label: "Pizhichil" },
-  { value: "nasyam", label: "Nasyam" },
-];
-
-const splitProps = {
-  delay: 30,
-  duration: 1,
-  ease: "power3.out",
-  from: { opacity: 0, y: 40 },
-  to: { opacity: 1, y: 0 },
-  threshold: 0.1,
-  rootMargin: "0px",
-  textAlign: "left" as const,
-};
-
-const headingSize =
-  "font-serif text-[2rem] min-[400px]:text-4xl sm:text-5xl lg:text-6xl leading-[1.15]";
-
-const selectClass =
-  "w-full min-w-0 truncate rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/40 focus:border-gold px-3 py-2.5 text-sm text-white focus:outline-none transition-all appearance-none cursor-pointer";
-
-const labelClass =
-  "flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium tracking-wide uppercase text-white/80 mb-1.5";
+// Where the hero links go. Change these to match your pages and section ids.
+const links = { wellness: "/sonagramam", stay: "#packages", discover: "/sonagramam" };
 
 // Today's date in the visitor's local time (YYYY-MM-DD)
 const getToday = () => {
@@ -85,58 +35,32 @@ const getToday = () => {
   return d.toISOString().split("T")[0];
 };
 
-function SelectField({
-  label,
-  icon: Icon,
-  value,
-  options,
-  onChange,
-}: {
-  label: string;
-  icon: React.ElementType;
-  value: string;
-  options: { value: string; label: string }[];
-  onChange: (value: string) => void;
-}) {
-  return (
-    <label className="block min-w-0">
-      <span className={labelClass}>
-        <Icon className="w-3.5 h-3.5" />
-        {label}
-      </span>
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className={selectClass}
-        style={{ color: "white" }}
-      >
-        {options.map((option) => (
-          <option key={option.value} value={option.value} className="text-text-dark">
-            {option.label}
-          </option>
-        ))}
-      </select>
-    </label>
-  );
-}
-
 export default function Hero() {
-  const [guests, setGuests] = useState(2);
-  const [gender, setGender] = useState("any");
-  const [roomType, setRoomType] = useState("all");
-  const [treatment, setTreatment] = useState("all");
-
+  const [ready, setReady] = useState(false); // starts the entrance animation
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [prefillData, setPrefillData] = useState<BookingPrefillData | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => setReady(true));
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  // shared "rise in" effect; each element adds its own delay
+  const rise = `transition-all duration-1000 ease-[cubic-bezier(.22,.68,0,1)] motion-reduce:transition-none ${
+    ready
+      ? "translate-y-0 opacity-100 blur-[0px]"
+      : "translate-y-[35px] opacity-0 blur-[7px] motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:blur-[0px]"
+  }`;
+
+  // Call this from a "Book now" button to open the booking modal
   const handleBookNow = () => {
     setPrefillData({
       name: "Guest",
-      gender: gender === "any" ? "all" : gender,
-      guests,
-      roomType,
-      treatment,
+      gender: "all",
+      guests: 2,
+      roomType: "all",
+      treatment: "all",
       date: getToday(),
       time: "10:00 AM",
       email: "",
@@ -180,154 +104,106 @@ export default function Hero() {
   return (
     <>
       <section className="relative">
-        {/* Hero: grows with its content, so text is never clipped */}
-        <div className="relative flex items-center overflow-hidden min-h-[100svh] sm:min-h-[600px] md:min-h-[650px] lg:min-h-[750px]">
-          <motion.div
-            className="absolute inset-0"
-            initial={{ scale: 1.08 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1.4, ease: "easeOut" }}
-          >
-            <Image
-              src="/images/hero-1.webp"
-              alt="Ayurvana village pond at dusk"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-black/55" />
+        {/* Hero */}
+        <div
+          className={`relative grid h-[100svh] max-h-[980px] min-h-[620px] place-items-center overflow-hidden bg-[#30231c] text-center font-light text-white ${dmSans.className}`}
+        >
+          <Image
+            src="/images/hero-1.webp"
+            alt="Ayurvana village pond at dusk"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[center_54%] max-[701px]:object-[58%_center]"
+          />
 
-          <div className="relative z-[1] w-full max-w-7xl mx-auto px-5 sm:px-4 pt-24 pb-28 sm:pb-32">
-            <div className="flex flex-col items-start">
-              <SplitText
-                {...splitProps}
-                splitType="words"
-                text="A Sona Star Initiative · Salem, Tamil Nadu"
-                className="text-gold-light text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase mb-3 sm:mb-4"
-              />
+          {/* shade layers */}
+          <div className="absolute inset-0 [background:linear-gradient(180deg,rgba(31,22,16,.34),rgba(31,22,16,.08)_34%,rgba(31,22,16,.4)),radial-gradient(rgba(31,22,16,.1),rgba(31,22,16,.35)_72%),linear-gradient(90deg,rgba(30,23,18,.68),rgba(33,22,12,.2)_62%,rgba(29,20,12,.08)),linear-gradient(0deg,rgba(29,20,12,.78),transparent_64%)]" />
 
-              <SplitText
-                {...splitProps}
-                splitType="chars"
-                text="Ayurvana"
-                className="font-serif italic text-gold-light text-3xl sm:text-4xl lg:text-5xl leading-tight mb-2 sm:mb-4"
-              />
+          <div className="relative flex w-[calc(100%-38px)] max-w-[780px] flex-col items-center pb-16 pt-[82px]">
+            <p
+              className={`m-0 text-[13px] font-semibold uppercase leading-normal tracking-[0.24em] text-[#ead6b8] delay-[450ms] max-[701px]:text-[10px] ${rise}`}
+            >
+              A Sona Star Initiative <span className="px-[7px] text-[#d0ad79]">·</span> Salem, Tamil Nadu
+            </p>
 
-              <SplitText
-                {...splitProps}
-                splitType="words, chars"
-                text="A village for the body,"
-                className={`${headingSize} text-white`}
-              />
+            <h1
+              className={`mb-5 mt-[25px] text-[clamp(72px,9vw,128px)] font-normal leading-[0.92] tracking-[-0.055em] text-[#fff8ef] delay-[620ms] max-[701px]:mb-[17px] max-[701px]:mt-[22px] max-[701px]:text-[clamp(64px,16vw,100px)] ${italiana.className} ${rise}`}
+            >
+              Ayurvana
+            </h1>
 
-              <div className="flex flex-wrap items-center gap-x-2 sm:gap-x-3 mt-1">
-                <SplitText
-                  {...splitProps}
-                  splitType="words, chars"
-                  text="the mind"
-                  className={`${headingSize} italic text-gold-light`}
-                />
-                <SplitText
-                  {...splitProps}
-                  splitType="words, chars"
-                  text="and the hands."
-                  className={`${headingSize} text-white`}
-                />
-              </div>
+            <p
+              className={`m-0 text-[clamp(22px,3vw,36px)] leading-[1.22] text-[#fff8ef] delay-[800ms] max-[701px]:text-[clamp(22px,6vw,29px)] ${italiana.className} ${rise}`}
+            >
+              A village for the body,
+              <br />
+              the mind and the hands.
+            </p>
 
-              <SplitText
-                {...splitProps}
-                splitType="words"
-                text="Where physician-led care, restorative rituals and living craft traditions come together."
-                className="text-white/80 text-sm sm:text-base leading-relaxed mt-4 sm:mt-6 max-w-lg"
-              />
+            <p
+              className={`mb-0 mt-5 max-w-[470px] text-[14px] leading-[1.8] tracking-[0.025em] text-[rgba(255,248,239,.82)] delay-[900ms] max-[701px]:mt-[15px] max-[701px]:text-[12px] ${rise}`}
+            >
+              Where physician-led care, restorative rituals and living craft traditions come
+              together.
+            </p>
 
-              <div className="flex flex-col min-[400px]:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8 w-full min-[400px]:w-auto">
-                <button type="button" onClick={handleBookNow} className="btn-light justify-center text-center">
-                  Book Your Stay
-                </button>
-                <Link href="/sonagramam" className="btn-ghost-light justify-center text-center">
-                  Learn More
-                </Link>
-              </div>
+            <div
+              className={`mt-[34px] flex items-center gap-[26px] uppercase delay-[1000ms] max-[701px]:mt-[26px] max-[701px]:flex-col max-[701px]:gap-[17px] ${rise}`}
+            >
+              <Link
+                href={links.wellness}
+                className="inline-flex items-center gap-3 bg-[#f5eee2] px-6 py-4 text-[8px] tracking-[0.13em] text-[#873f2b] transition-all duration-300 hover:-translate-y-[3px] hover:bg-white"
+              >
+                Explore wellness <span>↗</span>
+              </Link>
+              <Link
+                href={links.stay}
+               className="inline-flex items-center gap-3 border border-[#b89a65]  px-6 py-4 text-[8px] tracking-[0.13em] text-[#fff8ef] transition-all duration-300 hover:-translate-y-[3px] "
+              
+              >
+                Discover your stay <span>↗</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* bottom rail */}
+          <div className="absolute bottom-0 left-[5.5%] right-[5.5%] grid min-h-[92px] grid-cols-[1fr_auto_1fr] items-center gap-6 border-t border-[rgba(240,223,200,.34)] uppercase max-[701px]:left-5 max-[701px]:right-5 max-[701px]:grid-cols-1 max-[701px]:justify-items-center max-[701px]:gap-0">
+            <div className="flex flex-col gap-2 text-left max-[701px]:hidden">
+              <span className="text-[7px] tracking-[0.24em] text-[rgba(240,223,200,.62)]">
+                The approach
+              </span>
+              <span className="text-[9px] normal-case tracking-[0.1em] text-[#fff8ef]">
+                Ayurveda <i className="px-[5px] not-italic text-[#d0ad79]">·</i> Naturopathy{" "}
+                <i className="px-[5px] not-italic text-[#d0ad79]">·</i> Living craft
+              </span>
+            </div>
+
+            <Link href={links.discover} className="flex items-center gap-3.5">
+              <span className="text-[7px] tracking-[0.24em] text-[rgba(240,223,200,.62)]">
+                Discover Ayurvana
+              </span>
+              <span
+                className="grid h-[27px] w-[27px] place-items-center rounded-full border border-[rgba(208,173,121,.65)] text-[13px] text-[#d0ad79]"
+                aria-hidden="true"
+              >
+                ↓
+              </span>
+            </Link>
+
+            <div className="flex flex-col gap-2 text-right max-[701px]:hidden">
+              <span className="text-[7px] tracking-[0.24em] text-[rgba(240,223,200,.62)]">
+                Find us
+              </span>
+              <span className="text-[9px] normal-case tracking-[0.1em] text-[#fff8ef]">
+                Salem, Tamil Nadu <i className="px-[5px] not-italic text-[#d0ad79]">↗</i>
+              </span>
             </div>
           </div>
         </div>
-
-        {/* Floating booking card */}
-        <div className="relative max-w-7xl mx-auto px-4">
-          <motion.div
-            className="relative z-10 -mt-16 sm:-mt-20 md:-mt-16 lg:-mt-20 overflow-hidden rounded-2xl bg-forest-dark border border-white/10 shadow-2xl on-dark"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          >
-            <img
-              src="/images/lineart/lineart-lotus-light.svg"
-              alt=""
-              aria-hidden="true"
-              className="absolute -right-6 top-1/2 -translate-y-1/2 h-[140%] opacity-[0.06] pointer-events-none select-none"
-            />
-
-            <div className="relative z-[3] px-4 sm:px-8 py-5 sm:py-8">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="shrink-0 p-2 bg-gold/20 rounded-xl">
-                  <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
-                </div>
-                <div className="min-w-0">
-                  <h2 className="card-title">Start Your Wellness Journey</h2>
-                  <p className="card-text mt-0.5">
-                    Book your authentic Ayurveda experience today
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 lg:grid-cols-5 lg:items-end">
-                <SelectField
-                  label="Gender"
-                  icon={UserCircle}
-                  value={gender}
-                  options={genderOptions}
-                  onChange={setGender}
-                />
-                <SelectField
-                  label="Guests"
-                  icon={Users}
-                  value={String(guests)}
-                  options={guestOptions}
-                  onChange={(v) => setGuests(Number(v))}
-                />
-                <SelectField
-                  label="Room Type"
-                  icon={Grid3x3}
-                  value={roomType}
-                  options={roomOptions}
-                  onChange={setRoomType}
-                />
-                <SelectField
-                  label="Treatments"
-                  icon={Sparkles}
-                  value={treatment}
-                  options={treatmentOptions}
-                  onChange={setTreatment}
-                />
-                <button
-                  type="button"
-                  onClick={handleBookNow}
-                  className="btn-light group col-span-2 lg:col-span-1 w-full justify-center whitespace-nowrap"
-                >
-                  <span>Book Now</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        </div>
       </section>
 
-      {/* Booking modal */}
+      {/* Booking modal: z-[1200] keeps it above the navbar (z-[1000]) */}
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
@@ -335,7 +211,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[1200] flex items-center justify-center bg-black/60 p-3 backdrop-blur-sm sm:p-4"
             onClick={handleBackdropClick}
             role="dialog"
             aria-modal="true"
@@ -347,15 +223,15 @@ export default function Hero() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 30 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-4xl max-h-[90dvh] overflow-y-auto rounded-2xl"
+              className="relative max-h-[90dvh] w-full max-w-4xl overflow-y-auto rounded-2xl"
             >
               <button
                 type="button"
                 onClick={closeModal}
-                className="absolute top-3 right-3 z-10 p-2 bg-cream-light/90 hover:bg-cream-light rounded-full shadow-lg transition-colors"
+                className="absolute right-3 top-3 z-10 rounded-full bg-cream-light/90 p-2 shadow-lg transition-colors hover:bg-cream-light"
                 aria-label="Close booking form"
               >
-                <X className="w-5 h-5 text-forest-dark" />
+                <X className="h-5 w-5 text-forest-dark" />
               </button>
 
               <AyurvedicBookingForm

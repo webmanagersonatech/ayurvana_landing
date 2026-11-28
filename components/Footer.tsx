@@ -11,44 +11,23 @@ import {
   FaClock,
   FaLeaf,
 } from "react-icons/fa";
-import { getTherapyBySlug } from "../lib/therapiesData";
 
-// Footer therapy links are pulled from therapiesData, so titles and URLs always match real pages.
-// Every slug below exists in therapiesData.ts.
-const footerTherapySlugs = [
-  "abhyanga-steam-bath",
-  "shirodhara",
-  "kizhi",
-  "kati-basti",
-  "nasya",
-  "udvarthana",
-  "acupuncture-therapy",
-  "full-body-massage",
+const exploreLinks = [
+  { label: "Home", href: "/" },
+  { label: "Healing programmes", href: "/wellness#healing" },
+  { label: "The spa", href: "/wellness#spa" },
+  { label: "She Health", href: "/wellness#she" },
+  { label: "Prana Shala", href: "/wellness#prana" },
+  { label: "A day at Ayurvana", href: "/day" },
 ];
 
-const footerTherapies = footerTherapySlugs
-  .map((slug) => {
-    const therapy = getTherapyBySlug(slug);
-    if (!therapy && process.env.NODE_ENV !== "production") {
-      console.warn(`Footer: therapy slug not found: "${slug}"`);
-    }
-    return therapy;
-  })
-  .filter((t): t is NonNullable<typeof t> => Boolean(t))
-  .map((t) => ({
-    label: t.shortTitle ?? t.title,
-    href: `/therapies/${t.slug}`,
-  }));
-
-const navigateLinks = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/#about" },
-  { label: "Therapies", href: "/therapies" },
-  { label: "Packages", href: "/packages" },
-  { label: "Products", href: "/products" },
-  { label: "Doctors", href: "/doctors" },
-  { label: "Our Team", href: "/teams" },
-  { label: "Sonagramam", href: "/sonagramam" },
+const discoverLinks = [
+  { label: "Rooms & cottages", href: "/stay" },
+  { label: "The village", href: "/sonagramam#village" },
+  { label: "Sona Gramam", href: "/sonagramam#gramam" },
+  { label: "Sattvic dining", href: "/experiences#dining" },
+  { label: "Unwind & explore", href: "/experiences#experiences" },
+  { label: "Pro Shop", href: "/experiences#proshop" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
@@ -144,11 +123,11 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Therapies */}
+          {/* Explore */}
           <div>
-            <ColumnHeading>Therapies</ColumnHeading>
+            <ColumnHeading>Wellness</ColumnHeading>
             <ul className="space-y-3">
-              {footerTherapies.map((item) => (
+              {exploreLinks.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className={linkClass}>
                     <Dot />
@@ -156,22 +135,14 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/therapies"
-                  className="text-gold-light text-sm font-medium hover:text-white transition-all duration-300 flex items-center gap-2"
-                >
-                  View All Therapies →
-                </Link>
-              </li>
             </ul>
           </div>
 
-          {/* Navigate */}
+          {/* Discover */}
           <div>
-            <ColumnHeading>Navigate</ColumnHeading>
+            <ColumnHeading>Discover & Stay</ColumnHeading>
             <ul className="space-y-3">
-              {navigateLinks.map((item) => (
+              {discoverLinks.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className={linkClass}>
                     <Dot />

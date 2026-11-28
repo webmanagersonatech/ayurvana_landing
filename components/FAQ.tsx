@@ -144,7 +144,7 @@ export default function FAQ() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.6 }}
-      className="section-pad bg-cream-light"
+      className="pb-8 bg-cream-light"
       id="faq"
     >
       <div className="max-w-7xl mx-auto px-6">

@@ -22,7 +22,7 @@ export default function WellnessExperience() {
   return (
     <section
       id="services"
-      className="section-pad relative overflow-hidden bg-forest-dark on-dark"
+      className="section-pad relative overflow-hidden  on-dark"
     >
       <img
         src={lineArt.sprigLight}

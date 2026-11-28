@@ -1,5 +1,6 @@
 import PageShell from "../../components/village/PageShell";
 import { Stay } from "../../components/village";
+import FAQ from "../../components/FAQ";
 
 export default function Page() {
   return (
@@ -9,6 +10,9 @@ export default function Page() {
       heading={<>Stay at <span className="italic text-gold-light">Ayurvana</span></>}
     >
       <Stay />
+      <div id="faq">
+        <FAQ />
+      </div>
     </PageShell>
   );
 }

@@ -1,411 +1,292 @@
-import { useState, useEffect, useRef } from "react";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { ShoppingCart } from "lucide-react";
 import { useCart } from "../context/CartContext";
-import { useBookingModal } from "../context/BookingModalContext";
+
+/**
+ * NAVBAR — taken from the client's Website_HTML.html
+ * Home · Wellness ▾ · Discover ▾ · Stay ▾ · Pro Shop · Blog · Plan your stay ↗
+ *
+ * Every link opens a real subpage; "#" parts jump to the section inside that page.
+ * The cart icon is shown only when the cart has at least one item.
+ */
+
+const dropdowns = [
+  {
+    label: "Wellness",
+    items: [
+      ["Healing programmes", "/wellness#healing"],
+      ["The spa", "/wellness#spa"],
+      ["She Health", "/wellness#she"],
+      ["Prana Shala", "/wellness#prana"],
+    ],
+  },
+  {
+    label: "Discover",
+    items: [
+      ["The village", "/sonagramam#village"],
+      ["A day at Ayurvana", "/day"],
+      ["Sattvic dining", "/experiences#dining"],
+      ["Sona Gramam", "/sonagramam#gramam"],
+      ["Unwind & explore", "/experiences#experiences"],
+    ],
+  },
+  {
+    label: "Stay",
+    items: [
+      ["Rooms & cottages", "/stay"],
+      ["Cottage design", "/sonagramam#cottage-design"],
+      ["Bespoke furniture", "/sonagramam#furniture"],
+      ["Stay programmes", "/sonagramam#programmes"],
+      ["FAQ", "/stay#faq"],
+    ],
+  },
+];
+
+const mobileLinks = [
+  ["Home", "/"],
+  ["Wellness", "/wellness"],
+  ["The village", "/sonagramam"],
+  ["Experiences", "/experiences"],
+  ["A day at Ayurvana", "/day"],
+  ["Stay", "/stay"],
+  ["Pro Shop", "/experiences#proshop"],
+  ["Blog", "/blog"],
+  ["Contact", "/contact"],
+];
+
+const navLinkClass = "opacity-90 transition hover:text-gold hover:opacity-100";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [open, setOpen] = useState(false); // mobile menu
+  const [openMenu, setOpenMenu] = useState<string | null>(null); // desktop submenu
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { getTotalItems, openCart } = useCart();
-  const { openBookingModal } = useBookingModal();
   const cartCount = getTotalItems();
 
-  // Refs for dropdowns
-  const dropdownRefs = {
-    products: useRef(null),
-    facilities: useRef(null),
-    research: useRef(null),
+  const clearCloseTimer = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
   };
 
+  const showMenu = (label: string) => {
+    clearCloseTimer();
+    setOpenMenu(label);
+  };
+
+  // short delay so the menu doesn't vanish if the mouse slips off for a moment
+  const hideMenu = () => {
+    clearCloseTimer();
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 180);
+  };
+
+  const closeMenuNow = () => {
+    clearCloseTimer();
+    setOpenMenu(null);
+  };
+
+  useEffect(() => clearCloseTimer, []);
+
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close dropdown when clicking outside
+  // close the desktop submenu on Escape, even when it was opened by hover
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      const isDropdownClick = Object.values(dropdownRefs).some(
-        (ref) => ref.current && ref.current.contains(event.target)
-      );
-      if (!isDropdownClick) {
-        setActiveDropdown(null);
-      }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenMenu(null);
     };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/#about" },
-    { label: "Products", href: "/products" },
-    { label: "Therapies", href: "/therapies" },
-    {
-      label: "Facilities",
-      href: "/#facilities",
-      hasDropdown: true,
-      dropdownItems: [
-        { label: "Teams", href: "/teams" },
-        { label: "Doctors", href: "/doctors" },
-        { label: "Sonagramam", href: "/sonagramam" },
-        { label: "The Village", href: "/sonagramam#village" },
-        { label: "Wellness", href: "/wellness" },
-        { label: "Life at Ayurvana", href: "/experiences" },
-        { label: "Rooms & Cottages", href: "/stay" },
-        { label: "A Day at Ayurvana", href: "/day" },
-      ]
-    },
-   
-    { label: "Services", href: "/#services" },
-    { label: "Packages", href: "/packages" },
-    { label: "Blog", href: "/blog" },
-    { label: "Contact", href: "/contact" },
-  ];
+  // lock page scroll while the mobile menu is open + close on Escape
+  useEffect(() => {
+    if (!open) return;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
 
-  const socialIcons = [
-    {
-      icon: (
-        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-        </svg>
-      ),
-      href: "https://twitter.com/ayurvana",
-      label: "Twitter"
-    },
-    {
-      icon: (
-        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-        </svg>
-      ),
-      href: "https://instagram.com/ayurvana",
-      label: "Instagram"
-    },
-    {
-      icon: (
-        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-        </svg>
-      ),
-      href: "https://facebook.com/ayurvana",
-      label: "Facebook"
-    },
-    {
-      icon: (
-        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-        </svg>
-      ),
-      href: "https://youtube.com/ayurvana",
-      label: "YouTube"
-    },
-  ];
-
-  // Handle dropdown toggle
-  const toggleDropdown = (label) => {
-    setActiveDropdown(activeDropdown === label ? null : label);
-  };
-
-  // Handle hover with delay for better UX
-  const [hoverTimeout, setHoverTimeout] = useState(null);
-
-  const handleMouseEnter = (label) => {
-    if (hoverTimeout) {
-      clearTimeout(hoverTimeout);
-      setHoverTimeout(null);
-    }
-    setActiveDropdown(label);
-  };
-
-  const handleMouseLeave = () => {
-    const timeout = setTimeout(() => {
-      setActiveDropdown(null);
-    }, 200);
-    setHoverTimeout(timeout);
-  };
-
-  const handleDropdownMouseEnter = () => {
-    if (hoverTimeout) {
-      clearTimeout(hoverTimeout);
-      setHoverTimeout(null);
-    }
-  };
-
-  const handleDropdownMouseLeave = () => {
-    setActiveDropdown(null);
-  };
-
-  // Open booking form
-  const openBookingForm = (e) => {
-    e.preventDefault();
-    openBookingModal();
-  };
-
-  // Handle cart click - opens the global cart sidebar
-  const handleCartClick = (e) => {
-    e.preventDefault();
-    openCart();
-  };
+  const cartButton = cartCount > 0 && (
+    <button
+      type="button"
+      onClick={openCart}
+      aria-label={`Open cart, ${cartCount} item${cartCount > 1 ? "s" : ""}`}
+      className="relative border-0 bg-transparent p-[9px] text-text-dark transition hover:text-gold"
+    >
+      <ShoppingCart className="h-[21px] w-[21px]" strokeWidth={1.7} />
+      <span className="absolute right-0 top-0 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-forest px-1 font-dm text-[10px] leading-none text-[#fff8ef]">
+        {cartCount}
+      </span>
+    </button>
+  );
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? "bg-cream-light/95 backdrop-blur-sm navbar-scrolled shadow-md py-2"
-          : "bg-gradient-to-b from-black/60 to-transparent pb-4"
-          }`}
+        id="topbar"
+        className={`fixed inset-x-0 top-0 z-[1000] border-b border-[#d9c8b2]/65 bg-[#fbf7ef]/95 text-text-dark backdrop-blur-[14px] transition-shadow duration-300 ${
+          scrolled ? "shadow-[0_8px_28px_rgba(53,35,29,.08)]" : ""
+        }`}
       >
-        {/* Main nav - Fixed alignment */}
-        <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-          {/* Logo - Fixed U-shape with responsive sizing */}
-          <Link href="/" className="relative inline-flex items-center group">
-            {/* Logo - U-shaped background */}
-            <div
-              className={`
-      relative
-      flex
-      items-center
-      justify-center
-      transition-all
-      duration-300
-      overflow-hidden
-      ${scrolled
-                  ? "w-[110px] sm:w-[120px] h-[72px] sm:h-[78px] bg-transparent border-0 rounded-none"
-                  : "w-[130px] sm:w-[145px] md:w-[155px] h-[90px] sm:h-[98px] md:h-[105px] bg-cream-light border-l-4 border-r-4 border-b-4 border-forest rounded-b-[42px]"
-                }
-    `}
-            >
-              <Image
-                src="/images/Ayurvana.webp"
-                alt="Ayurvana Logo"
-                width={130}
-                height={75}
-                priority
-                className={`
-        object-contain
-        transition-all
-        duration-300
-        ${scrolled
-                    ? "w-[90px] sm:w-[100px]"
-                    : "w-[110px] sm:w-[120px] md:w-[130px]"
-                  }
-      `}
-              />
-            </div>
+        <div
+          className={`mx-auto flex w-[min(1280px,calc(100%-44px))] items-center justify-between gap-8 transition-all duration-300 lg:w-[min(1280px,calc(100%-64px))] ${
+            scrolled ? "h-[66px]" : "h-[76px]"
+          }`}
+        >
+          {/* logo */}
+          <Link href="/" aria-label="Ayurvana home" className="block shrink-0">
+            <Image
+              src="/images/Ayurvana.webp"
+              alt="Ayurvana – Rooted in Nature, Inspired by Tradition"
+              width={3508}
+              height={2480}
+              priority
+              sizes="100px"
+              className={`w-auto transition-all duration-300 ${scrolled ? "h-[54px]" : "h-[62px]"}`}
+            />
           </Link>
 
-          {/* Desktop Nav Links with Cart Icon */}
-          <ul className="hidden lg:flex items-center gap-5 xl:gap-7">
-            {navLinks.map((link) => (
-              <li
-                key={link.label}
-                className="relative"
-                ref={link.hasDropdown ? dropdownRefs[link.label.toLowerCase()] : null}
-                onMouseEnter={() => link.hasDropdown && handleMouseEnter(link.label)}
-                onMouseLeave={() => link.hasDropdown && handleMouseLeave()}
-              >
+          {/* desktop links */}
+          <nav
+            aria-label="Main navigation"
+            className="hidden items-center gap-[clamp(12px,2vw,27px)] font-dm text-[10px] uppercase tracking-[0.12em] lg:flex"
+          >
+            <Link href="/" className={navLinkClass}>
+              Home
+            </Link>
+
+            {dropdowns.map((d) => {
+              const isOpen = openMenu === d.label;
+
+              return (
                 <div
-                  className={`flex items-center gap-1 cursor-pointer text-[11px] font-medium uppercase tracking-[0.14em] transition-colors duration-300 hover:text-gold ${scrolled ? "text-text-dark" : "text-cream-light"
+                  key={d.label}
+                  className="relative"
+                  onMouseEnter={() => showMenu(d.label)}
+                  onMouseLeave={hideMenu}
+                  onFocus={() => showMenu(d.label)}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget)) hideMenu();
+                  }}
+                >
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    onClick={() => showMenu(d.label)}
+                    className={`flex cursor-pointer items-center gap-1 border-0 bg-transparent py-3 uppercase tracking-[0.12em] transition ${
+                      isOpen ? "text-gold" : "opacity-90"
                     }`}
-                  onClick={() => link.hasDropdown && toggleDropdown(link.label)}
-                >
-                  {link.hasDropdown ? (
-                    <>
-                      <Link href={link.href} className="hover:text-gold">
-                        {link.label}
-                      </Link>
-                      <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === link.label ? 'rotate-180' : ''
-                          }`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </>
-                  ) : (
-                    <Link href={link.href} className="hover:text-gold">
-                      {link.label}
-                    </Link>
-                  )}
-                </div>
-
-                {/* Dropdown Menu */}
-                {link.hasDropdown && activeDropdown === link.label && (
-                  <div
-                    className="absolute top-full left-0 mt-2 w-56 bg-cream-light shadow-xl border border-line rounded-xl overflow-hidden"
-                    onMouseEnter={handleDropdownMouseEnter}
-                    onMouseLeave={handleDropdownMouseLeave}
                   >
-                    {link.dropdownItems.map((item) => (
-                      <Link
-                        key={item.label}
-                        href={item.href}
-                        className="block px-4 py-3 text-[11px] uppercase tracking-[0.1em] text-text-dark hover:bg-cream hover:text-forest transition-colors border-b border-cream-dark last:border-0"
-                        onClick={() => {
-                          setActiveDropdown(null);
-                          if (hoverTimeout) {
-                            clearTimeout(hoverTimeout);
-                            setHoverTimeout(null);
-                          }
-                        }}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </li>
-            ))}
+                    {d.label}
+                    <span
+                      aria-hidden="true"
+                      className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                    >
+                      ⌄
+                    </span>
+                  </button>
 
-            {/* Cart Icon - Desktop */}
-            <li className="relative">
-              <button
-                onClick={handleCartClick}
-                className={`p-2 rounded-full transition-colors duration-300 hover:bg-white/10 ${scrolled ? "text-text-dark hover:text-gold" : "text-cream-light hover:text-gold"
-                  }`}
-                aria-label="Shopping cart"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-forest text-cream-light text-[10px] rounded-full h-5 w-5 flex items-center justify-center">
-                    {cartCount}
-                  </span>
-                )}
-              </button>
-            </li>
-
-           
-          </ul>
-
-          {/* Mobile menu toggle + Cart Icon */}
-          <div className="flex items-center gap-2 lg:hidden">
-
-            {/* Cart Icon - Mobile */}
-            <button
-              onClick={handleCartClick}
-              className={`relative p-2 rounded-full transition-colors duration-300 hover:bg-white/10 ${scrolled ? "text-text-dark hover:text-gold" : "text-cream-light hover:text-gold"
-                }`}
-              aria-label="Shopping cart"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-forest text-cream-light text-[10px] rounded-full h-5 w-5 flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </button>
-
-            <button
-              className={`p-2 transition-colors ${scrolled ? "text-text-dark" : "text-cream-light"
-                }`}
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Toggle menu"
-            >
-              {menuOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
-          </div>
-        </nav>
-
-        {/* Mobile menu */}
-        {menuOpen && (
-          <div className="lg:hidden bg-cream-light border-t border-line shadow-xl max-h-[80vh] overflow-y-auto rounded-b-2xl">
-            <ul className="flex flex-col py-4">
-              {navLinks.map((link) => (
-                <li key={link.label} className="border-b border-cream-dark last:border-0">
-                  {link.hasDropdown ? (
-                    <>
-                      <div
-                        className="flex items-center justify-between px-6 py-3 text-sm text-text-dark hover:text-forest hover:bg-cream transition-colors cursor-pointer"
-                        onClick={() => toggleDropdown(link.label)}
-                      >
-                        <span>{link.label}</span>
-                        <svg
-                          className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === link.label ? 'rotate-180' : ''
-                            }`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+                  {/* pt-2 is an invisible bridge, so there is no hover gap */}
+                  <div
+                    className={`absolute left-[-24px] top-full z-10 pt-2 transition-all duration-200 ${
+                      isOpen ? "visible translate-y-0 opacity-100" : "invisible translate-y-1 opacity-0"
+                    }`}
+                  >
+                    <div className="grid min-w-[230px] border border-line bg-cream-light p-2 text-text-dark shadow-[0_18px_42px_rgba(53,35,29,.12)]">
+                      {d.items.map(([label, href]) => (
+                        <Link
+                          key={href}
+                          href={href}
+                          onClick={(e) => {
+                            e.currentTarget.blur();
+                            closeMenuNow();
+                          }}
+                          className="border-b border-line px-3 py-[13px] text-[10px] tracking-[0.08em] transition-colors last:border-0 hover:bg-cream hover:text-forest focus-visible:bg-cream focus-visible:text-forest"
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
-                      {activeDropdown === link.label && (
-                        <div className="bg-cream-light">
-                          {link.dropdownItems.map((item) => (
-                            <Link
-                              key={item.label}
-                              href={item.href}
-                              className="block px-10 py-2.5 text-sm text-text-muted hover:text-forest transition-colors"
-                              onClick={() => {
-                                setMenuOpen(false);
-                                setActiveDropdown(null);
-                              }}
-                            >
-                              {item.label}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <Link
-                      href={link.href}
-                      className="block px-6 py-3 text-sm text-text-dark hover:text-forest hover:bg-cream transition-colors"
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  )}
-                </li>
-              ))}
-              {/* Social Icons in Mobile Menu */}
-              <li className="px-6 py-3 border-b border-cream-dark">
-                <div className="flex items-center gap-4">
-                  {socialIcons.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-text-muted hover:text-gold transition-colors"
-                      aria-label={social.label}
-                    >
-                      {social.icon}
-                    </a>
-                  ))}
+                          {label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </li>
-              <li className="px-6 pt-3">
-                <button
-                  onClick={openBookingForm}
-                  className="btn-primary w-full justify-center"
-                >
-                  Book Appointment
-                </button>
-              </li>
-            </ul>
+              );
+            })}
+
+            <Link href="/experiences#proshop" className={navLinkClass}>
+              Pro Shop
+            </Link>
+            <Link href="/blog" className={navLinkClass}>
+              Blog
+            </Link>
+            <Link
+              href="/contact"
+              className="border border-forest bg-forest px-[17px] py-[13px] text-[9px] tracking-[0.15em] text-[#fff8ef] transition-colors hover:bg-[#713321]"
+            >
+              Plan your stay ↗
+            </Link>
+            {cartButton}
+          </nav>
+
+          {/* mobile cart + toggle */}
+          <div className="flex items-center gap-1 lg:hidden">
+            {cartButton}
+            <button
+              type="button"
+              aria-label="Open navigation"
+              aria-controls="mobileMenu"
+              aria-expanded={open}
+              onClick={() => setOpen(true)}
+              className={`border-0 bg-transparent p-[10px] text-[23px] ${open ? "text-gold" : "text-text-dark"}`}
+            >
+              ☰
+            </button>
           </div>
-        )}
+        </div>
       </header>
+
+      {/* mobile menu */}
+      <div
+        id="mobileMenu"
+        className={`fixed inset-0 z-[1100] flex flex-col overflow-auto bg-cream-light px-7 pb-9 pt-[86px] text-text-dark transition-all duration-[450ms] ease-[cubic-bezier(.2,.65,.25,1)] lg:hidden ${
+          open ? "visible translate-x-0" : "pointer-events-none invisible translate-x-[102%]"
+        }`}
+      >
+        <button
+          type="button"
+          aria-label="Close navigation"
+          onClick={() => setOpen(false)}
+          className="absolute right-7 top-[22px] h-[42px] w-[42px] border border-line bg-transparent text-[23px] text-text-dark"
+        >
+          ×
+        </button>
+        <small className="mb-[18px] font-dm text-[8px] uppercase tracking-[0.2em] text-forest-light">
+          Explore Ayurvana
+        </small>
+        {mobileLinks.map(([label, href]) => (
+          <Link
+            key={label}
+            href={href}
+            onClick={() => setOpen(false)}
+            className="border-b border-line py-[13px] font-display text-[clamp(25px,6vw,36px)] text-text-dark"
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
     </>
   );
 }

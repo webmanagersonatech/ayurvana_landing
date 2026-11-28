@@ -28,7 +28,7 @@ export default function ProShop() {
               <Card key={t} title={t}>{d}</Card>
             ))}
           </div>
-          <a href="/products" className="btn-outline mt-8">Browse products ↗</a>
+          <a href="/" className="btn-outline mt-8">Browse products ↗</a>
         </Reveal>
       </div>
     </section>

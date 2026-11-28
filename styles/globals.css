@@ -7,6 +7,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px; /* anchor links clear the fixed navbar */
   }
   body {
     @apply bg-cream text-text-dark font-sans;

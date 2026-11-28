@@ -126,7 +126,7 @@ export default function Home() {
 
           {/* Content */}
           <div className="relative z-10">
-            <HowItWorks />
+       
             <WellnessExperience />
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function Home() {
 
         <Testimonials />
         <SpaExperience />
-        <FAQ />
+        
         <Blog />
        
       </main>
@@ -154,3 +154,96 @@ export default function Home() {
     </>
   );
 }
+
+// ════════════════════════════════════════════════════════════════════
+//  CLIENT-STYLE HOME VERSION (hero + philosophy + journey + explore +
+//  testimonials) — kept for reference, commented out (not removed).
+//  Components are still in components/client/.
+// ════════════════════════════════════════════════════════════════════
+// import Head from "next/head";
+//
+// /* Hero: the ORIGINAL (previous) hero design, as requested. */
+// import Hero from "../components/Hero";
+// /* Everything below the hero: current (client) design. Full sections live on subpages. */
+// import Philosophy from "../components/client/Philosophy";
+// import Journey, { JourneyShortcuts } from "../components/client/Journey";
+// import Testimonials from "../components/Testimonials";
+// import { StatBand, Explore } from "../components/village";
+//
+// export default function Home() {
+//   return (
+//     <>
+//       <Head>
+//         {/* Primary SEO */}
+//         <title>Ayurvana Ayurveda | Holistic Healing & Wellness in salem</title>
+//         <meta
+//           name="description"
+//           content="Experience authentic Ayurvedic healing at Ayurvana — a serene wellness sanctuary in salem offering Panchakarma, Shirodhara, Abhyanga, and personalised holistic treatments."
+//         />
+//         <meta name="keywords" content="Ayurveda salem, Ayurvedic treatment, Panchakarma, Shirodhara, holistic healing, wellness spa, Ayurvana, herbal therapy" />
+//         <meta name="author" content="Ayurvana Ayurveda" />
+//         <meta name="robots" content="index, follow" />
+//         <link rel="canonical" href="https://ayurvanaindia.com/" />
+//
+//         {/* Open Graph */}
+//         <meta property="og:type" content="website" />
+//         <meta property="og:url" content="https://ayurvanaindia.com/" />
+//         <meta property="og:title" content="Ayurvana Ayurveda | Holistic Healing & Wellness in Slem" />
+//         <meta
+//           property="og:description"
+//           content="Experience authentic Ayurvedic healing at Ayurvana — personalised treatments for mind, body & spirit. Book your consultation today."
+//         />
+//         <meta property="og:image" content="https://ayurvanalanding.vercel.app/images/Ayurvana.webp" />
+//         <meta property="og:locale" content="en_IN" />
+//         <meta property="og:site_name" content="Ayurvana Ayurveda" />
+//
+//         {/* Twitter Card */}
+//         <meta name="twitter:card" content="summary_large_image" />
+//         <meta name="twitter:title" content="Ayurvana Ayurveda | Holistic Healing & Wellness" />
+//         <meta name="twitter:description" content="Authentic Ayurvedic treatments in salem. Personalised care for mind, body & spirit." />
+//         <meta name="twitter:image" content="https://ayurvanalanding.vercel.app/images/Ayurvana.webp" />
+//
+//         {/* Schema.org structured data */}
+//         <script
+//           type="application/ld+json"
+//           dangerouslySetInnerHTML={{
+//             __html: JSON.stringify({
+//               "@context": "https://schema.org",
+//               "@type": "HealthAndBeautyBusiness",
+//               name: "Ayurvana Ayurveda",
+//               description:
+//                 "Authentic Ayurvedic wellness sanctuary offering Panchakarma, Shirodhara, Abhyanga and personalised holistic treatments in salem.",
+//               url: "https://ayurvanaindia.com",
+//               telephone: "+91-413-221-4567",
+//               email: "hello@ayurvanaindia.com",
+//               address: {
+//                 "@type": "PostalAddress",
+//                 streetAddress: "12, Rangapillai Street, White Town",
+//                 addressLocality: "salem",
+//                 postalCode: "605001",
+//                 addressCountry: "IN",
+//               },
+//               openingHours: "Mo-Sa 08:00-20:00",
+//               priceRange: "₹₹",
+//               image: "https://ayurvanalanding.vercel.app/images/Ayurvana.webp",
+//               sameAs: [
+//                 "https://facebook.com/Ayurvana",
+//                 "https://instagram.com/Ayurvana",
+//               ],
+//             }),
+//           }}
+//         />
+//       </Head>
+//
+//       <main id="main-content">
+//         <Hero />                 {/* previous hero design */}
+//         <Philosophy />           {/* #philosophy */}
+//         <Journey />              {/* scroll experience, links go to subpages */}
+//         <StatBand />
+//         <JourneyShortcuts />
+//         <Explore />              {/* tiles -> /wellness /experiences /stay /sonagramam /day */}
+//         <Testimonials />         {/* testimonials */}
+//       </main>
+//     </>
+//   );
+// }
