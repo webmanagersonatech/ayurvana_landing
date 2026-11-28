@@ -29,6 +29,9 @@ module.exports = {
       fontFamily: {
         serif: ["Georgia", "Playfair Display", "serif"],
         sans: ["Inter", "system-ui", "sans-serif"],
+        // Client navbar / hero typography (from Website_HTML.html)
+        display: ["Italiana", "Georgia", "serif"],
+        dm: ["DM Sans", "Arial", "sans-serif"],
       },
       backgroundImage: {
         "hero-gradient": "linear-gradient(135deg, rgba(135,63,43,0.7) 0%, rgba(44,33,28,0.5) 100%)",

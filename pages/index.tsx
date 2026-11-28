@@ -144,7 +144,7 @@ export default function Home() {
 
 
         <Testimonials />
-        <SpaExperience />
+        {/* <SpaExperience /> */}
         
         <Blog />
        

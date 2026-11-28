@@ -14,7 +14,7 @@ export default function Spa() {
         <div>
           <SectionHead
             dark
-            eyebrow="The spa"
+            eyebrow="Wellness · The spa"
             lead="The spa sits within the treatment courtyards. Therapies are selected by your physician according to your programme, rather than chosen from a retail menu."
           >
             Earth, water and oil. The oldest rituals, thoughtfully practised.

@@ -45,9 +45,9 @@ export default function Packages() {
     <section id="packages" className="py-16 relative overflow-hidden bg-cream">
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="section-head center">
-          <span className="section-label">Accommodation</span>
+         <span className="section-label">Wellness Packages</span>
           <h2 className="section-title mt-3">
-            Rooms &amp; <span className="title-accent">Tariff</span>
+            Rooms &amp; <span className="title-accent">Accommodation</span>
           </h2>
           <p className="section-lead">Choose the room that suits your stay.</p>
         </div>

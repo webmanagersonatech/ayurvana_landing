@@ -15,7 +15,7 @@ export default function SheHealth() {
         </Reveal>
         <div>
           <SectionHead
-            eyebrow="She Health"
+            eyebrow="Wellness · She Health"
             lead="A dedicated, women-led and physician-guided wellness wing, designed around the stages many wellness retreats overlook."
           >
             Care that understands a woman's body across her whole life.

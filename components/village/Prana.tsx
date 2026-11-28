@@ -13,7 +13,7 @@ export default function Prana() {
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <SectionHead
-            eyebrow="Prana Shala & movement"
+            eyebrow="Wellness · Prana Shala & movement"
             lead="A brick pavilion for classical yoga and pranayama, with small-group and individual sessions shaped around each guest's programme."
           >
             Breath first.
