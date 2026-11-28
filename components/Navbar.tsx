@@ -18,7 +18,7 @@ const dropdowns = [
   {
     label: "Wellness",
     items: [
-      ["Healing programmes", "/wellness#healing"],
+      ["Healing programmes", "/wellness"],
       ["The spa", "/wellness#spa"],
       ["She Health", "/wellness#she"],
       ["Prana Shala", "/wellness#prana"],
@@ -138,14 +138,12 @@ export default function Navbar() {
     <>
       <header
         id="topbar"
-        className={`fixed inset-x-0 top-0 z-[1000] border-b border-[#d9c8b2]/65 bg-[#fbf7ef]/95 text-text-dark backdrop-blur-[14px] transition-shadow duration-300 ${
-          scrolled ? "shadow-[0_8px_28px_rgba(53,35,29,.08)]" : ""
-        }`}
+        className={`fixed inset-x-0 top-0 z-[1000] border-b border-[#d9c8b2]/65 bg-[#fbf7ef]/95 text-text-dark backdrop-blur-[14px] transition-shadow duration-300 ${scrolled ? "shadow-[0_8px_28px_rgba(53,35,29,.08)]" : ""
+          }`}
       >
         <div
-          className={`mx-auto flex w-[min(1280px,calc(100%-44px))] items-center justify-between gap-8 transition-all duration-300 lg:w-[min(1280px,calc(100%-64px))] ${
-            scrolled ? "h-[66px]" : "h-[76px]"
-          }`}
+          className={`mx-auto flex w-[min(1280px,calc(100%-44px))] items-center justify-between gap-8 transition-all duration-300 lg:w-[min(1280px,calc(100%-64px))] ${scrolled ? "h-[66px]" : "h-[76px]"
+            }`}
         >
           {/* logo */}
           <Link href="/" aria-label="Ayurvana home" className="block shrink-0">
@@ -187,9 +185,8 @@ export default function Navbar() {
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => showMenu(d.label)}
-                    className={`flex cursor-pointer items-center gap-1 border-0 bg-transparent py-3 uppercase tracking-[0.12em] transition ${
-                      isOpen ? "text-gold" : "opacity-90"
-                    }`}
+                    className={`flex cursor-pointer items-center gap-1 border-0 bg-transparent py-3 uppercase tracking-[0.12em] transition ${isOpen ? "text-gold" : "opacity-90"
+                      }`}
                   >
                     {d.label}
                     <span
@@ -202,9 +199,8 @@ export default function Navbar() {
 
                   {/* pt-2 is an invisible bridge, so there is no hover gap */}
                   <div
-                    className={`absolute left-[-24px] top-full z-10 pt-2 transition-all duration-200 ${
-                      isOpen ? "visible translate-y-0 opacity-100" : "invisible translate-y-1 opacity-0"
-                    }`}
+                    className={`absolute left-[-24px] top-full z-10 pt-2 transition-all duration-200 ${isOpen ? "visible translate-y-0 opacity-100" : "invisible translate-y-1 opacity-0"
+                      }`}
                   >
                     <div className="grid min-w-[230px] border border-line bg-cream-light p-2 text-text-dark shadow-[0_18px_42px_rgba(53,35,29,.12)]">
                       {d.items.map(([label, href]) => (
@@ -261,9 +257,8 @@ export default function Navbar() {
       {/* mobile menu */}
       <div
         id="mobileMenu"
-        className={`fixed inset-0 z-[1100] flex flex-col overflow-auto bg-cream-light px-7 pb-9 pt-[86px] text-text-dark transition-all duration-[450ms] ease-[cubic-bezier(.2,.65,.25,1)] lg:hidden ${
-          open ? "visible translate-x-0" : "pointer-events-none invisible translate-x-[102%]"
-        }`}
+        className={`fixed inset-0 z-[1100] flex flex-col overflow-auto bg-cream-light px-7 pb-9 pt-[86px] text-text-dark transition-all duration-[450ms] ease-[cubic-bezier(.2,.65,.25,1)] lg:hidden ${open ? "visible translate-x-0" : "pointer-events-none invisible translate-x-[102%]"
+          }`}
       >
         <button
           type="button"

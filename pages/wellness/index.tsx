@@ -6,6 +6,7 @@ export default function Page() {
     <PageShell
       title="Wellness at Ayurvana | Ayurveda, Spa, She Health & Yoga in Salem"
       description="Physician-guided Ayurvedic programmes, spa rituals, She Health and the Prana Shala yoga pavilion at Ayurvana, Salem."
+      bgImage="/images/bg.webp"
       heading={<>Wellness at <span className="italic text-gold-light">Ayurvana</span></>}
     >
       <Healing />

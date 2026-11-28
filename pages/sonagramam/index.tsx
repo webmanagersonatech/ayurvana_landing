@@ -208,7 +208,7 @@ export default function SonaGramaPage() {
           className="relative h-[450px] md:h-[500px]"
         >
           <img loading="lazy" decoding="async"
-            src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80"
+            src="/images/bg.webp"
             alt="SonaGrama Wellness Resort"
             className="absolute inset-0 w-full h-full object-cover opacity-30"
           />
@@ -218,9 +218,7 @@ export default function SonaGramaPage() {
           <div className="absolute top-20 right-20 opacity-5">
             <Leaf className="w-96 h-96 text-white" />
           </div>
-          <div className="absolute bottom-10 left-20 opacity-5 rotate-12">
-            <Heart className="w-64 h-64 text-white" />
-          </div>
+       
 
           <div className="relative pt-28 max-w-7xl mx-auto px-4 sm:px-6 h-full flex flex-col justify-center">
             <motion.div
@@ -251,14 +249,7 @@ export default function SonaGramaPage() {
                 <span className="text-[#b89a65]">SonaGrama</span>
               </motion.h1>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="text-white/70 text-sm sm:text-base md:text-lg mt-3 leading-relaxed max-w-2xl"
-              >
-                Discover a serene escape at our Wellness Health Resort, where naturopathy and yoga combine to restore work-life balance, detoxify, and rejuvenate mind, body, and soul.
-              </motion.p>
+            
 
               <motion.p
                 initial={{ opacity: 0 }}

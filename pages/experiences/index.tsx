@@ -6,6 +6,7 @@ export default function Page() {
     <PageShell
       title="Experiences at Ayurvana | Sattvic Dining, Pond, Amphitheatre & Pro Shop"
       description="Sattvic dining, the pond and amphitheatre, day trips around Salem and the Ayurvana Pro Shop."
+      bgImage="/images/bg.webp"
       heading={<>Life at <span className="italic text-gold-light">Ayurvana</span></>}
     >
       <Dining />

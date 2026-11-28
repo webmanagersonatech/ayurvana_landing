@@ -63,10 +63,7 @@ export default function BlogIndex() {
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mt-3 leading-tight max-w-2xl">
               Stories &amp; wisdom for a balanced life
             </h1>
-            <p className="text-cream/70 mt-5 max-w-xl leading-relaxed">
-              Insights on Ayurveda, seasonal rituals, and holistic wellness from our practitioners —
-              written to help you live in step with your own nature.
-            </p>
+            
           </motion.div>
         </div>
       </section>
