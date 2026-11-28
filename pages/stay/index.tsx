@@ -7,6 +7,7 @@ export default function Page() {
     <PageShell
       title="Stay at Ayurvana | Rooms, Cottages & Tariff in Salem"
       description="Rooms, private cottages, She Room and He Room, and the Ayurvana tariff."
+         bgImage="/images/ayurvana/rooms-standard.jpg"
       heading={<>Stay at <span className="italic text-gold-light">Ayurvana</span></>}
     >
       <Stay />
